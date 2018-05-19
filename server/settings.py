@@ -33,6 +33,11 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
+    'app',
+    'mentors',
+    'speakers',
+    'sponsors',
+    'startups',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -7,8 +7,8 @@ class Speaker(models.Model):
 	year = models.IntegerField()
 	profile_pic = models.ImageField(upload_to='Speakers')
 	email = models.EmailField()
-	contact = models.IntegerField()
-	flag = models.BooleanField()
+	contact = models.TextField(max_length=13, null=True, blank=True)
+	flag = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.name

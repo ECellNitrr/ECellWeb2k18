@@ -5,10 +5,10 @@ class Startup(models.Model):
 	name = models.CharField(max_length=256)
 	email = models.CharField(max_length=256)
 	pic = models.ImageField(upload_to='Startups')
-	contact = models.IntegerField()
+	contact = models.TextField(max_length=13, null=True, blank=True)
 	founder = models.CharField(max_length=256)
 	address = models.TextField()
-	flag = models.BooleanField()
+	flag = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.name
