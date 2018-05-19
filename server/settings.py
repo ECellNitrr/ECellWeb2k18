@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'contactus',
     'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
     'app',
