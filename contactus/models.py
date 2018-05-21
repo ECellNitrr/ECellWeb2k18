@@ -1,7 +1,8 @@
 from django.db import models
+from appprofile.models import Profile
 
 class Message(models.Model):
-	name = models.CharField(max_length=256)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,default=4)
 	subject = models.CharField(max_length=256)
 	message = models.TextField()
 	flag = models.BooleanField()
