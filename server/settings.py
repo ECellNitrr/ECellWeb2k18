@@ -20,11 +20,11 @@ STATIC_DIR = os.path.join(BASE_DIR,"static")
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = '%g=_!9t)x1&n+bez*tio63^wd8k&_xq0za$98#!590cq7jhmks'
-from settings.local import *
+SECRET_KEY = '%g=_!9t)x1&n+bez*tio63^wd8k&_xq0za$98#!590cq7jhmks'
+#from settings.local import *
 
-APIKey = os.environ.get('APIKey')
-SECRET_KEY = os.environ.get('SECRET_KEY')
+#APIKey = os.environ.get('APIKey')
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 #print(SECRET_KEY)
 
 
