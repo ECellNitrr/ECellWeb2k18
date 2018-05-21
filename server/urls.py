@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls import url
-#from startups import views
+from appprofile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #url(r'^list/',views.get_startups),
+    url(r'^login/',views.post, name='login'),
 ]
 
 admin.site.site_header = settings.SITE_HEADER
