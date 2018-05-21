@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bquiz',
     'contactus',
     'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
