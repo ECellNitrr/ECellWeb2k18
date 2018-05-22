@@ -1,29 +1,29 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here
 import jwt
 import json
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from .models import Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-#from rest_framework import api_view
+from django.conf import settings
 
-
-
+@csrf_exempt
 def post(request, *args, **kwargs):
+
+	error_msg = {'status' : 400,
+		'content_type' : 'application/json',
+		'message' : 'Invalid credentials'}
+
 	if request.method=='POST':
-		print('uy')
-		#if not request.:
-		#	return HttpResponse('Error please provide username/password')
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 		print(username)
 		try:
-			#user = User.objects.get(username=username)
 			user = authenticate(username=username, password=password)
 		except User.DoesNotExist:
-			return HttpResponse('Invalid username/password')
+			return JsonResponse(error_msg)
 		if user:
 
 			payload = {
@@ -31,23 +31,15 @@ def post(request, *args, **kwargs):
 				'email': user.email,
 			}
 
-			jwt_token = {'token':jwt.encode(payload,"SECRET_KEY")}
-			#jwt_token = list(jwt_token)
-			print(jwt_token)
-			return JsonResponse(jwt_token, safe=False)
+			jwt_token = jwt.encode(payload,settings.SECRET_KEY)
+			token = jwt_token.decode('utf-8')
+			return JsonResponse({
+				'status' : 200,
+				'content_type' : 'application/json',
+				'message' : 'authentication successfull',
+				'token' : token
+			})
 
-			#return HttpResponse(json.dumps(jwt_token),
-							#	status = 200,
-							#	content_type='application/json')
 		else:
-			return Response(
-				json.dumps({'Error':'Invalid credentials'}),
-				status=400,
-				content_type='application/json')
-		#if request.method=='POST':	
-		#	post(self, request, *args, **kwargs)
-
-
-
-
+			return JsonResponse(error_msg)
 	return render(request,'login.html')
