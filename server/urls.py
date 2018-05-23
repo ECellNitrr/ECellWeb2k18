@@ -22,6 +22,7 @@ from appprofile import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^login/',views.post, name='login'),
+    url(r'^register/', views.register, name='register')
 ]
 
 admin.site.site_header = settings.SITE_HEADER
