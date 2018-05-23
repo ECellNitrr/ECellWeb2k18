@@ -12,7 +12,7 @@ from .forms import UserForm, UserProfileInfoForm
 
 
 @csrf_exempt
-def post(request, *args, **kwargs):
+def login(request, *args, **kwargs):
 
 	error_msg = {'status' : 400,
 		'content_type' : 'application/json',
@@ -21,11 +21,12 @@ def post(request, *args, **kwargs):
 	if request.method=='POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
-		print(username)
+
 		try:
 			user = authenticate(username=username, password=password)
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
+
 		if user:
 
 			payload = {
@@ -44,10 +45,9 @@ def post(request, *args, **kwargs):
 
 		else:
 			return JsonResponse(error_msg)
-	return render(request,'login.html')
 
 
-
+@csrf_exempt
 def register(request):
 
 	registered = False
@@ -61,32 +61,29 @@ def register(request):
 			user = user_form.save()
 			user.set_password(user.password)
 			user.save()
-			#profile_form.save()
-			profile = profile_form.save()
-			profile.user = user
-			#profile_form.avatar = profile_form.cleaned_data['avatar']
-			profile.save()
 
-			#profile = profile_form.save()
-			#profile.user = user
-
-
-			#profile.avatar = profile_form.cleaned_data['avatar']
-			#profile.doc_image = profile_form.cleaned_data['doc_image']
-			#profile.save()
-			#profile.first_name.save()
+			user.profile.avatar = profile_form.cleaned_data.get('avatar')
+			user.profile.contact_no = profile_form.cleaned_data.get('contact_no')
+			user.profile.facebook = profile_form.cleaned_data.get('facebook')
+			user.profile.linkedin = profile_form.cleaned_data.get('linkedin')
+			user.profile.save()
 
 			registered = True
-
+			return JsonResponse({
+				'status' : 200,
+				'content_type' : 'application/json',
+				'message' : 'registration successfull'
+			})
 		else:
-			print(user_form.errors, profile_form.errors)
+				return render({
+						'status' :400,
+						'content_type' : 'application/json',
+						'message' : 'Invalid Form'
+					})
 
 	else:
-		user_form = UserForm()
-		profile_form = UserProfileInfoForm()
-
-	return render(request,'register.html',
-		                   {'user_form':user_form,
-		                    'profile_form':profile_form,
-		                    'registered':registered,
-							})
+		return render({
+				'status' :400,
+				'content_type' : 'application/json',
+				'message' : 'form method error'
+			})

@@ -21,7 +21,7 @@ from appprofile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^login/',views.post, name='login'),
+    url(r'^login/',views.login, name='login'),
     url(r'^register/', views.register, name='register')
 ]
 
