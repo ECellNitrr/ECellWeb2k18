@@ -87,3 +87,7 @@ def register(request):
 				'content_type' : 'application/json',
 				'message' : 'form method error'
 			})
+
+
+
+
