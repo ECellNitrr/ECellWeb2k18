@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt#remove this , just an example of how to use this
 @login_req #remove this , just an example of how to use this
-def get_event(request):
+def get_events(request):
     events= Event.objects.all().values()
     events_list=list(events)
 

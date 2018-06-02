@@ -76,14 +76,14 @@ def register(request):
 				'message' : 'registration successfull'
 			})
 		else:
-				return render({
+				return JsonResponse({
 						'status' :400,
 						'content_type' : 'application/json',
 						'message' : 'Invalid Form'
 					})
 
 	else:
-		return render({
+		return JsonResponse({
 				'status' :400,
 				'content_type' : 'application/json',
 				'message' : 'form method error'

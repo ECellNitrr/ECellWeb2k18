@@ -1,21 +1,14 @@
 from django.db import models
 
-# Create your models here.
 class Sponsor(models.Model):
-
-
 	SPONS_TYPE = (
         ('AS', 'Associate Sponsors'),
         ('PLTS', 'Platinum Sponsors'),
         ('GS', 'Gold Sponsors'),
         ('TS', 'Title Sponsors'),
         ('PRTS', 'Partner Sponsors'),
-        
+
     )
-
-
-
-
 
 	name = models.CharField(max_length=256)
 	details = models.TextField()
@@ -27,5 +20,3 @@ class Sponsor(models.Model):
 
 	def __str__(self):
 		return self.name
-
-
