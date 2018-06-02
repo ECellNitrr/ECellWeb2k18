@@ -7,7 +7,6 @@ class Sponsor(models.Model):
         ('GS', 'Gold Sponsors'),
         ('TS', 'Title Sponsors'),
         ('PRTS', 'Partner Sponsors'),
-
     )
 
 	name = models.CharField(max_length=256)

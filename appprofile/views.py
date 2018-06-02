@@ -1,8 +1,4 @@
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-
-import jwt
-import json
 from django.http import JsonResponse
 from .models import Profile
 from django.contrib.auth.models import User
@@ -10,12 +6,17 @@ from django.contrib.auth import authenticate
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm
 
+import jwt
+import json
+
 
 @csrf_exempt
 def login(request, *args, **kwargs):
 
-	error_msg = {'success' : False,
-		'message' : 'Invalid credentials'}
+	error_msg = {
+		'success' : False,
+		'message' : 'Invalid credentials'
+		}
 
 	if request.method=='POST':
 		username = request.POST.get('username')
