@@ -21,14 +21,15 @@ from appprofile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^login/',views.login, name='login'),
-    url(r'^register/', views.register, name='register'),
+    path('login/',views.login, name='login'),
+    path('register/', views.register, name='register'),
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
     path('mentor/', include('mentors.urls')),
     path('startup/', include('startups.urls')),
     path('speaker/', include('speakers.urls')),
-    path('message/', include('contactus.urls'))
+    path('message/', include('contactus.urls')),
+    path('quiz/', include('bquiz.urls')),
 ]
 
 admin.site.site_header = settings.SITE_HEADER

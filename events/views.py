@@ -6,18 +6,14 @@ from .forms import EventForm
 from .models import Event
 import json
 
-
-
-@csrf_exempt#remove this , just an example of how to use this
-@login_req #remove this , just an example of how to use this
+@csrf_exempt
 def get_event(request):
     events= Event.objects.all().values()
     events_list=list(events)
 
     return JsonResponse({'Events':events_list}, safe=False)
 
-@csrf_exempt#remove this , just an example of how to use this
-@login_req
+@csrf_exempt
 def event_detail(request,pk):
 	event = Event.objects.get( pk=pk)
 
@@ -30,9 +26,9 @@ def event_detail(request,pk):
 
 	return JsonResponse({'Event':events}, safe=False)
 
-@csrf_exempt#remove this , just an example of how to use this
+@csrf_exempt
 @login_req
-def delete_event(request,pk):
+def delete_event(request,pk,**kwargs):
 	event = Event.objects.get(pk=pk)
 
 	if not event:
@@ -45,11 +41,9 @@ def delete_event(request,pk):
 		event.save()
 		return JsonResponse({'msg':'Record deleted successfully',})
 
-
-#remove this , just an example of how to use this
 @login_req
 @csrf_exempt
-def add_event(request):
+def add_event(request,**kwargs):
 
 	if request.method == "POST":
 		event_form = EventForm(request.POST,request.FILES)
@@ -61,7 +55,7 @@ def add_event(request):
 
 			return JsonResponse({
 				'success' : True,
-				'message' : 'Event addded successfully'
+				'message' : 'Event added successfully'
 			})
 		else:
 				return JsonResponse({
@@ -79,14 +73,13 @@ def add_event(request):
 
 @csrf_exempt
 @login_req
-def edit_event(request,pk):
+def edit_event(request,pk,**kwargs):
 	if request.method == 'POST':
 		name = request.POST.get('name')
 		detail = request.POST.get('details')
 		cover_pic = request.FILES.get('cover_pic')
 		email = request.POST.get('email')
 		date = request.POST.get('date')
-		#flag = request.POST.get('flag')
 		venue = request.POST.get('venue')
 		icon = request.FILES.get('icon')
 		time = request.POST.get('time')

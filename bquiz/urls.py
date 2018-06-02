@@ -4,6 +4,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    #path('list/',views.get_event, name='Get_Event'),
-    #path('view/<int:id>',views.view_event, name='View_Event')
+    path('list/',views.get_quiz, name='Get_quizes'),
+    path('view/<int:id>/',views.view_quiz, name='View_quiz'),
+    path('view/question/<int:id>/',views.view_question, name='View_question'),
+    #path('view/question/<int:id>/answer/',views.submit_ans, name='submit_ans')
     ]

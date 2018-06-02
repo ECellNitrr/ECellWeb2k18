@@ -5,7 +5,7 @@ class Message(models.Model):
 	user = models.ForeignKey(Profile,on_delete=models.CASCADE)
 	subject = models.CharField(max_length=256)
 	message = models.TextField()
-	flag = models.BooleanField()
+	flag = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.subject

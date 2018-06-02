@@ -27,7 +27,7 @@ def view(request,id):
 
 @csrf_exempt
 @login_req
-def create_spons(request):
+def create_spons(request,**kwargs):
 	if request.method == "POST":
 		sponsor_form = SponsorForm(request.POST,request.FILES)
 
@@ -54,7 +54,7 @@ def create_spons(request):
 
 @csrf_exempt
 @login_req
-def delete_spons(request,id):
+def delete_spons(request,id,**kwargs):
 	sponsor = Sponsor.objects.get(id=id)
 	if not sponsor:
 		return JsonResponse({
@@ -71,7 +71,7 @@ def delete_spons(request,id):
 
 @csrf_exempt
 @login_req
-def edit_spons(request,id):
+def edit_spons(request,id,**kwargs):
 	if request.method == 'POST':
 		name = request.POST.get('name')
 		detail = request.POST.get('details')

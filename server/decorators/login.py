@@ -44,7 +44,8 @@ def login_req(function):
         #if not Profile.is_active:
         #    msg = 'This user has been deactivated.'
         #    return JsonResponse({'success':False,'message':msg})
-
+        kwargs['user_id'] = payload['id']
+        user.is_active = True;
         return function(request, *args, **kwargs)
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__
