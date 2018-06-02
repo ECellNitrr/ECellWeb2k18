@@ -29,6 +29,7 @@ def login(request, *args, **kwargs):
 
 		if user:
 
+			user.is_active=True;
 			payload = {
 				'id' : user.id,
 				'email': user.email,
@@ -87,7 +88,3 @@ def register(request):
 				'content_type' : 'application/json',
 				'message' : 'form method error'
 			})
-
-
-
-
