@@ -41,7 +41,7 @@ def view_question(request,id,**kwargs):
         'question': question,
         'answer' : answer
     })
-"""
+
 @csrf_exempt
 @login_req
 def submit_ans(request,id,**kwargs):
@@ -54,8 +54,8 @@ def submit_ans(request,id,**kwargs):
             answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
             answer = answer_form.save(commit=False)
-            answer['user_id'] = kwargs['user_id']
-            answer['question_id'] = id
+            answer.user_id_id = kwargs['user_id']
+            answer.question_id_id = id
             answer.save()
             answer = model_to_dict(answer)
             return JsonResponse({
@@ -73,4 +73,3 @@ def submit_ans(request,id,**kwargs):
             'success':False,
             'message':'method error'
         })
-"""

@@ -22,17 +22,17 @@ def view_message(request,id):
 		'success':True,
 		'message':message
 	})
-"""
+
 @csrf_exempt
 @login_req
-def create_message(request):
+def create_message(request,**kwargs):
 	if request.method == 'POST':
 		message_form = MessageForm(request.POST)
 
 		if message_form.is_valid():
 
 			message = message_form.save(commit=False)
-			message['user_id'] = request.user.id
+			message.user_id = kwargs['user_id']
 			message.save()
 			message = model_to_dict(message)
 			return JsonResponse({
@@ -52,39 +52,49 @@ def create_message(request):
 
 @csrf_exempt
 @login_req
-def delete_message(request,id):
+def delete_message(request,id,**kwargs):
 	message = Message.objects.get(id = id)
-	message.flag = False
-	message.save()
+	if message.user_id == kwargs['user_id']:
+		message.flag = False
+		message.save()
 
-	return JsonResponse({
-		'success':True,
-		'message':'Message Deleted successfully'
-	})
-
-@csrf_exempt
-@login_req
-def edit_message(request,id):
-	message = Message.objects.get(id=id)
-	if request.method == 'POST':
-		message_form = MessageForm(request.POST, instance=message)
-
-		if message_form.is_valid():
-
-			message.save()
-			message = model_to_dict(message)
-			return JsonResponse({
-				'success' : True,
-				'message' : message
-			})
-		else:
-				return JsonResponse({
-						'success' :False,
-						'message' : 'Invalid Form'
-					})
+		return JsonResponse({
+			'success':True,
+			'message':'Message Deleted successfully'
+		})
 	else:
 		return JsonResponse({
 			'success':False,
-			'message':'Wrong method (Use POST)'
+			'message':'Not Authorized to delete'
 		})
-"""
+@csrf_exempt
+@login_req
+def edit_message(request,id,**kwargs):
+	message = Message.objects.get(id=id)
+	if message.user_id == kwargs['user_id']:
+		if request.method == 'POST':
+			message_form = MessageForm(request.POST, instance=message)
+
+			if message_form.is_valid():
+
+				message.save()
+				message = model_to_dict(message)
+				return JsonResponse({
+					'success' : True,
+					'message' : message
+				})
+			else:
+					return JsonResponse({
+							'success' :False,
+							'message' : 'Invalid Form'
+						})
+		else:
+			return JsonResponse({
+				'success':False,
+				'message':'Wrong method (Use POST)'
+			})
+	else:
+		return JsonResponse({
+			'success':False,
+			'message':'Not Authorized to edit'
+		})
