@@ -26,7 +26,8 @@ urlpatterns = [
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
     path('mentor/', include('mentors.urls')),
-    path('startup/', include('startups.urls'))
+    path('startup/', include('startups.urls')),
+    path('speaker/', include('speakers.urls'))
 ]
 
 admin.site.site_header = settings.SITE_HEADER
