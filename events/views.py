@@ -1,12 +1,11 @@
-from django.shortcuts import render
-from .models import Event
 from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
-from django.core import serializers
 from django.forms.models import model_to_dict
-import json
 from .forms import EventForm
+from .models import Event
+import json
+
 
 
 @csrf_exempt#remove this , just an example of how to use this
@@ -23,12 +22,12 @@ def event_detail(request,pk):
 	event = Event.objects.get( pk=pk)
 
 
-	
+
 	events = model_to_dict(event, fields=['name', 'venue','details','date', 'time', 'email','flag'])
-	
+
 	events['cover_pic'] = str(event.cover_pic)
 	events['icon'] = str(event.icon)
-	
+
 	return JsonResponse({'Event':events}, safe=False)
 
 @csrf_exempt#remove this , just an example of how to use this
@@ -51,7 +50,7 @@ def delete_event(request,pk):
 @login_req
 @csrf_exempt
 def add_event(request):
-	
+
 	if request.method == "POST":
 		event_form = EventForm(request.POST,request.FILES)
 
@@ -110,17 +109,16 @@ def edit_event(request,pk):
 		#event.flag = flag
 		event.save()
 		events = model_to_dict(event, fields=['name', 'venue','details','date', 'time', 'email','flag'])
-	
+
 		events['cover_pic'] = str(event.cover_pic)
 		events['icon'] = str(event.icon)
 		return JsonResponse({
 				'success':True,
 				'Event': events,
-				
+
 		},safe=False)
 	else:
 		return JsonResponse({
 			'sucess':False,
 			'message':'Method Error'
 })
-

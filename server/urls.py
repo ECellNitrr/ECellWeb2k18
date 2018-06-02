@@ -25,7 +25,8 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
-    path('mentor/', include('mentors.urls'))
+    path('mentor/', include('mentors.urls')),
+    path('startup/', include('startups.urls'))
 ]
 
 admin.site.site_header = settings.SITE_HEADER
