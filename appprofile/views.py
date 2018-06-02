@@ -14,8 +14,7 @@ from .forms import UserForm, UserProfileInfoForm
 @csrf_exempt
 def login(request, *args, **kwargs):
 
-	error_msg = {'status' : 400,
-		'content_type' : 'application/json',
+	error_msg = {'success' : False,
 		'message' : 'Invalid credentials'}
 
 	if request.method=='POST':
@@ -38,8 +37,7 @@ def login(request, *args, **kwargs):
 			jwt_token = jwt.encode(payload,settings.SECRET_KEY)
 			token = jwt_token.decode('utf-8')
 			return JsonResponse({
-				'status' : 200,
-				'content_type' : 'application/json',
+				'success' : True,
 				'message' : 'authentication successfull',
 				'token' : token
 			})
@@ -71,20 +69,17 @@ def register(request):
 
 			registered = True
 			return JsonResponse({
-				'status' : 200,
-				'content_type' : 'application/json',
+				'success' : True,
 				'message' : 'registration successfull'
 			})
 		else:
 				return JsonResponse({
-						'status' :400,
-						'content_type' : 'application/json',
+						'success' :False,
 						'message' : 'Invalid Form'
 					})
 
 	else:
 		return JsonResponse({
-				'status' :400,
-				'content_type' : 'application/json',
+				'success' :False,
 				'message' : 'form method error'
 			})

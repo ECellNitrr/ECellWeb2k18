@@ -83,7 +83,7 @@ def edit_spons(request,id):
 			sponsor = Sponsor.objects.get(id=id)
 		except:
 			return JsonResponse({
-				'sucess':False,
+				'success':False,
 				'message':'Record not found'
 				})
 
@@ -98,7 +98,7 @@ def edit_spons(request,id):
 		sponsor['pic'] = str(sponsor['pic'])
 		return JsonResponse({
 				'success':True,
-				'Sponsor':sponsor
+				'sponsor':sponsor
 		},safe=False)
 	else:
 		return JsonResponse({
