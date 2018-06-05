@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm
+from django import forms
 
 import jwt
 import json
@@ -56,7 +57,7 @@ def register(request):
 		user_form = UserForm(data=request.POST)
 		profile_form = UserProfileInfoForm(request.POST,request.FILES)
 
-		if user_form.is_valid() and profile_form.is_valid() :
+		if user_form.is_valid() and profile_form.is_valid():
 
 			user = user_form.save()
 			user.set_password(user.password)
@@ -68,7 +69,6 @@ def register(request):
 			user.profile.linkedin = profile_form.cleaned_data.get('linkedin')
 			user.profile.save()
 
-			registered = True
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull'
@@ -76,7 +76,9 @@ def register(request):
 		else:
 				return JsonResponse({
 						'success' :False,
-						'message' : 'Invalid Form'
+						'User Form Errors' : user_form.errors.as_json(),
+						'Profile Form Errors' : profile_form.errors.as_json(),
+						'message':'Invalid Form'
 					})
 
 	else:

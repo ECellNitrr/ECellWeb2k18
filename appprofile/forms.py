@@ -6,17 +6,17 @@ class UserForm(forms.ModelForm):
 	username = forms.CharField()
 	password = forms.CharField()
 	email = forms.CharField()
-	first_name = forms.CharField()
-	last_name = forms.CharField()
+	first_name = forms.CharField(required=False)
+	last_name = forms.CharField(required=False)
 	class Meta():
 		model = User
 		fields = ('first_name','last_name','username', 'email', 'password')
 
 class UserProfileInfoForm(forms.ModelForm):
-	contact_no = forms.CharField()
-	avatar = forms.ImageField()
-	linkedin = forms.CharField()
-	facebook = forms.CharField()
+	contact_no = forms.CharField(required=False)
+	avatar = forms.ImageField(required=False)
+	linkedin = forms.CharField(required=False)
+	facebook = forms.CharField(required=False)
 	class Meta():
 		model= Profile
 		fields = ('contact_no','facebook','linkedin','avatar')
