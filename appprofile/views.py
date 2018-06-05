@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm
 from django import forms
+from server.decorators.login import login_req
 
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -13,6 +14,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+
+from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
+from django.template.context import RequestContext
 
 import jwt
 import json
@@ -53,7 +58,26 @@ def login(request, *args, **kwargs):
 
 		else:
 			return JsonResponse(error_msg)
+	else:
+		return JsonResponse(error_msg)
 
+@csrf_exempt
+@login_req
+def logout(request,*args,**kwargs):
+	try:
+		user = request.user
+	except:
+		return JsonResponse({
+			'success':False,
+			'message':'No User Logged In'
+		})
+	user.is_active = False
+	user.is_authenticated = False
+	user.save()
+	return JsonResponse({
+		'success':True,
+		'message':'Successfully logged out'
+	})
 
 @csrf_exempt
 def register(request):
@@ -121,3 +145,11 @@ def activate(request, uidb64, token):
         return JsonResponse({'success':True,'message':'Account Activated Successfully'})
     else:
         return JsonResponse({'success':False,'message':'Activation link is invalid!'})
+
+@csrf_exempt
+def home(request):
+	context = RequestContext(request,{'user': request.user})
+	#context = list(context)
+	#message = render_to_string('home.html', context)
+	return render_to_response('home.html',context.flatten())
+	#return JsonResponse({'success':True})

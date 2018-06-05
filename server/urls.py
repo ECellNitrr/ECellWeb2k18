@@ -21,8 +21,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('login/',views.login, name='login'),
-    #path('register/', views.register, name='register'),
+    path('oauth/', include('social_django.urls', namespace='social')),
     path('',include('appprofile.urls')),
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
