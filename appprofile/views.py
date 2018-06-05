@@ -13,6 +13,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+from django.contrib.auth.hashers import make_password
 
 import jwt
 import json
@@ -29,9 +30,13 @@ def login(request, *args, **kwargs):
 	if request.method=='POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
+		
+
 
 		try:
-			user = authenticate(username=username, password=password)
+			usernm = User.objects.get(username=username).username
+			user = authenticate(username=usernm, password=password)
+			#print(user)
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
 
@@ -117,6 +122,7 @@ def activate(request, uidb64, token):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.profile.status=1
+        user.is_active = True
         user.save()
         return JsonResponse({'success':True,'message':'Account Activated Successfully'})
     else:
