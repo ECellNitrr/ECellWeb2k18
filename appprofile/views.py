@@ -7,6 +7,13 @@ from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm
 from django import forms
 
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+
 import jwt
 import json
 
@@ -61,14 +68,28 @@ def register(request):
 
 			user = user_form.save()
 			user.set_password(user.password)
+			user.is_active=False;
 			user.save()
 
 			user.profile.avatar = profile_form.cleaned_data.get('avatar')
 			user.profile.contact_no = profile_form.cleaned_data.get('contact_no')
 			user.profile.facebook = profile_form.cleaned_data.get('facebook')
 			user.profile.linkedin = profile_form.cleaned_data.get('linkedin')
+			user.profile.status=0
 			user.profile.save()
-
+			#------------------
+			current_site = get_current_site(request)
+			mail_subject = "Activate your Ecell account"
+			message = render_to_string('acc_active_email.html',{
+				'user':user,
+				'domain':current_site.domain,
+				'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+				'token':account_activation_token.make_token(user),
+			})
+			to_email = user.email
+			email = EmailMessage(mail_subject,message,to=[to_email])
+			email.send()
+			#------------------
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull'
@@ -86,3 +107,17 @@ def register(request):
 				'success' :False,
 				'message' : 'form method error'
 			})
+
+@csrf_exempt
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.profile.status=1
+        user.save()
+        return JsonResponse({'success':True,'message':'Account Activated Successfully'})
+    else:
+        return JsonResponse({'success':False,'message':'Activation link is invalid!'})

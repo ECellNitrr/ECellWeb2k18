@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls import url
-from appprofile import views
+#from appprofile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/',views.login, name='login'),
-    path('register/', views.register, name='register'),
+    #path('login/',views.login, name='login'),
+    #path('register/', views.register, name='register'),
+    path('',include('appprofile.urls')),
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
     path('mentor/', include('mentors.urls')),
