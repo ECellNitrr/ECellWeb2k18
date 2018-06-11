@@ -8,8 +8,19 @@ from .forms import AnswerForm
 @csrf_exempt
 def get_quiz(request):
     questionset = Questionset.objects.all().values()
+    #questionset = model_to_dict(questionset)
+    #questionset['meta'] = str(questionset['meta'])
+    #quiz = Questionset.objects.all().values()
+    #quiz = model_to_dict(quiz)
+    #questionset['question'] = ['dsdsd','asasa']
     questionset = list(questionset)
-
+    length = len(questionset)
+    for i in range(length):
+        idy = questionset[i]['id']
+        quiz = Question.objects.filter(q_set=idy).values()
+        quiz = list(quiz)
+        questionset[i]['questions'] = quiz
+    
     return JsonResponse({
             'success':True,
             'Quizset':questionset
@@ -20,7 +31,16 @@ def view_quiz(request,id):
     quiz = Questionset.objects.get(id=id)
     quiz = model_to_dict(quiz)
     quiz['meta'] = str(quiz['meta'])
+
+##-------------##
+
+##-----------##
+    
     questions = Question.objects.filter(q_set=id).values()
+    #print(questions)
+    #print(id)
+    #print('HE')
+
     questions = list(questions)
     return JsonResponse({
         'success':True,
