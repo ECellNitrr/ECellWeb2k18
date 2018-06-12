@@ -7,12 +7,14 @@ from .models import Event
 import json
 
 @csrf_exempt
+@login_req
 def get_event(request):
     events= Event.objects.all().values()
     events_list=list(events)
 
     return JsonResponse({'Events':events_list}, safe=False)
 
+@login_req
 @csrf_exempt
 def event_detail(request,pk):
 	event = Event.objects.get( pk=pk)

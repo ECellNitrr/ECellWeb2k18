@@ -20,3 +20,9 @@ class UserProfileInfoForm(forms.ModelForm):
 	class Meta():
 		model= Profile
 		fields = ('contact_no','facebook','linkedin','avatar')
+
+class ContactForm(forms.ModelForm):
+	contact_no = forms.CharField()
+	class Meta():
+		model = Profile
+		fields = ('contact_no',)
