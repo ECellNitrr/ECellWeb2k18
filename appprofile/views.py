@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm
 from django import forms
-
+from django.shortcuts import render
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -58,6 +58,7 @@ def login(request, *args, **kwargs):
 
 		else:
 			return JsonResponse(error_msg)
+	#return render(request,'login.html')
 
 
 @csrf_exempt
