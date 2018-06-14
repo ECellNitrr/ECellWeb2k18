@@ -11,16 +11,23 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+STATIC_DIR = os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%g=_!9t)x1&n+bez*tio63^wd8k&_xq0za$98#!590cq7jhmks'
+
+#from settings.local import *
+
+#APIKey = os.environ.get('APIKey')
+SECRET_KEY = config('SECRET_KEY')
+#print(SECRET_KEY)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,8 +38,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'events',
+    'bquiz',
+    'contactus',
     'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
+    'app',
+    'mentors',
+    'speakers',
+    'sponsors',
+    'startups',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,5 +136,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [STATIC_DIR,]
 
 SITE_HEADER = os.environ.get('SITE_HEADER', 'Entrepreneurship Cell NIT Raipur')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587

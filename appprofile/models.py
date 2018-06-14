@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
+
+
 # Profile Model
 class Profile(models.Model):
     class Meta:
@@ -21,8 +24,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     linkedin = models.TextField(max_length=64, null=True, blank=True)
     facebook = models.TextField(max_length=64, null=True, blank=True)
-    status = models.BooleanField(default=True)
-    contact_no = models.TextField(max_length=13, null=True, blank=True)
+    status = models.BooleanField(default=False)
+    contact_no = models.TextField(max_length=16, null=True, blank=True)
     avatar = models.ImageField(upload_to='static/uploads/avatar', null=True, blank=True)
     user_type = models.CharField(
         max_length = 3,
@@ -43,3 +46,5 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
