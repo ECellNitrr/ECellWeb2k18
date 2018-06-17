@@ -12,3 +12,4 @@ six==1.11.0
 wrapt==1.10.11
 python-decouple==3.1.0
 sendotp==0.0.4
+djangorestframework==3.8.2
