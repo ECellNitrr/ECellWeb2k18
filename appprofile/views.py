@@ -32,14 +32,14 @@ def Login(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		email = request.POST.get('email')
+		username = request.POST.get('username')
 		password = request.POST.get('password')
 
 
 
 		try:
-			emailu = User.objects.get(email=email).email
-			user = authenticate(email=emailu, password=password)
+			usernam = User.objects.get(username=username).username
+			user = authenticate(username=usernam, password=password)
 
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
