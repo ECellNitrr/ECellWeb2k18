@@ -27,12 +27,10 @@ STATIC_DIR = os.path.join(BASE_DIR,"static")
 #APIKey = os.environ.get('APIKey')
 SECRET_KEY = config('SECRET_KEY')
 #print(SECRET_KEY)
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ecellnitrr.herokuapp.com','localhost']
 
 
 # Application definition
