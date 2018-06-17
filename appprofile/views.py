@@ -32,20 +32,19 @@ def Login(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		username = request.POST.get('username')
+		email = request.POST.get('email')
 		password = request.POST.get('password')
-		
+
 
 
 		try:
-			usernm = User.objects.get(username=username).username
-			user = authenticate(username=usernm, password=password)
-			#print(user)
+			emailu = User.objects.get(email=email).email
+			user = authenticate(email=emailu, password=password)
+
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
 
 		if user:
-
 			user.is_active=True;
 			login(request,user)
 			payload = {
@@ -139,7 +138,7 @@ def activate(request, uidb64, token):
 
 
 	#print(sendotp)
-	
+
 	#user = User.objects.filter(username=current_user)
 
 	#profile = user[0].profile[0].contact_no
@@ -156,7 +155,7 @@ def activate(request, uidb64, token):
 	#	otpobj.send(contact_no,'ECell',1000)
 	#	#msg = otpobj.send(contact_no,'ECell',1004)
 	#	return JsonResponse({'success':True,'otp':otpobj.send(contact_no,'ECell',1000),})
-	
+
 		#	else:
 		#print("no")
 #@login_req
@@ -166,38 +165,38 @@ def send_otp(request):
 	print(request.user)
 
 	if request.method =='POST':
-	
+
 
 		current_user = request.user
 
 		contact_no = request.POST.get('contact_no')
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
-		
+
 		Atkey = config('Atkey')
-		
+
 		Msg = 'Your otp is {{otp}}.'
 		otpobj =  sendotp.sendotp(Atkey,Msg)
 		otp = otpobj.generateOtp()
 		otp = int(otp)
 
 		otpobj.send(contact_no,'ECelll',otp)
-		
+
 		otps = otpobj.send(contact_no,'ECelll',otp)
-		
+
 		print(otps)
 		contact_no = str(contact_no)+str(otps)
 		print(contact_no)
-		
+
 
 		profile = Profile.objects.get(user=request.user)
 		profile.contact_no = contact_no
 		profile.save()
-		
+
 		return JsonResponse({'success':True,'msg':'OTP sent successfully',})
 
-	
-	return render(request,'phone.html')	
+
+	return render(request,'phone.html')
 
 @csrf_exempt
 @login_req
@@ -209,30 +208,30 @@ def retry_otp(request):
 	contact_no = int(contact_no)
 	#print(contact_no)
 	Atkey = config('Atkey')
-			
+
 	Msg = 'Your otp is {{otp}}.'
 	otpobj =  sendotp.sendotp(Atkey,Msg)
 
 
 	otpobj.retry(contact_no,'ECelll')
-	
+
 	return JsonResponse({'success':True,'msg':'OTP sent through call'})
 
 @csrf_exempt
 @login_req
 def verify_otp(request):
-	
+
 	current_user = request.user
-	
+
 	contact_no = Profile.objects.filter(user__username=current_user)[0].contact_no
-	
+
 	contact_no = str(contact_no)
 	totp = contact_no[12:16]
 	contact_no = contact_no[0:12]
-	
+
 	contact_no = int(contact_no)
 
-	
+
 	#Atkey = config('Atkey')
 	#Msg = 'Your otp is {{otp}}.'
 
@@ -240,22 +239,19 @@ def verify_otp(request):
 
 		otp = request.POST.get('otp')
 		if(totp == otp):
-		
+
 			profile = Profile.objects.get(user=request.user)
 			profile.contact_no = str(contact_no)
 			profile.status = True
-			
+
 			profile.save()
 			return JsonResponse({'success':True,'msg':'OTP verified successfully'})
 		else:
-		
+
 			return JsonResponse({'success':False,'msg':'Invalid OTP'})
 
 
 
-		
+
 
 	#return render(request,'otp.html')
-
-
-
