@@ -15,3 +15,4 @@ sendotp==0.0.4
 djangorestframework==3.8.2
 djangorestframework-jwt==1.11.0
 requests==2.18.4
+whitenoise==3.3.1
