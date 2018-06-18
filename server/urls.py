@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
+from server import settings as sett
 from django.conf.urls import url
 #from appprofile import views
 from django.contrib.auth import views as auth_views
@@ -36,6 +37,7 @@ urlpatterns = [
     url(r'^password_reset/done/$', auth_views.password_reset_done),
     url(r'^reset/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm),
     url(r'^reset/done/$', auth_views.password_reset_complete),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
 ]
 
