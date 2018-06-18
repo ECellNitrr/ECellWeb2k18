@@ -138,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [STATIC_DIR,]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 SITE_HEADER = os.environ.get('SITE_HEADER', 'Entrepreneurship Cell NIT Raipur')
