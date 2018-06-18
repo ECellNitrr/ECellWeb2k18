@@ -11,7 +11,7 @@ def get_event(request):
     events= Event.objects.all().values()
     events_list=list(events)
 
-    return JsonResponse({'Events':events_list}, safe=False)
+    return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
 
 @login_req
 @csrf_exempt
