@@ -18,7 +18,7 @@ from django.urls import path,include
 from django.conf import settings
 from server import settings as sett
 from django.conf.urls import url
-from django.views import static as stat
+from django.conf.urls.static import static
 #from appprofile import views
 from django.contrib.auth import views as auth_views
 urlpatterns = [
