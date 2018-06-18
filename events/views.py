@@ -7,7 +7,6 @@ from .models import Event
 import json
 
 @csrf_exempt
-@login_req
 def get_event(request):
     events= Event.objects.all().values()
     events_list=list(events)
