@@ -6,7 +6,7 @@ class Mentor(models.Model):
     email = models.CharField(max_length=256)
     detail = models.TextField()
     description = models.TextField()
-    profile_pic = models.ImageField(upload_to='static/uploads/mentors')
+    profile_pic = models.ImageField(upload_to='staticfiles/uploads/mentors')
     flag = models.BooleanField(default=False)
 
     def __str__(self):

@@ -11,7 +11,7 @@ class Sponsor(models.Model):
 
 	name = models.CharField(max_length=256)
 	details = models.TextField()
-	pic = models.ImageField(upload_to='static/uploads/sponsors')
+	pic = models.ImageField(upload_to='staticfiles/uploads/sponsors')
 	contact = models.TextField(max_length=13, null=True, blank=True)
 	website = models.URLField(blank=True)
 	spons_type = models.CharField(max_length=4, choices=SPONS_TYPE, default='AS')

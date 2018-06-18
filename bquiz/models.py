@@ -5,7 +5,7 @@ class Questionset(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField()
     set_no = models.IntegerField()
-    meta = models.ImageField(upload_to='static/uploads/questionset')
+    meta = models.ImageField(upload_to='staticfiles/uploads/questionset')
     flag = models.BooleanField(default=False)
 
     def __str__(self):
@@ -14,7 +14,7 @@ class Questionset(models.Model):
 class Question(models.Model):
     question = models.CharField(max_length=256)
     description = models.TextField()
-    meta = models.ImageField(upload_to='static/uploads/question')
+    meta = models.ImageField(upload_to='staticfiles/uploads/question')
     time_limit = models.IntegerField()
     score = models.IntegerField()
     q_type = models.IntegerField()
