@@ -9,8 +9,8 @@ class Event(models.Model):
 	date = models.DateField()
 	time = models.CharField(max_length=10)
 	details = models.TextField()
-	cover_pic = models.ImageField(upload_to='staticfiles/uploads/events/cover')
-	icon = models.ImageField(upload_to='staticfiles/uploads/events/icon')
+	cover_pic = models.ImageField(upload_to='static/uploads/events/cover')
+	icon = models.ImageField(upload_to='static/uploads/events/icon')
 	email = models.EmailField()
 	flag = models.BooleanField(default=False)
 

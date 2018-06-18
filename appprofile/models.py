@@ -25,7 +25,7 @@ class Profile(models.Model):
     linkedin = models.TextField(max_length=64, null=True, blank=True)
     facebook = models.TextField(max_length=64, null=True, blank=True)
     status = models.BooleanField(default=False)
-    contact_no = models.TextField(max_length=16, null=True, blank=True)
+    contact_no = models.TextField(max_length=12, null=True, blank=True)
     avatar = models.ImageField(upload_to='static/uploads/avatar', null=True, blank=True)
     user_type = models.CharField(
         max_length = 3,
@@ -34,6 +34,9 @@ class Profile(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
+    #last_login = models.DateTimeField(auto_now=True, editable=False)
+    otp = models.CharField(max_length=4, blank=True, null=True)
+
 
     def __str__(self):
         return str(self.user)

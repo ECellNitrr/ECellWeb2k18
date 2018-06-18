@@ -1,6 +1,7 @@
 from rest_framework import authentication, exceptions
 from appprofile.models import Profile
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login
 from django.conf import settings
 import jwt
 import json
@@ -46,6 +47,7 @@ def login_req(function):
         #    return JsonResponse({'success':False,'message':msg})
         kwargs['user_id'] = payload['id']
         user.is_active = True;
+        #login(request,user)
         return function(request, *args, **kwargs)
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__

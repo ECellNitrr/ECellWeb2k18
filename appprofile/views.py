@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm, ContactForm
 from django import forms
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -38,8 +38,8 @@ def Login(request, *args, **kwargs):
 
 
 		try:
-			usernam = User.objects.get(username=username).username
-			user = authenticate(username=usernam, password=password)
+			
+			user = authenticate(username=username, password=password)
 
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
@@ -137,37 +137,18 @@ def activate(request, uidb64, token):
 
 
 
-	#print(sendotp)
-
-	#user = User.objects.filter(username=current_user)
-
-	#profile = user[0].profile[0].contact_no
-
-	#if Profile.objects.filter(user__username=current_user)[0].contact_no:
-
-	#	contact_no = Profile.objects.filter(user__username=current_user)[0].contact_no
-	#	(contact_no) = str(91)+str(contact_no)
-	#	contact_no = int(contact_no)
-	#	print(contact_no)
-
-	#	Msg = 'Your otp is {{otp}}.'
-	#	otpobj =  sendotp.sendotp.sendotp(Atkey,Msg)
-	#	otpobj.send(contact_no,'ECell',1000)
-	#	#msg = otpobj.send(contact_no,'ECell',1004)
-	#	return JsonResponse({'success':True,'otp':otpobj.send(contact_no,'ECell',1000),})
-
-		#	else:
-		#print("no")
-#@login_req
 @csrf_exempt
 @login_req
-def send_otp(request):
-	print(request.user)
+def send_otp(request, *args, **kwargs):
+
 
 	if request.method =='POST':
 
 
-		current_user = request.user
+		current_userid = kwargs['user_id']
+		
+		current_user = User.objects.get(id=current_userid)
+	
 
 		contact_no = request.POST.get('contact_no')
 		contact_no = str(91)+str(contact_no)
@@ -181,32 +162,43 @@ def send_otp(request):
 		otp = int(otp)
 
 		otpobj.send(contact_no,'ECelll',otp)
+		#Don't change the name 'ECelll' in above line
 
 		otps = otpobj.send(contact_no,'ECelll',otp)
+		#Don't change the name 'ECelll' in above line
 
-		print(otps)
-		contact_no = str(contact_no)+str(otps)
-		print(contact_no)
+		
+		contact_no = str(contact_no)
+	
+		otps = str(otps)
+		
 
-
-		profile = Profile.objects.get(user=request.user)
+		profile = Profile.objects.get(user=current_user)
 		profile.contact_no = contact_no
+		profile.otp = otps
 		profile.save()
 
 		return JsonResponse({'success':True,'msg':'OTP sent successfully',})
+	else:
+		return render(request,'phone.html')
 
 
 	return render(request,'phone.html')
 
 @csrf_exempt
 @login_req
-def retry_otp(request):
-	profile = Profile.objects.get(user= request.user)
-	contact_no = Profile.objects.filter(user__username=request.user)[0].contact_no
+def retry_otp(request, *args, **kwargs):
+	current_userid = kwargs['user_id']
+
+	current_user = User.objects.get(id=current_userid)
+	
+
+	profile = Profile.objects.get(user= current_user)
+	contact_no = profile.contact_no
 	contact_no = str(contact_no)
 	contact_no = contact_no[0:12]
 	contact_no = int(contact_no)
-	#print(contact_no)
+
 	Atkey = config('Atkey')
 
 	Msg = 'Your otp is {{otp}}.'
@@ -214,23 +206,30 @@ def retry_otp(request):
 
 
 	otpobj.retry(contact_no,'ECelll')
+	#Don't change the name 'ECelll' in above line
 
 	return JsonResponse({'success':True,'msg':'OTP sent through call'})
 
 @csrf_exempt
 @login_req
-def verify_otp(request):
+def verify_otp(request, *args, **kwargs):
 
-	current_user = request.user
+	
 
-	contact_no = Profile.objects.filter(user__username=current_user)[0].contact_no
+	current_userid = kwargs['user_id']
+	
+	current_user = User.objects.get(id=current_userid)
+	
+	profile = Profile.objects.get(user=current_user)
+
+	contact_no = profile.contact_no
 
 	contact_no = str(contact_no)
-	totp = contact_no[12:16]
-	contact_no = contact_no[0:12]
 
 	contact_no = int(contact_no)
-
+	totp = profile.otp
+	totp = str(totp)
+	
 
 	#Atkey = config('Atkey')
 	#Msg = 'Your otp is {{otp}}.'
@@ -238,9 +237,10 @@ def verify_otp(request):
 	if request.method == 'POST':
 
 		otp = request.POST.get('otp')
+		
 		if(totp == otp):
 
-			profile = Profile.objects.get(user=request.user)
+			profile = Profile.objects.get(user=current_user)
 			profile.contact_no = str(contact_no)
 			profile.status = True
 
@@ -255,3 +255,37 @@ def verify_otp(request):
 
 
 	#return render(request,'otp.html')
+
+
+from social_django.models import UserSocialAuth
+
+
+def settings(request):
+	user = request.user
+	try:
+		facebook_login = user.social_auth.get(provider='facebook')
+	except:
+		facebook_login = None
+
+	can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
+	return render(request, 'settings.html',{'facebook_login':facebook_login,
+											 'can_disconnect':can_disconnect})
+
+def password(request):
+	if request.user.has_usable_password():
+		PasswordForm = PasswordChangeForm
+	else:
+		PasswordForm = AdminPasswordChangeForm
+
+	if request.method == 'POST':
+		form = PasswordForm(request.user, request.POST)
+		if form.is_valid():
+			form.save()
+			update_session_auth_hash(request,'Your password was succesfully updated!')
+			return redirect('password')
+
+		else:
+			messages.error(request,'Please correct the error below.')
+	else:
+		form = PasswordForm(request.user)
+	return render(request,'password.html',{'form':form,})
