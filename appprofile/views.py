@@ -83,7 +83,7 @@ def register(request):
 			last = request.POST['last_name']
 			#user.username = first+last+conno
 			user = user_form.save(commit=False)
-			if(User.objects.filter(contact_no=conno).exists())
+			if(Profile.objects.filter(contact_no=conno).exists()):
 				return JsonResponse({
 					'success':False,
 					'message':'Contact No. must be unique'
