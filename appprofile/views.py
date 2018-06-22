@@ -84,6 +84,11 @@ def register(request):
 			#user.username = first+last+conno
 			user = user_form.save(commit=False)
 			user.username = first+last+conno
+			if(User.objects.filter(contact_no=conno).exists())
+				return JsonResponse({
+					'success':False,
+					'message':'Contact No. must be unique'
+				})
 			user = user_form.save()
 			user.set_password(user.password)
 			user.is_active=False;
