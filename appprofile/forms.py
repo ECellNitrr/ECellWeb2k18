@@ -10,7 +10,13 @@ class UserForm(forms.ModelForm):
 	last_name = forms.CharField(required=False)
 	class Meta():
 		model = User
-		fields = ('first_name','last_name','username', 'email', 'password')
+		fields = ('first_name','last_name','email', 'password')
+	def clean_email(self):
+		email = self.cleaned_data.get('email')
+		#username = self.cleaned_data.get('username')
+		if email and User.objects.filter(email=email).exists():
+			raise forms.ValidationError(u'Email addresses must be unique')
+		return email
 
 class UserProfileInfoForm(forms.ModelForm):
 	contact_no = forms.CharField(required=False)
