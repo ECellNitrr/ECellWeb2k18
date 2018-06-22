@@ -7,8 +7,8 @@ class UserForm(forms.ModelForm):
 	username = forms.CharField(required=False)
 	password = forms.CharField()
 	email = forms.CharField()
-	first_name = forms.CharField(required=False)
-	last_name = forms.CharField(required=False)
+	first_name = forms.CharField(required=True)
+	last_name = forms.CharField(required=True)
 	class Meta():
 		model = User
 		fields = ('first_name','last_name','email', 'password')
@@ -23,7 +23,7 @@ class UserForm(forms.ModelForm):
 		return email
 
 class UserProfileInfoForm(forms.ModelForm):
-	contact_no = forms.CharField(required=False)
+	contact_no = forms.CharField(required=True)
 	avatar = forms.ImageField(required=False)
 	linkedin = forms.CharField(required=False)
 	facebook = forms.CharField(required=False)
