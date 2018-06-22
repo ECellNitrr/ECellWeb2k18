@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from django.http import JsonResponse
 
 class UserForm(forms.ModelForm):
 	username = forms.CharField(required=False)
@@ -15,7 +16,10 @@ class UserForm(forms.ModelForm):
 		email = self.cleaned_data.get('email')
 		#username = self.cleaned_data.get('username')
 		if email and User.objects.filter(email=email).exists():
-			raise forms.ValidationError(u'Email addresses must be unique')
+			return JsonResponse({
+				'success':False,
+				'message':'Email must be unique'
+			})
 		return email
 
 class UserProfileInfoForm(forms.ModelForm):
