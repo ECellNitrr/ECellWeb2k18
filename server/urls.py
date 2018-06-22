@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('login/',views.login, name='login'),
     #path('register/', views.register, name='register'),
-    url(r'^settings/$',views.settings, name='settings'),
+    url(r'^settings/$',views.social_settings, name='settings'),
     url(r'^settings/password/$',views.password, name='password'),
     path('',include('appprofile.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),

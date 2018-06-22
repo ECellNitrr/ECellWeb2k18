@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.forms import PasswordChangeForm, AdminPasswordChangeForm
 
 import jwt
 import json
@@ -21,6 +22,7 @@ import http.client
 from sendotp import sendotp
 from server.decorators.login import login_req
 from decouple import config
+from django.conf import settings as conf_settings
 
 
 @csrf_exempt
@@ -52,7 +54,7 @@ def Login(request, *args, **kwargs):
 				'email': user.email,
 			}
 
-			jwt_token = jwt.encode(payload,settings.SECRET_KEY)
+			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 			token = jwt_token.decode('utf-8')
 			return JsonResponse({
 				'success' : True,
@@ -260,7 +262,7 @@ def verify_otp(request, *args, **kwargs):
 from social_django.models import UserSocialAuth
 
 
-def settings(request):
+def social_settings(request):
 	user = request.user
 	try:
 		facebook_login = user.social_auth.get(provider='facebook')
@@ -271,6 +273,7 @@ def settings(request):
 	return render(request, 'settings.html',{'facebook_login':facebook_login,
 											 'can_disconnect':can_disconnect})
 
+@login_req
 def password(request):
 	if request.user.has_usable_password():
 		PasswordForm = PasswordChangeForm
