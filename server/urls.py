@@ -14,11 +14,35 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.conf import settings
-
+from server import settings as sett
+from django.conf.urls import url
+from django.views import static as stat
+from appprofile import views
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('login/',views.login, name='login'),
+    #path('register/', views.register, name='register'),
+    url(r'^settings/$',views.social_settings, name='settings'),
+    url(r'^settings/password/$',views.password, name='password'),
+    path('',include('appprofile.urls')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    path('event/', include('events.urls')),
+    path('sponsor/', include('sponsors.urls')),
+    path('mentor/', include('mentors.urls')),
+    path('startup/', include('startups.urls')),
+    path('speaker/', include('speakers.urls')),
+    path('message/', include('contactus.urls')),
+    path('quiz/', include('bquiz.urls')),
+    url('^', include('django.contrib.auth.urls')),
+    url(r'^password_reset/$', auth_views.password_reset),
+    url(r'^password_reset/done/$', auth_views.password_reset_done),
+    url(r'^reset/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm),
+    url(r'^reset/done/$', auth_views.password_reset_complete),
+    url(r'^static/(?P<path>.*)$', stat.serve, {'document_root': settings.STATIC_ROOT}),
+
 ]
 
 admin.site.site_header = settings.SITE_HEADER
