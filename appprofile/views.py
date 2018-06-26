@@ -34,15 +34,18 @@ def Login(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		username = request.POST.get('username')
+		email = request.POST.get('email')
 		password = request.POST.get('password')
-
-
-
 		try:
-			
+			obj = User.objects.filter(email=email)
+			username = obj[0].username
+		except:
+			return JsonResponse(error_msg)
+		#print(username)
+		#print(email)
+		#print(password)
+		try:
 			user = authenticate(username=username, password=password)
-
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
 
@@ -71,13 +74,22 @@ def Login(request, *args, **kwargs):
 def register(request):
 
 	registered = False
-
 	if request.method == "POST":
 		user_form = UserForm(data=request.POST)
 		profile_form = UserProfileInfoForm(request.POST,request.FILES)
 
 		if user_form.is_valid() and profile_form.is_valid():
-
+			conno = profile_form.cleaned_data.get('contact_no')
+			first = request.POST['first_name']
+			last = request.POST['last_name']
+			#user.username = first+last+conno
+			user = user_form.save(commit=False)
+			if(Profile.objects.filter(contact_no=conno).exists()):
+				return JsonResponse({
+					'success':False,
+					'message':'Contact No. must be unique'
+				})
+			user.username = first+last+conno
 			user = user_form.save()
 			user.set_password(user.password)
 			user.is_active=False;
@@ -148,9 +160,9 @@ def send_otp(request, *args, **kwargs):
 
 
 		current_userid = kwargs['user_id']
-		
+
 		current_user = User.objects.get(id=current_userid)
-	
+
 
 		contact_no = request.POST.get('contact_no')
 		contact_no = str(91)+str(contact_no)
@@ -169,11 +181,11 @@ def send_otp(request, *args, **kwargs):
 		otps = otpobj.send(contact_no,'ECelll',otp)
 		#Don't change the name 'ECelll' in above line
 
-		
+
 		contact_no = str(contact_no)
-	
+
 		otps = str(otps)
-		
+
 
 		profile = Profile.objects.get(user=current_user)
 		profile.contact_no = contact_no
@@ -193,7 +205,7 @@ def retry_otp(request, *args, **kwargs):
 	current_userid = kwargs['user_id']
 
 	current_user = User.objects.get(id=current_userid)
-	
+
 
 	profile = Profile.objects.get(user= current_user)
 	contact_no = profile.contact_no
@@ -216,12 +228,12 @@ def retry_otp(request, *args, **kwargs):
 @login_req
 def verify_otp(request, *args, **kwargs):
 
-	
+
 
 	current_userid = kwargs['user_id']
-	
+
 	current_user = User.objects.get(id=current_userid)
-	
+
 	profile = Profile.objects.get(user=current_user)
 
 	contact_no = profile.contact_no
@@ -231,7 +243,7 @@ def verify_otp(request, *args, **kwargs):
 	contact_no = int(contact_no)
 	totp = profile.otp
 	totp = str(totp)
-	
+
 
 	#Atkey = config('Atkey')
 	#Msg = 'Your otp is {{otp}}.'
@@ -239,7 +251,7 @@ def verify_otp(request, *args, **kwargs):
 	if request.method == 'POST':
 
 		otp = request.POST.get('otp')
-		
+
 		if(totp == otp):
 
 			profile = Profile.objects.get(user=current_user)
