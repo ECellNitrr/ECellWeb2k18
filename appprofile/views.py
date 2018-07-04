@@ -281,8 +281,8 @@ def social_settings(request):
 	except:
 		facebook_login = None
 
-	print(facebook_login.extra_data['granted_scopes']['email'])
-	print(facebook_login)
+	print(facebook_login.extra_data)
+	#print(facebook_login)
 	
 
 	can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
