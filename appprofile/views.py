@@ -280,10 +280,10 @@ def social_settings(request):
 		facebook_login = user.social_auth.get(provider='facebook')
 	except:
 		facebook_login = None
-		
-	print(facebook_login.extra_data.id)
-	print(facebook_login.extra_data.name)
-	print(facebook_login.extra_data.email)
+
+	print(facebook_login.extra_data)
+	print(facebook_login)
+	
 
 	can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
 	return render(request, 'settings.html',{'facebook_login':facebook_login,
