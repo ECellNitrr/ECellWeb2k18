@@ -282,6 +282,7 @@ def social_settings(request):
 		facebook_login = None
 
 	print(facebook_login.extra_data)
+	print(user)
 	#print(facebook_login)
 	
 
