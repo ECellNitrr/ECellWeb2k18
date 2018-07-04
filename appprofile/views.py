@@ -281,7 +281,7 @@ def social_settings(request):
 	except:
 		facebook_login = None
 
-	print(facebook_login.extra_data.granted_scopes['email'])
+	print(facebook_login.extra_data)
 	#print(facebook_login)
 	
 
