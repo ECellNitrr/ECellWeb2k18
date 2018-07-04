@@ -9,10 +9,10 @@
 {% if facebook_login %}
 
 <p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="blank">{{ facebook_login.extra_data.id }}</a></p>
-<p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.granted_scopes }}/" target="blank">{{ facebook_login.extra_data.granted_scopes }}</a></p>
+<p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.granted_scopes }}/" target="blank">{{ facebook_login.extra_data.granted_scopes['email'] }}</a></p>
 
 <br>
-{{facebook_login.extra_data.email}}
+{{ facebook_login.extra_data.granted_scopes['email'] }}
 <br>
 
 {% if can_disconnect %}
