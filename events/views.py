@@ -5,6 +5,7 @@ from django.forms.models import model_to_dict
 from .forms import EventForm
 from .models import Event
 import json
+from django.shortcuts import render
 
 @csrf_exempt
 def get_event(request):
@@ -12,6 +13,29 @@ def get_event(request):
     events_list=list(events)
 
     return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
+
+
+
+def post_event(request):
+	return render(request,'event.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @login_req
 @csrf_exempt

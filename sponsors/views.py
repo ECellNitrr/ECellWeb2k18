@@ -5,6 +5,8 @@ from django.forms.models import model_to_dict
 from server.decorators.login import login_req
 from .forms import SponsorForm
 import json
+from django.shortcuts import render
+
 
 @csrf_exempt
 def get_sponsors(request):
@@ -14,6 +16,22 @@ def get_sponsors(request):
 		'success':True,
 		'Sponsor_List':sponsors_list
 		})
+
+
+def post_sponsors(request):
+	return render(request,'sponsor.html')
+
+
+
+
+
+
+
+
+
+
+
+
 
 @csrf_exempt
 def view(request,id):

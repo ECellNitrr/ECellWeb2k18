@@ -3,6 +3,7 @@ from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Speaker
+from django.shortcuts import render
 
 @csrf_exempt
 def get_speakers(request):
@@ -12,6 +13,12 @@ def get_speakers(request):
 		'success':True,
 		'speakers':speakers_list
 		},safe=False)
+
+
+
+
+def post_speakers(request):
+	return render(request,'speakers.html')
 
 @csrf_exempt
 def view_speaker(request,id):
