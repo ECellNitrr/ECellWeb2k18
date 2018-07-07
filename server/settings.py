@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'speakers',
     'sponsors',
     'startups',
+    'team',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

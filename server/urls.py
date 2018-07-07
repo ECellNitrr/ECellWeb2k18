@@ -36,6 +36,7 @@ urlpatterns = [
     path('speaker/', include('speakers.urls')),
     path('message/', include('contactus.urls')),
     path('quiz/', include('bquiz.urls')),
+    path('team/',include('team.urls')),
     url('^', include('django.contrib.auth.urls')),
     url(r'^password_reset/$', auth_views.password_reset),
     url(r'^password_reset/done/$', auth_views.password_reset_done),
