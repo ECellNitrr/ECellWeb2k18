@@ -16,7 +16,7 @@ def get_mentors(request):
 
 
 def post_mentors(request):
-    return render(request,'mentor.html')
+    return render(request,'website/mentors.html')
 
 
 

@@ -2,7 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 81cdb9c8421ab187806be8f969045707294e7b34
 MEMBER_TYPE = (
         ('Dir', 'Director, NIT Raipur'),
         ('DnSW', 'Dean Student Welfare'),
@@ -28,4 +31,8 @@ class Member(models.Model):
 
 
 	def __self__(self):
+<<<<<<< HEAD
 		return self.name
+=======
+		return self.name
+>>>>>>> 81cdb9c8421ab187806be8f969045707294e7b34

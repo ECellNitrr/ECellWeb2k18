@@ -1,12 +1,11 @@
-#!/home/kdpisda/Projects/ecell/ECellWeb2k18/env/bin/python3
-# EASY-INSTALL-ENTRY-SCRIPT: 'gunicorn==19.0.0','console_scripts','gunicorn_paster'
-__requires__ = 'gunicorn==19.0.0'
+#!/home/nvrgup/Desktop/ECellWeb2k18/env/bin/python3.6
+
+# -*- coding: utf-8 -*-
 import re
 import sys
-from pkg_resources import load_entry_point
+
+from gunicorn.app.pasterapp import run
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(
-        load_entry_point('gunicorn==19.0.0', 'console_scripts', 'gunicorn_paster')()
-    )
+    sys.exit(run())
