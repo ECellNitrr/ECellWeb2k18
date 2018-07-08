@@ -18,7 +18,7 @@ def get_speakers(request):
 
 
 def post_speakers(request):
-	return render(request,'website/speakers.html')
+	return render(request,'speakers.html')
 
 @csrf_exempt
 def view_speaker(request,id):

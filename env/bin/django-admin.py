@@ -1,4 +1,4 @@
-#!/home/nvrgup/Desktop/ECellWeb2k18/env/bin/python3.6
+#!/home/kdpisda/Projects/ecell/ECellWeb2k18/env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

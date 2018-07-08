@@ -4,6 +4,6 @@ from django.urls import path
 
 urlpatterns = [
     path('list/', views.get_speakers),
-    url(r'^website/', views.post_speakers, name='Post_Speakers')
+    url(r'^post/', views.post_speakers, name='Post_Speakers')
     #path('view/<int:id>/', views.view_speaker)
 ]

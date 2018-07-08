@@ -37,7 +37,6 @@ ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'rest_framework',
-    'team',
     'events',
     'bquiz',
     'contactus',
@@ -79,7 +78,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

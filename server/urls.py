@@ -21,9 +21,7 @@ from django.conf.urls import url
 from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
-from . import view
 urlpatterns = [
-    path('', view.homepage),
     path('admin/', admin.site.urls),
     #path('login/',views.login, name='login'),
     #path('register/', views.register, name='register'),
@@ -38,11 +36,7 @@ urlpatterns = [
     path('speaker/', include('speakers.urls')),
     path('message/', include('contactus.urls')),
     path('quiz/', include('bquiz.urls')),
-<<<<<<< HEAD
-    path('team/', include('team.urls')),
-=======
     path('team/',include('team.urls')),
->>>>>>> 81cdb9c8421ab187806be8f969045707294e7b34
     url('^', include('django.contrib.auth.urls')),
     url(r'^password_reset/$', auth_views.password_reset),
     url(r'^password_reset/done/$', auth_views.password_reset_done),
