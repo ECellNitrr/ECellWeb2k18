@@ -48,17 +48,18 @@ def get_team(request):
 	Director = list(Director)
 	#Director['image'] =str(Director['image'])
 
-	team = { 	 'Director, NIT Raipur':Director,
-				 'Dean Student Welfare':DeanStudent,
-				 'Dean Research & Cons.':DeanResearch,
-				 'Faculty Incharge':FacultyIncharge,
-				 'Head Co-ordinator':HeadCoordinator ,
-				 'Overall Co-ordinator':OverallCoordinator,
-				 'manager' : manager,
-				 'executive':executive,}
-
-	
-
-
+	team = { 	 
+            'Director, NIT Raipur':Director,
+            'Dean Student Welfare':DeanStudent,
+            'Dean Research & Cons.':DeanResearch,
+            'Faculty Incharge':FacultyIncharge,
+            'Head Co-ordinator':HeadCoordinator ,
+            'Overall Co-ordinator':OverallCoordinator,
+            'manager' : manager,
+            'executive':executive,
+        }
 
 	return JsonResponse(team, safe=False)
+    
+def team_site(request):
+    return render(request, 'website/team.html')

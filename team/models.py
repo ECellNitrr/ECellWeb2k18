@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
 MEMBER_TYPE = (
         ('Dir', 'Director, NIT Raipur'),
         ('DnSW', 'Dean Student Welfare'),

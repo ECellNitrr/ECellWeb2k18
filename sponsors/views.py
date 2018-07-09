@@ -19,7 +19,7 @@ def get_sponsors(request):
 
 
 def post_sponsors(request):
-	return render(request,'sponsor.html')
+	return render(request,'website/patreons.html')
 
 
 
