@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>ES18-home</title>
+
+    <!-- bootstrap -->
+    <link href=https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css rel=stylesheet> {% block css %} css goes here {% endblock css %}
+    <link rel="stylesheet" href="{% static 'website/common/bootstrap.min.css' %}">
+
+    <!-- animate -->
+    <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
+
+    <!-- menubar -->
+    <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
+    <link href="{% static 'website/menubar/demo4.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- header -->
+    {% include 'website/menubar.html' %} {% block header %}
+    <header>
+        <h1 class="wow fadeInUp">E-SUMMIT 18</h1>
+        <p class="p-1 m-0 wow zoomIn" data-wow-delay=.3s>
+            <span class=bold>"</span> Don't fit in, just standout
+            <span class=bold>"</span>
+        </p>
+        <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
+            <polygon points="100 0 100 10 0 10" /> </svg>
+    </header>
+    {% endblock header %}
+
+    <!-- content -->
+    {% block content %}
+    <h1>from the layout.html</h1>
+    {% endblock content %}
+
+    <!-- footer -->
+    {% include 'website/footer.html' %}
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- custom js -->
+    {% block js %}{% endblock js %}
+    <!-- menubar -->
+    <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
+    <script src="{% static 'website/menubar/nearby.js' %}"></script>
+    <script src="{% static 'website/menubar/demo.js' %}"></script>
+    <script src="{% static 'website/menubar/demo4.js' %}"></script>
+    <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
+    <!-- wow js -->
+    <script src="{% static 'website/common/wow.js' %}"></script>
+    <script>
+        var wow = new WOW({
+            offset: 100, // distance to the element when triggering the animation (default is 0)
+            mobile: false, // trigger animations on mobile devices (default is true)
+        });
+        wow.init();
+    </script>
+</body>
+
+</html>

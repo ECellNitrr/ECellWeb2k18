@@ -21,7 +21,9 @@ from django.conf.urls import url
 from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
+from . import view
 urlpatterns = [
+    path('', view.homepage),
     path('admin/', admin.site.urls),
     #path('login/',views.login, name='login'),
     #path('register/', views.register, name='register'),

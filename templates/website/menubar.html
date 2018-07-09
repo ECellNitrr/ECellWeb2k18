@@ -1,0 +1,35 @@
+{% load static %}
+<nav>
+    <div class=menu-trigger>
+        <div class=bar1></div>
+        <div class=bar2></div>
+        <div class=bar3></div>
+    </div>
+    <div class=menubar>
+        <a href=/>HOME</a>
+        <a href=/event/website>EVENTS</a>
+        <a href=/team/website>TEAM</a>
+        <a href=/sponsor/website>SPONSORS</a>
+        <a href=/speaker/website>SPEAKERS</a>
+        <a href=/mentor/website>MENTORS</a>
+    </div>
+</nav>
+<svg class=hidden>
+    <symbol id=icon-menu viewBox="0 0 14 37">
+        <title>menu</title>
+        <path d=M13.95.94v36.01h-3.858V.94zM3.919.94v36.01H.06V.94z /> </symbol>
+</svg>
+<nav class=menu>
+    <div class=menu__button-wrap>
+        <button class=menu__button>
+            <img src="{% static 'website/img/menu-trigger.svg' %}" height=50px alt=""> </button>
+    </div>
+    <div class=menu__inner>
+        <a class=menu__item href=/>HOME</a>
+        <a class=menu__item href=/event/website>EVENTS</a>
+        <a class=menu__item href=/team/website>TEAM</a>
+        <a class=menu__item href=/sponsor/website>SPONSORS</a>
+        <a class=menu__item href=/speaker/website>SPEAKERS</a>
+        <a class=menu__item href=/mentor/website>MENTORS</a>
+    </div>
+</nav>

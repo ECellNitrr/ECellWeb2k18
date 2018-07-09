@@ -1,0 +1,98 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'website/index/index.css' %}"> {% endblock css %}
+<!-- js -->
+{% block js %}
+<script src="{% static 'website/index/index.js' %}"></script>
+{% endblock js %}
+<!-- header -->
+{% block header %}
+<header>
+    <div class=cover>
+        <h1 class="wow fadeInUp">E-SUMMIT 18</h1>
+        <p class="p-1 m-0 wow zoomIn" data-wow-delay=.3s>
+            <span class=bold>"</span> Don't fit in, just standout
+            <span class=bold>"</span>
+        </p>
+        <img src={% static "website/img/enterpreneurs.svg" %} alt=""> </div>
+    <div class=diagonal></div>
+</header>
+{% endblock header %}
+<!-- content -->
+{% block content %}
+<section id=introduction>
+    <h2 class="wow fadeInUp" data-wow-delay=.3s>E-CELL</h2>
+    <hr>
+    <ul>
+        <li>
+            <img class="wow fadeInUp" data-wow-delay=.2s src={% static "website/img/winds.svg" %} alt="">
+            <p class="wow fadeInDown" data-wow-delay=.2s>Innovation</p>
+        </li>
+        <li>
+            <img class="wow fadeInUp" data-wow-delay=.4s src={% static "website/img/leaf.svg" %} alt="">
+            <p class="wow fadeInDown" data-wow-delay=.4s>Leadership</p>
+        </li>
+        <li>
+            <img class="wow fadeInUp" data-wow-delay=..5s src={% static "website/img/pinetree.svg" %} alt="">
+            <p class="wow fadeInDown" data-wow-delay=..5s>Growth</p>
+        </li>
+        <li>
+            <img class="wow fadeInUp" data-wow-delay=.6s src={% static "website/img/mountain.svg" %} alt="">
+            <p class="wow fadeInDown" data-wow-delay=.6s>Development</p>
+        </li>
+    </ul>
+</section>
+<section id=about class=container-fluid>
+    <div class="row justify-content-start">
+        <div class=col-md-3>
+            <h2 class="wow fadeInLeft" data-wow-delay=.3s data-wow-delay=.3s>
+                <span>About</span>
+                <span>Us</span>
+            </h2>
+        </div>
+        <div class=col-md-8>
+            <p class="wow fadeInUp" data-wow-delay=.3s> Entrepreneurship Cell of NIT Raipur is non-profit organization working towards promoting the spirit of Entrepreneurship
+                across Chhattisgarh. It aims to promote a startup-culture among denizens of NIT Raipur and equip them with
+                the necessary tools to do so. A dedicated organisation working for more than half a decade, E Cell NIT Raipur
+                has come a long way, establishing itself as one of the most effectively working Ecells with more than 60
+                motivated members. </p>
+        </div>
+    </div>
+</section>
+<div class=right-grey>
+    <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
+        <polygon points="100 0 100 10 0 10" /> </svg>
+</div>
+<section id=vision class=mx-auto>
+    <h2 class="wow fadeInUp" data-wow-delay=.3s>Vision</h2>
+    <hr>
+    <p class="wow fadeInDown" data-wow-delay=.3s> Our goal is to connect budding startups in Chhattisgarh with prominent venture capitalists, and angel investors and clientele
+        in India.Over the years, E-Cell NIT Raipur has organised several workshops in collaboration with Government of India
+        (MSME) to help students cultivate required acumen to survive and thrive in today’s market. “E-Summit”, the flagship
+        event of E-Cell has catered to the entrepreneurial appetite of its followers. </p>
+</section>
+<div class=left-grey>
+    <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
+        <polygon points="100 0 100 10 0 10" /> </svg>
+</div>
+<section id=contact class=container>
+    <h2 class="wow fadeInUp">Contact</h2>
+    <hr>
+    <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
+    <div id=social-media>
+        <a class="" href=https://www.facebook.com/ecellnitrr/>
+        <i class="wow fadeInRight fa fa-3x fa-facebook"></i>
+        </a>
+        <a href=https://www.instagram.com/ecell.nitraipur/>
+        <i class="wow fadeInRight fa fa-3x fa-instagram"></i>
+        </a>
+        <a class="" href="https://twitter.com/ecellnitrr?lang=en">
+            <i class="wow fadeInLeft fa fa-3x fa-twitter"></i>
+        </a>
+        <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
+        <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
+        </a>
+    </div>
+</section>
+{% endblock content %}
