@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('list/',views.get_team, name='Get_Team'),
-    url('website', views.team_site )
+    url(r'^$', views.team_site )
 ]
