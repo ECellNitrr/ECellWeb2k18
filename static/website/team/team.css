@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 @media (max-width:700px) {
     header {
         background: #e9c46a;
@@ -185,7 +185,7 @@ html {
 @media (max-width:700px) {
     h2 {
         font-weight: 700;
-        font-family: Open Sans;
+        /*font-family: Open Sans;*/
         letter-spacing: 2px;
         text-align: center;
         font-size: 30px;
@@ -232,7 +232,7 @@ html {
 
 @media (min-width:700px) {
     h2 {
-        font-weight: 700;
+        /*font-weight: 700;*/
         font-family: Open Sans;
         letter-spacing: 2px;
         text-align: center;
@@ -297,5 +297,5 @@ html {
 * {
     padding: 0;
     margin: 0;
-    font-family: Open Sans, "sans-serif"
+    /*font-family: Open Sans, "sans-serif";*/
 }
