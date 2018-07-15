@@ -35,14 +35,9 @@ def get_team(request):
 	FacultyIncharge = list(FacultyIncharge)
 	#FacultyIncharge['image'] =str(FacultyIncharge['image'])
 
-	DeanResearch = Member.objects.filter(member_type = 'DnRC').values()
-	DeanResearch = list(DeanResearch)
+	HeadCareer = Member.objects.filter(member_type = 'HCD').values()
+	HeadCareer = list(HeadCareer)
 	#DeanResearch['image'] =str(DeanResearch['image'])
-
-	DeanStudent = Member.objects.filter(member_type = 'DnSW').values()
-	DeanStudent = list(DeanStudent)
-	#DeanStudent['image'] =str(DeanStudent['image'])
-
 
 	Director= Member.objects.filter(member_type = 'Dir').values()
 	Director = list(Director)
@@ -50,8 +45,7 @@ def get_team(request):
 
 	team = { 	 
             'Director, NIT Raipur':Director,
-            'Dean Student Welfare':DeanStudent,
-            'Dean Research & Cons.':DeanResearch,
+			'Head of Career development':HeadCareer,
             'Faculty Incharge':FacultyIncharge,
             'Head Co-ordinator':HeadCoordinator ,
             'Overall Co-ordinator':OverallCoordinator,

@@ -19,16 +19,13 @@ $(function () {
     var head_co = $('#head-co')
     var managers = $('#managers')
     var executives = $('#executives')
-    var dean_student_welfare = $('#dean_student_welfare')
-    var dean_research = $('#dean_research')
+    var head_career_dev = $('#head_career-dev')
     var faculty_incharge = $('#faculty_incharge')
 
-    console.log(dean_student_welfare,dean_research,faculty_incharge);
-
     $.get('https://ecellnitrr.herokuapp.com/team/list').then(function (data) {
+        console.log(JSON.stringify(data, null, 2));
         add_member(director, data['Director, NIT Raipur'])
-        add_member(dean_student_welfare, data['Dean Student Welfare'])
-        add_member(dean_research, data['Dean Research & Cons.'])
+        add_member(head_career_dev, data['Head of Career development'])
         add_member(faculty_incharge, data['Faculty Incharge'])
         add_member(head_co, data['Head Co-ordinator'])
         add_member(overall_co, data['Overall Co-ordinator'])

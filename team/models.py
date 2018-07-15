@@ -4,19 +4,13 @@ from django.db import models
 
 MEMBER_TYPE = (
         ('Dir', 'Director, NIT Raipur'),
-        ('DnSW', 'Dean Student Welfare'),
-        ('DnRC', 'Dean Research & Cons.'),
+        ('HCD', 'Head of Career development'),
         ('Fclty','Faculty Incharge'),
         ('MNG', 'Manager'),
         ('HC', 'Head Co-ordinator'),
         ('OC', 'Overall Co-ordinator'),
         ('EXEC', 'Executive'),
     )
-
-
-
-
-
 
 class Member(models.Model):
 	name = models.CharField(max_length=100)
