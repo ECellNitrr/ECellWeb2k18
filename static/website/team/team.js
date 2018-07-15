@@ -12,6 +12,12 @@ function add_member(target, members) {
     })
 }
 
+// function add_table(target, members) {
+//     members.forEach(function (member) {
+
+//     })
+// }
+
 $(function () {
 
     var director = $('#director')
