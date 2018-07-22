@@ -87,6 +87,14 @@
 <section id=contact class=container>
     <h2 class="wow fadeInUp">Contact</h2>
     <hr>
+    <p class="text-center">Leave a message</p>
+    <form action={static} method="POST" class="text-center">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" required>
+        <input type="email" placeholder="Email" name="email" required>
+        <textarea name="msg" placeholder="Message goes here..." rows="4" required></textarea>
+        <input type="submit" id="submit_btn" value='submit'>
+    </form>
     <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
     <div id=social-media>
         <a class="" href=https://www.facebook.com/ecellnitrr/>
