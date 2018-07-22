@@ -504,9 +504,12 @@ textarea {
     outline: none;
     display: block;
     width: 400px;
-    margin: 6px auto;
+    color: black;
+    margin: 6px auto !important;
 }
 
 #submit_btn{
     width: 150px;
+    color: white;
+    background: #000;
 }
