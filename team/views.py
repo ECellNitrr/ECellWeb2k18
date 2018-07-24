@@ -11,49 +11,12 @@ from .models import Member
 def get_team(request):
 	member = Member.objects.all().values()
 	member_list = list(member)
-	team = {}
-	executive = Member.objects.filter(member_type ='EXEC').values()
-	executive = list(executive)
-	#executive['image'] =str(executive['image'])
-	#print(executive)
-	
+	print(member_list)
+	response = {'success':True, 'message':'Team Members are available','team_members': member_list}
+	print(response)
 
-	manager = Member.objects.filter(member_type = 'MNG').values()
-	manager = list(manager)
-	
 
-	
-	OverallCoordinator = Member.objects.filter(member_type = 'OC').values()
-	OverallCoordinator = list(OverallCoordinator)
-	#OverallCoordinator['image'] =str(OverallCoordinator['image'])
-
-	HeadCoordinator = Member.objects.filter(member_type = 'HC').values()
-	HeadCoordinator = list(HeadCoordinator)
-	#HeadCoordinator['image'] =str(HeadCoordinator['image'])
-
-	FacultyIncharge = Member.objects.filter(member_type = 'Fclty').values()
-	FacultyIncharge = list(FacultyIncharge)
-	#FacultyIncharge['image'] =str(FacultyIncharge['image'])
-
-	HeadCareer = Member.objects.filter(member_type = 'HCD').values()
-	HeadCareer = list(HeadCareer)
-	#DeanResearch['image'] =str(DeanResearch['image'])
-
-	Director= Member.objects.filter(member_type = 'Dir').values()
-	Director = list(Director)
-	#Director['image'] =str(Director['image'])
-
-	team = { 	 
-            'Director, NIT Raipur':Director,
-			'Head of Career development':HeadCareer,
-            'Faculty Incharge':FacultyIncharge,
-            'Head Co-ordinator':HeadCoordinator ,
-            'Overall Co-ordinator':OverallCoordinator,
-            'manager' : manager,
-            'executive':executive,
-        }
-
-	return JsonResponse(team, safe=False)
+	return JsonResponse(response, safe=False)
     
 def team_site(request):
     return render(request, 'website/team.html')
