@@ -9,6 +9,7 @@ def homepage(request):
 def message(request):
     post = request.POST
     msg = Msg(name=post['name'],email=post['email'],msg=post['msg'])
+    print('')
     msg.save()
 
     return render(request, 'website/index.html')
