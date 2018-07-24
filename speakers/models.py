@@ -8,6 +8,9 @@ class Speaker(models.Model):
 	profile_pic = models.ImageField(upload_to='static/uploads/speakers')
 	email = models.EmailField()
 	contact = models.TextField(max_length=13, null=True, blank=True)
+	description = models.TextField(default='none')
+	year = models.IntegerField(default=2018)
+	
 	flag = models.BooleanField(default=False)
 
 	def __str__(self):

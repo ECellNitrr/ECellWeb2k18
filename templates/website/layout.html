@@ -16,12 +16,13 @@
     {% block title %}
         title goes here
     {% endblock title %}
-        
 
+    <!-- live js -->
+    <!-- <script src='{% static "website/common/live.js" %}' ></script> -->
     <!-- bootstrap -->
-    <link href=https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css rel=stylesheet> {% block css %} css goes here {% endblock css %}
+    <link href=https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css rel=stylesheet> 
     <link rel="stylesheet" href="{% static 'website/common/bootstrap.min.css' %}">
-
+    {% block css %} css goes here {% endblock css %}
     <!-- animate -->
     <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
 
