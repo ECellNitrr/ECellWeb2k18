@@ -23,6 +23,7 @@ function insert_speaker(speakers, location, to_hide) {
                             <h4>${speaker.name} <span class='badge badge-primary'>${year}</span></h4>
                             <h5>${speaker.company}</h5>
                             <p>${speaker.description}</p>
+                            <a href='${speaker.social_media}' class='btn btn-outline-danger btn-sm'><i class='fa fa-anchor'></i><strong> follow</strong></a>
                         </div>
                     </div>
             </div></div>`
