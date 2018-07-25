@@ -12,7 +12,7 @@ def get_team(request):
 	member = Member.objects.all().values()
 	member_list = list(member)
 
-	Faculty = Member.objects.filter(member_type = 'Fclty').values() | Member.objects.filter( member_type=' Dir').values() | Member.objects.filter( member_type='HCD').values()
+	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values() 
 	Faculty= list(Faculty)
 
 
