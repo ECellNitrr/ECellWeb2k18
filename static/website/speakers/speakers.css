@@ -218,12 +218,21 @@ html {
         text-align: center;
     }
     /* speaker */
+    .speaker{
+        position: relative;
+    }
     .speaker hr {
         margin-bottom: 50px;
     }
     .people img {
         max-width: 400px;
         max-height: 300px;
+        padding: 4px;
+        background: white;
+        border: 6px solid grey;
+        box-shadow: 0 0 30px black;
+        z-index: 2;
+        border-radius: 15px;
     }
     .people h5 {
         margin: 10px 0 30px;
@@ -238,17 +247,103 @@ html {
         margin: 0 80px 0 60px;
     }
     .years p {
-        /* text-align: justify; */
+        text-align: justify;
     }
-    .years {
-        margin-top: 50px;
+    /* svgs */
+    .svg {
+        z-index: 1;
     }
-    .speaker {
-        margin-top: 50px;
+    .svg-top {
+        background: white;
+        fill: #dcdcdc;
+        transform: translateY(6px);
     }
-    /* grey */
+    .svg-bottom {
+        background: #dcdcdc;
+        fill: white;
+    }
     .reverse {
         flex-direction: row-reverse;
-        text-align: right;
+    }
+    .grey {
+        background: #dcdcdc;
+    }
+}
+
+@media(max-width: 700px){
+    h2 {
+        font-weight: bold;
+        text-align: center;
+    }
+    h3 {
+        font-weight: bold;
+        text-align: center;
+    }
+    .speaker img {
+        max-width: 400px;
+        max-height: 300px;
+        padding: 4px;
+        background: white;
+        border: 6px solid grey;
+        z-index: 2;
+        border-radius: 15px;
+    }
+    /* speaker */
+    .speaker{
+        position: relative;
+    }
+    .speaker hr {
+        margin-bottom: 50px;
+    }
+    .people img {
+        max-width: 100%;
+        max-height: 300px;
+        padding: 4px;
+        background: white;
+        border: 6px solid grey;
+        box-shadow: 0 0 30px black;
+        z-index: 2;
+        border-radius: 15px;
+    }
+    .people h5 {
+        font-weight: bold;
+        color: grey;
+        margin-bottom: 15px;
+        font-size: 18px;
+        text-align: center;
+    }
+    .speaker a{
+        margin: auto;
+        display: inline-block;
+    }
+    .people h4 {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .s-info {
+        margin: 5px;
+    }
+    .years p {
+        text-align: justify;
+    }
+    /* svgs */
+    .svg {
+        z-index: 1;
+    }
+    .svg-top {
+        background: white;
+        fill: #dcdcdc;
+        transform: translateY(6px);
+    }
+    .svg-bottom {
+        background: #dcdcdc;
+        fill: white;
+    }
+    .reverse {
+        flex-direction: row-reverse;
+    }
+    .grey {
+        background: #dcdcdc;
     }
 }
