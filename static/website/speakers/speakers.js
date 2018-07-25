@@ -10,7 +10,7 @@ function insert_speaker(speakers, location) {
 
     speakers.forEach(speaker => {
         div.innerHTML += 
-            `<div class='d-flex speaker container'>
+            `<div class='d-flex speaker container ${reverse? "reverse":""}'>
                     <div class='s-img'>
                         <img src='/${speaker.profile_pic}' class="wow flipInX" alt="">
                     </div>
@@ -44,5 +44,7 @@ $(function () {
         insert_speaker(k17, speakers_div)
         insert_speaker(k16, speakers_div)
         insert_speaker(k15, speakers_div)
+
+        hideOldYears()
     })
 })

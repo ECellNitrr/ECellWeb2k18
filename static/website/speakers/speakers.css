@@ -222,7 +222,8 @@ html {
         margin-bottom: 50px;
     }
     .people img {
-        width: 400px;
+        max-width: 400px;
+        max-height: 300px;
     }
     .people h5 {
         margin: 10px 0 30px;
@@ -237,7 +238,7 @@ html {
         margin: 0 80px 0 60px;
     }
     .years p {
-        text-align: justify;
+        /* text-align: justify; */
     }
     .years {
         margin-top: 50px;
@@ -246,7 +247,8 @@ html {
         margin-top: 50px;
     }
     /* grey */
-    .grey {
-        background: #ddd;
+    .reverse {
+        flex-direction: row-reverse;
+        text-align: right;
     }
 }
