@@ -14,8 +14,8 @@ function insert_speaker(speakers, location, to_hide) {
         `:''
         div.innerHTML +=
             `<div class=${reverse? 'grey':'mt-4'}>
-                <div class='d-flex speaker container ${reverse ? "reverse pb-4" : ""}'>
-                    <div class='s-img text-left'>
+                <div class='d-md-flex speaker container ${reverse ? "reverse pb-4" : ""}'>
+                    <div class='s-img text-center'>
                         <img src='/${speaker.profile_pic}' class="wow flipInX my-3" alt="">
                     </div>
                     <div class='s-info d-flex align-items-center'>
@@ -23,7 +23,9 @@ function insert_speaker(speakers, location, to_hide) {
                             <h4>${speaker.name} <span class='badge badge-primary'>${year}</span></h4>
                             <h5>${speaker.company}</h5>
                             <p>${speaker.description}</p>
-                            <a href='${speaker.social_media}' class='btn btn-outline-danger btn-sm'><i class='fa fa-anchor'></i><strong> follow</strong></a>
+                            <div class='text-center text-md-left'>
+                                <a href='${speaker.social_media}' class='btn btn-outline-danger btn-sm'><i class='fa fa-anchor'></i><strong> follow</strong></a>
+                            </div>
                         </div>
                     </div>
             </div></div>`
