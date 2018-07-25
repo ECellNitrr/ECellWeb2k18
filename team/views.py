@@ -11,9 +11,33 @@ from .models import Member
 def get_team(request):
 	member = Member.objects.all().values()
 	member_list = list(member)
-	print(member_list)
-	response = {'success':True, 'message':'Team Members are available','team_members': member_list}
-	print(response)
+
+	Faculty = Member.objects.filter(member_type = 'Fclty').values() | Member.objects.filter( member_type=' Dir').values() | Member.objects.filter( member_type='HCD').values()
+	Faculty= list(Faculty)
+
+
+	#print(Faculty)
+
+
+
+	student_list = [item for item in member_list if item not in Faculty]
+
+	#print(student_list)
+
+	"""
+	Dir = Member.objects.filter(member_type= 'Dir').values()
+	HCD = Member.objects.filter(member_type= 'HCD').values()
+	"""
+	#FacultyIncharge['image'] =str(FacultyInch
+
+
+
+
+
+
+	#print(member_list)
+	response = {'success':True, 'message':'Team Members are available','Faculty':Faculty, 'Student':student_list}
+	#print(response)
 
 
 	return JsonResponse(response, safe=False)
