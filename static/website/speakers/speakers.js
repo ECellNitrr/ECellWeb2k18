@@ -6,7 +6,6 @@ function insert_speaker(speakers, location, to_hide) {
     var div = document.createElement('div')
     div.id = year
     div.classList.add('years', to_hide ? "d-none" : "d-block")
-    // div.innerHTML += `<h3 class='display-4 font-weight-bold'>${year}</h3><hr>`
     // make the template
     speakers.forEach(speaker => {
         div.innerHTML += reverse?`
@@ -17,13 +16,12 @@ function insert_speaker(speakers, location, to_hide) {
             `<div class=${reverse? 'grey':'mt-4'}>
                 <div class='d-flex speaker container ${reverse ? "reverse pb-4" : ""}'>
                     <div class='s-img text-left'>
-                        <img src='/${speaker.profile_pic}' class="wow flipInX" alt="">
+                        <img src='/${speaker.profile_pic}' class="wow flipInX my-3" alt="">
                     </div>
                     <div class='s-info d-flex align-items-center'>
                         <div class="wow fadeInUp">
-                            <h4>${speaker.name}</h4>
+                            <h4>${speaker.name} <span class='badge badge-primary'>${year}</span></h4>
                             <h5>${speaker.company}</h5>
-                            <p>Year of speech: ${year}</p>                            
                             <p>${speaker.description}</p>
                         </div>
                     </div>
