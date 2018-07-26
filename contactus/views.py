@@ -24,7 +24,7 @@ def view_message(request,id):
 	})
 
 @csrf_exempt
-@login_req
+#@login_req
 def create_message(request,**kwargs):
 	if request.method == 'POST':
 		message_form = MessageForm(request.POST)
