@@ -50,7 +50,7 @@ setTimeout(() => {
 setTimeout(() => {
     document.querySelector('.loader').style.transform = 'translateY(-100vh)';
     document.querySelector('.loader svg').style.opacity = 0;
-    body.style['margin-top']=0
+    // body.style['margin-top']=0
     document.querySelector('#menubar').style.display='block'
 }, 3700)
 
