@@ -8,7 +8,7 @@ body.style.color = 'black'
 var lineDrawing = anime({
     targets: 'path',
     strokeDashoffset: [anime.setDashoffset, 0],
-    easing: 'easeOutQuad',
+    easing: 'easeInOutQuad',
     duration: 2000,
     delay: function (el, i) {
         return i * 100 + 500
