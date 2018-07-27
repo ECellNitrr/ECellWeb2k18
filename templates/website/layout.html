@@ -37,7 +37,7 @@
     <script src="{% static 'website/common/loader.js' %}"></script>
 
     <!-- header -->
-    <!-- {% include 'website/menubar.html' %} {% block header %}
+    {% include 'website/menubar.html' %} {% block header %}
     <header>
         <h1 class="wow fadeInUp">E-SUMMIT 18</h1>
         <p class="p-1 m-0 wow zoomIn" data-wow-delay=.3s>
@@ -47,7 +47,30 @@
         <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
             <polygon points="100 0 100 10 0 10" /> </svg>
     </header>
-    {% endblock header %} -->
+    {% endblock header %}
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- custom js -->
+    {% block js %}{% endblock js %}
+
+    <!-- menubar -->
+    <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
+    <script src="{% static 'website/menubar/nearby.js' %}"></script>
+    <script src="{% static 'website/menubar/demo.js' %}"></script>
+    <script src="{% static 'website/menubar/demo4.js' %}"></script>
+    <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
+    
+    <!-- wow js -->
+    <script src="{% static 'website/common/wow.js' %}"></script>
+    <script>
+        var wow = new WOW({
+            offset: 100, // distance to the element when triggering the animation (default is 0)
+            mobile: false, // trigger animations on mobile devices (default is true)
+        });
+        wow.init();
+    </script>
 </body>
 
 </html>
