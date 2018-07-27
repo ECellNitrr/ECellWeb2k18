@@ -36,8 +36,9 @@
     {% include "website/loader.html" %}
     <script src="{% static 'website/common/loader.js' %}"></script>
 
-    <!-- header -->
+    <!-- menubar -->
     {% include 'website/menubar.html' %} {% block header %}
+    <!-- header -->
     <header>
         <h1 class="wow fadeInUp">E-SUMMIT 18</h1>
         <p class="p-1 m-0 wow zoomIn" data-wow-delay=.3s>
@@ -49,19 +50,27 @@
     </header>
     {% endblock header %}
 
+    <!-- content -->
+    {% block content %}
+    <h1>from the layout.html</h1>
+    {% endblock content %}
+
+    <!-- footer -->
+    {% include 'website/footer.html' %}
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
-    <!-- menubar -->
+    <!-- menubar js-->
     <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
     <script src="{% static 'website/menubar/nearby.js' %}"></script>
     <script src="{% static 'website/menubar/demo.js' %}"></script>
     <script src="{% static 'website/menubar/demo4.js' %}"></script>
     <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
-    
+
     <!-- wow js -->
     <script src="{% static 'website/common/wow.js' %}"></script>
     <script>

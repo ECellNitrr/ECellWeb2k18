@@ -2,6 +2,7 @@ body {
     overflow: hidden;
     background: #18181c;
     color: #18181c;
+    margin-top: 100vh;
 }
 
 .loader {
@@ -22,8 +23,8 @@ body {
     stroke: rgb(153, 255, 0);
 }
 
-svg {
-    margin-top: -30px;
+.loader svg {
+    /* margin-top: -30px; */
     display: none;
 }
 
@@ -41,4 +42,8 @@ rect {
 circle {
     opacity: 0;
     transition: opacity .5s;
+}
+
+#menubar {
+    display: none;
 }
