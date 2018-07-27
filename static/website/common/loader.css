@@ -1,8 +1,4 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     overflow: hidden;
     background: #18181c;
     color: #18181c;
@@ -12,6 +8,11 @@ body {
     background: #18181c;
     height: 100vh;
     position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all .5s ease;
 }
 
