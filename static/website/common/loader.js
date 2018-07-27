@@ -40,7 +40,8 @@ texts.forEach(text => {
 var logo = document.querySelector('#logo');
 setTimeout(() => {
     setTimeout(() => {
-        logo.style.fill = 'red'
+        // logo.style.fill = 'red'
+        window.scrollTo(0,0);
         logo.style['stroke-width'] = 3
     }, 3300);
 })
