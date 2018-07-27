@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #18181c;
+    color: #18181c;
+}
+
+.loader {
+    background: #18181c;
+    height: 100vh;
+    position: absolute;
+    transition: all .5s ease;
+}
+
+#logo {
+    transition: fill 1s ease;
+    stroke: rgb(153, 255, 0);
+}
+
+svg {
+    margin-top: -30px;
+    height: 110vh;
+    display: none;
+}
+
+text {
+    opacity: 0;
+    transition: opacity .5s;
+    fill: white;
+}
+
+path,
+rect {
+    stroke: white;
+}
+
+circle {
+    opacity: 0;
+    transition: opacity .5s;
+}
