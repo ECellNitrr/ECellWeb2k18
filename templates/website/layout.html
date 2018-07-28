@@ -20,8 +20,8 @@
     <!-- bootstrap css-->
     <link rel="stylesheet" href="{% static 'website/common/bootstrap.min.css' %}">
     <!-- menubar css-->
-    <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
     <link href="{% static 'website/menubar/demo4.css' %}" rel="stylesheet">
+    <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
     <!-- custom css -->
     {% block css %} css goes here {% endblock css %}
     <!-- loader js and css -->
@@ -59,14 +59,14 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    
+
     <!-- menubar js-->
     <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
     <script src="{% static 'website/menubar/nearby.js' %}"></script>
     <script src="{% static 'website/menubar/demo.js' %}"></script>
     <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
     <script src="{% static 'website/menubar/demo4.js' %}"></script>
-    
+
     <!-- wow js -->
     <script src="{% static 'website/common/wow.js' %}"></script>
     <script>
@@ -75,15 +75,19 @@
             mobile: false, // trigger animations on mobile devices (default is true)
         });
         wow.init();
-        </script>
+    </script>
 
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
     <style>
-        html{
+        html {
             width: 100vw !important;
             overflow-x: hidden !important;
+        }
+
+         a:hover {
+            text-decoration: none !important;
         }
     </style>
 </body>
