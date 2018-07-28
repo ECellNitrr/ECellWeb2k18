@@ -21,4 +21,4 @@ class Member(models.Model):
 
 
 	def __self__(self):
-		return self.name
+		return self.member_type + ' ' + self.name

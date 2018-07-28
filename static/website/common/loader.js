@@ -24,7 +24,7 @@ circles.forEach(circle => {
     i += 1
     setTimeout(() => {
         circle.style.opacity = 1
-    }, 500 + i * 1000 / 20);
+    }, 800 + i * 1000 / 20);
 })
 
 // show the texts

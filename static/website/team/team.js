@@ -1,4 +1,4 @@
-function add_member(target, members) {
+function show_with_pic(target, members) {
     members.forEach(function (member) {
         var member_html = `
             <div class="member">
@@ -12,11 +12,19 @@ function add_member(target, members) {
     })
 }
 
-// function add_table(target, members) {
-//     members.forEach(function (member) {
-
-//     })
-// }
+function draw_as_table(target, members) {
+    members.forEach(function (member) {
+        var member_html = `
+            <div class="member">
+                <img src="https://ecellnitrr.herokuapp.com/${member.url}">
+                <div class="description">
+                    <h4 class="name">${member.name}</h4>
+                </div>
+            </div>
+        `
+        target.append(member_html)
+    })
+}
 
 $(function () {
 
@@ -29,14 +37,22 @@ $(function () {
     var faculty_incharge = $('#faculty_incharge')
 
     $.get('https://ecellnitrr.herokuapp.com/team/list').then(function (data) {
-        console.log(JSON.stringify(data, null, 2));
-        add_member(director, data['Director, NIT Raipur'])
-        add_member(head_career_dev, data['Head of Career development'])
-        add_member(faculty_incharge, data['Faculty Incharge'])
-        add_member(head_co, data['Head Co-ordinator'])
-        add_member(overall_co, data['Overall Co-ordinator'])
-        add_member(managers, data['manager'])
-        add_member(executives, data['executive'])
+        // get the data of the given member_type
+        function dataOfFaculty(mtype){
+            return data.Faculty.filter(val=>val.member_type==mtype)
+        }
+        function dataOfStudent(mtype){
+            return data.Student.filter(val=>val.member_type==mtype)
+        }
+        
+        console.log(dataOfFaculty('Dir'));
+        show_with_pic(director, dataOfFaculty('Dir'))
+        show_with_pic(head_career_dev, dataOfFaculty('HCD'))
+        show_with_pic(faculty_incharge, dataOfFaculty('Fclty'))
+        show_with_pic(head_co, dataOfStudent('HC'))
+        show_with_pic(overall_co, dataOfStudent('OC'))
+        draw_as_table(managers, dataOfStudent('MNG'))
+        draw_as_table(executives, dataOfStudent('EXEC'))
     })
 
 })
