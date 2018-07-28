@@ -131,7 +131,7 @@ footer h3 {
 }
 
 .menu-trigger {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 0;
     right: 0;

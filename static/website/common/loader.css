@@ -4,6 +4,7 @@ body {
     color: #18181c;
     overflow: hidden;
     height: 100vh;
+    width: 100vw;
 }
 
 .loader {

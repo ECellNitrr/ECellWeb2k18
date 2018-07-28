@@ -56,10 +56,15 @@ setTimeout(() => {
 setTimeout(() => {
     document.querySelector('.loader').style.transform = 'translateY(-100vh)';
     document.querySelector('.loader svg').style.opacity = 0;
-    body.style.overflow='auto'
+    body.style['overflow-y']='auto'
     body.style.height='auto'
     document.querySelector('#menubar').style.display='block'
+    
 }, 3700)
+
+setTimeout(()=>{
+    document.querySelector('.loader').remove();
+},4500)
 
     // flash the background colors
     // var bgclrs = ['#18181c','olive','darkslateblue','grey','orange','darkred']
