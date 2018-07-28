@@ -17,15 +17,13 @@ def get_event(request):
 
 
 def post_event(request):
-	events = Event.objects.all()
-	i=0
-	for event in events:
-		event.cover_pic = str(event.cover_pic)[7:]
-		event.alternate = i%2==0
-		i+=1
-	return render(request,'website/events.html', {
-		'events': events
-	})
+	# events = Event.objects.all()
+	# i=0
+	# for event in events:
+	# 	event.cover_pic = str(event.cover_pic)[7:]
+	# 	event.alternate = i%2==0
+	# 	i+=1
+	return render(request,'website/events.html')
 
 
 

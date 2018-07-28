@@ -36,12 +36,18 @@ texts.forEach(text => {
     }, i * 1000 / 20);
 })
 
+// color path
+var paths = document.querySelectorAll('.loader path');
+paths.forEach(path => {
+    path.style['stroke'] = "#"+((1<<24)*Math.random()|0).toString(16)
+})
+
 // animate the logo
 var logo = document.querySelector('#logo');
+logo.style.stroke = 'gold'
 setTimeout(() => {
     setTimeout(() => {
-        // logo.style.fill = 'red'
-        window.scrollTo(0,0);
+        // logo.style.fill = 'gold'
         logo.style['stroke-width'] = 3
     }, 3300);
 })
@@ -50,7 +56,8 @@ setTimeout(() => {
 setTimeout(() => {
     document.querySelector('.loader').style.transform = 'translateY(-100vh)';
     document.querySelector('.loader svg').style.opacity = 0;
-    // body.style['margin-top']=0
+    body.style.overflow='auto'
+    body.style.height='auto'
     document.querySelector('#menubar').style.display='block'
 }, 3700)
 
