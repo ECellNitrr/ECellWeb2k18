@@ -1,6 +1,6 @@
 $(function () {
     var events = $('#articles')
-    $.get('http://ecellnitrr.herokuapp.com/event/list/').then(function (data) {
+    $.get('https://ecellnitrr.herokuapp.com/event/list/').then(function (data) {
         data.Events.forEach(function (event, i) {
             if (i % 2 == 0) {
                 events.append(`
