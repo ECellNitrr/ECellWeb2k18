@@ -53,8 +53,16 @@ circle {
 }
 
 @media(max-width: 700px){
-    .loader svg{
-        width: 1000px; 
-        transform: translateX(-40vw);      
+    .loader {
+        width: 100vw;
+        overflow: hidden;      
+    }
+    .loader svg {
+        height: 100vh;
+        width:1200px;
+        position: absolute;
+        left: -600px;
+        top: 0;
+        transform: translateX(50vw);
     }
 }
