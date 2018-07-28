@@ -10,5 +10,7 @@ if (innerWidth < 700) {
     }
 }
 
-header.style.height = `${innerHeight}px !important`;
-cover.style.height = `${innerHeight}px !important`;
+console.log(innerHeight);
+
+header.style.height = `${innerHeight}px`;
+cover.style.height = `${innerHeight}px`;
