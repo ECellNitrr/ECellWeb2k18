@@ -299,3 +299,12 @@ html {
     margin: 0;
     /*font-family: Open Sans, "sans-serif";*/
 }
+
+
+.member_table {
+    background: #ddd;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 200px;
+}

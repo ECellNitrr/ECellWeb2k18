@@ -15,11 +15,8 @@ function show_with_pic(target, members) {
 function draw_as_table(target, members) {
     members.forEach(function (member) {
         var member_html = `
-            <div class="member">
-                <img src="https://ecellnitrr.herokuapp.com/${member.url}">
-                <div class="description">
-                    <h4 class="name">${member.name}</h4>
-                </div>
+            <div class="member_table">
+                <h4 class="name">${member.name}</h4>
             </div>
         `
         target.append(member_html)
