@@ -308,3 +308,9 @@ html {
     border-radius: 5px;
     width: 200px;
 }
+
+@media(max-width: 700px){
+    .member_table {
+        width: auto;
+    } 
+}
