@@ -34,6 +34,8 @@ $(function () {
     var faculty_incharge = $('#faculty_incharge')
 
     $.get('https://ecellnitrr.herokuapp.com/team/list').then(function (data) {
+        $('#spinner').hide();
+
         // get the data of the given member_type
         function dataOfFaculty(mtype){
             return data.Faculty.filter(val=>val.member_type==mtype)

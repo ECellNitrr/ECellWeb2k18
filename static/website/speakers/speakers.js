@@ -42,6 +42,7 @@ function insert_speaker(speakers, location, to_hide) {
 
 $(function () {
     $.get('https://ecellnitrr.herokuapp.com/speaker/list/').done(function (data) {
+        $('#spinner').hide()
         var speakers_div = $('.people');
 
         var k18 = data.speakers.filter(speaker => speaker.year == 2018)
