@@ -29,6 +29,40 @@
     <!-- loader js and css -->
     <link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
     <script src="{% static 'website/common/anime.min.js' %}"></script>
+    <style>
+            html {
+                width: 100vw !important;
+                overflow-x: hidden !important;
+            }
+    
+            a:hover {
+                text-decoration: none !important;
+            }
+    
+            #logo-img {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                width: 100px;
+            }
+    
+            @media(max-width: 700px) {
+                header h1 {
+                    padding-top: 100px;
+                    font-size: 30px;
+                }
+                footer h3 {
+                    font-size: 15px;
+                    letter-spacing: 3px;
+                }
+                #logo-img {
+                    top: 20px;
+                    left: 50vw;
+                    transform: translateX(-50%);
+                    width: 60px;
+                }
+            }
+        </style>
 </head>
 
 <body>
@@ -83,41 +117,6 @@
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
-    <style>
-        html {
-            width: 100vw !important;
-            overflow-x: hidden !important;
-        }
-
-        a:hover {
-            text-decoration: none !important;
-        }
-
-        header h1 {
-            padding-top: 100px;
-            font-size: 30px;
-        }
-        footer h3  {
-            font-size: 15px;
-            letter-spacing: 3px;
-        }
-
-        #logo-img {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            width: 100px;
-        }
-
-        @media(max-width: 700px) {
-            #logo-img {
-                top: 20px;
-                left: 50vw;
-                transform: translateX(-50%);
-                width: 60px;
-            }
-        }
-    </style>
 </body>
 
 </html>
