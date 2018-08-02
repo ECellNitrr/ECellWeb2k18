@@ -37,17 +37,17 @@ texts.forEach(text => {
 })
 
 // color path
-var paths = document.querySelectorAll('.loader path');
-paths.forEach(path => {
-    path.style['stroke'] = "#"+((1<<24)*Math.random()|0).toString(16)
-})
+// var paths = document.querySelectorAll('.loader path');
+// paths.forEach(path => {
+//     path.style['stroke'] = "#"+((1<<24)*Math.random()|0).toString(16)
+// })
 
 // animate the logo
 var logo = document.querySelector('#logo');
-logo.style.stroke = 'gold'
+logo.style.stroke = 'yellowgreen'
 setTimeout(() => {
     setTimeout(() => {
-        // logo.style.fill = 'gold'
+        logo.style.fill = 'red'
         logo.style['stroke-width'] = 3
     }, 3300);
 })

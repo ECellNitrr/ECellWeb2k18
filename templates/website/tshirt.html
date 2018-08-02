@@ -36,7 +36,7 @@
                 <input type="radio" class="mr-1" name="gender" id="female" value="female">Barbie</label>
 
             <div class="text-center mt-4 mt-md-5">
-                <input type="submit" class="btn btn-danger" value="place order">
+                <input type="submit">
             </div>
         </form>
     </div>
@@ -56,8 +56,14 @@
         margin-bottom: 30px;
         width: 100%;
     }
-    input {
-        background: #f9f9fc;
+    [type='submit'] {
+        background: #000;
+        color: white;
+        border-radius: 0;
+        padding: 15px;
+        border: 0;
+        font-size: 15px;
+        font-weight: bold;
     }
     input:focus {
         outline: none;
