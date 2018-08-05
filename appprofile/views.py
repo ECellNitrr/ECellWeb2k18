@@ -278,17 +278,36 @@ def social_settings(request):
 	user = request.user
 	try:
 		facebook_login = user.social_auth.get(provider='facebook')
+		payload = {
+					'id' : facebook_login.extra_data.id,
+					'email': user.username,
+				}
+
+		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
+		token = jwt_token.decode('utf-8')
+		return JsonResponse({
+			'success' : True,
+			'message' : 'authentication successfull',
+			'token' : token
+		})
+
 	except:
 		facebook_login = None
+		return JsonResponse({
+			'success' : False,
+			'message' : 'authentication failed',
+			
+		})
 
-	print(facebook_login.extra_data)
-	print(user)
+	#print(facebook_login.extra_data)
+	#print(user)
+		
 	#print(facebook_login)
 	
 
-	can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
-	return render(request, 'settings.html',{'facebook_login':facebook_login,
-											 'can_disconnect':can_disconnect})
+	#can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
+	#return render(request, 'settings.html',{'facebook_login':facebook_login,
+											 #'can_disconnect':can_disconnect})
 
 @login_req
 def password(request):
