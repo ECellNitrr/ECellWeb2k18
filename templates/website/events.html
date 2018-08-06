@@ -1,0 +1,25 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events">
+{% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>E-Cell Events</title>
+{% endblock title %}
+    
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
+<link rel="stylesheet" href="{% static 'website/events/events.css' %}"> {% endblock css %}
+<!-- js -->
+{% block js %}
+<script src="{% static 'website/events/events.js' %}"></script>
+{% endblock js %}
+<!-- main content -->
+{% block content %}
+<!-- spinner -->
+{% include 'website/spinner.html' %}
+<section id=articles></section>
+
+{% endblock content %}

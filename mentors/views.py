@@ -3,6 +3,7 @@ from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Mentor
+from django.shortcuts import render
 
 @csrf_exempt
 def get_mentors(request):
@@ -12,6 +13,18 @@ def get_mentors(request):
             'success':True,
             'mentors':mentors
         }, safe=False)
+
+
+def post_mentors(request):
+    return render(request,'website/mentors.html')
+
+
+
+
+
+
+
+
 
 @csrf_exempt
 def view_mentor(request, id):

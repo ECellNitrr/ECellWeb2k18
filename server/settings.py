@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1']
 INSTALLED_APPS = [
     'rest_framework',
     'events',
+    'home',
     'bquiz',
     'contactus',
     'taskmanager.apps.TaskmanagerConfig',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'speakers',
     'sponsors',
     'startups',
+    'team',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,11 +56,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -67,12 +72,14 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'server.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,6 +93,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
@@ -162,13 +171,14 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1942342869359654'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'f43d567495f224e3293f8fbe9c776e6d'
-
+SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 LOGIN_URL = 'login'
 #LOGOUT_URL = 'logout'
 #LOGIN_REDIRECT_URL=''
+
+
 
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
@@ -177,3 +187,8 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 SOCIAL_AUTH_FACEBOOK_REDIRECT_IS_HTTPS = True
 REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,name,email'}
+
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
