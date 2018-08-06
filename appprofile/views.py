@@ -2,7 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import Profile
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm, ContactForm
 from django import forms
@@ -26,7 +26,7 @@ from django.conf import settings as conf_settings
 
 
 @csrf_exempt
-def Login(request, *args, **kwargs):
+def applogin(request, *args, **kwargs):
 
 	error_msg = {
 		'success' : False,
@@ -71,7 +71,7 @@ def Login(request, *args, **kwargs):
 
 
 @csrf_exempt
-def register(request):
+def appregister(request):
 
 	registered = False
 	if request.method == "POST":
@@ -147,6 +147,71 @@ def activate(request, uidb64, token):
     else:
         return JsonResponse({'success':False,'message':'Activation link is invalid!'})
 
+
+@csrf_exempt
+def weblogin(request):
+	error_msg = {
+		'success' : False,
+		'message' : 'Invalid credentials'
+		}
+	if request.method == 'POST':
+		email = request.POST.get('email')
+		password = request.POST.get('password')
+
+		try:
+			obj = User.objects.filter(email=email)
+			username = obj[0].username
+		except:
+			return JsonResponse(error_msg)
+		#print(username)
+		#print(email)
+		#print(password)
+		try:
+			user = authenticate(username=username, password=password)
+			return JsonResponse({
+				'success' : True,
+				'message' : 'authentication successfull',
+				
+			})
+		except User.DoesNotExist:
+			return JsonResponse(error_msg)
+	else:
+		return JsonResponse(error_msg)
+
+
+
+@csrf_exempt
+def webregister(request):
+
+	if request.method == 'POST':
+		email = request.POST.get('email')
+		password = request.POST.get('password')
+
+		if User.objects.filter(email=email).exists():
+			return JsonResponse({'success':False,'message':'Email already exists'})
+		else:
+			user = User()
+			user.username = email
+			user.email = email
+			user.set_password(password)
+			
+			user.save()
+			return JsonResponse({
+				'success' : True,
+				'message' : 'registration successfull'
+			})
+	else:
+		return JsonResponse({
+				'success' :False,
+				'message' : 'form method error'
+			})
+
+
+
+def logout_view(request):
+	logout(request)
+	return JsonResponse({'success':True,
+						 'message':'User logged out successsfully'})
 
 
 
