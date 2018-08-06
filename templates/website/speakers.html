@@ -1,0 +1,26 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, speakers">
+{% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>E-Cell Speakers</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'website/speakers/speakers.css' %}"> {% endblock css %}
+<!-- js -->
+{% block js %}
+<script src="{% static 'website/speakers/speakers.js' %}"></script>
+{% endblock js %}
+<!-- content -->
+{% block content %}
+{% include 'website/spinner.html' %}
+<h2 class="h1 font-weight-bold">Our Speakers</h2>
+<hr>
+<div class="people"></div>
+<div class="text-center">
+    <button class="btn btn-outline-dark mt-5" id="load_more_btn">previous years</button>
+</div>
+{% endblock content %}

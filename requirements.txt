@@ -18,4 +18,9 @@ requests==2.18.4
 whitenoise==3.3.1
 psycopg2==2.7.4
 gunicorn==19.0.0
+<<<<<<< HEAD
 social-auth-app-django==2.1.0
+=======
+social-auth-app-django==2.1.0
+django-cors-headers==2.3.0
+>>>>>>> 6bda2becdad6c5c39c849ca37766f7d0f3c7a503

@@ -1,0 +1,84 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, tshirt"> {% endblock keywords %}
+<!-- title -->
+{% block title %}
+<title>E-Cell Tshirt</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'website/team/team.css' %}"> {% endblock css %}
+<!-- content -->
+{% block content %}
+<main class="row justify-content-center">
+    <!-- img -->
+    <div class="col-md-6 px-5 pb-md-4 box">
+        <img src="{% static 'website/img/tshirt.jpeg' %}" class="w-100" alt="t-shirt-demo">
+    </div>
+    <!-- form -->
+    <div class="col-md-4 order px-5">
+        <h2 class="text-center my-5 font-weight-bold">Buy one now!!!</h2>
+        <form action="" method="POST">
+            <input type="text" id="name" placeholder="Name" name="name">
+            <input type="text" id="email" placeholder="Email" name="email">
+            <input type="number" id="contact_no" placeholder="Phone no." name="phone">
+            <label for="size" class="mr-2">Size: </label>
+            <select name="size" id="size" class="mb-4">
+                <option value="sm">sm</option>
+                <option value="md" selected>md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+            </select>
+            <label for="male" class="d-block">
+                <input type="radio" class="mr-1" name="gender" id="male" value="male">Captain America</label>
+            <label for="female" class="d-block">
+                <input type="radio" class="mr-1" name="gender" id="female" value="female">Barbie</label>
+
+            <div class="text-center mt-4 mt-md-5">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+</main>
+<style>
+    body {
+        background: #f9f9fc;
+    }
+    .order {
+        font-size: 20px;
+    }
+    [type='text'],
+    [type='number'] {
+        border: 0;
+        border-bottom: 3px solid black;
+        display: block;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    [type='submit'] {
+        background: #000;
+        color: white;
+        border-radius: 0;
+        padding: 15px;
+        border: 0;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    input:focus {
+        outline: none;
+    }
+    .box {
+        box-sizing: border-box;
+        width: 100vw;
+    }
+    @media(max-width: 576px) {
+        main img {
+            margin-top: 50px;
+        }
+        h2 {
+            margin-bottom: 0 !important;
+        }
+    }
+</style>
+{% endblock content %}

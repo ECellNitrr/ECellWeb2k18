@@ -5,15 +5,63 @@ from django.forms.models import model_to_dict
 from server.decorators.login import login_req
 from .forms import SponsorForm
 import json
+from django.shortcuts import render
+
 
 @csrf_exempt
 def get_sponsors(request):
 	sponsors = Sponsor.objects.all().values()
-	sponsors_list = list(sponsors)
+	#sponsors_list = list(sponsors)
+
+
+	AS = Sponsor.objects.filter(spons_type='AS').values()
+	AS_list = list(AS)
+
+	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
+
+	GS = Sponsor.objects.filter(spons_type='GS').values()
+	TS = Sponsor.objects.filter(spons_type='TS').values()
+
+	PRTS = Sponsor.objects.filter(spons_type='PRTS').values()
+
+	PLTS_list = list(PLTS)
+	GS_list = list(GS)
+	TS_list = list(TS)
+	PRTS_list = list(PRTS)
+	#spons = [{AS_list,PLTS_list,GS_list,TS_list,PRTS_list]
+
+	spons = [ {'section_name':'Associate Sponsors', "sponsors":AS_list},
+			  {'section_name':'Platinum Sponsors', "sponsors":PLTS_list},
+			  {'section_name':'Gold Sponsors', "sponsors":GS_list},
+			  {'section_name':'Title Sponsors', "sponsors":TS_list},
+			  {'section_name':'Partner Sponsors', "sponsors":PRTS_list},
+			]
+	#print(spons)
+
+	#Response = {'success':True,"message":"Spons available", "":[]}
+
+
 	return JsonResponse({
 		'success':True,
-		'Sponsor_List':sponsors_list
+		'message':"Sponsors available",
+		'spons':spons,
 		})
+
+
+def post_sponsors(request):
+	return render(request,'website/patreons.html')
+
+
+
+
+
+
+
+
+
+
+
+
 
 @csrf_exempt
 def view(request,id):
