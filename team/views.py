@@ -5,42 +5,25 @@ from django.forms.models import model_to_dict
 import json
 from django.shortcuts import render
 from .models import Member
+from django.utils.six.moves.urllib.parse import urlsplit
 
 # Create your views here.
 
 def get_team(request):
+	scheme = urlsplit(request.build_absolute_uri(None)).scheme
 	member = Member.objects.all().values()
+	for m in member:
+		m['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(m['pic'])
 	member_list = list(member)
-
-	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values() 
+	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
+	for f in member:
+		f['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(f['pic'])
 	Faculty= list(Faculty)
-
-
-	#print(Faculty)
-
-
 
 	student_list = [item for item in member_list if item not in Faculty]
 
-	#print(student_list)
-
-	"""
-	Dir = Member.objects.filter(member_type= 'Dir').values()
-	HCD = Member.objects.filter(member_type= 'HCD').values()
-	"""
-	#FacultyIncharge['image'] =str(FacultyInch
-
-
-
-
-
-
-	#print(member_list)
 	response = {'success':True, 'message':'Team Members are available','Faculty':Faculty, 'Student':student_list}
-	#print(response)
-
-
 	return JsonResponse(response, safe=False)
-    
+
 def team_site(request):
     return render(request, 'website/team.html')

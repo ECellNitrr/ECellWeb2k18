@@ -4,10 +4,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Mentor
 from django.shortcuts import render
-
+from django.utils.six.moves.urllib.parse import urlsplit
 @csrf_exempt
 def get_mentors(request):
     mentors = Mentor.objects.all().values()
+    scheme = urlsplit(request.build_absolute_uri(None)).scheme
+    for m in mentors:
+        m['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(m['profile_pic'])
     mentors = list(mentors)
     return JsonResponse({
             'success':True,
@@ -17,13 +20,6 @@ def get_mentors(request):
 
 def post_mentors(request):
     return render(request,'website/mentors.html')
-
-
-
-
-
-
-
 
 
 @csrf_exempt
