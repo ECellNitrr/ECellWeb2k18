@@ -1,6 +1,73 @@
-<footer class="p-5 mt-5">
-    <div>
-        <h3 class=text-center>&#169; ECELL NITRR</h3>
-        <p class="text-center text-white-50">All rights reserved</p>
+{% load static %}
+<footer class="mt-5 p-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- <h4 class="col-md-1 footer-es18 font-weight-bold m-0 text-center d-md-block d-none">E-SUMMIT 18</h4> -->
+            <div class="col-md-2 d-md-block d-none">
+                <h4 class="text-center font-weight-bold mb-3">Quick links</h4>
+                <div id="quick-links" class="pl-3">
+                    <a class="text-capitalize pl-3" href=/>Home</a>
+                    <a class="text-capitalize pl-3" href=/event>Events</a>
+                    <a class="text-capitalize pl-3" href=/team>Team</a>
+                    <a class="text-capitalize pl-3" href=/sponsor>Sponsors</a>
+                    <a class="text-capitalize pl-3" href=/speaker>Speakers</a>
+                    <a class="text-capitalize pl-3" href=/mentor>Mentors</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center d-md-block d-none">
+                <img src="{% static 'website/img/logo-white.png' %}" id="footer-logo" class="img-responsive">
+                <p class="text-justify text-white">E-Cell, NIT Raipur is established to motivate and educate people about entrepreneurship and serve as a meeting ground for corporate and young budding entrepreneurs from distinguished institutions.</p>
+            </div>
+            <div class="col-md-3 align-self-center">
+                <h4 class="font-weight-bold text-center mb-4 d-md-block d-none">E-Cell NIT RAIPUR</h4>
+                <p class="text-center white mb-1">Follow us on social media!</p>
+                <div id=footer-social-media class="text-center">
+                    <a class="" href=https://www.facebook.com/ecellnitrr/>
+                    <i class="p-2 fa fa-2x fa-facebook"></i>
+                    </a>
+                    <a href=https://www.instagram.com/ecell.nitraipur/>
+                    <i class="p-2 fa fa-2x fa-instagram"></i>
+                    </a>
+                    <a class="" href="https://twitter.com/ecell_nitrr">
+                        <i class="p-2 fa fa-2x fa-twitter"></i>
+                    </a>
+                    <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
+                    <i class="p-2 fa fa-2x fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="text-center">+91 82510 82008</div>
+                <div class="text-center">+91 91744 73221</div>
+                <p class="text-center mt-3">&copy; All rights reserved.</p>
+            </div>
+            
+        </div>
     </div>
 </footer>
+<style>
+    footer {
+        z-index: 1111 !important;
+    }
+    #footer-logo {
+        width: 75px;
+        margin-bottom: 25px;
+    }
+
+    #quick-links a {
+        display: block;
+        padding-bottom: 3px;
+    }
+
+    #quick-links a:hover {
+        font-weight: bold;
+    }
+
+    footer hr {
+        color: white;
+        background: white;
+        margin-bottom: 20px;
+    }
+
+    .footer-es18 {
+        writing-mode: vertical-rl
+    }
+</style>

@@ -11,6 +11,8 @@ let type = {
 
 $(document).ready(function () {
     $.get('https://ecellnitrr.herokuapp.com/sponsor/list/').done(function (data) {
+        $('#spinner').hide();
+        
         sponsors = data.spons;
         sponsors.forEach(function (type) {
             type.sponsors.forEach(function (sponsor) {

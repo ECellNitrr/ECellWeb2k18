@@ -15,38 +15,44 @@
 {% endblock js %}
 <!-- content -->
 {% block content %}
-<h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Director NIT Raipur</h2>
+{% include 'website/spinner.html' %}
+<h2 class="underline h5 font-weight-bold container my-5 ">Director NIT Raipur</h2>
 <hr>
 <div class="members container" id="director"></div>
 
 <div>
-    <h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Head of Career development</h2>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Head of Career development cell</h2>
     <hr>
     <div class="members container" id="head_career-dev"></div>
 </div>
 
 <div>
-    <h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Faculty Incharge</h2>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Faculty Incharge</h2>
     <hr>
     <div class="members container" id="faculty_incharge"></div>
 </div>
 
-<h2 class="h5 font-weight-bold container py-5 wow fadeInUp">Overall Co-ordinators</h2>
+<h2 class="underline h5 font-weight-bold container py-5 ">Overall Co-ordinators</h2>
 <hr>
 <div class="members container" id="overall-co"></div>
 
-<h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Head Co-ordinators</h2>
+<h2 class="underline h5 font-weight-bold container my-5 ">Head Co-ordinators</h2>
 <hr>
 <div class="members container" id="head-co"></div>
 
-<h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Managers</h2>
+<h2 class="underline h5 font-weight-bold container my-5 ">Managers</h2>
 <hr>
 <div class="members container" id="managers"></div>
 
-<h2 class="h5 font-weight-bold container my-5 wow fadeInUp">Executives</h2>
+<h2 class="underline h5 font-weight-bold container my-5 ">Executives</h2>
 <hr>
 <div class="members container" id="executives"></div>
-
+<style>
+    hr {
+        margin-top: -35px;
+        width: 125px;
+    }
+</style>
 {% endblock content %}
 <!-- <div class=right-grey>
     <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>

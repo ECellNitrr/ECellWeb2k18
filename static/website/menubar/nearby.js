@@ -45,6 +45,12 @@
                     y1: elRect.top + docScrolls.top, y2: elRect.height + elRect.top + docScrolls.top
                 };
                 const closestPoint = {x: mousepos.x, y: mousepos.y};
+                // custom
+                if(document.documentElement.scrollHeight-300<mousepos.y){
+                    console.log(mousepos.x,mousepos.y)
+                    return;
+                }
+                // end custom
                 
                 if ( mousepos.x < elCoords.x1 ) {
                     closestPoint.x = elCoords.x1;
