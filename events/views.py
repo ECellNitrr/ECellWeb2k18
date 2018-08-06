@@ -6,6 +6,7 @@ from .forms import EventForm
 from .models import Event
 import json
 from django.shortcuts import render
+from django.utils.six.moves.urllib.parse import urlsplit
 
 @csrf_exempt
 def get_event(request):
