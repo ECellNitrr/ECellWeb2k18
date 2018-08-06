@@ -304,3 +304,6 @@ def password(request):
 	else:
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
+
+def dashboard(request):
+	return render(request, 'dashboard.html')

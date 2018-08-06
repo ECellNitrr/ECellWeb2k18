@@ -27,7 +27,6 @@ urlpatterns = [
     #path('register/', views.register, name='register'),
     url(r'^settings/$',views.social_settings, name='settings'),
     url(r'^settings/password/$',views.password, name='password'),
-    path('',include('appprofile.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('event/', include('events.urls')),
     path('sponsor/', include('sponsors.urls')),
@@ -42,6 +41,7 @@ urlpatterns = [
     url(r'^reset/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm),
     url(r'^reset/done/$', auth_views.password_reset_complete),
     url(r'^static/(?P<path>.*)$', stat.serve, {'document_root': settings.STATIC_ROOT}),
+    path('',include('appprofile.urls')),
 
 ]
 
