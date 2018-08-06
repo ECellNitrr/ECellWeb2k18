@@ -11,8 +11,11 @@ from django.utils.six.moves.urllib.parse import urlsplit
 @csrf_exempt
 def get_event(request):
     events= Event.objects.all().values()
+    scheme = urlsplit(request.build_absolute_uri(None)).scheme
+    for e in events:
+        e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
+        e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
     events_list=list(events)
-
     return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
 
 
@@ -24,6 +27,7 @@ def post_event(request):
 	# 	event.cover_pic = str(event.cover_pic)[7:]
 	# 	event.alternate = i%2==0
 	# 	i+=1
+    
 	return render(request,'website/events.html')
 
 

@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Message
 from .forms import MessageForm
+from django.utils.six.moves.urllib.parse import urlsplit
 
 @csrf_exempt
 def get_messages(request):
