@@ -10,6 +10,7 @@ class Speaker(models.Model):
 	contact = models.TextField(max_length=13, null=True, blank=True)
 	description = models.TextField(default='none')
 	year = models.IntegerField(default=2018)
+	social_media = models.TextField(default='blank')
 	
 	flag = models.BooleanField(default=False)
 

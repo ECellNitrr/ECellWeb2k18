@@ -4,17 +4,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Speaker
 from django.shortcuts import render
+from django.utils.six.moves.urllib.parse import urlsplit
 
 @csrf_exempt
 def get_speakers(request):
 	speakers = Speaker.objects.all().values()
+	scheme = urlsplit(request.build_absolute_uri(None)).scheme
+	speakers['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(speakers['profile_pic'])
 	speakers_list = list(speakers)
 	return JsonResponse({
 		'success':True,
 		'speakers':speakers_list
 		},safe=False)
-
-
 
 
 def post_speakers(request):

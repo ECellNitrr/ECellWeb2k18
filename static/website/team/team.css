@@ -131,7 +131,7 @@ footer h3 {
 }
 
 .menu-trigger {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 0;
     right: 0;
@@ -298,4 +298,19 @@ html {
     padding: 0;
     margin: 0;
     /*font-family: Open Sans, "sans-serif";*/
+}
+
+
+.member_table {
+    background: #ddd;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+@media(max-width: 700px){
+    .member_table {
+        width: auto;
+    } 
 }

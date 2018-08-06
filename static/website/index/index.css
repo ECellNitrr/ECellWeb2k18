@@ -130,7 +130,7 @@ footer h3 {
 }
 
 .menu-trigger {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 0;
     right: 0;
@@ -435,6 +435,26 @@ html {
     }
 }
 
+/* contact section */
+input,
+textarea {
+    border: 2px solid black;
+    padding: 10px;
+    outline: none;
+    display: block;
+    width: 400px;
+    color: black;
+    margin: 6px auto !important;
+    box-sizing: border-box;
+}
+
+#submit_btn{
+    width: 150px;
+    color: white;
+    background: #000;
+}
+
+
 @media (max-width:700px) {
     #contact {
         text-align: center;
@@ -460,6 +480,11 @@ html {
     #contact i {
         color: #000;
         margin: 20px 10px
+    }
+    
+    input,
+    textarea {
+        width: 100%;
     }
 }
 
@@ -497,19 +522,3 @@ html {
     font-family: Open Sans, "sans-serif"
 }
 
-input,
-textarea {
-    border: 2px solid black;
-    padding: 10px;
-    outline: none;
-    display: block;
-    width: 400px;
-    color: black;
-    margin: 6px auto !important;
-}
-
-#submit_btn{
-    width: 150px;
-    color: white;
-    background: #000;
-}

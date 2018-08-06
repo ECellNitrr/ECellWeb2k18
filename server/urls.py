@@ -25,6 +25,7 @@ from home import views as homeviews
 
 urlpatterns = [
     path('', homeviews.homepage),
+    path('tshirt/', homeviews.tshirt),
     path('message/', homeviews.message),
     path('admin/', admin.site.urls),
     #path('login/',views.login, name='login'),

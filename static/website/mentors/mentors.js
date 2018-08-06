@@ -3,11 +3,12 @@ $(function () {
         var mentors = $('.people');
 
         data.mentors.forEach(function (mentor) {
+            $('#spinner').hide();
             console.log(mentor);
             mentors.append(`
                 <div>
-                    <img data-wow-delay=.2s class="wow flipInX" src='https://ecellnitrr.herokuapp.com/${mentor.profile_pic}' alt="">
-                        <div class="wow fadeInDown">
+                    <img class="" src='https://ecellnitrr.herokuapp.com/${mentor.profile_pic}' alt="">
+                        <div class="">
                         <h3>${mentor.name}</h3>
                         <h4>${mentor.detail}</h4>
                     </div>
