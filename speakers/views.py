@@ -10,7 +10,8 @@ from django.utils.six.moves.urllib.parse import urlsplit
 def get_speakers(request):
 	speakers = Speaker.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	speakers['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(speakers['profile_pic'])
+	for speaker in speakers:
+		speaker['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(speaker['profile_pic'])
 	speakers_list = list(speakers)
 	return JsonResponse({
 		'success':True,

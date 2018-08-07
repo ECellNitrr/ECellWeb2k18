@@ -13,11 +13,11 @@ def get_team(request):
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
 	member = Member.objects.all().values()
 	for m in member:
-		m['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(m['pic'])
+		m['image'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(m['image'])
 	member_list = list(member)
 	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
-	for f in member:
-		f['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(f['pic'])
+	for f in Faculty:
+		f['image'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(f['image'])
 	Faculty= list(Faculty)
 
 	student_list = [item for item in member_list if item not in Faculty]
