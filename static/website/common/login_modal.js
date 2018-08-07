@@ -3,20 +3,24 @@ var login_btn = document.querySelector('#login_btn')
 var lemail = document.querySelector('#lemail')
 var lpass = document.querySelector('#lpass')
 var center_the_modal = document.querySelector('.center_the_modal')
+var modal_h2 = document.querySelector('.center_the_modal h2')
+var body = document.querySelector('body')
+
+login_trigger.addEventListener('click', (e) => {
+    e.preventDefault()
+    body.style['overflow'] = 'hidden'
+    body.style.height = '100vh'
+    center_the_modal.style.top = 0
+})
 
 login_btn.addEventListener('click', (e) => {
     e.preventDefault()
     commence_login()
 })
 
-login_trigger.addEventListener('click', (e) => {
-    e.preventDefault()
-    center_the_modal.style.top = 0
-})
-
 commence_login = () => {
     console.log('fetching user')
-    console.log(lemail.value,lpass.value)
+    console.log(lemail.value, lpass.value)
     fetch('login/', {
         method: 'POST',
         headers: {
@@ -31,7 +35,7 @@ commence_login = () => {
     })
         .then(response => response.json())
         .then(data => {
-            if (data.success){
+            if (data.success) {
                 login_success_handler()
             } else {
                 login_failure_hander()
@@ -42,9 +46,15 @@ commence_login = () => {
 }
 
 login_success_handler = () => {
-    center_the_modal.style.top = '-100vh'
+    login_btn.innerText = 'success'
+    login_btn.style.background = 'green'
+    body.style['overflow'] = 'none'
+    body.style.height = 'auto'
+    setTimeout(() => {
+        center_the_modal.style.top = '-100vh'
+    }, 2000)
 }
 
 login_failure_hander = () => {
-    console.log('failure')
+
 }
