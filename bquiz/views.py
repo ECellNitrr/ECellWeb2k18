@@ -97,7 +97,7 @@ def submit_ans(request,id,**kwargs):
         })
 
 @csrf_exempt
-@login_req
+# @login_req
 def get_question(request, *args, **kwargs):
     response = {}
     response['success'] = True
