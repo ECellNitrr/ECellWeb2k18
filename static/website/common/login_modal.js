@@ -52,9 +52,16 @@ login_success_handler = () => {
     body.style.height = 'auto'
     setTimeout(() => {
         center_the_modal.style.top = '-100vh'
-    }, 2000)
+    }, 1000)
 }
 
 login_failure_hander = () => {
-
+    modal_h2.innerText = 'incorrect email/password'
+    modal_h2.style.color = 'red'
+    lemail.style.border = '2px solid red'
+    lpass.style.border = '2px solid red'
+    lemail.value = ''
+    lpass.value = ''
+    lpass.removeAttribute.style
 }
+
