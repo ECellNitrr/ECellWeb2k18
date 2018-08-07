@@ -15,7 +15,7 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.forms import PasswordChangeForm, AdminPasswordChangeForm
-
+from django.forms.models import model_to_dict
 import jwt
 import json
 import http.client
@@ -166,17 +166,16 @@ def weblogin(request):
 		#print(username)
 		#print(email)
 		#print(password)
-		try:
-			user = authenticate(username=username, password=password)
-			return JsonResponse({
-				'success' : True,
-				'message' : 'authentication successfull',
-				
-			})
-		except User.DoesNotExist:
-			return JsonResponse(error_msg)
+		
+		user = authenticate(username=username, password=password)
+		login(request,user)
+		return JsonResponse({
+			'success' : True,
+			'message' : 'authentication successfull',
+			
+		})
 	else:
-		return JsonResponse(error_msg)
+		return render(request,'login.html')
 
 
 
@@ -194,18 +193,18 @@ def webregister(request):
 			user.username = email
 			user.email = email
 			user.set_password(password)
-			
 			user.save()
+			user.profile.contact_no = '2123'
+			
+
+			user.profile.save()
+	
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull'
 			})
 	else:
-		return JsonResponse({
-				'success' :False,
-				'message' : 'form method error'
-			})
-
+		return render(request,'reg.html')
 
 
 def logout_view(request):
@@ -393,3 +392,82 @@ def password(request):
 	else:
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
+
+
+
+
+
+
+##########Event Registration ###############################
+
+from django.contrib.auth.decorators import login_required
+from events.models import Event, EventOrder, Cart
+
+
+@csrf_exempt
+@login_required
+def add_to_cart(request, event_id):
+
+	try:
+		event = Event.objects.get(pk=event_id)
+		print(event)
+
+	except event.DoesNotExist:
+		pass
+	else:
+		try:
+			cart = Cart.objects.get(user=request.user, active=True)
+			cart.add_to_cart(event_id)
+		except :
+			cart = Cart.objects.create(
+			user= request.user
+			)
+			cart.save()
+			cart.add_to_cart(event_id)
+			
+	return JsonResponse({'success':True,
+						 'message':"Event added successfully"})
+
+
+#Remove Event Function
+@csrf_exempt
+@login_required
+def remove_from_cart(request, event_id):
+	try:
+		event = Event.objects.get(pk=event_id)
+		print(request.user)
+	except :
+		pass
+	else:
+		cart=Cart.objects.get(user=request.user, active=True)
+		print(cart)
+		cart.remove_from_cart(event_id)
+
+	return bag(request)
+
+
+#View Cart/Event List Function
+@csrf_exempt
+@login_required
+def bag(request):
+	
+	eventlist=[]
+	
+	cart= Cart.objects.filter(user=request.user, active=True)
+	gre = list(EventOrder.objects.filter(cart=cart[0]))
+
+	i=0
+	
+	for eve in gre:
+		if eve.event.name not in eventlist:
+			eventlist.append(eve.event.name)
+		i=i+1
+
+	context={
+		'success':True,
+		'message':'Event List Fetched Succesfully',
+		'events':eventlist,
+
+	}
+	return JsonResponse(context)
+

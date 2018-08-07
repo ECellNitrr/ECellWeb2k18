@@ -42,6 +42,9 @@ urlpatterns = [
     url(r'^password_reset/done/$', auth_views.password_reset_done),
     url(r'^reset/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm),
     url(r'^reset/done/$', auth_views.password_reset_complete),
+    url(r'^add/(\d+)/$', views.add_to_cart, name='add_to_cart'),
+    url(r'^remove/(\d+)/$', views.remove_from_cart, name='remove_from_cart'),
+    url(r'^cart/',views.bag, name='cart'),
     url(r'^static/(?P<path>.*)$', stat.serve, {'document_root': settings.STATIC_ROOT}),
 
 ]
