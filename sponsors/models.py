@@ -19,3 +19,6 @@ class Sponsor(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def url(self):
+		return self.url()

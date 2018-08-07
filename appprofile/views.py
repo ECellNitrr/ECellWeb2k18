@@ -69,7 +69,6 @@ def Login(request, *args, **kwargs):
 			return JsonResponse(error_msg)
 	return render(request,'login.html')
 
-
 @csrf_exempt
 def register(request):
 
@@ -103,7 +102,7 @@ def register(request):
 			user.profile.save()
 			#------------------
 			current_site = get_current_site(request)
-			mail_subject = "Activate your Ecell account"
+			mail_subject = "Activate your E-Cell NIT Raipur account"
 			message = render_to_string('acc_active_email.html',{
 				'user':user,
 				'domain':current_site.domain,
@@ -147,10 +146,6 @@ def activate(request, uidb64, token):
     else:
         return JsonResponse({'success':False,'message':'Activation link is invalid!'})
 
-
-
-
-
 @csrf_exempt
 @login_req
 def send_otp(request, *args, **kwargs):
@@ -175,10 +170,10 @@ def send_otp(request, *args, **kwargs):
 		otp = otpobj.generateOtp()
 		otp = int(otp)
 
-		otpobj.send(contact_no,'ECelll',otp)
+		otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
 
-		otps = otpobj.send(contact_no,'ECelll',otp)
+		otps = otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
 
 
