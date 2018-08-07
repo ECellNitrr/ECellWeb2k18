@@ -24,6 +24,9 @@ from server.decorators.login import login_req
 from decouple import config
 from django.conf import settings as conf_settings
 
+	
+def homepage(request):
+    return render(request, 'website/index.html')
 
 @csrf_exempt
 def applogin(request, *args, **kwargs):

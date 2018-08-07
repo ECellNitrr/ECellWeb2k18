@@ -1,0 +1,61 @@
+.center_the_modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+}
+
+.user_modal {
+    background-color: white;
+    /* color: white; */
+    padding: 45px 75px;
+    /* border: 5px solid black; */
+    box-shadow: 5px 5px 50px -5px black;
+    text-align: center;
+}
+
+.user_modal input {
+    /* background: #000 !important; */
+    /* color: white !important; */
+    text-align: center;
+    width: 350px;
+}
+
+.user_modal h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 25px;
+}
+
+.user_modal form>button {
+    background: black;
+    border: 2px solid black !important;
+    margin-top: 30px;
+    padding: 10px 15px;
+    color: white;
+    border: 2px solid white;
+    outline: none;
+    font-weight: bold;
+}
+
+.user_modal button:hover {
+    background: white;
+    color: black;
+}
+
+.alternative_btn {
+    background: none;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    color: blue;
+} 
+
+.alternative_btn:focus {
+    outline: none;
+}

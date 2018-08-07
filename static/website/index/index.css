@@ -452,8 +452,19 @@ textarea {
     width: 150px;
     color: white;
     background: #000;
+    padding: 15px;
+    border: 0;
+    transition: all 1s ease !important;
 }
 
+#submit_btn i {
+    color: white !important;
+    margin: 0 !important;
+}
+
+#submit_btn:focus {
+    outline: none;
+}
 
 @media (max-width:700px) {
     #contact {
@@ -520,5 +531,10 @@ textarea {
     padding: 0;
     margin: 0;
     font-family: Open Sans, "sans-serif"
+}
+
+#map {
+    width: 100%;
+    border-radius: 18px;
 }
 

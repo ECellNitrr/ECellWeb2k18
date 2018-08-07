@@ -36,18 +36,11 @@ texts.forEach(text => {
     }, i * 1000 / 20);
 })
 
-// color path
-// var paths = document.querySelectorAll('.loader path');
-// paths.forEach(path => {
-//     path.style['stroke'] = "#"+((1<<24)*Math.random()|0).toString(16)
-// })
-
 // animate the logo
 var logo = document.querySelector('#logo');
 logo.style.stroke = 'yellowgreen'
 setTimeout(() => {
     setTimeout(() => {
-        logo.style.fill = 'red'
         logo.style['stroke-width'] = 3
     }, 3300);
 })
@@ -59,21 +52,10 @@ setTimeout(() => {
     body.style['overflow-y']='auto'
     body.style.height='auto'
     document.querySelector('#menubar').style.display='block'
-    
-}, 3700)
+// }, 4300)
+}, 0)    
 
 setTimeout(()=>{
     document.querySelector('.loader').remove();
-},4500)
-
-    // flash the background colors
-    // var bgclrs = ['#18181c','olive','darkslateblue','grey','orange','darkred']
-    // var loader =  document.querySelector('.loader');
-    // var i = bgclrs.length-1;
-    // setInterval(()=> {
-    //   if(i>=0){
-    //     loader.style.background = bgclrs[i];
-    //     console.log(bgclrs[i]);
-    //     i -=1;
-    //   }
-    // }, 300)
+// },5000)
+},0)

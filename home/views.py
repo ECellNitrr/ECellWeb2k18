@@ -3,12 +3,6 @@ from django.http import HttpResponse
 
 from .models import Msg
 
-def homepage(request):
-    return render(request, 'website/index.html')
-
-def tshirt(request):
-    return render(request, 'website/tshirt.html')
-
 def message(request):
     post = request.POST
     msg = Msg(name=post['name'],email=post['email'],msg=post['msg'])

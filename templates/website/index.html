@@ -4,7 +4,7 @@
 <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, home, index"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-<title>E-Cell Home</title>
+<title>Home | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
@@ -84,31 +84,57 @@
     <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
         <polygon points="100 0 100 10 0 10" /> </svg>
 </div>
-<section id=contact class=container>
-    <h2 class="wow fadeInUp">Contact</h2>
-    <hr>
-    <p class="text-center mt-3">Leave a message</p>
-    <form action='message/' method="POST" class="text-center">
-        {% csrf_token %}
-        <input type="text" placeholder="Name" name="name" required>
-        <input type="email" placeholder="Email" name="email" required>
-        <textarea name="msg" placeholder="Message..." rows="4" required></textarea>
-        <input type="submit" id="submit_btn" value='submit'>
-    </form>
-    <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
-    <div id=social-media>
-        <a class="" href=https://www.facebook.com/ecellnitrr/>
-        <i class="wow fadeInRight fa fa-3x fa-facebook"></i>
-        </a>
-        <a href=https://www.instagram.com/ecell.nitraipur/>
-        <i class="wow fadeInRight fa fa-3x fa-instagram"></i>
-        </a>
-        <a class="" href="https://twitter.com/ecell_nitrr">
-            <i class="wow fadeInLeft fa fa-3x fa-twitter"></i>
-        </a>
-        <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
-        <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
-        </a>
+<div id=contact class='my-5 py-5'>
+    <div class="row justify-content-center">
+        <div class="col-md-6" id="map"></div>
+        <div class="col-md-5 d-flex justify-content-center">
+            <section id=contact class="mt-0">
+                <h2 class="wow fadeInUp">Contact</h2>
+                <hr class="mb-3">
+                <p class="text-center mt-1">Leave a message</p>
+                <form class="text-center">
+                    <input type="text" id='username' placeholder="Name" name="name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <textarea name="msg" placeholder="Message..." rows="4" required></textarea>
+                    <button id="submit_btn" class="mt-5">Submit</button>
+                    {% csrf_token %}
+                </form>
+            </section>
+        </div>
     </div>
-</section>
+    <!-- row end -->
+    <div class="text-center mt-5">
+        <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
+        <div id=social-media>
+            <a class="" href=https://www.facebook.com/ecellnitrr/>
+            <i class="wow fadeInRight fa fa-3x fa-facebook"></i>
+            </a>
+            <a href=https://www.instagram.com/ecell.nitraipur/>
+            <i class="wow fadeInRight fa fa-3x fa-instagram"></i>
+            </a>
+            <a class="" href="https://twitter.com/ecell_nitrr">
+                <i class="wow fadeInLeft fa fa-3x fa-twitter"></i>
+            </a>
+            <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
+            <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    var map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 21.24,
+                lng: 81.60
+            },
+            zoom: 15
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0Kav5UzbpdVQeIhu6kxwtbnBONh7tBpg&callback=initMap" async
+    defer></script>
+
 {% endblock content %}

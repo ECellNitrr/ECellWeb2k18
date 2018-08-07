@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls import url
 from . import views
 urlpatterns = [
+    path('',views.homepage),
     path('applogin/',views.applogin, name='applogin'),
     path('login/',views.weblogin, name='login'),
     url(r'^send_otp/',views.send_otp),

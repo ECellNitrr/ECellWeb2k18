@@ -10,7 +10,7 @@ let type = {
 }
 
 $(document).ready(function () {
-    $.get('https://ecellnitrr.herokuapp.com/sponsor/list/').done(function (data) {
+    $.get('list/').done(function (data) {
         $('#spinner').hide();
         
         sponsors = data.spons;
@@ -19,7 +19,7 @@ $(document).ready(function () {
                 console.log(JSON.stringify(sponsor, null, 2));
                 sponsors_html.innerHTML += ` 
                     <div class='sponsor'>
-                        <img src='https://ecellnitrr.herokuapp.com/${sponsor.pic}'>
+                        <img src='/${sponsor.pic}'>
                         <div class='details'>
                             <h2>${sponsor.name}</h2>
                             <p class='body'>${sponsor.details}</p>

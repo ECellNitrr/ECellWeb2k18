@@ -47,7 +47,6 @@
                 const closestPoint = {x: mousepos.x, y: mousepos.y};
                 // custom
                 if(document.documentElement.scrollHeight-300<mousepos.y){
-                    console.log(mousepos.x,mousepos.y)
                     return;
                 }
                 // end custom
