@@ -14,7 +14,7 @@ $(function () {
                             <p class="">${event.details}</p>
                         </div>
                         <div class="img ">
-                            <img src='/${event.cover_pic}' alt=""> </div>
+                            <img src='${event.cover_pic}' alt=""> </div>
                     </div>
                 </article>
                 `)
@@ -31,7 +31,7 @@ $(function () {
                             <p class="">${event.details}</p>
                         </div>
                         <div class="img ">
-                            <img src='/${event.cover_pic}' alt=""> </div>
+                            <img src='${event.cover_pic}' alt=""> </div>
                     </div>
                 </article>
                 <div class=right-white>

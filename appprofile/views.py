@@ -158,8 +158,10 @@ def weblogin(request):
 		'message' : 'Invalid credentials'
 		}
 	if request.method == 'POST':
-		email = request.POST.get('email')
-		password = request.POST.get('password')
+		req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
+		print(email,password)
 
 		try:
 			obj = User.objects.filter(email=email)

@@ -1,19 +1,19 @@
 login_modal = () => {
     var lemail = document.querySelector('#lemail')
     var lpass = document.querySelector('#lpass')
-    var lcsrf = document.querySelector('#login_modal [name=csrfmiddlewaretoken]')
+    // var lcsrf = document.querySelector('#login_modal [name=csrfmiddlewaretoken]')
 
-    fetch('message/', {
+    console.log('fetching user')
+    fetch('login/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            "X-CSRFToken": lcsrf.value
+            'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
             // 'email': lemail.value,
             // 'password': lpass.value,
-            'email': 'naveennvrgu',
-            'password': ,
+            'email': 'mitsum@gmail.com',
+            'password': 'ldappass',
         })
     })
         .then(response => response.json())
@@ -22,5 +22,6 @@ login_modal = () => {
         })
         .catch(error => console.error('fetch error', error))
 
-    console.log(lpass, lemail)
 }
+
+login_modal()
