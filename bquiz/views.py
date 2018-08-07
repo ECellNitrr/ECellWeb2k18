@@ -2,8 +2,10 @@ from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
-from .models import Questionset,Question,Answer
+from .models import Questionset, Question, Answer, Option, QuestionAcknowledge
 from .forms import AnswerForm
+from appprofile.models import Profile
+import random
 
 @csrf_exempt
 def get_quiz(request):
@@ -17,7 +19,7 @@ def get_quiz(request):
     length = len(questionset)
     for i in range(length):
         idy = questionset[i]['id']
-        quiz = Question.objects.filter(q_set=idy).values()
+        quiz = Question.objects.filter(set=idy).values()
         quiz = list(quiz)
         questionset[i]['questions'] = quiz
     
@@ -93,3 +95,38 @@ def submit_ans(request,id,**kwargs):
             'success':False,
             'message':'method error'
         })
+
+@csrf_exempt
+@login_req
+def get_question(request, *args, **kwargs):
+    response = {}
+    response['success'] = True
+    if Question.objects.filter(flag=True).exists():
+        question = Question.objects.get(flag=True)
+        response['message'] = "B-Quiz is live"
+        response['isImageIncluded'] = False if question.type == 'TXT' else True
+        scheme = 'https' if request.is_secure() else 'http'
+        host = request.META['HTTP_HOST']
+        response['imageUrl'] =  scheme + "://" + host + "/" + str(question.meta)
+        response['text'] = question.description
+        response['id'] = question.pk
+        response['time'] = question.time_limit
+        options = []
+        temp = Option.objects.filter(question = question)
+        for temp_option in temp:
+            option = {}
+            option['value'] = temp_option.option
+            option['key'] = temp_option.pk
+            options.append(option)
+        random.shuffle(options)
+        response['options'] = options
+        try:
+            user = Profile.objects.get(id = kwargs['user_id'])
+            # Creating Acknowledgement
+            acknowledge = QuestionAcknowledge(user=user, question=question)
+            acknowledge.save()
+        except Exception as e:
+            print(str(e))
+    else:
+        response['message'] = "B-Quiz is not live please wait for the next update"
+    return JsonResponse(response)
