@@ -1,5 +1,4 @@
-
-
+// close signup modal
 signup_modal_close_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -8,19 +7,23 @@ signup_modal_close_btn.addEventListener('click', (e) => {
     signup_modal.style.top = '-100vh'
 })
 
+// show signup modal
 signup_trigger.addEventListener('click', (e) => {
     e.preventDefault()
     console.log('signup triggered')
+    // hide other models
     login_modal.style.top = '-100vh'
-
+    logout_modal.style.top = '-100vh'
+    // show the model
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
     signup_modal.style.top = 0
 })
 
+// do signup req
 signup_btn.addEventListener('click', (e) => {
     e.preventDefault()
-    console.log('do signup req')
+    console.log('login req sent')
     commence_signup()
 })
 
@@ -59,7 +62,7 @@ signup_success_handler = () => {
     body.style.height = 'auto'
     signup_modal.style.top = '-100vh'
 
-    login_user.innerText = semail.value.split('@')[0]
+    loggedin_user.innerText = semail.value.split('@')[0]
     localStorage.ecell_nitrr_user = semail.value
 }
 

@@ -1,6 +1,4 @@
-
-
-
+// close login modal
 login_modal_close_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -9,22 +7,32 @@ login_modal_close_btn.addEventListener('click', (e) => {
     login_modal.style.top = '-100vh'
 })
 
+// show login model
 login_trigger.addEventListener('click', (e) => {
     e.preventDefault()
-    signup_modal.style.top = '-100vh'
+    // if logged in show logout modal
+    if (localStorage.ecell_nitrr_user) {
+        show_logout_modal()
+        return
+    }
+    // hide other models
+    login_modal.style.top = '-100vh'
+    logout_modal.style.top = '-100vh'
+    // show the model
 
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
     login_modal.style.top = 0
 })
 
+// do login req
 login_btn.addEventListener('click', (e) => {
     e.preventDefault()
     commence_login()
 })
 
 commence_login = () => {
-    console.log('fetching user')
+    console.log('login req sent')
     console.log(lemail.value, lpass.value)
     login_btn.innerHTML = '<i class="fa fa-2x fa-spinner fa-spin"></i>';
     login_btn.disabled = true
@@ -60,7 +68,7 @@ login_success_handler = () => {
     body.style.height = 'auto'
     login_modal.style.top = '-100vh'
 
-    login_user.innerText = lemail.value.split('@')[0]
+    loggedin_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value
 }
 

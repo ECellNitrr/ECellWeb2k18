@@ -27,4 +27,4 @@ var logout_modal_close_btn = document.querySelector('#logout_modal .close_btn')
 
 // miscellaneous
 var body = document.querySelector('body')
-var login_user = document.querySelector('#login_user span') // used to show the logged in user
+var loggedin_user = document.querySelector('#login_user span') // used to show the logged in user
