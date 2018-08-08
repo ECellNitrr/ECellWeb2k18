@@ -50,9 +50,6 @@ submit_btn.addEventListener('click', (e) => {
 
             // style the button
             submit_btn.disabled = false
-            // submit_btn.style.width = 'auto'
-            // submit_btn.style.borderRadius = '0'
-            // submit_btn.style.background = 'green'
             TweenMax.to("#submit_btn", 1, {
                 width: 'auto',
                 borderRadius: 0,

@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 
 
-class Msg(models.Model):
+class WebMsg(models.Model):
     name = models.CharField(max_length=256)
     email = models.CharField(max_length=256)
     msg = models.TextField()

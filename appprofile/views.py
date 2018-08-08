@@ -24,7 +24,7 @@ from server.decorators.login import login_req
 from decouple import config
 from django.conf import settings as conf_settings
 
-from .models import Msg
+from .models import WebMsg
 
 	
 def homepage(request):
@@ -33,7 +33,7 @@ def homepage(request):
 
 def message(request):
 	post = json.loads(request.body)
-	msg = Msg(name=post['name'],email=post['email'],msg=post['msg'])
+	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
 	print(post)
 	msg.save()
 
