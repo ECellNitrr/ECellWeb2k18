@@ -48,12 +48,17 @@ submit_btn.addEventListener('click', (e) => {
         .then(data => {
             console.log(data)
 
+            name.value=''
+            email.value=''
+            msg.value=''
+
             // style the button
             submit_btn.disabled = false
             TweenMax.to("#submit_btn", 1, {
                 width: 'auto',
                 borderRadius: 0,
-                background: 'green'
+                background: 'green',
+                boxShadow: '0 0 30px green'
             });
             setTimeout(() => {
             submit_btn.innerHTML = 'successfully submitted'

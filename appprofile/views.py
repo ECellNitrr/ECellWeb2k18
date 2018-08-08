@@ -200,8 +200,10 @@ def weblogin(request):
 def webregister(request):
 
 	if request.method == 'POST':
-		email = request.POST.get('email')
-		password = request.POST.get('password')
+		req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
+		print(req_data)
 
 		if User.objects.filter(email=email).exists():
 			return JsonResponse({'success':False,'message':'Email already exists'})
@@ -211,7 +213,7 @@ def webregister(request):
 			user.email = email
 			user.set_password(password)
 			user.save()
-			user.profile.contact_no = '2123'
+			user.profile.contact_no = req_data['contactno']
 			
 
 			user.profile.save()
