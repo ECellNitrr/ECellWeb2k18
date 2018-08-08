@@ -3,31 +3,31 @@
     <i class="fa fa-user fa-2x"></i>
 </div>
 
-<!-- <div class="center_the_modal">
-    <div class="user_modal" id="login_modal">
+<div class="center_the_modal" id="login_modal">
+    <div class="user_modal">
         <h2>Login to E-Cell NIT Raipur</h2>
         <form>
-            {% csrf_token %}
             <input type="text" id="lemail" placeholder="Email" required>
             <input type="password" id="lpass" placeholder="Password" required>
-            <button id="login_btn">login</button>
+            <button class="modal_btn" id="login_btn">login</button>
+            <button class="modal_btn" id="login_modal_close_btn">close</button>
             <p class="mt-4">Dont have an account?
                 <button class="alternative_btn">Signup</button>
             </p>
         </form>
     </div>
-</div> -->
+</div>
 
-<div class="center_the_modal">
-    <div class="user_modal" id="login_modal">
+<div class="center_the_modal" id="signup_modal">
+    <div class="user_modal">
         <h2>Signup to E-Cell NIT Raipur</h2>
         <form>
-            {% csrf_token %}
             <input type="text" id="semail" placeholder="Email">
             <input type="text" id="scontactno" placeholder="Contact no.">
             <input type="password" id="spassword1" placeholder="Password">
             <input type="password" id="spassword2" placeholder="Retype Password">
-            <button id="signup_btn">signup</button>
+            <button class="modal_btn" id="login_btn">login</button>
+            <button class="modal_btn" id="signup_modal_close_btn">close</button>
             <p class="mt-4">Already have an account?
                 <button class="alternative_btn">Login</button>
             </p>

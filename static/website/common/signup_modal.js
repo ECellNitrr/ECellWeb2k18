@@ -1,23 +1,31 @@
 var signup_trigger = document.querySelector('#signup_trigger')
 var signup_btn = document.querySelector('#signup_btn')
-var center_the_modal = document.querySelector('.center_the_modal')
-var modal_h2 = document.querySelector('.center_the_modal h2')
+var modal_h2 = document.querySelector('.signup_modal h2')
 var body = document.querySelector('body')
 var semail = document.querySelector('#semail')
 var spassword1 = document.querySelector('#spassword1')
 var spassword2 = document.querySelector('#spassword2')
 var scontactno = document.querySelector('#scontactno')
+var login_modal = document.querySelector('#login_modal')
+var signup_modal = document.querySelector('#signup_modal')
+var signup_modal_close_btn = document.querySelector('#signup_modal_close_btn')
 
-body.style['overflow'] = 'hidden'
-body.style.height = '100vh'
-center_the_modal.style.top = 0
+signup_modal_close_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    body.style['overflow'] = 'none'
+    body.style.height = 'auto'
+    signup_modal.style.top = '-100vh'
+})
 
 signup_trigger.addEventListener('click', (e) => {
     e.preventDefault()
     console.log('signup triggered')
+    login_modal.style.top = '-100vh'
+
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
-    center_the_modal.style.top = 0
+    signup_modal.style.top = 0
 })
 
 signup_btn.addEventListener('click', (e) => {
@@ -59,9 +67,10 @@ commence_signup = () => {
 signup_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
+    signup_modal.style.top = '-100vh'
+
     login_user.innerText = semail.value.split('@')[0]
     localStorage.ecell_nitrr_user = semail.value
-    center_the_modal.style.top = '-100vh'
 }
 
 signup_failure_hander = () => {

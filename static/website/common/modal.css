@@ -32,7 +32,7 @@
     font-size: 25px;
 }
 
-.user_modal form>button {
+.modal_btn {
     background: black;
     margin-top: 30px;
     border: 2px solid black !important;
@@ -42,12 +42,6 @@
     color: white;
     outline: none;
     font-weight: bold;
-}
-
-
-.user_modal button:hover {
-    background: white;
-    color: black;
 }
 
 .alternative_btn {
@@ -79,4 +73,10 @@
     text-transform: uppercase;
     font-size: 20px;
     align-self: center;
+}
+
+#login_modal_close_btn,#signup_modal_close_btn {
+    background: white;
+    border: 2px solid rgb(211, 9, 9) !important;
+    color: rgb(211, 9, 9);
 }

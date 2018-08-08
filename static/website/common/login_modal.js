@@ -2,17 +2,29 @@ var login_trigger = document.querySelector('#login_trigger')
 var login_btn = document.querySelector('#login_btn')
 var lemail = document.querySelector('#lemail')
 var lpass = document.querySelector('#lpass')
-var center_the_modal = document.querySelector('.center_the_modal')
-var modal_h2 = document.querySelector('.center_the_modal h2')
+var modal_h2 = document.querySelector('.login_modal h2')
 var body = document.querySelector('body')
 var login_user = document.querySelector('#login_user span')
-// var login_user_div = document.querySelector('#login_user')
+var signup_modal = document.querySelector('#signup_modal')
+var login_modal = document.querySelector('#login_modal')
+var login_modal_close_btn = document.querySelector('#login_modal_close_btn')
+
+
+login_modal_close_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    body.style['overflow'] = 'none'
+    body.style.height = 'auto'
+    login_modal.style.top = '-100vh'
+})
 
 login_trigger.addEventListener('click', (e) => {
     e.preventDefault()
+    signup_modal.style.top = '-100vh'
+
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
-    center_the_modal.style.top = 0
+    login_modal.style.top = 0
 })
 
 login_btn.addEventListener('click', (e) => {
@@ -55,9 +67,10 @@ commence_login = () => {
 login_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
+    login_modal.style.top = '-100vh'
+
     login_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value
-    center_the_modal.style.top = '-100vh'
 }
 
 login_failure_hander = () => {
@@ -67,3 +80,4 @@ login_failure_hander = () => {
     lpass.value = ''
     lpass.removeAttribute.style
 }
+
