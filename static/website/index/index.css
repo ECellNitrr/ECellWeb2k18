@@ -436,8 +436,8 @@ html {
 }
 
 /* contact section */
-input,
-textarea {
+#contact input,
+#contact textarea {
     border: 2px solid black;
     padding: 10px;
     outline: none;
@@ -493,8 +493,8 @@ textarea {
         margin: 20px 10px
     }
     
-    input,
-    textarea {
+    #contact input,
+    #contact textarea {
         width: 100%;
     }
 }
