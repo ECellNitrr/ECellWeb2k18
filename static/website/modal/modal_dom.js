@@ -24,10 +24,14 @@ var modal_h2 = document.querySelector('.signup_modal h2')
 var login_modal_close_btn = document.querySelector('#login_modal .close_btn')
 var signup_modal_close_btn = document.querySelector('#signup_modal .close_btn')
 var logout_modal_close_btn = document.querySelector('#logout_modal .close_btn')
+// login vs signup
+var l2s_btn = document.querySelector('#login_modal .alternative_btn')
+var s2l_btn = document.querySelector('#signup_modal .alternative_btn')
 
 // miscellaneous
 var body = document.querySelector('body')
 var loggedin_user = document.querySelector('#login_user span') // used to show the logged in user
+var loggedin_user_box = document.querySelector('#login_user')
 var modal_bg = document.querySelectorAll('.center_the_modal')
 var user_modal = document.querySelector('.user_modal')
 

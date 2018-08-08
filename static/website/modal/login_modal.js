@@ -7,8 +7,29 @@ login_modal_close_btn.addEventListener('click', (e) => {
     login_modal.style.top = '-100vh'
 })
 
+// alternative
+l2s_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    // hide other models
+    modal_bg.forEach(m => m.style.top = "-100vh")
+    // show signup model
+    signup_modal.style.top = 0
+})
+
+// if the username is clicked
+loggedin_user_box.addEventListener('click', e=> {
+    login_process(e)
+    console.log('logged in user name')
+})
+
 // show login model
 login_trigger.addEventListener('click', (e) => {
+    login_process(e)
+})
+
+// login process
+login_process = (e) => {
     e.preventDefault()
     // if logged in show logout modal
     if (localStorage.ecell_nitrr_user) {
@@ -16,13 +37,13 @@ login_trigger.addEventListener('click', (e) => {
         return
     }
     // hide other models
-    modal_bg.forEach(m=> m.style.top="-100vh")
+    modal_bg.forEach(m => m.style.top = "-100vh")
     // show the model
 
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
     login_modal.style.top = 0
-})
+}
 
 // do login req
 login_btn.addEventListener('click', (e) => {
@@ -67,7 +88,7 @@ login_success_handler = () => {
     body.style.height = 'auto'
     login_modal.style.top = '-100vh'
     // change btn text from login to logout
-    login_trigger.innerText='logout'
+    login_trigger.innerText = 'logout'
     // store the cookie
     loggedin_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value

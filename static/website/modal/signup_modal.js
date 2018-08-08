@@ -7,6 +7,16 @@ signup_modal_close_btn.addEventListener('click', (e) => {
     signup_modal.style.top = '-100vh'
 })
 
+// alternative
+s2l_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    // hide other models
+    modal_bg.forEach(m => m.style.top = "-100vh")
+    // show signup model
+    login_modal.style.top = 0
+})
+
 // show signup modal
 signup_trigger.addEventListener('click', (e) => {
     e.preventDefault()
