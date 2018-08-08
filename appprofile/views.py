@@ -24,9 +24,21 @@ from server.decorators.login import login_req
 from decouple import config
 from django.conf import settings as conf_settings
 
+from .models import Msg
+
 	
 def homepage(request):
     return render(request, 'website/index.html')
+
+
+def message(request):
+	post = json.loads(request.body)
+	msg = Msg(name=post['name'],email=post['email'],msg=post['msg'])
+	print(post)
+	msg.save()
+
+	return JsonResponse({'success':True,'message':'message recieved by server'})
+
 
 @csrf_exempt
 def applogin(request, *args, **kwargs):

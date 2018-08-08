@@ -5,6 +5,13 @@ from django.dispatch import receiver
 
 
 
+class Msg(models.Model):
+    name = models.CharField(max_length=256)
+    email = models.CharField(max_length=256)
+    msg = models.TextField()
+
+    def __str__(self):
+        return self.name
 
 # Profile Model
 class Profile(models.Model):
@@ -49,8 +56,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
-
-
 
