@@ -1,10 +1,14 @@
+<div id="login_user">
+    <span>anonymous</span><i class="fa fa-user fa-2x"></i>
+</div>
+
 <div class="center_the_modal">
     <div class="user_modal" id="login_modal">
         <h2>Login to E-Cell NIT Raipur</h2>
         <form>
             {% csrf_token %}
-            <input type="text" id="lemail" placeholder="Email">
-            <input type="password" id="lpass" placeholder="Password">
+            <input type="text" id="lemail" placeholder="Email" required>
+            <input type="password" id="lpass" placeholder="Password" required>
             <button id="login_btn">login</button>
             <p class="mt-4">Dont have an account? <button class="alternative_btn">Signup</button>  </p>
         </form>

@@ -90,8 +90,13 @@
     <h1>from the layout.html</h1>
     {% endblock content %}
 
+    <!-- react js -->
+    <script src="https://fb.me/react-0.14.3.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.min.js"></script>
+
     <!-- modal -->
     {% include 'website/modal.html' %}
+    <div id="modal"></div>
     <link rel="stylesheet" href="{% static 'website/common/modal.css' %}">
     <script src="{% static 'website/common/login_modal.js' %}"></script>
 
@@ -119,9 +124,15 @@
         wow.init();
     </script>
 
-
     <!-- custom js -->
     {% block js %}{% endblock js %}
+
+    <!-- urgent js -->
+    <script>
+        if(localStorage.ecell_nitrr_user) {
+            login_user.innerText = localStorage.ecell_nitrr_user.split('@')[0]
+        }
+    </script>
 </body>
 
 </html>

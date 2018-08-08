@@ -21,8 +21,6 @@
 }
 
 .user_modal input {
-    /* background: #000 !important; */
-    /* color: white !important; */
     text-align: center;
     width: 350px;
 }
@@ -35,11 +33,12 @@
 
 .user_modal form>button {
     background: black;
-    border: 2px solid black !important;
     margin-top: 30px;
-    padding: 10px 15px;
+    border: 2px solid black !important;
+    /* border-radius: 2px; */
+    padding: 7px 15px;
+    border: none;
     color: white;
-    border: 2px solid white;
     outline: none;
     font-weight: bold;
 }
@@ -59,4 +58,23 @@
 
 .alternative_btn:focus {
     outline: none;
+}
+
+#login_user {
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#login_user i {
+    border: 2px solid black;
+    padding: 5px 10px;
+    margin-left: 15px;
+}
+
+#login_user span {
+    text-transform: uppercase;
+    font-size: 20px;
+    align-self: center;
 }
