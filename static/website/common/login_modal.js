@@ -1,13 +1,4 @@
-var login_trigger = document.querySelector('#login_trigger')
-var login_btn = document.querySelector('#login_btn')
-var lemail = document.querySelector('#lemail')
-var lpass = document.querySelector('#lpass')
-var modal_h2 = document.querySelector('.login_modal h2')
-var body = document.querySelector('body')
-var login_user = document.querySelector('#login_user span')
-var signup_modal = document.querySelector('#signup_modal')
-var login_modal = document.querySelector('#login_modal')
-var login_modal_close_btn = document.querySelector('#login_modal_close_btn')
+
 
 
 login_modal_close_btn.addEventListener('click', (e) => {
@@ -80,4 +71,3 @@ login_failure_hander = () => {
     lpass.value = ''
     lpass.removeAttribute.style
 }
-

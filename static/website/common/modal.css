@@ -75,7 +75,7 @@
     align-self: center;
 }
 
-#login_modal_close_btn,#signup_modal_close_btn {
+.close_btn {
     background: white;
     border: 2px solid rgb(211, 9, 9) !important;
     color: rgb(211, 9, 9);
