@@ -67,7 +67,9 @@ login_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
     login_modal.style.top = '-100vh'
-
+    // change btn text from login to logout
+    login_trigger.innerText='logout'
+    // store the cookie
     loggedin_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value
 }

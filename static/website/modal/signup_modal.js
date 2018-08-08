@@ -61,7 +61,9 @@ signup_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
     signup_modal.style.top = '-100vh'
-
+    // change btn text from login to logut
+    login_trigger.innerText='logout'
+    // store the cookie
     loggedin_user.innerText = semail.value.split('@')[0]
     localStorage.ecell_nitrr_user = semail.value
 }
