@@ -12,8 +12,7 @@ signup_trigger.addEventListener('click', (e) => {
     e.preventDefault()
     console.log('signup triggered')
     // hide other models
-    login_modal.style.top = '-100vh'
-    logout_modal.style.top = '-100vh'
+    modal_bg.forEach(m=> m.style.top="-100vh")
     // show the model
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'

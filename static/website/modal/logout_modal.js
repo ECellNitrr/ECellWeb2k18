@@ -1,7 +1,6 @@
 show_logout_modal = () => {
     // hide other modals
-    login_modal.style.top = '-100vh'
-    signup_modal.style.top = '-100vh'
+    modal_bg.forEach(m=> m.style.top="-100vh")    
     // show modal
     logout_modal.style.top = 0
     body.style.overflow = 'hidden'

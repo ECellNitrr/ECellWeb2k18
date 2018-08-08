@@ -28,3 +28,17 @@ var logout_modal_close_btn = document.querySelector('#logout_modal .close_btn')
 // miscellaneous
 var body = document.querySelector('body')
 var loggedin_user = document.querySelector('#login_user span') // used to show the logged in user
+var modal_bg = document.querySelectorAll('.center_the_modal')
+var user_modal = document.querySelector('.user_modal')
+
+// click on modal_bg to disable disable the modal
+modal_bg.forEach(bg=>bg.addEventListener('click',(e) => {
+    if(e.target != bg) {
+        return
+    }
+    // hide other models
+    modal_bg.forEach(m=> m.style.top="-100vh")
+    // show the model
+    body.style['overflow'] = 'none'
+    body.style.height = 'auto'
+}))
