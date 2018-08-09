@@ -1,8 +1,8 @@
 
-register_stuff = () => {
+register_stuff = (data) => {
     var rbtns = document.querySelectorAll('.register_btn')
     // color based on event registration
-        
+    color_based_on_previous_reg(data)
     // attach event listeners
     rbtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -34,7 +34,7 @@ register_event = (eid, btn) => {
         .then(data => {
             if (data.success) {
                 console.log(data, 'success event r')
-                localStorage[localStorage.ecell_nitrr_user + eid] = true
+                localStorage.eids.push
 
                 btn.innerText = 'Registered'
                 btn.style.border = '2px solid green'
@@ -48,7 +48,7 @@ register_event = (eid, btn) => {
         })
         .catch(e => {
             btn.innerText = 'err plz retry'
-            console.error(e)            
+            console.error(e)
         })
 }
 
@@ -64,7 +64,7 @@ giveup_event = (eid, btn) => {
                 btn.style.border = '2px solid black'
                 btn.style.background = 'transparent'
                 btn.style.color = 'black'
-                btn.style.boxShadow = '0'
+                btn.style.boxShadow = 'none'
             } else {
                 btn.innerText = 'err plz retry'
                 console.log(data, 'retry')
@@ -72,6 +72,21 @@ giveup_event = (eid, btn) => {
         })
         .catch(e => {
             btn.innerText = 'err plz retry'
-            console.error(e) 
+            console.error(e)
         })
+}
+
+color_based_on_previous_reg = (data) => {
+    data.Events.forEach(event => {
+        if (localStorage[localStorage.ecell_nitrr_user + event.id]) {
+            // get the appropriate btn
+            var btn = document.querySelector(`[data-eid="${event.id}"]`)
+            // style btn
+            btn.innerText = 'Registered'
+            btn.style.border = '2px solid green'
+            btn.style.background = 'green'
+            btn.style.color = 'white'
+            btn.style.boxShadow = '0 0 25px green'
+        }
+    })
 }

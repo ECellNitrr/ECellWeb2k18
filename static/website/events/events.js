@@ -46,7 +46,7 @@ $(function () {
             }
         })
         // to add event listener
-        register_stuff()
+        register_stuff(data)
     })
 })
 
