@@ -27,7 +27,7 @@ submit_btn.addEventListener('click', (e) => {
     var csrf = document.querySelector('input[name=csrfmiddlewaretoken]')
 
     console.log('testing fetch')
-    submit_btn.innerHTML = '<i class="fa fa-2x fa-spinner fa-spin"></i>'
+    submit_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>'
     submit_btn.style.width = '75px'
     submit_btn.style.borderRadius = '10px'
     submit_btn.disabled = true

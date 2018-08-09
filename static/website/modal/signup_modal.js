@@ -38,10 +38,10 @@ signup_btn.addEventListener('click', (e) => {
 
 commence_signup = () => {
     console.log('fetching user')
-    signup_btn.innerHTML = '<i class="fa fa-2x fa-spinner fa-spin"></i>';
+    signup_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
     signup_btn.disabled = true
 
-    fetch('register/', {
+    fetch('/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'

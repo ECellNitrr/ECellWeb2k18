@@ -30,10 +30,6 @@ from .models import WebMsg
 def homepage(request):
     return render(request, 'website/index.html')
 
-def event_registration(request):
-	return render(request, 'website/registration.html')
-
-
 def message(request):
 	post = json.loads(request.body)
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])

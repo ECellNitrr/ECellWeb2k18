@@ -11,7 +11,9 @@ $(function () {
                     <div class=article-layout>
                         <div class=text>
                             <h2 class="">${event.name}</h2>
-                            <p class="">${event.details}</p>
+                            <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
+                            <p>${event.details}</p>
+                            <button class="register_btn" data-eid=${event.id}>Register</button>
                         </div>
                         <div class="img ">
                             <img src='${event.cover_pic}' alt=""> </div>
@@ -28,7 +30,9 @@ $(function () {
                     <div class=article-layout>
                         <div class=text>
                             <h2 class="">${event.name}</h2>
-                            <p class="">${event.details}</p>
+                            <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
+                            <p>${event.details}</p>
+                            <button class="register_btn" data-eid=${event.id}>Register</button>
                         </div>
                         <div class="img ">
                             <img src='${event.cover_pic}' alt=""> </div>
@@ -41,5 +45,8 @@ $(function () {
                 `)
             }
         })
+        // to add event listener
+        register_stuff()
     })
 })
+

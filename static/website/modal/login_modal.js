@@ -54,10 +54,10 @@ login_btn.addEventListener('click', (e) => {
 commence_login = () => {
     console.log('login req sent')
     console.log(lemail.value, lpass.value)
-    login_btn.innerHTML = '<i class="fa fa-2x fa-spinner fa-spin"></i>';
+    login_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
     login_btn.disabled = true
 
-    fetch('login/', {
+    fetch('/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
