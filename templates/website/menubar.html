@@ -10,6 +10,7 @@
             <a href=/>HOME</a>
             <a href=/event>EVENTS</a>
             <a href=/team>TEAM</a>
+            <a href="/event_registration">REGISTRATION</a>
             <a href=/sponsor>SPONSORS</a>
             <a href=/speaker>SPEAKERS</a>
             <a href=/mentor>MENTORS</a>
@@ -31,12 +32,14 @@
                 <img src="{% static 'website/img/logo-white.png' %}" alt="">
             </div>
             <div class="d-flex flex-column justify-content-center">
-                <a class='menu__item my-2' href=/>
-                HOME</a>
+                <a class='menu__item my-2' href=/> HOME
+                </a>
                 <a class='menu__item my-2' href=/event>
                     EVENTS</a>
                 <a class='menu__item my-2' href=/team>
                     TEAM</a>
+                <a class='menu__item my-2' href=/event_registration>
+                    REGISTRATION</a>
                 <a class='menu__item my-2' href=/sponsor>
                     SPONSORS</a>
                 <a class='menu__item my-2' href=/speaker>
@@ -55,16 +58,19 @@
     .menu__inner img {
         width: 100px;
         height: 100px;
-        margin: 50px ;
+        margin: 50px;
     }
+
     .menu__inner i {
         display: inline-block;
         margin-right: 15px;
     }
+
     .user-account {
         margin-top: 50px;
     }
-    .user-account button{
+
+    .user-account button {
         padding: 8px;
         border: 2px solid white;
         color: white;
@@ -73,11 +79,13 @@
         font-weight: bold;
         outline: none;
     }
-    .user-account button:hover{
+
+    .user-account button:hover {
         background: white;
         color: black !important;
     }
-    .sidebar_img{
+
+    .sidebar_img {
         margin-left: -20px;
     }
-    </style>
+</style>

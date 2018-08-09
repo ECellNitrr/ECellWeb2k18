@@ -21,3 +21,8 @@ html {
     box-shadow: 0 0 35px -10px black;
 }
 
+@media(max-width: 700px) {
+    #map-frame{
+        box-shadow: none;
+    }
+}

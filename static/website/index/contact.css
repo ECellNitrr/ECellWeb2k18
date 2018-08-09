@@ -31,7 +31,7 @@
 @media (max-width:700px) {
     #contact {
         text-align: center;
-        margin-top: 80px
+        width: 95%;
     }
     #contact h2 {
         font-weight: 700;
