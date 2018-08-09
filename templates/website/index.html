@@ -6,10 +6,20 @@
 {% block title %}
 <title>Home | E-Cell NIT Raipur</title>
 {% endblock title %}
-<!-- css -->
+<!-- common css -->
 {% block css %}
+<link rel="stylesheet" href="{% static 'website/common/animate.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/common/footer.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}">
+<!-- page specific css -->
 <link rel="stylesheet" href="{% static 'website/index/index.css' %}">
-<link rel="stylesheet" href="{% static 'website/common/animate.css' %}"> {% endblock css %}
+<link rel="stylesheet" href="{% static 'website/index/header.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/intro.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/about.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/vision.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/contact.css' %}">
+{% endblock css %}
+
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/index/index.js' %}"></script>
@@ -106,7 +116,7 @@
         </div>
     </div>
     <!-- row end -->
-    <div class="text-center mt-5">
+    <!-- <div class="text-center mt-5">
         <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
         <div id=social-media>
             <a class="" href=https://www.facebook.com/ecellnitrr/>
@@ -122,7 +132,7 @@
             <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
             </a>
         </div>
-    </div>
+    </div> -->
 </div>
 
 {% endblock content %}
