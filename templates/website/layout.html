@@ -15,6 +15,10 @@
     {% block keywords %} keywords goes here {% endblock keywords %}
     <!-- meta title -->
     {% block title %} title goes here{% endblock title %}
+    <!-- loader js and css -->
+    <link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
+    <script src="{% static 'website/common/anime.min.js' %}"></script>
+
     <!-- spinner css -->
     <link rel="stylesheet" href="{% static 'website/common/spinner.css' %}">
     <!-- fontawesome css-->
@@ -26,9 +30,6 @@
     <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
     <!-- custom css -->
     {% block css %} css goes here {% endblock css %}
-    <!-- loader js and css -->
-    <link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
-    <script src="{% static 'website/common/anime.min.js' %}"></script>
     <style>
         html {
             width: 100vw !important;
@@ -72,6 +73,7 @@
 
     <!-- menubar -->
     {% include 'website/menubar.html' %}
+
     <!-- header -->
     <img src="{% static 'website/img/logo.png' %}" alt="" id="logo-img"> {% block header %}
     <header>
@@ -113,6 +115,7 @@
     <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
     <script src="{% static 'website/menubar/demo4.js' %}"></script>
 
+
     <!-- wow js -->
     <script src="{% static 'website/common/wow.js' %}"></script>
     <script>
@@ -123,15 +126,16 @@
         wow.init();
     </script>
 
+
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
     <!-- urgent js -->
     <script>
-        if(localStorage.ecell_nitrr_user) {
+        if (localStorage.ecell_nitrr_user) {
             loggedin_user.innerText = localStorage.ecell_nitrr_user.split('@')[0]
             login_trigger.innerText = 'logout'
-        }else {
+        } else {
             loggedin_user.innerText = 'Anonymous'
         }
     </script>
