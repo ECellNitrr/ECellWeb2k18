@@ -24,7 +24,7 @@ from server.decorators.login import login_req
 from server.decorators.decoder import decoder
 from decouple import config
 from django.conf import settings as conf_settings
-
+from social_django.models import UserSocialAuth
 from .models import WebMsg
 
 
@@ -273,7 +273,7 @@ def send_otp(request, *args, **kwargs):
 
 		Atkey = config('Atkey')
 
-		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Rushikesh'
+		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		otpobj =  sendotp.sendotp(Atkey,Msg)
 		otp = otpobj.generateOtp()
 		otp = int(otp)
@@ -328,53 +328,32 @@ def retry_otp(request, *args, **kwargs):
 	return JsonResponse({'success':True,'msg':'OTP sent through call'})
 
 @csrf_exempt
-@login_req
+@decoder
 def verify_otp(request, *args, **kwargs):
 
-
-
 	current_userid = kwargs['user_id']
-
 	current_user = User.objects.get(id=current_userid)
-
 	profile = Profile.objects.get(user=current_user)
-
 	contact_no = profile.contact_no
-
 	contact_no = str(contact_no)
-
 	contact_no = int(contact_no)
 	totp = profile.otp
 	totp = str(totp)
 
-
-	#Atkey = config('Atkey')
-	#Msg = 'Your otp is {{otp}}.'
-
 	if request.method == 'POST':
 
 		otp = request.POST.get('otp')
-
 		if(totp == otp):
 
 			profile = Profile.objects.get(user=current_user)
 			profile.contact_no = str(contact_no)
 			profile.status = True
-
 			profile.save()
 			return JsonResponse({'success':True,'msg':'OTP verified successfully'})
 		else:
 
 			return JsonResponse({'success':False,'msg':'Invalid OTP'})
 
-
-
-
-
-	#return render(request,'otp.html')
-
-
-from social_django.models import UserSocialAuth
 
 
 def social_settings(request):
@@ -402,15 +381,6 @@ def social_settings(request):
 
 		})
 
-	#print(facebook_login.extra_data)
-	#print(user)
-
-	#print(facebook_login)
-
-
-	#can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
-	#return render(request, 'settings.html',{'facebook_login':facebook_login,
-											 #'can_disconnect':can_disconnect})
 
 @login_req
 def password(request):
