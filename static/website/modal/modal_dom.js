@@ -31,9 +31,13 @@ var s2l_btn = document.querySelector('#signup_modal .alternative_btn')
 // miscellaneous
 var body = document.querySelector('body')
 var loggedin_user = document.querySelector('#loggedin_user span') // used to show the logged in user
-var loggedin_user_box = document.querySelector('#login_user')
+var loggedin_user_box = document.querySelector('#loggedin_user')
 var modal_bg = document.querySelectorAll('.center_the_modal')
 var user_modal = document.querySelector('.user_modal')
+
+// validation
+var email_regex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+var phno_regex = /^[0-9]{10}$/
 
 // click on modal_bg to disable disable the modal
 modal_bg.forEach(bg=>bg.addEventListener('click',(e) => {
