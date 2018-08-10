@@ -94,7 +94,7 @@ def appregister(request):
 		profile_form = UserProfileInfoForm(request.POST,request.FILES)
 		print("outside if\n\n\n\n")
 		if user_form.is_valid() and profile_form.is_valid():
-			print("inside if.\n.\n.\n.\n.")
+			print(request.POST)
 			#Checking Duplicate records of Email or contact no
 			conno = profile_form.cleaned_data.get('contact_no')
 			if(Profile.objects.filter(contact_no=conno).exists()):
@@ -303,7 +303,7 @@ def send_otp(request, *args, **kwargs):
 	return render(request,'phone.html')
 
 @csrf_exempt
-@login_req
+@decoder
 def retry_otp(request, *args, **kwargs):
 	current_userid = kwargs['user_id']
 
