@@ -91,4 +91,13 @@
         display: none;
     }
 
+    .user_modal {
+        width: 95vw;
+        padding: 25px 15px;
+        box-sizing: border-box;
+    }
+
+    .user_modal input {
+        width: 100%;
+    }
 }

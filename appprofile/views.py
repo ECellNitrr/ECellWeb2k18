@@ -90,9 +90,7 @@ def appregister(request):
 
 	registered = False
 	if request.method == "POST":
-		#print(request.POST)
 		print(request.body)
-		#print(request.data)
 
 		req_data = json.loads(request.body)
 		email = req_data['email']
@@ -311,7 +309,7 @@ def send_otp(request, *args, **kwargs):
 	return render(request,'phone.html')
 
 @csrf_exempt
-@login_req
+@decoder
 def retry_otp(request, *args, **kwargs):
 	current_userid = kwargs['user_id']
 
