@@ -7,6 +7,8 @@ import jwt
 import json
 from functools import wraps
 
+from django.conf import settings as conf_settings
+
 def decoder(function):
     def wrap(request, *args, **kwargs):
         authentication_header_prefix = 'Token'
@@ -22,19 +24,19 @@ def decoder(function):
 
         elif len(auth_header) > 2:
             return JsonResponse({'success':False,'msg':'Error at auth_header3'})
-
+        print("stage 1")
         prefix = auth_header[0].decode('utf-8')
         token = auth_header[1].decode('utf-8')
-
+        print("Stage 2")
         if prefix.lower() != auth_header_prefix:
             return JsonResponse({'success':False,'msg':'Error at auth_header_prefix'})
-
+        print("Stage 3")
         try:
-            payload = jwt.decode(token, settings.SECRET_KEY)
+            payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
             msg = 'Invalid authentication. Could not decode token.'
             return JsonResponse({'success':False,'message':msg})
-
+        print("Stage 4")
         try:
             user = Profile.objects.get(pk=payload['id'])
         except Profile.DoesNotExist:
