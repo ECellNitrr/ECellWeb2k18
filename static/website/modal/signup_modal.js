@@ -13,7 +13,7 @@ signup_modal_close_btn.addEventListener('click', (e) => {
 
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    signup_modal.style.top = '-200vh'
+    signup_modal.style.top = '-125vh'
 })
 
 // alternative
@@ -21,7 +21,7 @@ s2l_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-200vh")
+    modal_bg.forEach(m => m.style.top = "-125vh")
     // show signup model
     login_modal.style.top = 0
 })
@@ -34,7 +34,7 @@ wsignup_trigger.addEventListener('click', (e) => {
 
 show_signup_modal = () => {
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-200vh")
+    modal_bg.forEach(m => m.style.top = "-125vh")
     // show the model
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
@@ -103,7 +103,7 @@ commence_signup = () => {
 signup_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    signup_modal.style.top = '-200vh'
+    signup_modal.style.top = '-125vh'
     // show the loggin username
     loggedin_user.innerText = semail.value.split('@')[0]
     // change btn text from login to logut

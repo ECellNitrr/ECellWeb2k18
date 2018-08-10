@@ -13,7 +13,7 @@ login_modal_close_btn.addEventListener('click', (e) => {
 
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    login_modal.style.top = '-200vh'
+    login_modal.style.top = '-125vh'
 })
 
 // alternative go to signup
@@ -21,7 +21,7 @@ l2s_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-200vh")
+    modal_bg.forEach(m => m.style.top = "-125vh")
     // show signup model
     signup_modal.style.top = 0
 })
@@ -45,7 +45,7 @@ show_login_modal = (e) => {
         return
     }
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-200vh")
+    modal_bg.forEach(m => m.style.top = "-125vh")
     // show the model
 
     body.style['overflow'] = 'hidden'
@@ -110,7 +110,7 @@ commence_login = () => {
 login_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    login_modal.style.top = '-200vh'
+    login_modal.style.top = '-125vh'
     // show the loggin username
     loggedin_user.innerText = semail.value.split('@')[0]
     // change btn text from login to logout

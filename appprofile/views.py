@@ -36,6 +36,12 @@ def homepage(request):
 def gallerypage(request):
 	return render(request, 'website/gallery.html')
 
+def privacy_policy_page(request):
+	return render(request, 'website/privacy_policy.html')
+
+def terms_page(request):
+	return render(request, 'website/terms.html')
+
 def message(request):
 	post = json.loads(request.body)
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
@@ -191,8 +197,6 @@ def appregister(request):
 		print(otp)
 
 
-
-
 		payload = {
 			'id' : user.id,
 			'email': user.email,
@@ -304,12 +308,32 @@ def logout_view(request):
 						 'message':'User logged out successsfully'})
 
 
-
+"""
 
 @csrf_exempt
 @decoder
+
 def send_otp(request, *args, **kwargs):
 	print("REACHED HERE")
+
+
+	if request.method =='POST':
+
+		print("post request done")
+		#req_data = json.loads(request.body)
+		#print(req_data)
+		current_userid = kwargs['user_id']
+		print(current_userid)
+		current_user = User.objects.get(id=current_userid)
+
+
+		contact_no = json.loads(request.body)['contact_no']
+		contact_no = str(91)+str(contact_no)
+		contact_no = int(contact_no)
+		print('otp not printed')
+		print(contact_no)
+		Atkey = config('Atkey')
+
 
 		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		# otpobj =  sendotp.sendotp(Atkey,Msg)
@@ -317,6 +341,8 @@ def send_otp(request, *args, **kwargs):
 		# otp = int(otp)
 		# print(otp)
 
+		otps = otpobj.send(contact_no,'ECellr',otp)
+		#Don't change the name 'ECellr' in above line
 		# otpobj.send(contact_no,'ECelll',otp)
 		# #Don't change the name 'ECelll' in above line
 
@@ -343,6 +369,7 @@ def send_otp(request, *args, **kwargs):
 
 
 	#return render(request,'phone.html')
+	"""
 
 @csrf_exempt
 @decoder
