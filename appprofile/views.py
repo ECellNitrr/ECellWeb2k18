@@ -103,7 +103,7 @@ def appregister(request):
 					'message':'Contact No. must be unique',
 				})
 			checkemail = profile_form.cleaned_data.get('email')
-			if(Profile.objects.filter(email=checkemail).exists()):
+			if(User.objects.filter(email=checkemail).exists()):
 				return JsonResponse({
 					'success':False,
 					'message':'email must be unique',

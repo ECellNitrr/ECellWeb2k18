@@ -14,7 +14,7 @@ class UserForm(forms.ModelForm):
 		fields = ('first_name','last_name','email', 'password')
 	def clean_email(self):
 		email = self.cleaned_data.get('email')
-		#username = self.cleaned_data.get('username')
+		
 		if email and User.objects.filter(email=email).exists():
 			return JsonResponse({
 				'success':False,
