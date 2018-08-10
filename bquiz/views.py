@@ -86,8 +86,8 @@ def submit_ans(request,id,**kwargs):
             })
         else:
             return JsonResponse({
-                'success':False,
-                'message':'Form Invalid'
+                'success': False,
+                'message': 'Form Invalid'
             })
 
     else:
@@ -97,15 +97,17 @@ def submit_ans(request,id,**kwargs):
         })
 
 @csrf_exempt
-@login_req
+# @login_req
 def get_question(request, *args, **kwargs):
     response = {}
     try: 
         response['success'] = True
+        # if Questionset.objects.filter(flag=True).exists() and request.GET.get('retryQuestion'):
         if Questionset.objects.filter(flag=True).exists():
             question_set = Questionset.objects.get(flag=True)
             if Question.objects.filter(flag=True, set=question_set).exists():
-                question = Question.objects.get(flag=True)
+                question = Question.objects.get(flag=True)                
+                # if not QuestionAcknowledge.objects.filter(user = kwargs['user_id'], question=question).exists() or request.GET.get('retryQuestion'):
                 response['message'] = Setting.objects.get(key='ON').text
                 response['isImageIncluded'] = False if question.type == 'TXT' else True
                 scheme = 'https' if request.is_secure() else 'http'
@@ -130,6 +132,9 @@ def get_question(request, *args, **kwargs):
                     acknowledge.save()
                 except Exception as e:
                     print(str(e))
+                # else:
+                #     response['success'] = True
+                #     response['message'] = Setting.objects.get(key='ANS').text
             else:
                 response['message'] = Setting.objects.get(key='OFF').text
         else:
@@ -171,6 +176,6 @@ def submit_answer(request, *args, **kwargs):
             response['success'] = True
             response['message'] = Answer.objects.get(key='ANS')
     else:
-        response['answer'] = True
+        response['success'] = True
         response['message'] = "Invalid request"
     return JsonResponse(response)

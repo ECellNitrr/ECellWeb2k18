@@ -9,5 +9,6 @@ urlpatterns = [
     #path('view/question/<int:id>/',views.view_question, name='View_question'),
     path('view/question/<int:id>/answer/',views.submit_ans, name='submit_ans'),
     path('get_question/', views.get_question, name="get_live_question"),
-    path('is_active/', views.bquiz_status, name="get_bquiz_status")
+    path('is_active/', views.bquiz_status, name="get_bquiz_status"),
+    path('submit_answer/', views.submit_answer, name="submit_answer")
 ]
