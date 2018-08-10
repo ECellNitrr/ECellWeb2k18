@@ -1,9 +1,3 @@
-var submit_btn = document.querySelector("#submit_btn")
-var name = document.querySelector('#username')
-var email = document.querySelector('input[name=email]')
-var msg = document.querySelector('textarea[name=msg]')
-var csrf = document.querySelector('input[name=csrfmiddlewaretoken]')
-
 // adjust the size of the man in the suit
 var cover = document.querySelector('.cover');
 var header = document.querySelector('header');
@@ -23,6 +17,26 @@ cover.style.height = `${innerHeight}px`;
 submit_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
+    // dom
+    var submit_btn = document.querySelector("#submit_btn")
+    var email = document.querySelector('input[name=email]')
+    var msg = document.querySelector('textarea[name=msg]')
+    var csrf = document.querySelector('input[name=csrfmiddlewaretoken]')
+
+    // validation
+    if (document.querySelector('input[name="name"]').value.length < 3) {
+        alert('please enter a proper name')
+        return
+    }
+    if (!email_regex.exec(email.value)) {
+        alert('please enter a proper email')
+        return
+    }
+    if (msg.value.length < 30) {
+        alert('message should be atleast 30 characters long')
+        return
+    }
+
     // put button on the loading state
     submit_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>'
     submit_btn.style.width = '75px'
@@ -38,7 +52,7 @@ submit_btn.addEventListener('click', (e) => {
             "X-CSRFToken": csrf.value
         },
         body: JSON.stringify({
-            'name': name.value,
+            'name': document.querySelector('input[name="name"]').value,
             'email': email.value,
             'msg': msg.value,
         })
@@ -47,7 +61,7 @@ submit_btn.addEventListener('click', (e) => {
         .then(data => {
             console.log(data)
 
-            name.value = ''
+            document.querySelector('input[name="name"]').value = ''
             email.value = ''
             msg.value = ''
 

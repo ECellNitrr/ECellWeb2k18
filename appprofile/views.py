@@ -30,6 +30,9 @@ from .models import WebMsg
 def homepage(request):
     return render(request, 'website/index.html')
 
+def gallerypage(request):
+	return render(request, 'website/gallery.html')
+
 def message(request):
 	post = json.loads(request.body)
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
