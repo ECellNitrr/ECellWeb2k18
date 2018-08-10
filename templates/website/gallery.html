@@ -1,0 +1,27 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery">
+{% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Gallery | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href='{% static "website/common/mobile_menubar.css" %}'>
+<link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+<link rel="stylesheet" href='{% static "website/common/footer.css" %}'>
+
+{% endblock css %}
+<!-- js -->
+{% block js %}
+{% endblock js %}
+<!-- content -->
+{% block content %}
+{% include 'website/spinner.html' %}
+<h2 class="text-center font-weight-bold">Gallery</h2>
+<hr>
+<div class="gallery">
+</div>
+{% endblock content %}

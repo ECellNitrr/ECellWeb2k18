@@ -52,10 +52,10 @@ setTimeout(() => {
     body.style['overflow-y']='auto'
     body.style.height='auto'
     document.querySelector('#menubar').style.display='block'
-}, 4300)
-// }, 0)    
+// }, 4300)
+}, 0)    
 
 setTimeout(()=>{
     document.querySelector('.loader').remove();
-},5000)
-// },0)
+// },5000)
+},0)

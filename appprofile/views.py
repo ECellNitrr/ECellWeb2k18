@@ -31,6 +31,9 @@ from .models import WebMsg
 def homepage(request):
     return render(request, 'website/index.html')
 
+def gallerypage(request):
+	return render(request, 'website/gallery.html')
+
 def message(request):
 	post = json.loads(request.body)
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
@@ -137,11 +140,29 @@ def appregister(request):
 			email = EmailMessage(mail_subject,message,to=[to_email])
 			email.send()
 
+<<<<<<< HEAD
 			#Everything Perfect, Success Return
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull',
+=======
+
+			payload = {
+				'id' : user.id,
+				'email': user.email,
+			}
+
+			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
+			token = jwt_token.decode('utf-8')
+			return JsonResponse({
+				'success' : True,
+				'message' : 'Registration successfull',
+				'token' : token
+>>>>>>> 648cb778c5bc7c7c0dfeddc5e72967ca7a37190a
 			})
+
+			#------------------
+		
 		else:
 				return JsonResponse({
 						'success' :False,
@@ -259,7 +280,7 @@ def send_otp(request, *args, **kwargs):
 
 		Atkey = config('Atkey')
 
-		Msg = 'Your otp is {{otp}}.'
+		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Rushikesh'
 		otpobj =  sendotp.sendotp(Atkey,Msg)
 		otp = otpobj.generateOtp()
 		otp = int(otp)

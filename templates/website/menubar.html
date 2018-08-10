@@ -10,6 +10,7 @@
             <a href=/>HOME</a>
             <a href=/event>EVENTS</a>
             <a href=/team>TEAM</a>
+            <a href="/gallery">GALLERY</a>
             <a href=/sponsor>SPONSORS</a>
             <a href=/speaker>SPEAKERS</a>
             <a href=/mentor>MENTORS</a>
@@ -37,6 +38,8 @@
                     EVENTS</a>
                 <a class='menu__item my-2' href=/team>
                     TEAM</a>
+                <a class='menu__item my-2' href=/gallery>
+                    GALLERY</a>
                 <a class='menu__item my-2' href=/sponsor>
                     SPONSORS</a>
                 <a class='menu__item my-2' href=/speaker>
@@ -47,6 +50,7 @@
             <div class="user-account">
                 <button id="login_trigger"> login</button>
                 <button id="signup_trigger">signup</button>
+                <a href="{% url 'social:begin' 'facebook' %}">Signup with facebook</a>
             </div>
         </div>
     </nav>

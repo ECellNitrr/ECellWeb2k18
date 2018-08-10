@@ -34,7 +34,7 @@ register_event = (eid, btn) => {
         .then(data => {
             if (data.success) {
                 console.log(data, 'success event r')
-                localStorage.eids.push
+                localStorage[localStorage.ecell_nitrr_user + eid] = true
 
                 btn.innerText = 'Registered'
                 btn.style.border = '2px solid green'
@@ -64,7 +64,7 @@ giveup_event = (eid, btn) => {
                 btn.style.border = '2px solid black'
                 btn.style.background = 'transparent'
                 btn.style.color = 'black'
-                btn.style.boxShadow = 'none'
+                btn.style.boxShadow = '0'
             } else {
                 btn.innerText = 'err plz retry'
                 console.log(data, 'retry')
@@ -76,17 +76,27 @@ giveup_event = (eid, btn) => {
         })
 }
 
-color_based_on_previous_reg = (data) => {
-    data.Events.forEach(event => {
-        if (localStorage[localStorage.ecell_nitrr_user + event.id]) {
-            // get the appropriate btn
-            var btn = document.querySelector(`[data-eid="${event.id}"]`)
-            // style btn
-            btn.innerText = 'Registered'
-            btn.style.border = '2px solid green'
-            btn.style.background = 'green'
-            btn.style.color = 'white'
-            btn.style.boxShadow = '0 0 25px green'
-        }
-    })
+color_based_on_previous_reg = (eventshtml) => {
+    console.log('color_based_on_previous_reg')
+    // getting list of registered events
+    fetch('/cart/')
+        .then(data => data.json())
+        .then(data => {
+            console.log(data)
+            data.events.forEach(re=> {
+                // finding id for the registered event
+                var re_id = eventshtml.Events.find(e=> e.name==re)
+                // finding the re_btn with the id found
+                var re_btn = document.querySelector(`[data-eid='${re_id.id}']`) 
+                console.log(re_btn)
+                
+                re_btn.innerText = 'Registered'
+                re_btn.style.border = '2px solid green'
+                re_btn.style.background = 'green'
+                re_btn.style.color = 'white'
+                re_btn.style.boxShadow = '0 0 25px green'
+            })
+        })
+        .catch(e => console.error(e))
+
 }

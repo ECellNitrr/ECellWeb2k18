@@ -18,9 +18,8 @@ l2s_btn.addEventListener('click', (e) => {
 })
 
 // if the username is clicked
-loggedin_user_box.addEventListener('click', e=> {
+loggedin_user_box.addEventListener('click', e => {
     login_process(e)
-    console.log('logged in user name')
 })
 
 // show login model
@@ -52,8 +51,18 @@ login_btn.addEventListener('click', (e) => {
 })
 
 commence_login = () => {
-    console.log('login req sent')
-    console.log(lemail.value, lpass.value)
+    // perform validation
+    if (!email_regex.exec(lemail.value)) {
+        alert('please enter a proper email')
+        return
+    }
+    if (lpass.value.length <8) {
+        alert('please enter a porper password')
+        return
+    }
+
+    // after validation
+    console.log('login commenced')
     login_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
     login_btn.disabled = true
 
@@ -80,7 +89,10 @@ commence_login = () => {
                 login_failure_hander()
             }
         })
-        .catch(error => console.error('fetch error', error))
+        .catch(error => {
+            console.error('fetch error', error)
+            alert('error! please refresh and try again')
+        })
 }
 
 login_success_handler = () => {
