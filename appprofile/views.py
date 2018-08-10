@@ -255,7 +255,7 @@ def logout_view(request):
 
 
 @csrf_exempt
-@decode
+@decoder
 def send_otp(request, *args, **kwargs):
 
 

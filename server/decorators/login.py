@@ -41,7 +41,7 @@ def login_req(function):
         except Profile.DoesNotExist:
             msg = 'No user matching this token was found.'
             return JsonResponse({'success':False,'message':msg})
-        if(user.profile.status!=1)
+        if(user.profile.status!=1):
             return JsonResponse({'success':False,'message':'Your Account hasn\'t been activated yet.'})
         kwargs['user_id'] = payload['id']
         user.is_active = True;
