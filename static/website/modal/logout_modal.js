@@ -14,7 +14,7 @@ logout_btn.addEventListener('click', (e) => {
     localStorage.removeItem('ecell_nitrr_user')
     loggedin_user.innerText = 'Anonymous'
     // change logout to login in btn
-    login_trigger.innerText='login'
+    wlogin_trigger.innerText='login'
     // hide the modal
     logout_modal.style.top = '-100vh'
     body.style.overflow = 'none'

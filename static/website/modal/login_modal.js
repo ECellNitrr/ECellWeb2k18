@@ -1,3 +1,12 @@
+// mobile login modal
+mlogin_trigger.addEventListener('click', (e) => {
+    e.preventDefault()
+    // close the god damn menubar in mobile
+    close_mobile_menubar()
+    // show the mobile login modal 
+    show_login_modal(e)
+})
+
 // close login modal
 login_modal_close_btn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -7,7 +16,7 @@ login_modal_close_btn.addEventListener('click', (e) => {
     login_modal.style.top = '-100vh'
 })
 
-// alternative
+// alternative go to signup
 l2s_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -17,18 +26,18 @@ l2s_btn.addEventListener('click', (e) => {
     signup_modal.style.top = 0
 })
 
-// if the username is clicked
+// if the loggedin username is clicked
 loggedin_user_box.addEventListener('click', e => {
-    login_process(e)
+    show_login_modal(e)
 })
 
-// show login model
-login_trigger.addEventListener('click', (e) => {
-    login_process(e)
+// website show login model
+wlogin_trigger.addEventListener('click', (e) => {
+    show_login_modal(e)
 })
 
 // login process
-login_process = (e) => {
+show_login_modal = (e) => {
     e.preventDefault()
     // if logged in show logout modal
     if (localStorage.ecell_nitrr_user) {
@@ -56,7 +65,7 @@ commence_login = () => {
         alert('please enter a proper email')
         return
     }
-    if (lpass.value.length <8) {
+    if (lpass.value.length < 8) {
         alert('please enter a porper password')
         return
     }
@@ -100,7 +109,7 @@ login_success_handler = () => {
     body.style.height = 'auto'
     login_modal.style.top = '-100vh'
     // change btn text from login to logout
-    login_trigger.innerText = 'logout'
+    wlogin_trigger.innerText = 'logout'
     // store the cookie
     loggedin_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value
