@@ -99,6 +99,7 @@
         font-weight: bold;
         width: 75%;
         overflow: hidden;
+        position: fixed;
     }
     #loggedin_user i {
         display: none;
