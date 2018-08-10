@@ -52,8 +52,10 @@ def applogin(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		email = request.POST.get('email')
-		password = request.POST.get('password')
+		req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
+
 		try:
 			obj = User.objects.filter(email=email)
 			username = obj[0].username
@@ -267,13 +269,14 @@ def send_otp(request, *args, **kwargs):
 
 	if request.method =='POST':
 
-
+		req_data = json.loads(request.body)
+		
 		current_userid = kwargs['user_id']
 
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = request.POST.get('contact_no')
+		contact_no = req_data['contact_no']
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
 
@@ -347,8 +350,10 @@ def verify_otp(request, *args, **kwargs):
 	totp = str(totp)
 
 	if request.method == 'POST':
+		req_data = json.loads(request.body)
+		
 
-		otp = request.POST.get('otp')
+		otp = req_data['otp']
 		if(totp == otp):
 
 			profile = Profile.objects.get(user=current_user)
