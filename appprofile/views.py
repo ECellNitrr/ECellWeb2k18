@@ -140,12 +140,6 @@ def appregister(request):
 			email = EmailMessage(mail_subject,message,to=[to_email])
 			email.send()
 
-<<<<<<< HEAD
-			#Everything Perfect, Success Return
-			return JsonResponse({
-				'success' : True,
-				'message' : 'registration successfull',
-=======
 
 			payload = {
 				'id' : user.id,
@@ -158,11 +152,10 @@ def appregister(request):
 				'success' : True,
 				'message' : 'Registration successfull',
 				'token' : token
->>>>>>> 648cb778c5bc7c7c0dfeddc5e72967ca7a37190a
 			})
 
 			#------------------
-		
+
 		else:
 				return JsonResponse({
 						'success' :False,
