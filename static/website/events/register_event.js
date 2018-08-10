@@ -34,7 +34,7 @@ register_event = (eid, btn) => {
         .then(data => {
             if (data.success) {
                 console.log(data, 'success event r')
-                localStorage.eids.push
+                localStorage[localStorage.ecell_nitrr_user + eid] = true
 
                 btn.innerText = 'Registered'
                 btn.style.border = '2px solid green'
@@ -64,7 +64,7 @@ giveup_event = (eid, btn) => {
                 btn.style.border = '2px solid black'
                 btn.style.background = 'transparent'
                 btn.style.color = 'black'
-                btn.style.boxShadow = 'none'
+                btn.style.boxShadow = '0'
             } else {
                 btn.innerText = 'err plz retry'
                 console.log(data, 'retry')
