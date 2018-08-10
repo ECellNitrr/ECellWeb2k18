@@ -127,11 +127,23 @@ def appregister(request):
 			to_email = user.email
 			email = EmailMessage(mail_subject,message,to=[to_email])
 			email.send()
-			#------------------
+
+
+			payload = {
+				'id' : user.id,
+				'email': user.email,
+			}
+
+			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
+			token = jwt_token.decode('utf-8')
 			return JsonResponse({
 				'success' : True,
-				'message' : 'registration successfull'
+				'message' : 'Registration successfull',
+				'token' : token
 			})
+
+			#------------------
+		
 		else:
 				return JsonResponse({
 						'success' :False,
@@ -252,7 +264,7 @@ def send_otp(request, *args, **kwargs):
 
 		Atkey = config('Atkey')
 
-		Msg = 'Your otp is {{otp}}.'
+		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Rushikesh'
 		otpobj =  sendotp.sendotp(Atkey,Msg)
 		otp = otpobj.generateOtp()
 		otp = int(otp)
