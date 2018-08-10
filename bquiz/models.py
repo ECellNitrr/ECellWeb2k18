@@ -60,3 +60,19 @@ class Option(models.Model):
 
     def __str__(self):
         return str(str(self.question.question) + " => " + self.option)
+
+class Setting(models.Model):
+    # Codes for B-Quiz Status checking messages
+    CHOICES = (
+        ('OFF', 'B-Quiz not active'),
+        ('ANS', 'Answer submitted'),
+        ('NAN', 'Not answered'),
+        ('ON', 'B-Quiz is live')
+    )
+    key = models.CharField(max_length=3, null=False, blank=False, choices=CHOICES)
+    text = models.CharField(max_length=100, null=False, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)
+
+    def __str__(self):
+        return str(self.key)
