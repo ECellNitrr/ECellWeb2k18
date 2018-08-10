@@ -144,11 +144,7 @@ def appregister(request):
 		p.start()
 		# send_mail(email, user)
 
-<<<<<<< HEAD
 		# #Emailing the new user for confirmation Email
-=======
-		#Emailing the new user for confirmation Email
->>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
 		# current_site = get_current_site(request)
 		# mail_subject = "Activate your Ecell account"
 		# message = render_to_string('acc_active_email.html',{
@@ -160,10 +156,7 @@ def appregister(request):
 		# to_email = user.email
 		# email = EmailMessage(mail_subject,message,to=[to_email])
 		# email.send()
-<<<<<<< HEAD
 		print('user created')
-=======
->>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
 
 		payload = {
 			'id' : user.id,
@@ -283,11 +276,11 @@ def send_otp(request, *args, **kwargs):
 		#req_data = json.loads(request.body)
 		#print(req_data)
 		current_userid = kwargs['user_id']
-
+		print(current_userid)
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = request.POST('contact_no')
+		contact_no = json.loads(request.body)['contact_no']
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
 		print('otp not printed')
