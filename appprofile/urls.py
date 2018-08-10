@@ -9,7 +9,7 @@ urlpatterns = [
     path('gallery/', views.gallerypage),
     path('applogin/',views.applogin, name='applogin'),
     path('login/',views.weblogin, name='login'),
-    url(r'^send_otp/',views.send_otp),
+    #url(r'^send_otp/',views.send_otp),
     url(r'^retry_otp',views.retry_otp),
     url(r'^verify_otp/',views.verify_otp),
     path('appregister/', views.appregister, name='appregister'),

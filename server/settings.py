@@ -109,12 +109,12 @@ AUTHENTICATION_BACKENDS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd95vajh67u65ei',
-        'USER': 'nhdjrwuatnfckb',
-        'PASSWORD': '4835619ea5763b63c3d6ad37be8ecdddd4b47320bb12453a79a751816b4ea950',
-        'HOST': 'ec2-54-235-132-202.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'USER': 'nhdjrwuatnfckb',
+        # 'PASSWORD': '4835619ea5763b63c3d6ad37be8ecdddd4b47320bb12453a79a751816b4ea950',
+        # 'HOST': 'ec2-54-235-132-202.compute-1.amazonaws.com',
+        # 'PORT': '5432',
     }
 }
 
