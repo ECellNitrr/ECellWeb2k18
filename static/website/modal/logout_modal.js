@@ -1,6 +1,6 @@
 show_logout_modal = () => {
     // hide other modals
-    modal_bg.forEach(m=> m.style.top="-100vh")    
+    modal_bg.forEach(m=> m.style.top="-200vh")    
     // show modal
     logout_modal.style.top = 0
     body.style.overflow = 'hidden'
@@ -12,11 +12,13 @@ logout_btn.addEventListener('click', (e) => {
     console.log('perform logout')
 
     localStorage.removeItem('ecell_nitrr_user')
+    localStorage.removeItem('ecell_nitrr_pass')
     loggedin_user.innerText = 'Anonymous'
     // change logout to login in btn
     wlogin_trigger.innerText='login'
+    mlogin_trigger.innerText='login'
     // hide the modal
-    logout_modal.style.top = '-100vh'
+    logout_modal.style.top = '-200vh'
     body.style.overflow = 'none'
     body.style.height = 'auto'
 })
@@ -25,7 +27,7 @@ logout_modal_close_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
     // hide the modal
-    logout_modal.style.top = '-100vh'
+    logout_modal.style.top = '-200vh'
     body.style.overflow = 'none'
     body.style.height = 'auto'
 })

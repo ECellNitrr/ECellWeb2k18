@@ -13,7 +13,7 @@ signup_modal_close_btn.addEventListener('click', (e) => {
 
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    signup_modal.style.top = '-100vh'
+    signup_modal.style.top = '-200vh'
 })
 
 // alternative
@@ -21,7 +21,7 @@ s2l_btn.addEventListener('click', (e) => {
     e.preventDefault()
 
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-100vh")
+    modal_bg.forEach(m => m.style.top = "-200vh")
     // show signup model
     login_modal.style.top = 0
 })
@@ -34,7 +34,7 @@ wsignup_trigger.addEventListener('click', (e) => {
 
 show_signup_modal = () => {
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-100vh")
+    modal_bg.forEach(m => m.style.top = "-200vh")
     // show the model
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
@@ -69,6 +69,7 @@ commence_signup = () => {
     // after validation
     console.log('sigup commenced')
     signup_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
+    // disable signup button to disable multiple requests
     signup_btn.disabled = true
 
     fetch('/register/', {
@@ -90,24 +91,30 @@ commence_signup = () => {
             if (data.success) {
                 signup_success_handler()
             } else {
-                signup_failure_hander()
+                alert(data.message)
             }
         })
         .catch(error => {
-            console.error('fetch error', error)
-            alert('error! please refresh and try again')
+            console.error(error)
+            // alert('error! please refresh and try again')
         })
 }
 
 signup_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
-    signup_modal.style.top = '-100vh'
+    signup_modal.style.top = '-200vh'
+    // show the loggin username
+    loggedin_user.innerText = semail.value.split('@')[0]
     // change btn text from login to logut
-    login_trigger.innerText = 'logout'
+    wlogin_trigger.innerText = 'logout'
+    mlogin_trigger.innerText = 'logout'
     // store the cookie
     loggedin_user.innerText = semail.value.split('@')[0]
     localStorage.ecell_nitrr_user = semail.value
+    localStorage.ecell_nitrr_pass = lpass.value
+    // enable signup button again
+    signup_btn.disabled = true
 }
 
 signup_failure_hander = () => {

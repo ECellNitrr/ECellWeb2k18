@@ -41,11 +41,12 @@ submit_btn.addEventListener('click', (e) => {
     submit_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>'
     submit_btn.style.width = '75px'
     submit_btn.style.borderRadius = '10px'
+    // disable the btn to prevent multiple requests
     submit_btn.disabled = true
 
     // sending request
     console.log('sending the message to server')
-    fetch('message/', {
+    fetch('/message/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -65,8 +66,9 @@ submit_btn.addEventListener('click', (e) => {
             email.value = ''
             msg.value = ''
 
-            // style the button
+            // reenable the submit btn
             submit_btn.disabled = false
+            // style the button
             TweenMax.to("#submit_btn", 1, {
                 width: 'auto',
                 borderRadius: 0,
@@ -78,7 +80,7 @@ submit_btn.addEventListener('click', (e) => {
             }, 500)
         })
         .catch(error => {
-            console.error('fetch error', error)
-            alert('error! please refresh and try again')
+            console.error(error)
+            // alert('error! please refresh and try again')
         })
 })

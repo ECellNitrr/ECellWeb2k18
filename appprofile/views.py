@@ -26,6 +26,8 @@ from decouple import config
 from django.conf import settings as conf_settings
 from social_django.models import UserSocialAuth
 from .models import WebMsg
+import multiprocessing
+from . import send_mail
 
 
 def homepage(request):
@@ -137,8 +139,16 @@ def appregister(request):
 		#user.profile.linkedin = req_data['linkedin']
 		user.profile.status=0
 		user.profile.save()
+	
+		p = multiprocessing.Process(target=send_mail,args=(email,user,))
+		p.start()
+		# send_mail(email, user)
 
+<<<<<<< HEAD
 		# #Emailing the new user for confirmation Email
+=======
+		#Emailing the new user for confirmation Email
+>>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
 		# current_site = get_current_site(request)
 		# mail_subject = "Activate your Ecell account"
 		# message = render_to_string('acc_active_email.html',{
@@ -150,7 +160,10 @@ def appregister(request):
 		# to_email = user.email
 		# email = EmailMessage(mail_subject,message,to=[to_email])
 		# email.send()
+<<<<<<< HEAD
 		print('user created')
+=======
+>>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
 
 		payload = {
 			'id' : user.id,
