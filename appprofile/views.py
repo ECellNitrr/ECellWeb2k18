@@ -97,12 +97,7 @@ def appregister(request):
 		req_data = json.loads(request.body)
 		email = req_data['email']
 		password = req_data['password']
-		#print(email,password)
-		#user_form = UserForm(data=request.POST)
-		#profile_form = UserProfileInfoForm(request.POST,request.FILES)
-		print("outside if\n\n\n\n")
-		#if user_form.is_valid() and profile_form.is_valid():
-		print("inside if.\n.\n.\n.\n.")
+
 		#Checking Duplicate records of Email or contact no
 		conno = req_data['contact_no']
 		if(Profile.objects.filter(contact_no=conno).exists()):
@@ -110,6 +105,7 @@ def appregister(request):
 				'success':False,
 				'message':'Contact No. must be unique',
 			})
+		print('First check')
 		checkemail = req_data['email']
 		if(User.objects.filter(email=checkemail).exists()):
 			return JsonResponse({
@@ -117,6 +113,7 @@ def appregister(request):
 				'message':'email must be unique',
 			})
 
+		print('Second check')
 		#Saving Data in Variables
 		first = req_data['first_name']
 		last = req_data['last_name']
@@ -141,19 +138,19 @@ def appregister(request):
 		user.profile.status=0
 		user.profile.save()
 
-		#Emailing the new user for confirmation Email
-		current_site = get_current_site(request)
-		mail_subject = "Activate your Ecell account"
-		message = render_to_string('acc_active_email.html',{
-			'user':user,
-			'domain':current_site.domain,
-			'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-			'token':account_activation_token.make_token(user),
-		})
-		to_email = user.email
-		email = EmailMessage(mail_subject,message,to=[to_email])
-		email.send()
-
+		# #Emailing the new user for confirmation Email
+		# current_site = get_current_site(request)
+		# mail_subject = "Activate your Ecell account"
+		# message = render_to_string('acc_active_email.html',{
+		# 	'user':user,
+		# 	'domain':current_site.domain,
+		# 	'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+		# 	'token':account_activation_token.make_token(user),
+		# })
+		# to_email = user.email
+		# email = EmailMessage(mail_subject,message,to=[to_email])
+		# email.send()
+		print('user created')
 
 		payload = {
 			'id' : user.id,
@@ -162,6 +159,7 @@ def appregister(request):
 
 		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 		token = jwt_token.decode('utf-8')
+		print(token)
 		return JsonResponse({
 			'success' : True,
 			'message' : 'Registration successfull',
@@ -265,27 +263,29 @@ def logout_view(request):
 @csrf_exempt
 @decoder
 def send_otp(request, *args, **kwargs):
-
+	print("REACHED HERE")
 
 	if request.method =='POST':
-
-		req_data = json.loads(request.body)
-		
+		print("post request done")
+		#req_data = json.loads(request.body)
+		#print(req_data)
 		current_userid = kwargs['user_id']
 
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = req_data['contact_no']
+		contact_no = request.POST('contact_no')
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
-
+		print('otp not printed')
+		print(contact_no)
 		Atkey = config('Atkey')
 
 		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		otpobj =  sendotp.sendotp(Atkey,Msg)
 		otp = otpobj.generateOtp()
 		otp = int(otp)
+		print(otp)
 
 		otpobj.send(contact_no,'ECelll',otp)
 		#Don't change the name 'ECelll' in above line
@@ -304,12 +304,15 @@ def send_otp(request, *args, **kwargs):
 		profile.otp = otps
 		profile.save()
 
-		return JsonResponse({'success':True,'msg':'OTP sent successfully',})
+		print(otps)
+
+		return JsonResponse({'success':True,'message':'OTP sent successfully',})
 	else:
+		print('Method error')
 		return render(request,'phone.html')
 
 
-	return render(request,'phone.html')
+	#return render(request,'phone.html')
 
 @csrf_exempt
 @decoder
@@ -334,7 +337,7 @@ def retry_otp(request, *args, **kwargs):
 	otpobj.retry(contact_no,'ECelll')
 	#Don't change the name 'ECelll' in above line
 
-	return JsonResponse({'success':True,'msg':'OTP sent through call'})
+	return JsonResponse({'success':True,'message':'OTP sent through call'})
 
 @csrf_exempt
 @decoder

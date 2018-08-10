@@ -7,6 +7,8 @@ import jwt
 import json
 from functools import wraps
 
+from django.conf import settings as conf_settings
+
 def decoder(function):
     def wrap(request, *args, **kwargs):
         authentication_header_prefix = 'Token'
@@ -30,7 +32,7 @@ def decoder(function):
             return JsonResponse({'success':False,'msg':'Error at auth_header_prefix'})
 
         try:
-            payload = jwt.decode(token, settings.SECRET_KEY)
+            payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
             msg = 'Invalid authentication. Could not decode token.'
             return JsonResponse({'success':False,'message':msg})
