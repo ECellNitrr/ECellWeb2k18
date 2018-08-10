@@ -81,6 +81,6 @@ submit_btn.addEventListener('click', (e) => {
         })
         .catch(error => {
             console.error(error)
-            alert('error! please refresh and try again')
+            // alert('error! please refresh and try again')
         })
 })
