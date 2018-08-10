@@ -28,7 +28,7 @@ from social_django.models import UserSocialAuth
 from .models import WebMsg
 import multiprocessing
 from . import send_mail
-
+from random import randint
 
 def homepage(request):
     return render(request, 'website/index.html')
@@ -138,17 +138,12 @@ def appregister(request):
 		#user.profile.facebook = req_data['facebook']
 		#user.profile.linkedin = req_data['linkedin']
 		user.profile.status=0
-		user.profile.save()
 	
-		p = multiprocessing.Process(target=send_mail,args=(email,user,))
-		p.start()
+		#p = multiprocessing.Process(target=send_mail,args=(email,user,))
+		#p.start()
 		# send_mail(email, user)
 
-<<<<<<< HEAD
-		# #Emailing the new user for confirmation Email
-=======
-		#Emailing the new user for confirmation Email
->>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
+
 		# current_site = get_current_site(request)
 		# mail_subject = "Activate your Ecell account"
 		# message = render_to_string('acc_active_email.html',{
@@ -160,10 +155,42 @@ def appregister(request):
 		# to_email = user.email
 		# email = EmailMessage(mail_subject,message,to=[to_email])
 		# email.send()
-<<<<<<< HEAD
-		print('user created')
-=======
->>>>>>> 8320e66d027cd3f4e021a4b6ada50168ea7c3326
+
+		import http.client
+
+
+
+		conn = http.client.HTTPConnection("api.msg91.com")
+
+
+		stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
+		stringmsg=stringmsg+conno
+		stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
+		otp = str(randint(1000,9999))
+		msg = "Your otp is: "
+		msg=msg+otp
+		msg = msg.encode('utf-8')
+		msg = str(msg)
+		stringmsg=stringmsg+msg
+		conn.request("GET", stringmsg)
+		user.profile.otp = otp
+		user.profile.save()
+	
+
+
+		res = conn.getresponse()
+
+		data = res.read()
+
+
+
+		print(data.decode("utf-8"))
+
+
+
+		print(otp)
+
+
 
 		payload = {
 			'id' : user.id,
@@ -212,6 +239,9 @@ def weblogin(request):
 		'message' : 'Invalid credentials'
 		}
 	if request.method == 'POST':
+		if 'username' in request.session:
+			print("USER IN SESSION")
+			return
 		req_data = json.loads(request.body)
 		email = req_data['email']
 		password = req_data['password']
@@ -225,12 +255,14 @@ def weblogin(request):
 
 		user = authenticate(username=username, password=password)
 		login(request,user)
+		request.session['username'] = username
 		return JsonResponse({
 			'success' : True,
 			'message' : 'authentication successfull',
 
 		})
 	else:
+		print(request.user)
 		return render(request,'login.html')
 
 
@@ -279,37 +311,37 @@ def send_otp(request, *args, **kwargs):
 	print("REACHED HERE")
 
 	if request.method =='POST':
-		print("post request done")
-		#req_data = json.loads(request.body)
-		#print(req_data)
-		current_userid = kwargs['user_id']
+		# print("post request done")
+		# #req_data = json.loads(request.body)
+		# #print(req_data)
+		# current_userid = kwargs['user_id']
 
-		current_user = User.objects.get(id=current_userid)
-
-
-		contact_no = request.POST('contact_no')
-		contact_no = str(91)+str(contact_no)
-		contact_no = int(contact_no)
-		print('otp not printed')
-		print(contact_no)
-		Atkey = config('Atkey')
-
-		Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
-		otpobj =  sendotp.sendotp(Atkey,Msg)
-		otp = otpobj.generateOtp()
-		otp = int(otp)
-		print(otp)
-
-		otpobj.send(contact_no,'ECelll',otp)
-		#Don't change the name 'ECelll' in above line
-
-		otps = otpobj.send(contact_no,'ECelll',otp)
-		#Don't change the name 'ECelll' in above line
+		# current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = str(contact_no)
+		# contact_no = request.POST('contact_no')
+		# contact_no = str(91)+str(contact_no)
+		# contact_no = int(contact_no)
+		# print('otp not printed')
+		# print(contact_no)
+		# Atkey = config('Atkey')
 
-		otps = str(otps)
+		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
+		# otpobj =  sendotp.sendotp(Atkey,Msg)
+		# otp = otpobj.generateOtp()
+		# otp = int(otp)
+		# print(otp)
+
+		# otpobj.send(contact_no,'ECelll',otp)
+		# #Don't change the name 'ECelll' in above line
+
+		# otps = otpobj.send(contact_no,'ECelll',otp)
+		# #Don't change the name 'ECelll' in above line
+
+
+		# contact_no = str(contact_no)
+
+		# otps = str(otps)
 
 
 		profile = Profile.objects.get(user=current_user)
@@ -448,8 +480,9 @@ def add_to_cart(request, event_id):
 		event = Event.objects.get(pk=event_id)
 		print(event)
 
-	except event.DoesNotExist:
+	except :
 		pass
+		
 	else:
 		try:
 			cart = Cart.objects.get(user=request.user, active=True)
