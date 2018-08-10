@@ -35,7 +35,6 @@ urlpatterns = [
     path('mentor/', include('mentors.urls')),
     path('startup/', include('startups.urls')),
     path('speaker/', include('speakers.urls')),
-    path('message/', include('contactus.urls')),
     path('quiz/', include('bquiz.urls')),
     path('team/',include('team.urls')),
     url('^', include('django.contrib.auth.urls')),

@@ -26,6 +26,8 @@ from decouple import config
 from django.conf import settings as conf_settings
 from social_django.models import UserSocialAuth
 from .models import WebMsg
+import multiprocessing
+from . import send_mail
 
 
 def homepage(request):
@@ -140,20 +142,23 @@ def appregister(request):
 		#user.profile.linkedin = req_data['linkedin']
 		user.profile.status=0
 		user.profile.save()
+	
+		p = multiprocessing.Process(target=send_mail,args=(email,user,))
+		p.start()
+		# send_mail(email, user)
 
 		#Emailing the new user for confirmation Email
-		current_site = get_current_site(request)
-		mail_subject = "Activate your Ecell account"
-		message = render_to_string('acc_active_email.html',{
-			'user':user,
-			'domain':current_site.domain,
-			'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-			'token':account_activation_token.make_token(user),
-		})
-		to_email = user.email
-		email = EmailMessage(mail_subject,message,to=[to_email])
-		email.send()
-
+		# current_site = get_current_site(request)
+		# mail_subject = "Activate your Ecell account"
+		# message = render_to_string('acc_active_email.html',{
+		# 	'user':user,
+		# 	'domain':current_site.domain,
+		# 	'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+		# 	'token':account_activation_token.make_token(user),
+		# })
+		# to_email = user.email
+		# email = EmailMessage(mail_subject,message,to=[to_email])
+		# email.send()
 
 		payload = {
 			'id' : user.id,
@@ -162,6 +167,7 @@ def appregister(request):
 
 		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 		token = jwt_token.decode('utf-8')
+		print(token)
 		return JsonResponse({
 			'success' : True,
 			'message' : 'Registration successfull',
