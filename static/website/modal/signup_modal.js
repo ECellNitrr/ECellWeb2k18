@@ -69,6 +69,7 @@ commence_signup = () => {
     // after validation
     console.log('sigup commenced')
     signup_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
+    // disable signup button to disable multiple requests
     signup_btn.disabled = true
 
     fetch('/register/', {
@@ -90,12 +91,12 @@ commence_signup = () => {
             if (data.success) {
                 signup_success_handler()
             } else {
-                signup_failure_hander()
+                alert(data.message)
             }
         })
         .catch(error => {
-            console.error('fetch error', error)
-            alert('error! please refresh and try again')
+            console.error(error)
+            // alert('error! please refresh and try again')
         })
 }
 
@@ -103,11 +104,17 @@ signup_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
     signup_modal.style.top = '-100vh'
+    // show the loggin username
+    loggedin_user.innerText = semail.value.split('@')[0]
     // change btn text from login to logut
-    login_trigger.innerText = 'logout'
+    wlogin_trigger.innerText = 'logout'
+    mlogin_trigger.innerText = 'logout'
     // store the cookie
     loggedin_user.innerText = semail.value.split('@')[0]
     localStorage.ecell_nitrr_user = semail.value
+    localStorage.ecell_nitrr_pass = lpass.value
+    // enable signup button again
+    signup_btn.disabled = true
 }
 
 signup_failure_hander = () => {

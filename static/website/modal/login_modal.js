@@ -60,6 +60,7 @@ login_btn.addEventListener('click', (e) => {
 })
 
 commence_login = () => {
+
     // perform validation
     if (!email_regex.exec(lemail.value)) {
         alert('please enter a proper email')
@@ -73,6 +74,7 @@ commence_login = () => {
     // after validation
     console.log('login commenced')
     login_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
+    // disable login btn to prevent multiple requests
     login_btn.disabled = true
 
     fetch('/login/', {
@@ -89,18 +91,19 @@ commence_login = () => {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             login_btn.innerHTML = 'login'
             login_btn.disabled = false
 
             if (data.success) {
                 login_success_handler()
             } else {
-                login_failure_hander()
+                alert(data.message)
             }
         })
         .catch(error => {
-            console.error('fetch error', error)
-            alert('error! please refresh and try again')
+            console.error(error)
+            // alert('error! please refresh and try again')
         })
 }
 
@@ -108,11 +111,17 @@ login_success_handler = () => {
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
     login_modal.style.top = '-100vh'
+    // show the loggin username
+    loggedin_user.innerText = semail.value.split('@')[0]
     // change btn text from login to logout
     wlogin_trigger.innerText = 'logout'
+    mlogin_trigger.innerText = 'logout'
     // store the cookie
     loggedin_user.innerText = lemail.value.split('@')[0]
     localStorage.ecell_nitrr_user = lemail.value
+    localStorage.ecell_nitrr_pass = lpass.value
+    // enable login btnagain
+    login_btn.disabled = false
 }
 
 login_failure_hander = () => {
