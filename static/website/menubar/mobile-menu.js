@@ -1,5 +1,6 @@
-let menuTrigger = document.querySelector('.menu-trigger');
-let menubar = document.querySelector('.menubar');
+// these 2 are declared in the modal-dom js
+// let menuTrigger = document.querySelector('.menu-trigger');
+// let menubar = document.querySelector('.menubar');
 
 menuTrigger.addEventListener('click', function () {
     if (menubar.style.display == 'none' || !menubar.style.display) {

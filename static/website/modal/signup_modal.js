@@ -1,3 +1,12 @@
+// mobile show signup modal
+msignup_trigger.addEventListener('click', (e) => {
+    e.preventDefault()
+    // hide the mobile menubar
+    close_mobile_menubar()
+    // show the signup modal
+    show_signup_modal()
+})
+
 // close signup modal
 signup_modal_close_btn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -17,16 +26,20 @@ s2l_btn.addEventListener('click', (e) => {
     login_modal.style.top = 0
 })
 
-// show signup modal
-signup_trigger.addEventListener('click', (e) => {
+// website show signup modal
+wsignup_trigger.addEventListener('click', (e) => {
     e.preventDefault()
+    show_signup_modal()
+})
+
+show_signup_modal = () => {
     // hide other models
     modal_bg.forEach(m => m.style.top = "-100vh")
     // show the model
     body.style['overflow'] = 'hidden'
     body.style.height = '100vh'
     signup_modal.style.top = 0
-})
+}
 
 // do signup req
 signup_btn.addEventListener('click', (e) => {
@@ -98,6 +111,5 @@ signup_success_handler = () => {
 }
 
 signup_failure_hander = () => {
-    modal_h2.innerText = 'plz check the input'
-    modal_h2.style.color = 'red'
+    alert('signup failed plz check your input')
 }
