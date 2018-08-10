@@ -36,6 +36,12 @@ def homepage(request):
 def gallerypage(request):
 	return render(request, 'website/gallery.html')
 
+def privacy_policy_page(request):
+	return render(request, 'website/privacy_policy.html')
+
+def terms_page(request):
+	return render(request, 'website/terms.html')
+
 def message(request):
 	post = json.loads(request.body)
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])

@@ -50,7 +50,7 @@ modal_bg.forEach(bg => bg.addEventListener('click', (e) => {
         return
     }
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-200vh")
+    modal_bg.forEach(m => m.style.top = "-125vh")
     // show the model
     body.style['overflow'] = 'none'
     body.style.height = 'auto'

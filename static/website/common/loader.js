@@ -47,7 +47,7 @@ setTimeout(() => {
 
 // hide the loader
 setTimeout(() => {
-    document.querySelector('.loader').style.transform = 'translateY(-200vh)';
+    document.querySelector('.loader').style.transform = 'translateY(-125vh)';
     document.querySelector('.loader svg').style.opacity = 0;
     body.style['overflow-y']='auto'
     body.style.height='auto'

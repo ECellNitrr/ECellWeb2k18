@@ -7,6 +7,8 @@ urlpatterns = [
     path('',views.homepage),
     path('message/',views.message),
     path('gallery/', views.gallerypage),
+    path('terms/', views.terms_page),
+    path('privacy_policy/', views.privacy_policy_page),
     path('applogin/',views.applogin, name='applogin'),
     path('login/',views.weblogin, name='login'),
     url(r'^send_otp/',views.send_otp),
