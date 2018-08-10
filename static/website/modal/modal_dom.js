@@ -50,7 +50,7 @@ modal_bg.forEach(bg => bg.addEventListener('click', (e) => {
         return
     }
     // hide other models
-    modal_bg.forEach(m => m.style.top = "-100vh")
+    modal_bg.forEach(m => m.style.top = "-200vh")
     // show the model
     body.style['overflow'] = 'none'
     body.style.height = 'auto'
@@ -58,6 +58,7 @@ modal_bg.forEach(bg => bg.addEventListener('click', (e) => {
 
 // close mobile menubar
 close_mobile_menubar = () => {
-    menubar.style.display = 'none';
-    menuTrigger.classList.remove('menu-close');
+    menubar.style.display = 'none'
+    menuTrigger.classList.remove('menu-close')
+    loggedin_user_box.style.display = 'none'
 }

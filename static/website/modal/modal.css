@@ -2,13 +2,13 @@
     position: absolute;
     left: 0;
     top: 0;
-    top: -100vh;
+    top: -200vh;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     transition: all .5s ease;
 }
 
@@ -55,7 +55,7 @@
     border: none;
     outline: none;
     color: blue;
-} 
+}
 
 .alternative_btn:focus {
     outline: none;
@@ -89,14 +89,25 @@
 @media(max-width: 700px) {
     #loggedin_user {
         display: none;
+        color: black;
+        background: white;
+        text-align: center;
+        top: 17px;
+        left: 15px;
+        z-index: 1001;
+        padding: 10px 15px;
+        font-weight: bold;
+        width: 75%;
+        overflow: hidden;
     }
-
+    #loggedin_user i {
+        display: none;
+    }
     .user_modal {
         width: 95vw;
         padding: 25px 15px;
         box-sizing: border-box;
     }
-
     .user_modal input {
         width: 100%;
     }

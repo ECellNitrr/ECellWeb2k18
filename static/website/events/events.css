@@ -126,10 +126,12 @@ html {
         background: #ddd;
         fill: #fff
     }
-    .reverse-layout .register_btn{
-        margin: 0;
+    .reverse-layout .center_btn{
+        text-align: left;
     }
-
+    .center_btn{
+        text-align: right;
+    }
     .register_btn{
         margin-left: auto;
     }
