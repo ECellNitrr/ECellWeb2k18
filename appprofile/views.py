@@ -52,8 +52,10 @@ def applogin(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		email = request.POST.get('email')
-		password = request.POST.get('password')
+		req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
+
 		try:
 			obj = User.objects.filter(email=email)
 			username = obj[0].username
@@ -90,79 +92,85 @@ def appregister(request):
 
 	registered = False
 	if request.method == "POST":
-		user_form = UserForm(data=request.POST)
-		profile_form = UserProfileInfoForm(request.POST,request.FILES)
+		print(request.body)
+
+		req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
+		#print(email,password)
+		#user_form = UserForm(data=request.POST)
+		#profile_form = UserProfileInfoForm(request.POST,request.FILES)
 		print("outside if\n\n\n\n")
-		if user_form.is_valid() and profile_form.is_valid():
-			print(request.POST)
-			#Checking Duplicate records of Email or contact no
-			conno = profile_form.cleaned_data.get('contact_no')
-			if(Profile.objects.filter(contact_no=conno).exists()):
-				return JsonResponse({
-					'success':False,
-					'message':'Contact No. must be unique',
-				})
-			checkemail = profile_form.cleaned_data.get('email')
-			if(User.objects.filter(email=checkemail).exists()):
-				return JsonResponse({
-					'success':False,
-					'message':'email must be unique',
-				})
-
-			#Saving Data in Variables
-			first = request.POST['first_name']
-			last = request.POST['last_name']
-			user = user_form.save(commit=False)
-			user.username = first+last+conno
-			user = user_form.save()
-			user.set_password(user.password)
-			user.is_active=False;
-			user.save()
-
-			#User created, Creating a linked Profile of user
-			user.profile.avatar = profile_form.cleaned_data.get('avatar')
-			user.profile.contact_no = profile_form.cleaned_data.get('contact_no')
-			user.profile.facebook = profile_form.cleaned_data.get('facebook')
-			user.profile.linkedin = profile_form.cleaned_data.get('linkedin')
-			user.profile.status=0
-			user.profile.save()
-
-			#Emailing the new user for confirmation Email
-			current_site = get_current_site(request)
-			mail_subject = "Activate your Ecell account"
-			message = render_to_string('acc_active_email.html',{
-				'user':user,
-				'domain':current_site.domain,
-				'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-				'token':account_activation_token.make_token(user),
-			})
-			to_email = user.email
-			email = EmailMessage(mail_subject,message,to=[to_email])
-			email.send()
-
-
-			payload = {
-				'id' : user.id,
-				'email': user.email,
-			}
-
-			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
-			token = jwt_token.decode('utf-8')
+		#if user_form.is_valid() and profile_form.is_valid():
+		print("inside if.\n.\n.\n.\n.")
+		#Checking Duplicate records of Email or contact no
+		conno = req_data['contact_no']
+		if(Profile.objects.filter(contact_no=conno).exists()):
 			return JsonResponse({
-				'success' : True,
-				'message' : 'Registration successfull',
-				'token' : token
+				'success':False,
+				'message':'Contact No. must be unique',
+			})
+		checkemail = req_data['email']
+		if(User.objects.filter(email=checkemail).exists()):
+			return JsonResponse({
+				'success':False,
+				'message':'email must be unique',
 			})
 
-			#------------------
+		#Saving Data in Variables
+		first = req_data['first_name']
+		last = req_data['last_name']
+		user = User.objects.create_user(
+			username=first+last+conno,
+			email=email,
+			password=password,
+			is_active=False
+			)
+		#user = user.save(commit=False)
+		# user.username = first+last+conno
+		# user = user.save()
+		# user.set_password(password)
+		# user.is_active=False;
+		user.save()
 
-		else:
-				return JsonResponse({
-						'success' :False,
-						'User Form Errors' : user_form.errors.as_json(),
-						'Profile Form Errors' : profile_form.errors.as_json(),
-						'message':'Invalid Form',
-					})
+		#User created, Creating a linked Profile of user
+		#user.profile.avatar = req_data['avatar']
+		user.profile.contact_no = req_data['contact_no']
+		#user.profile.facebook = req_data['facebook']
+		#user.profile.linkedin = req_data['linkedin']
+		user.profile.status=0
+		user.profile.save()
+
+		#Emailing the new user for confirmation Email
+		current_site = get_current_site(request)
+		mail_subject = "Activate your Ecell account"
+		message = render_to_string('acc_active_email.html',{
+			'user':user,
+			'domain':current_site.domain,
+			'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+			'token':account_activation_token.make_token(user),
+		})
+		to_email = user.email
+		email = EmailMessage(mail_subject,message,to=[to_email])
+		email.send()
+
+
+		payload = {
+			'id' : user.id,
+			'email': user.email,
+		}
+
+		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
+		token = jwt_token.decode('utf-8')
+		return JsonResponse({
+			'success' : True,
+			'message' : 'Registration successfull',
+			'token' : token
+		})
+
+		#------------------
+
+	
 
 	else:
 		return JsonResponse({
@@ -261,13 +269,14 @@ def send_otp(request, *args, **kwargs):
 
 	if request.method =='POST':
 
-
+		req_data = json.loads(request.body)
+		
 		current_userid = kwargs['user_id']
 
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = request.POST.get('contact_no')
+		contact_no = req_data['contact_no']
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
 
@@ -341,8 +350,10 @@ def verify_otp(request, *args, **kwargs):
 	totp = str(totp)
 
 	if request.method == 'POST':
+		req_data = json.loads(request.body)
+		
 
-		otp = request.POST.get('otp')
+		otp = req_data['otp']
 		if(totp == otp):
 
 			profile = Profile.objects.get(user=current_user)
