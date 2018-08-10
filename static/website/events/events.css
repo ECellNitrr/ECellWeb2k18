@@ -17,29 +17,33 @@ html {
         padding: 20px;
         text-align: justify
     }
-    #articles .article-layout {
+
+    .article-layout h2 {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .article-layout .center_btn {
+        text-align: center;
+    }
+
+    /* grid article layout */
+    .article-layout {
         display: grid;
-        grid-template-areas: "image" "text"
+        grid-template-rows: auto auto;
     }
-    #articles .img {
-        display: flex;
-        width: 100%;
-        justify-content: center
+
+    .article-layout .img {
+        text-align: center;
+        margin-bottom: 20px;
+        grid-row: 1/2;
     }
-    #articles .img img {
-        width: 80%;
-        height: 80%
+
+    .article-layout .text {
+        grid-row: 2/3;
     }
-    #articles .text {
-        grid-area: text;
-        display: flex;
-        padding-top: 20px
-    }
-    #articles .text h2 {
-        font-weight: 700;
-        writing-mode: vertical-lr;
-        padding-right: 10px
-    }
+
+    /* diagonal stuff */
     #articles .reverse-layout {
         background: #ddd
     }

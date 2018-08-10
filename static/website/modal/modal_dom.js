@@ -30,7 +30,7 @@ var s2l_btn = document.querySelector('#signup_modal .alternative_btn')
 
 // miscellaneous
 var body = document.querySelector('body')
-var loggedin_user = document.querySelector('#login_user span') // used to show the logged in user
+var loggedin_user = document.querySelector('#loggedin_user span') // used to show the logged in user
 var loggedin_user_box = document.querySelector('#login_user')
 var modal_bg = document.querySelectorAll('.center_the_modal')
 var user_modal = document.querySelector('.user_modal')
