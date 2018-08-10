@@ -46,7 +46,7 @@ submit_btn.addEventListener('click', (e) => {
 
     // sending request
     console.log('sending the message to server')
-    fetch('message/', {
+    fetch('/message/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
