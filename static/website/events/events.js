@@ -1,6 +1,6 @@
 $(function () {
     var events = $('#articles')
-    $.get('https://ecellnitrr.herokuapp.com/event/list/').then(function (data) {
+    $.get(base_url + '/event/list/').then(function (data) {
         $('#spinner').hide(1000);
 
 
@@ -14,7 +14,7 @@ $(function () {
                             <p class="">${event.details}</p>
                         </div>
                         <div class="img ">
-                            <img src='http://ecellnitrr.herokuapp.com/${event.cover_pic}' alt=""> </div>
+                            <img src='/${event.cover_pic}' alt=""> </div>
                     </div>
                 </article>
                 `)
@@ -31,7 +31,7 @@ $(function () {
                             <p class="">${event.details}</p>
                         </div>
                         <div class="img ">
-                            <img src='http://ecellnitrr.herokuapp.com/${event.cover_pic}' alt=""> </div>
+                            <img src='/${event.cover_pic}' alt=""> </div>
                     </div>
                 </article>
                 <div class=right-white>

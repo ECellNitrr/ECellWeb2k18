@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1', '*']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'home',
     'bquiz',
     'contactus',
-    'taskmanager.apps.TaskmanagerConfig',
+    # 'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
     'app',
     'mentors',
@@ -109,16 +109,24 @@ AUTHENTICATION_BACKENDS = (
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd95vajh67u65ei',
-        'USER': 'nhdjrwuatnfckb',
-        'PASSWORD': '4835619ea5763b63c3d6ad37be8ecdddd4b47320bb12453a79a751816b4ea950',
-        'HOST': 'ec2-54-235-132-202.compute-1.amazonaws.com',
-        'PORT': '5432',
+if os.getenv('ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ecelldb1',
+            'USER': 'ubuntu',
+            'PASSWORD': 'datapostgres',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'mydatabase',
+        }
+    }
 
 
 # Password validation

@@ -13,11 +13,10 @@ def get_sponsors(request):
 	sponsors = Sponsor.objects.all().values()
 	#sponsors_list = list(sponsors)
 
-
 	AS = Sponsor.objects.filter(spons_type='AS').values()
 	AS_list = list(AS)
 
-	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
+	PLTS = Sponsor.objects.filter(spons_type='PLTS').values()
 
 	GS = Sponsor.objects.filter(spons_type='GS').values()
 	TS = Sponsor.objects.filter(spons_type='TS').values()
@@ -40,7 +39,6 @@ def get_sponsors(request):
 
 	#Response = {'success':True,"message":"Spons available", "":[]}
 
-
 	return JsonResponse({
 		'success':True,
 		'message':"Sponsors available",
@@ -50,18 +48,6 @@ def get_sponsors(request):
 
 def post_sponsors(request):
 	return render(request,'website/patreons.html')
-
-
-
-
-
-
-
-
-
-
-
-
 
 @csrf_exempt
 def view(request,id):

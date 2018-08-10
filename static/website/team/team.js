@@ -2,7 +2,7 @@ function show_with_pic(target, members) {
     members.forEach(function (member) {
         var member_html = `
             <div class="member">
-                <img src="https://ecellnitrr.herokuapp.com/${member.url}">
+                <img src="/${member.url}">
                 <div class="description">
                     <h4 class="name">${member.name}</h4>
                 </div>
@@ -33,7 +33,7 @@ $(function () {
     var head_career_dev = $('#head_career-dev')
     var faculty_incharge = $('#faculty_incharge')
 
-    $.get('https://ecellnitrr.herokuapp.com/team/list').then(function (data) {
+    $.get(base_url + '/team/list').then(function (data) {
         $('#spinner').hide();
 
         // get the data of the given member_type

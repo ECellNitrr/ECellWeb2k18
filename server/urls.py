@@ -22,6 +22,7 @@ from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
 from home import views as homeviews
+from app import views as app_views
 
 urlpatterns = [
     path('', homeviews.homepage),
@@ -41,6 +42,8 @@ urlpatterns = [
     path('message/', include('contactus.urls')),
     path('quiz/', include('bquiz.urls')),
     path('team/',include('team.urls')),
+    path('bquiz/',include('bquiz.urls')),
+    url(r'^is_update_available', app_views.latest_build),
     url('^', include('django.contrib.auth.urls')),
     url(r'^password_reset/$', auth_views.password_reset),
     url(r'^password_reset/done/$', auth_views.password_reset_done),

@@ -11,10 +11,7 @@ from django.shortcuts import render
 def get_event(request):
     events= Event.objects.all().values()
     events_list=list(events)
-
     return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
-
-
 
 def post_event(request):
 	# events = Event.objects.all()

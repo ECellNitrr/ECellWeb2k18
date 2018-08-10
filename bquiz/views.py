@@ -2,8 +2,10 @@ from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
-from .models import Questionset,Question,Answer
+from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting
 from .forms import AnswerForm
+from appprofile.models import Profile
+import random
 
 @csrf_exempt
 def get_quiz(request):
@@ -17,7 +19,7 @@ def get_quiz(request):
     length = len(questionset)
     for i in range(length):
         idy = questionset[i]['id']
-        quiz = Question.objects.filter(q_set=idy).values()
+        quiz = Question.objects.filter(set=idy).values()
         quiz = list(quiz)
         questionset[i]['questions'] = quiz
     
@@ -84,8 +86,8 @@ def submit_ans(request,id,**kwargs):
             })
         else:
             return JsonResponse({
-                'success':False,
-                'message':'Form Invalid'
+                'success': False,
+                'message': 'Form Invalid'
             })
 
     else:
@@ -93,3 +95,87 @@ def submit_ans(request,id,**kwargs):
             'success':False,
             'message':'method error'
         })
+
+@csrf_exempt
+# @login_req
+def get_question(request, *args, **kwargs):
+    response = {}
+    try: 
+        response['success'] = True
+        # if Questionset.objects.filter(flag=True).exists() and request.GET.get('retryQuestion'):
+        if Questionset.objects.filter(flag=True).exists():
+            question_set = Questionset.objects.get(flag=True)
+            if Question.objects.filter(flag=True, set=question_set).exists():
+                question = Question.objects.get(flag=True)                
+                # if not QuestionAcknowledge.objects.filter(user = kwargs['user_id'], question=question).exists() or request.GET.get('retryQuestion'):
+                response['message'] = Setting.objects.get(key='ON').text
+                response['isImageIncluded'] = False if question.type == 'TXT' else True
+                scheme = 'https' if request.is_secure() else 'http'
+                host = request.META['HTTP_HOST']
+                response['imageUrl'] =  scheme + "://" + host + "/" + str(question.meta)
+                response['text'] = question.description
+                response['id'] = question.pk
+                response['time'] = question.time_limit
+                options = []
+                temp = Option.objects.filter(question = question)
+                for temp_option in temp:
+                    option = {}
+                    option['value'] = temp_option.option
+                    option['key'] = temp_option.pk
+                    options.append(option)
+                random.shuffle(options)
+                response['options'] = options
+                try:
+                    user = Profile.objects.get(id = kwargs['user_id'])
+                    # Creating Acknowledgement
+                    acknowledge = QuestionAcknowledge(user=user, question=question)
+                    acknowledge.save()
+                except Exception as e:
+                    print(str(e))
+                # else:
+                #     response['success'] = True
+                #     response['message'] = Setting.objects.get(key='ANS').text
+            else:
+                response['message'] = Setting.objects.get(key='OFF').text
+        else:
+            response['message'] = Setting.objects.get(key='OFF').text
+    except Exception as e:
+        response['success'] = False
+        response['message'] = str(e)
+    return JsonResponse(response)
+
+def bquiz_status(request, *args, **kwargs):
+    response = {}
+    try:
+        response['success'] = True
+        if Questionset.objects.filter(flag=True).exists():
+            response['message'] = Setting.objects.get(key='ON').text
+            response['isActive'] = True
+        else:
+            response['isActive'] = False
+            response['message'] = Setting.objects.get(key='OFF').text
+    except Exception as e:
+        response['success'] = False
+        response['message'] = str(e)
+    return JsonResponse(response)
+
+@csrf_exempt
+@login_req
+def submit_answer(request, *args, **kwargs):
+    response = {}
+    if request.method == 'POST':
+        if not Answer.objects.filter(user_id=user_id, question_id=question_id, answer_id=answer_id).exists():
+            response['success'] = True
+            response['message'] = Answer.objects.get(key='ANS')
+            question_id = request.POST.get('questionId')
+            option_id = request.POST.get('optionId')
+            user_id = kwargs['user_id']
+            answer = Answer(user_id=user_id, question_id=question_id, answer_id=answer_id)
+            answer.save()
+        else:
+            response['success'] = True
+            response['message'] = Answer.objects.get(key='ANS')
+    else:
+        response['success'] = True
+        response['message'] = "Invalid request"
+    return JsonResponse(response)
