@@ -4,30 +4,11 @@ server {
 
     listen 80;
 
-#    root /var/www/html/ecell/public;
-    
-    index index.php;# index.html index.htm index.nginx-debian.html;
-
     server_name 18.204.111.26 ecell.nitrr.ac.in www.ecell.nitrr.ac.in;
     # ssl_certificate /etc/letsencrypt/live/ecell.nitrr.ac.in/fullchain.pem; # managed by Certbot
     # ssl_certificate_key /etc/letsencrypt/live/ecell.nitrr.ac.in/privkey.pem; # managed by Certbot
 
-
-    #location / {
-    #    try_files $uri $uri/ $uri.html /index.php$is_args$args;#  $uri/ =404;
-    #}
-
-    #location = /favicon.ico { access_log off; log_not_found off; }
-    
-    #location /static/ {
-    #    root ~/ECellWeb2k18;
-    #}
-
-    #location ~* /\. {
-    #	deny all;
-    #}
-
-    location /*/ {
+    location / {
         proxy_pass  http://localhost:8000/;
     }
 }
