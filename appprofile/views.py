@@ -21,12 +21,13 @@ import json
 import http.client
 from sendotp import sendotp
 from server.decorators.login import login_req
+from server.decorators.decoder import decoder
 from decouple import config
 from django.conf import settings as conf_settings
 
 from .models import WebMsg
 
-	
+
 def homepage(request):
     return render(request, 'website/index.html')
 
@@ -55,9 +56,6 @@ def applogin(request, *args, **kwargs):
 			username = obj[0].username
 		except:
 			return JsonResponse(error_msg)
-		#print(username)
-		#print(email)
-		#print(password)
 		try:
 			user = authenticate(username=username, password=password)
 		except User.DoesNotExist:
@@ -91,31 +89,42 @@ def appregister(request):
 	if request.method == "POST":
 		user_form = UserForm(data=request.POST)
 		profile_form = UserProfileInfoForm(request.POST,request.FILES)
-
+		print("outside if\n\n\n\n")
 		if user_form.is_valid() and profile_form.is_valid():
+			print("inside if.\n.\n.\n.\n.")
+			#Checking Duplicate records of Email or contact no
 			conno = profile_form.cleaned_data.get('contact_no')
-			first = request.POST['first_name']
-			last = request.POST['last_name']
-			#user.username = first+last+conno
-			user = user_form.save(commit=False)
 			if(Profile.objects.filter(contact_no=conno).exists()):
 				return JsonResponse({
 					'success':False,
-					'message':'Contact No. must be unique'
+					'message':'Contact No. must be unique',
 				})
+			checkemail = profile_form.cleaned_data.get('email')
+			if(Profile.objects.filter(email=checkemail).exists()):
+				return JsonResponse({
+					'success':False,
+					'message':'email must be unique',
+				})
+
+			#Saving Data in Variables
+			first = request.POST['first_name']
+			last = request.POST['last_name']
+			user = user_form.save(commit=False)
 			user.username = first+last+conno
 			user = user_form.save()
 			user.set_password(user.password)
 			user.is_active=False;
 			user.save()
 
+			#User created, Creating a linked Profile of user
 			user.profile.avatar = profile_form.cleaned_data.get('avatar')
 			user.profile.contact_no = profile_form.cleaned_data.get('contact_no')
 			user.profile.facebook = profile_form.cleaned_data.get('facebook')
 			user.profile.linkedin = profile_form.cleaned_data.get('linkedin')
 			user.profile.status=0
 			user.profile.save()
-			#------------------
+
+			#Emailing the new user for confirmation Email
 			current_site = get_current_site(request)
 			mail_subject = "Activate your Ecell account"
 			message = render_to_string('acc_active_email.html',{
@@ -127,23 +136,24 @@ def appregister(request):
 			to_email = user.email
 			email = EmailMessage(mail_subject,message,to=[to_email])
 			email.send()
-			#------------------
+
+			#Everything Perfect, Success Return
 			return JsonResponse({
 				'success' : True,
-				'message' : 'registration successfull'
+				'message' : 'registration successfull',
 			})
 		else:
 				return JsonResponse({
 						'success' :False,
 						'User Form Errors' : user_form.errors.as_json(),
 						'Profile Form Errors' : profile_form.errors.as_json(),
-						'message':'Invalid Form'
+						'message':'Invalid Form',
 					})
 
 	else:
 		return JsonResponse({
 				'success' :False,
-				'message' : 'form method error'
+				'message' : 'form method error',
 			})
 
 @csrf_exempt
@@ -179,16 +189,13 @@ def weblogin(request):
 			username = obj[0].username
 		except:
 			return JsonResponse(error_msg)
-		#print(username)
-		#print(email)
-		#print(password)
-		
+
 		user = authenticate(username=username, password=password)
 		login(request,user)
 		return JsonResponse({
 			'success' : True,
 			'message' : 'authentication successfull',
-			
+
 		})
 	else:
 		return render(request,'login.html')
@@ -213,10 +220,10 @@ def webregister(request):
 			user.set_password(password)
 			user.save()
 			user.profile.contact_no = req_data['contactno']
-			
+
 
 			user.profile.save()
-	
+
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull'
@@ -234,7 +241,7 @@ def logout_view(request):
 
 
 @csrf_exempt
-@login_req
+@decode
 def send_otp(request, *args, **kwargs):
 
 
@@ -378,14 +385,14 @@ def social_settings(request):
 		return JsonResponse({
 			'success' : False,
 			'message' : 'authentication failed',
-			
+
 		})
 
 	#print(facebook_login.extra_data)
 	#print(user)
-		
+
 	#print(facebook_login)
-	
+
 
 	#can_disconnect = (user.social_auth.count()>1 or user.has_usable_password())
 	#return render(request, 'settings.html',{'facebook_login':facebook_login,
@@ -442,7 +449,7 @@ def add_to_cart(request, event_id):
 			)
 			cart.save()
 			cart.add_to_cart(event_id)
-			
+
 	return JsonResponse({'success':True,
 						 'message':"Event added successfully"})
 
@@ -468,14 +475,14 @@ def remove_from_cart(request, event_id):
 @csrf_exempt
 @login_required
 def bag(request):
-	
+
 	eventlist=[]
-	
+
 	cart= Cart.objects.filter(user=request.user, active=True)
 	gre = list(EventOrder.objects.filter(cart=cart[0]))
 
 	i=0
-	
+
 	for eve in gre:
 		if eve.event.name not in eventlist:
 			eventlist.append(eve.event.name)
@@ -488,4 +495,3 @@ def bag(request):
 
 	}
 	return JsonResponse(context)
-

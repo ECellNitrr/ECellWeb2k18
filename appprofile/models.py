@@ -18,7 +18,7 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"
-    
+
     USER_TYPE = (
         ('GST', 'Guest'),
         ('VLT', 'Voluteer'),
@@ -56,4 +56,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-

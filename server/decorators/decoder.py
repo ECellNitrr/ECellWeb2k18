@@ -7,28 +7,27 @@ import jwt
 import json
 from functools import wraps
 
-def login_req(function):
+def decoder(function):
     def wrap(request, *args, **kwargs):
         authentication_header_prefix = 'Token'
-        request.user = None
 
         auth_header = authentication.get_authorization_header(request).split()
         auth_header_prefix = authentication_header_prefix.lower()
 
         if not auth_header:
-            return JsonResponse({'success':False,'msg':'auth_header'})
+            return JsonResponse({'success':False,'msg':'Error at auth_header'})
 
         if len(auth_header) == 1:
-            return JsonResponse({'success':False,'msg':'auth_header2'})
+            return JsonResponse({'success':False,'msg':'Error at auth_header2'})
 
         elif len(auth_header) > 2:
-            return JsonResponse({'success':False,'msg':'auth_header3'})
+            return JsonResponse({'success':False,'msg':'Error at auth_header3'})
 
         prefix = auth_header[0].decode('utf-8')
         token = auth_header[1].decode('utf-8')
 
         if prefix.lower() != auth_header_prefix:
-            return JsonResponse({'success':False,'msg':'auth_header_prefix'})
+            return JsonResponse({'success':False,'msg':'Error at auth_header_prefix'})
 
         try:
             payload = jwt.decode(token, settings.SECRET_KEY)
@@ -41,11 +40,9 @@ def login_req(function):
         except Profile.DoesNotExist:
             msg = 'No user matching this token was found.'
             return JsonResponse({'success':False,'message':msg})
-        if(user.profile.status!=1)
-            return JsonResponse({'success':False,'message':'Your Account hasn\'t been activated yet.'})
         kwargs['user_id'] = payload['id']
-        user.is_active = True;
-        #login(request,user)
+        kwargs['user_email'] = payload['email']
+        
         return function(request, *args, **kwargs)
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__
