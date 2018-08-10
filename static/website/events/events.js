@@ -3,7 +3,7 @@ var events = document.querySelector('#articles')
 put_events_in_place = (data) => {
     data.Events.forEach(function (event, i) {
         if (i % 2 == 0) {
-            events.append(`
+            events.innerHTML += (`
             <article>
                 <div class=article-layout>
                     <div class=text>
@@ -18,7 +18,7 @@ put_events_in_place = (data) => {
             </article>
             `)
         } else {
-            events.append(`
+            events.innerHTML +=(`
             <div class=right-grey>
                 <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
                     <polygon points="100 0 100 10 0 10" /> </svg>
@@ -55,5 +55,6 @@ $(function () {
     // })
 })
 
+document.querySelector('#spinner').remove();
 put_events_in_place(data)
 register_stuff(data)
