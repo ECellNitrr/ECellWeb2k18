@@ -143,7 +143,11 @@ def appregister(request):
 		#p.start()
 		# send_mail(email, user)
 
+<<<<<<< HEAD
 
+=======
+		# #Emailing the new user for confirmation Email
+>>>>>>> 6770824bfa3ca2f49745c4da62588a04d3390f43
 		# current_site = get_current_site(request)
 		# mail_subject = "Activate your Ecell account"
 		# message = render_to_string('acc_active_email.html',{
@@ -155,6 +159,7 @@ def appregister(request):
 		# to_email = user.email
 		# email = EmailMessage(mail_subject,message,to=[to_email])
 		# email.send()
+<<<<<<< HEAD
 
 		import http.client
 
@@ -191,6 +196,9 @@ def appregister(request):
 		print(otp)
 
 
+=======
+		print('user created')
+>>>>>>> 6770824bfa3ca2f49745c4da62588a04d3390f43
 
 		payload = {
 			'id' : user.id,
@@ -311,6 +319,7 @@ def send_otp(request, *args, **kwargs):
 	print("REACHED HERE")
 
 	if request.method =='POST':
+<<<<<<< HEAD
 		# print("post request done")
 		# #req_data = json.loads(request.body)
 		# #print(req_data)
@@ -325,6 +334,22 @@ def send_otp(request, *args, **kwargs):
 		# print('otp not printed')
 		# print(contact_no)
 		# Atkey = config('Atkey')
+=======
+		print("post request done")
+		#req_data = json.loads(request.body)
+		#print(req_data)
+		current_userid = kwargs['user_id']
+		print(current_userid)
+		current_user = User.objects.get(id=current_userid)
+
+
+		contact_no = json.loads(request.body)['contact_no']
+		contact_no = str(91)+str(contact_no)
+		contact_no = int(contact_no)
+		print('otp not printed')
+		print(contact_no)
+		Atkey = config('Atkey')
+>>>>>>> 6770824bfa3ca2f49745c4da62588a04d3390f43
 
 		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		# otpobj =  sendotp.sendotp(Atkey,Msg)
