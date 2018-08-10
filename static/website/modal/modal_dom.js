@@ -58,6 +58,7 @@ modal_bg.forEach(bg => bg.addEventListener('click', (e) => {
 
 // close mobile menubar
 close_mobile_menubar = () => {
-    menubar.style.display = 'none';
-    menuTrigger.classList.remove('menu-close');
+    menubar.style.display = 'none'
+    menuTrigger.classList.remove('menu-close')
+    loggedin_user_box.style.display = 'none'
 }
