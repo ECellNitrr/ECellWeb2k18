@@ -293,11 +293,8 @@ def send_otp(request, *args, **kwargs):
 		otp = int(otp)
 		print(otp)
 
-		otpobj.send(contact_no,'ECelll',otp)
-		#Don't change the name 'ECelll' in above line
-
-		otps = otpobj.send(contact_no,'ECelll',otp)
-		#Don't change the name 'ECelll' in above line
+		otps = otpobj.send(contact_no,'ECellr',otp)
+		#Don't change the name 'ECellr' in above line
 
 
 		contact_no = str(contact_no)
