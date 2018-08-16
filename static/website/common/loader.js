@@ -6,12 +6,12 @@ body.style.color = 'black'
 
 // draw the lines
 var lineDrawing = anime({
-    targets: 'path',
+    targets: 'path:not(#logo)',
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: 'easeInOutQuad',
-    duration: 2000,
+    duration: 3000,
     delay: function (el, i) {
-        return i * 100 + 500
+        return 500 + (i%2)*250
     },
     direction: 'alternate',
     loop: false
@@ -24,26 +24,21 @@ circles.forEach(circle => {
     i += 1
     setTimeout(() => {
         circle.style.opacity = 1
-    }, 800 + i * 1000 / 20);
+    }, 2000 + i * 1000 / 20);
 })
 
 // show the texts
+document.querySelector('#logo_text').style.opacity = 1
 var texts = document.querySelectorAll('text');
 texts.forEach(text => {
     i += 1
     setTimeout(() => {
         text.style.opacity = 1
-    }, i * 1000 / 20);
+    }, 2000 + i * 1000 / 20);
 })
 
 // animate the logo
-var logo = document.querySelector('#logo');
-logo.style.stroke = 'yellowgreen'
-setTimeout(() => {
-    setTimeout(() => {
-        logo.style['stroke-width'] = 3
-    }, 3300);
-})
+document.querySelector('#logo').style['strokeDashoffset']='0px'
 
 // hide the loader
 setTimeout(() => {
