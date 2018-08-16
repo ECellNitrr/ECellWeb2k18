@@ -49,16 +49,17 @@ put_events_in_place = (data) => {
 }
 
 $(function () {
-    // $.get('list/').then(function (data) {
-    //     // hide the spinner
-    //     $('#spinner').hide(1000);
-    //     // put data
-    //     put_events_in_place(data)
-    //     // to add event listener
-    //     register_stuff(data)
-    // })
+    $.get('list/').then(function (data) {
+        console.log(data)
+        // hide the spinner
+        $('#spinner').hide(1000);
+        // put data
+        put_events_in_place(data)
+        // to add event listener
+        register_stuff(data)
+    })
 })
 
-document.querySelector('#spinner').remove();
-put_events_in_place(data)
-register_stuff(data)
+// document.querySelector('#spinner').remove();
+// put_events_in_place(data)
+// register_stuff(data)

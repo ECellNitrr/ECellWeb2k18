@@ -8,7 +8,7 @@
 {% endblock title %}
 <!-- common css -->
 {% block css %}
-<link rel="stylesheet" href="{% static 'website/common/animate.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
 <link rel="stylesheet" href="{% static 'website/common/footer.css' %}">
 <link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}">
 <!-- page specific css -->
@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="{% static 'website/index/intro.css' %}">
 <link rel="stylesheet" href="{% static 'website/index/about.css' %}">
 <link rel="stylesheet" href="{% static 'website/index/vision.css' %}">
-<link rel="stylesheet" href="{% static 'website/index/contact.css' %}">
-{% endblock css %}
+<link rel="stylesheet" href="{% static 'website/index/contact.css' %}"> {% endblock css %}
 
 <!-- js -->
 {% block js %}
@@ -34,32 +33,31 @@
             <span class=bold>"</span> Don't fit in, just standout
             <span class=bold>"</span>
         </p>
-        <img src={% static "website/img/enterpreneurs.svg" %} alt=""> </div>
+        <img src='{% static "website/img/enterpreneurs.svg" %}' alt=""> </div>
     <div class=diagonal></div>
 </header>
 {% endblock header %}
 
 <!-- content -->
 {% block content %}
-
 <section id=introduction>
     <h2 class="wow fadeInUp" data-wow-delay=.3s>E-CELL</h2>
     <hr>
     <ul>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.2s src={% static "website/img/winds.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.2s src='{% static "website/img/winds.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.2s>Innovation</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.4s src={% static "website/img/leaf.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.4s src='{% static "website/img/leaf.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.4s>Leadership</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=..5s src={% static "website/img/pinetree.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=..5s src='{% static "website/img/pinetree.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=..5s>Growth</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.6s src={% static "website/img/mountain.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.6s src='{% static "website/img/mountain.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.6s>Development</p>
         </li>
     </ul>
