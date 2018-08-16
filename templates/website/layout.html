@@ -15,9 +15,9 @@
     {% block keywords %} keywords goes here {% endblock keywords %}
     <!-- meta title -->
     {% block title %} title goes here{% endblock title %}
-    <!-- loader js and css -->
-    <link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
-    <script src="{% static 'website/common/anime.min.js' %}"></script>
+
+    <!-- loader css -->
+    {% block loader_css %} {% endblock loader_css %}
 
     <!-- spinner css -->
     <link rel="stylesheet" href="{% static 'website/common/spinner.css' %}">
@@ -36,8 +36,7 @@
 
 <body>
     <!-- loader html -->
-    {% include "website/loader.html" %}
-    <script src="{% static 'website/common/loader.js' %}"></script>
+    {% block loader_html_js %} {% endblock loader_html_js %}
 
     <!-- menubar -->
     {% include 'website/menubar.html' %}
