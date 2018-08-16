@@ -1,0 +1,24 @@
+server {
+#    listen 443 ssl default_server;
+#    listen [::]:443 ssl default_server;
+
+    listen 80;
+
+    server_name 18.204.111.26 ecell.nitrr.ac.in www.ecell.nitrr.ac.in;
+    # ssl_certificate /etc/letsencrypt/live/ecell.nitrr.ac.in/fullchain.pem; # managed by Certbot
+    # ssl_certificate_key /etc/letsencrypt/live/ecell.nitrr.ac.in/privkey.pem; # managed by Certbot
+
+    location / {
+        proxy_pass  http://localhost:8000/;
+    }
+}
+
+# server {
+#     if ($host = ecell.nitrr.ac.in) {
+#         return 301 https://$host$request_uri;
+#     }
+# 
+#     listen 80;
+#     server_name ecell.nitrr.ac.in www.ecell.nitrr.ac.in 18.204.111.26;
+#     rewrite ^ https://$server_name$request_uri? permanent;
+# }

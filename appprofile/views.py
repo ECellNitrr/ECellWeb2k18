@@ -94,7 +94,6 @@ def applogin(request, *args, **kwargs):
 			return JsonResponse(error_msg)
 	return render(request,'login.html')
 
-
 @csrf_exempt
 def appregister(request):
 

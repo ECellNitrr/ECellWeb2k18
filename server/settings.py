@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'events',
     'bquiz',
-    'taskmanager.apps.TaskmanagerConfig',
+    #'contactus',
+    # 'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
     'app',
     'mentors',
@@ -107,16 +108,24 @@ AUTHENTICATION_BACKENDS = (
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'USER': 'nhdjrwuatnfckb',
-        # 'PASSWORD': '4835619ea5763b63c3d6ad37be8ecdddd4b47320bb12453a79a751816b4ea950',
-        # 'HOST': 'ec2-54-235-132-202.compute-1.amazonaws.com',
-        # 'PORT': '5432',
+if os.getenv('ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ecelldb1',
+            'USER': 'ubuntu',
+            'PASSWORD': 'datapostgres',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'mydatabase',
+        }
+    }
 
 
 # Password validation

@@ -47,7 +47,6 @@ def get_sponsors(request):
 
 	#Response = {'success':True,"message":"Spons available", "":[]}
 
-
 	return JsonResponse({
 		'success':True,
 		'message':"Sponsors available",
@@ -57,18 +56,6 @@ def get_sponsors(request):
 
 def post_sponsors(request):
 	return render(request,'website/patreons.html')
-
-
-
-
-
-
-
-
-
-
-
-
 
 @csrf_exempt
 def view(request,id):

@@ -20,8 +20,6 @@ def get_event(request):
     events_list=list(events)
     return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
 
-
-
 def post_event(request):
 	# events = Event.objects.all()
 	# i=0

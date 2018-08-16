@@ -21,9 +21,9 @@ class sendotp:
         # print self.baseUrl + '/api/' +str(actionurl)
         print (actionurl)
         return self.baseUrl + '/api/' + str(actionurl)
-
     def generateOtp(self):
         return randint(1000, 9999)
+
 
     def send(self, contactNumber, senderId, otp):
         values = {

@@ -10,7 +10,11 @@ let type = {
 }
 
 $(document).ready(function () {
+<<<<<<< HEAD
     $.get('list/').done(function (data) {
+=======
+    $.get(base_url + '/sponsor/list/').done(function (data) {
+>>>>>>> upstream/master
         $('#spinner').hide();
         
         sponsors = data.spons;
@@ -19,7 +23,11 @@ $(document).ready(function () {
                 console.log(JSON.stringify(sponsor, null, 2));
                 sponsors_html.innerHTML += ` 
                     <div class='sponsor'>
+<<<<<<< HEAD
                         <img src='${sponsor.pic}'>
+=======
+                        <img src='/${sponsor.pic}'>
+>>>>>>> upstream/master
                         <div class='details'>
                             <h2>${sponsor.name}</h2>
                             <p class='body'>${sponsor.details}</p>

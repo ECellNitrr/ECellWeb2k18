@@ -15,26 +15,20 @@ def login_req(function):
         auth_header = authentication.get_authorization_header(request).split()
         auth_header_prefix = authentication_header_prefix.lower()
 
-        if not auth_header:
-            return JsonResponse({'success':False,'msg':'auth_header'})
-
-        if len(auth_header) == 1:
-            return JsonResponse({'success':False,'msg':'auth_header2'})
-
-        elif len(auth_header) > 2:
-            return JsonResponse({'success':False,'msg':'auth_header3'})
+        if not auth_header or len(auth_header) == 1 or len(auth_header) > 2:
+            return JsonResponse({'success':False,'message':'Bad Authorization', 'status':401})
 
         prefix = auth_header[0].decode('utf-8')
         token = auth_header[1].decode('utf-8')
 
         if prefix.lower() != auth_header_prefix:
-            return JsonResponse({'success':False,'msg':'auth_header_prefix'})
+            return JsonResponse({'success':False,'message':'Bad Authorixation', status:401})
 
         try:
             payload = jwt.decode(token, settings.SECRET_KEY)
         except:
-            msg = 'Invalid authentication. Could not decode token.'
-            return JsonResponse({'success':False,'message':msg})
+            message = 'Invalid authentication. Could not decode token.'
+            return JsonResponse({'success':False,'message':message})
 
         try:
             user = Profile.objects.get(pk=payload['id'])
