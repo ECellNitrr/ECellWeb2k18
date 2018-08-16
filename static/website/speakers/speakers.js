@@ -41,11 +41,8 @@ function insert_speaker(speakers, location, to_hide) {
 }
 
 $(function () {
-<<<<<<< HEAD
-    $.get('list/').done(function (data) {
-=======
     $.get(base_url + '/speaker/list/').done(function (data) {
->>>>>>> upstream/master
+        console.log(data)
         $('#spinner').hide()
         var speakers_div = $('.people');
 

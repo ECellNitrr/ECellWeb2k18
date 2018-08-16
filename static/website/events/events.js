@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 var events = document.querySelector('#articles')
-=======
-$(function () {
-    var events = $('#articles')
-    $.get(base_url + '/event/list/').then(function (data) {
-        $('#spinner').hide(1000);
-
->>>>>>> upstream/master
 
 put_events_in_place = (data) => {
     data.Events.forEach(function (event, i) {
@@ -21,11 +13,6 @@ put_events_in_place = (data) => {
                         <div class='center_btn'>
                             <button class="register_btn" data-eid=${event.id}>Register</button>
                         </div>
-<<<<<<< HEAD
-=======
-                        <div class="img ">
-                            <img src='/${event.cover_pic}' alt=""> </div>
->>>>>>> upstream/master
                     </div>
                     <div class="img ">
                         <img src='${event.cover_pic}' alt=""> </div>
@@ -47,11 +34,6 @@ put_events_in_place = (data) => {
                         <div class='center_btn'>
                             <button class="register_btn" data-eid=${event.id}>Register</button>
                         </div>
-<<<<<<< HEAD
-=======
-                        <div class="img ">
-                            <img src='/${event.cover_pic}' alt=""> </div>
->>>>>>> upstream/master
                     </div>
                     <div class="img ">
                         <img src='${event.cover_pic}' alt=""> </div>
