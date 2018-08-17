@@ -101,7 +101,8 @@ def appregister(request):
 	if request.method == "POST":
 		print(request.body)
 
-		req_data = json.loads(request.body)
+		#req_data = json.loads(request.body)
+		req_data = request.body
 		email = req_data['email']
 		password = req_data['password']
 
