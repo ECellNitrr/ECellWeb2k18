@@ -16,6 +16,7 @@
     <div class="user_modal">
         <h2>Login to E-Cell NIT Raipur</h2>
         <form>
+            {% csrf_token %}
             <input type="text" id="lemail" placeholder="Email" required>
             <input type="password" id="lpass" placeholder="Password" required>
             <button class="modal_btn" id="login_btn">login</button>
