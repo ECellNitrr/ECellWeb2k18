@@ -53,12 +53,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
     inlines = [ItemInline]
 
-    def get_fieldsets(self, request, obj=None):
-        fieldsets = super().get_fieldsets(request, obj)
-        if obj is None:
-            fieldsets = (      # Creation form
-                (None, {'fields': ('question', ('set', 'flag'), ('description'), ('type', 'meta'), ('time_limit', 'score'), )})
-            )
-        return fieldsets
-
 admin.site.register(Question, QuestionAdmin)
