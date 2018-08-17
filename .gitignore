@@ -2,6 +2,7 @@
 db.sqlite3
 *.pyc
 .env
+etc/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
