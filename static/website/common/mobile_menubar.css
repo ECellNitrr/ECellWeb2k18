@@ -1,0 +1,73 @@
+.menubar {
+    position: fixed;
+    z-index: 100;
+    background: #000;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    overflow-y: auto;
+}
+
+.menubar a {
+    padding: 5px;
+    margin: 0;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.7em;
+    font-weight: 700
+}
+
+.menubar a:active,
+.menubar a:hover {
+    color: orange;
+    text-decoration: underline
+}
+
+.menu-trigger {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 101;
+    margin: 20px
+}
+
+.menu-trigger .bar1,
+.menu-trigger .bar2,
+.menu-trigger .bar3 {
+    width: 40px;
+    margin: 6px 0;
+    height: 6px;
+    background: #fff;
+    box-shadow: 0 0 5px #000;
+    display: block
+}
+
+.menu-close .bar1,
+.menu-close .bar2,
+.menu-close .bar3 {
+    background: #fff
+}
+
+.menu-close .bar1 {
+    transform-origin: center left;
+    transform: rotate(45deg)
+}
+
+.menu-close .bar2 {
+    background: #000
+}
+
+.menu-close .bar3 {
+    transform-origin: center left;
+    transform: rotate(-45deg)
+}
+
+@media (min-width:880px) {
+    .menu-trigger {
+        display: none
+    }
+}

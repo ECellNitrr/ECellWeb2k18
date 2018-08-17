@@ -4,11 +4,16 @@
 <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, team"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-<title>E-Cell Team</title>
+<title>Team | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
-<link rel="stylesheet" href="{% static 'website/team/team.css' %}"> {% endblock css %}
+<link rel="stylesheet" href='{% static "website/common/mobile_menubar.css" %}'>
+<link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+<link rel="stylesheet" href='{% static "website/common/footer.css" %}'>
+
+<link rel="stylesheet" href="{% static 'website/team/team.css' %}"> 
+{% endblock css %}
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/team/team.js' %}"></script>

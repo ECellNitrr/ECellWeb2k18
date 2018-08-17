@@ -1,6 +1,7 @@
 $(function () {
     $.get(base_url + '/mentor/list/').done(function (data) {
         var mentors = $('.people');
+        console.log(data)
 
         data.mentors.forEach(function (mentor) {
             $('#spinner').hide();

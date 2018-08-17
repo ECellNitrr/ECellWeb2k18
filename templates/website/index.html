@@ -4,29 +4,53 @@
 <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, home, index"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-<title>E-Cell Home</title>
+<title>Home | E-Cell NIT Raipur</title>
 {% endblock title %}
-<!-- css -->
+<!-- common css -->
 {% block css %}
 <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
-<link rel="stylesheet" href="{% static 'website/index/index.css' %}"> {% endblock css %}
+<link rel="stylesheet" href="{% static 'website/common/footer.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}">
+<!-- page specific css -->
+<link rel="stylesheet" href="{% static 'website/index/index.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/header.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/intro.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/about.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/vision.css' %}">
+<link rel="stylesheet" href="{% static 'website/index/contact.css' %}"> {% endblock css %}
+
+<!-- loader_css -->
+{% block loader_css %}
+<link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
+<script src="{% static 'website/common/anime.min.js' %}"></script>
+{% endblock loader_css %}
+
+<!-- loader_html and script -->
+{% block loader_html_js %} {% include "website/loader.html" %}
+<script src="{% static 'website/common/loader.js' %}"></script>
+{% endblock loader_html_js %}
+
+
+
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/index/index.js' %}"></script>
 {% endblock js %}
+
 <!-- header -->
 {% block header %}
 <header>
     <div class=cover>
-        <h1 class="fadeInUp">E-SUMMIT 18</h1>
-        <p class="p-1 m-0 zoomIn" data-wow-delay=.3s>
+        <h1 class="fadeInUp mb-1">E-SUMMIT 18</h1>
+        <p class="p-1 zoomIn" data-wow-delay=.3s>
             <span class=bold>"</span> Don't fit in, just standout
             <span class=bold>"</span>
         </p>
-        <img src={% static "website/img/enterpreneurs.svg" %} alt=""> </div>
+        <img src='{% static "website/img/enterpreneurs.svg" %}' alt=""> </div>
     <div class=diagonal></div>
 </header>
 {% endblock header %}
+
 <!-- content -->
 {% block content %}
 <section id=introduction>
@@ -34,19 +58,19 @@
     <hr>
     <ul>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.2s src={% static "website/img/winds.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.2s src='{% static "website/img/winds.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.2s>Innovation</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.4s src={% static "website/img/leaf.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.4s src='{% static "website/img/leaf.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.4s>Leadership</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=..5s src={% static "website/img/pinetree.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=..5s src='{% static "website/img/pinetree.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=..5s>Growth</p>
         </li>
         <li>
-            <img class="wow fadeInUp" data-wow-delay=.6s src={% static "website/img/mountain.svg" %} alt="">
+            <img class="wow fadeInUp" data-wow-delay=.6s src='{% static "website/img/mountain.svg" %}' alt="">
             <p class="wow fadeInDown" data-wow-delay=.6s>Development</p>
         </li>
     </ul>
@@ -80,35 +104,45 @@
         (MSME) to help students cultivate required acumen to survive and thrive in today’s market. “E-Summit”, the flagship
         event of E-Cell has catered to the entrepreneurial appetite of its followers. </p>
 </section>
-<div class=left-grey>
-    <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
-        <polygon points="100 0 100 10 0 10" /> </svg>
-</div>
-<section id=contact class=container>
-    <h2 class="wow fadeInUp">Contact</h2>
-    <hr>
-    <p class="text-center mt-3">Leave a message</p>
-    <form action='message/' method="POST" class="text-center">
-        {% csrf_token %}
-        <input type="text" placeholder="Name" name="name" required>
-        <input type="email" placeholder="Email" name="email" required>
-        <textarea name="msg" placeholder="Message..." rows="4" required></textarea>
-        <input type="submit" id="submit_btn" value='submit'>
-    </form>
-    <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
-    <div id=social-media>
-        <a class="" href=https://www.facebook.com/ecellnitrr/>
-        <i class="wow fadeInRight fa fa-3x fa-facebook"></i>
-        </a>
-        <a href=https://www.instagram.com/ecell.nitraipur/>
-        <i class="wow fadeInRight fa fa-3x fa-instagram"></i>
-        </a>
-        <a class="" href="https://twitter.com/ecell_nitrr">
-            <i class="wow fadeInLeft fa fa-3x fa-twitter"></i>
-        </a>
-        <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
-        <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
-        </a>
+<!-- contact section -->
+<div id=contact_box class='my-md-5 py-md-5'>
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+            {% include 'website/map.html' %}
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <section id=contact class="mt-0">
+                <h2 class="wow fadeInUp">Contact</h2>
+                <hr class="mb-3">
+                <p class="text-center mt-1">Leave a message</p>
+                <form class="text-center">
+                    <input type="text" id='username' placeholder="Name" name="name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <textarea name="msg" placeholder="Message..." rows="4" required></textarea>
+                    <button id="submit_btn" class="mt-5">Submit</button>
+                    {% csrf_token %}
+                </form>
+            </section>
+        </div>
     </div>
-</section>
+    <!-- row end -->
+    <!-- <div class="text-center mt-5">
+        <h3 class="wow fadeInUp">ecell@nitrr.ac.in</h3>
+        <div id=social-media>
+            <a class="" href=https://www.facebook.com/ecellnitrr/>
+            <i class="wow fadeInRight fa fa-3x fa-facebook"></i>
+            </a>
+            <a href=https://www.instagram.com/ecell.nitraipur/>
+            <i class="wow fadeInRight fa fa-3x fa-instagram"></i>
+            </a>
+            <a class="" href="https://twitter.com/ecell_nitrr">
+                <i class="wow fadeInLeft fa fa-3x fa-twitter"></i>
+            </a>
+            <a href=https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur/>
+            <i class="wow fadeInLeft fa fa-3x fa-linkedin"></i>
+            </a>
+        </div>
+    </div> -->
+</div>
+
 {% endblock content %}

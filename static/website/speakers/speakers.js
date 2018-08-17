@@ -16,7 +16,7 @@ function insert_speaker(speakers, location, to_hide) {
             `<div class=${reverse? 'grey':''}>
                 <div class='d-md-flex speaker container ${reverse ? "reverse pb-4" : ""}'>
                     <div class='s-img text-center'>
-                        <img src='/${speaker.profile_pic}' class="wow flipInX my-2" alt="">
+                        <img src='${speaker.profile_pic}' class="wow flipInX my-2" alt="">
                     </div>
                     <div class='s-info d-flex align-items-center'>
                         <div class="wow fadeInUp">
@@ -42,6 +42,10 @@ function insert_speaker(speakers, location, to_hide) {
 
 $(function () {
     $.get(base_url + '/speaker/list/').done(function (data) {
+<<<<<<< HEAD
+        console.log(data)
+=======
+>>>>>>> 97f3f6cd0bbdc4071f931eea68fdfc85de641dc8
         $('#spinner').hide()
         var speakers_div = $('.people');
 

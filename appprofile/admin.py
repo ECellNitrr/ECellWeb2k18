@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Profile
+from .models import Profile,WebMsg
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'user_type', 'contact_no')
@@ -10,3 +10,4 @@ class ProfileAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'modified_at')
 
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(WebMsg)

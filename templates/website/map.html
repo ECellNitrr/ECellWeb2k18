@@ -1,0 +1,33 @@
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCUfO-QARJuNgCXB7O3AasvqD4XDDjiUqw'></script>
+<div style='overflow:hidden;height:400px;width:100%;' id="map-frame">
+    <div id='gmap_canvas' style='height:100%;width:100%;'></div>
+    <style>
+        #gmap_canvas img {
+            max-width: none !important;
+            background: none !important
+        }
+    </style>
+</div>
+<a href='https://www.embed-map.net/'>google maps html widget</a>
+<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=542f91b13385ae93dc8b4b129ed558787736e07d'></script>
+<script type='text/javascript'>
+    function init_map() {
+        var myOptions = {
+            zoom: 17,
+            center: new google.maps.LatLng(21.2497222, 81.60502910000002),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+        marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(21.2497222, 81.60502910000002)
+        });
+        // infowindow = new google.maps.InfoWindow({
+        //     content: '<strong>E-Cell NIT Raipur</strong>'
+        // });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', init_map);
+</script>

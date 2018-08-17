@@ -6,13 +6,18 @@
             <div class=bar2></div>
             <div class=bar3></div>
         </div>
-        <div class=menubar>
+        <div class='menubar'>
             <a href=/>HOME</a>
             <a href=/event>EVENTS</a>
             <a href=/team>TEAM</a>
+            <a href="/gallery">GALLERY</a>
             <a href=/sponsor>SPONSORS</a>
             <a href=/speaker>SPEAKERS</a>
             <a href=/mentor>MENTORS</a>
+            <div class="user-account mt-2">
+                <button id="mlogin_trigger"> login</button>
+                <button id="msignup_trigger">signup</button>
+            </div>
         </div>
     </nav>
     <svg class=hidden>
@@ -20,18 +25,72 @@
             <title>menu</title>
             <path d=M13.95.94v36.01h-3.858V.94zM3.919.94v36.01H.06V.94z /> </symbol>
     </svg>
-    <nav class=menu>
+    <!-- desktop menubar -->
+    <nav class='menu'>
         <div class=menu__button-wrap>
             <button class=menu__button>
                 <img src="{% static 'website/img/menu-trigger.svg' %}" height=50px alt=""> </button>
         </div>
-        <div class=menu__inner>
-            <a class=menu__item href=/>HOME</a>
-            <a class=menu__item href=/event>EVENTS</a>
-            <a class=menu__item href=/team>TEAM</a>
-            <a class=menu__item href=/sponsor>SPONSORS</a>
-            <a class=menu__item href=/speaker>SPEAKERS</a>
-            <a class=menu__item href=/mentor>MENTORS</a>
+        <div class='menu__inner d-flex justify-content-start'>
+            <div class="sidebar_img ">
+                <img src="{% static 'website/img/logo-white.png' %}" alt="">
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <a class='menu__item my-2' href='/'> HOME
+                </a>
+                <a class='menu__item my-2' href=/event>
+                    EVENTS</a>
+                <a class='menu__item my-2' href=/team>
+                    TEAM</a>
+                <a class='menu__item my-2' href=/gallery>
+                    GALLERY</a>
+                <a class='menu__item my-2' href=/sponsor>
+                    SPONSORS</a>
+                <a class='menu__item my-2' href=/speaker>
+                    SPEAKERS</a>
+                <a class='menu__item my-2' href=/mentor>
+                    MENTORS</a>
+            </div>
+            <div class="user-account">
+                <button id="wlogin_trigger"> login</button>
+                <button id="wsignup_trigger">signup</button>
+                <a href="{% url 'social:begin' 'facebook' %}">Signup with facebook</a>
+            </div>
         </div>
     </nav>
 </div>
+<style>
+    .menu__inner img {
+        width: 100px;
+        height: 100px;
+        margin: 30px 50px;
+    }
+
+    .menu__inner i {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .user-account {
+        margin-top: 50px;
+    }
+
+    .user-account button {
+        padding: 8px;
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+        margin: 8px;
+        font-weight: bold;
+        outline: none;
+    }
+
+    .user-account button:hover {
+        background: white;
+        color: black !important;
+    }
+
+    .sidebar_img {
+        margin-left: -20px;
+    }
+</style>

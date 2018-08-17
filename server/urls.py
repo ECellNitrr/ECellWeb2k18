@@ -21,13 +21,9 @@ from django.conf.urls import url
 from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
-from home import views as homeviews
 from app import views as app_views
 
 urlpatterns = [
-    path('', homeviews.homepage),
-    path('tshirt/', homeviews.tshirt),
-    path('message/', homeviews.message),
     path('admin/', admin.site.urls),
     #path('login/',views.login, name='login'),
     #path('register/', views.register, name='register'),
@@ -39,7 +35,6 @@ urlpatterns = [
     path('mentor/', include('mentors.urls')),
     path('startup/', include('startups.urls')),
     path('speaker/', include('speakers.urls')),
-    path('message/', include('contactus.urls')),
     path('quiz/', include('bquiz.urls')),
     path('team/',include('team.urls')),
     path('bquiz/',include('bquiz.urls')),
@@ -49,6 +44,9 @@ urlpatterns = [
     url(r'^password_reset/done/$', auth_views.password_reset_done),
     url(r'^reset/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm),
     url(r'^reset/done/$', auth_views.password_reset_complete),
+    url(r'^add/(\d+)/$', views.add_to_cart, name='add_to_cart'),
+    url(r'^remove/(\d+)/$', views.remove_from_cart, name='remove_from_cart'),
+    url(r'^cart/',views.bag, name='cart'),
     url(r'^static/(?P<path>.*)$', stat.serve, {'document_root': settings.STATIC_ROOT}),
     path('',include('appprofile.urls')),
 

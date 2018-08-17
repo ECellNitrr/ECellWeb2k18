@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+<form action="{% url 'register' %}" method="post">
+			{% csrf_token %}
+		
+			<input type="text" name="email" placeholder="Username">
+			</div>
+			<div>
+			<input type="password"  name="password" placeholder="Password" >
+			</div>
+			<div>
+			<input type="submit" name="" value="Register">
+
+
+			
+</form>
+
+<a href="{% url 'social:begin' 'facebook' %}">Login with facebook</a>
+</body>
+</html>

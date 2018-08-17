@@ -22,7 +22,7 @@ def get_quiz(request):
         quiz = Question.objects.filter(set=idy).values()
         quiz = list(quiz)
         questionset[i]['questions'] = quiz
-    
+
     return JsonResponse({
             'success':True,
             'Quizset':questionset
@@ -35,9 +35,9 @@ def view_quiz(request,id):
     quiz['meta'] = str(quiz['meta'])
 
 ##-------------##
-
+#Check commit error
 ##-----------##
-    
+
     questions = Question.objects.filter(q_set=id).values()
     #print(questions)
     #print(id)

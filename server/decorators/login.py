@@ -33,12 +33,10 @@ def login_req(function):
         try:
             user = Profile.objects.get(pk=payload['id'])
         except Profile.DoesNotExist:
-            message = 'No user matching this token was found.'
-            return JsonResponse({'success':False,'message':message})
-
-        #if not Profile.is_active:
-        #    message = 'This user has been deactivated.'
-        #    return JsonResponse({'success':False,'message':message})
+            msg = 'No user matching this token was found.'
+            return JsonResponse({'success':False,'message':msg})
+        if(user.profile.status!=1):
+            return JsonResponse({'success':False,'message':'Your Account hasn\'t been activated yet.'})
         kwargs['user_id'] = payload['id']
         user.is_active = True;
         #login(request,user)

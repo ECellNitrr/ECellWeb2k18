@@ -15,6 +15,10 @@
     {% block keywords %} keywords goes here {% endblock keywords %}
     <!-- meta title -->
     {% block title %} title goes here{% endblock title %}
+
+    <!-- loader css -->
+    {% block loader_css %} {% endblock loader_css %}
+
     <!-- spinner css -->
     <link rel="stylesheet" href="{% static 'website/common/spinner.css' %}">
     <!-- fontawesome css-->
@@ -26,52 +30,17 @@
     <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
     <!-- custom css -->
     {% block css %} css goes here {% endblock css %}
-    <!-- loader js and css -->
-    <link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
-    <script src="{% static 'website/common/anime.min.js' %}"></script>
-    <style>
-            html {
-                width: 100vw !important;
-                overflow-x: hidden !important;
-            }
-    
-            a:hover {
-                text-decoration: none !important;
-            }
-    
-            #logo-img {
-                position: absolute;
-                top: 25px;
-                left: 25px;
-                width: 100px;
-            }
-    
-            @media(max-width: 700px) {
-                header h1 {
-                    padding-top: 100px;
-                    font-size: 30px;
-                }
-                footer h3 {
-                    font-size: 15px;
-                    letter-spacing: 3px;
-                }
-                #logo-img {
-                    top: 20px;
-                    left: 50vw;
-                    transform: translateX(-50%);
-                    width: 60px;
-                }
-            }
-        </style>
+    <!-- common css -->
+    <link rel="stylesheet" href="{% static 'website/common/common.css' %}">
 </head>
 
 <body>
     <!-- loader html -->
-    {% include "website/loader.html" %}
-    <script src="{% static 'website/common/loader.js' %}"></script>
+    {% block loader_html_js %} {% endblock loader_html_js %}
 
     <!-- menubar -->
     {% include 'website/menubar.html' %}
+
     <!-- header -->
     <img src="{% static 'website/img/logo.png' %}" alt="" id="logo-img"> {% block header %}
     <header>
@@ -96,13 +65,23 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <!-- modal -->
+    {% include 'website/modal.html' %}
+    <div id="modal"></div>
+    <link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
+    <script src="{% static 'website/modal/modal_dom.js' %}"></script>
+    <script src="{% static 'website/modal/logout_modal.js' %}"></script>
+    <script src="{% static 'website/modal/login_modal.js' %}"></script>
+    <script src="{% static 'website/modal/signup_modal.js' %}"></script>
+
 
     <!-- menubar js-->
+    <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
     <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
     <script src="{% static 'website/menubar/nearby.js' %}"></script>
     <script src="{% static 'website/menubar/demo.js' %}"></script>
-    <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
     <script src="{% static 'website/menubar/demo4.js' %}"></script>
+
 
     <!-- wow js -->
     <script src="{% static 'website/common/wow.js' %}"></script>
@@ -114,9 +93,20 @@
         wow.init();
     </script>
 
+
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
+    <!-- urgent js -->
+    <script>
+        if (localStorage.ecell_nitrr_user) {
+            loggedin_user.innerText = localStorage.ecell_nitrr_user.split('@')[0]
+            wlogin_trigger.innerText = 'logout'
+            mlogin_trigger.innerText = 'logout'
+        } else {
+            loggedin_user.innerText = 'login / signup'
+        }
+    </script>
 </body>
 
 </html>

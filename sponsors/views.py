@@ -6,23 +6,31 @@ from server.decorators.login import login_req
 from .forms import SponsorForm
 import json
 from django.shortcuts import render
-
+from django.utils.six.moves.urllib.parse import urlsplit
 
 @csrf_exempt
 def get_sponsors(request):
 	sponsors = Sponsor.objects.all().values()
-	#sponsors_list = list(sponsors)
+	scheme = urlsplit(request.build_absolute_uri(None)).scheme
 
+	
 	AS = Sponsor.objects.filter(spons_type='AS').values()
-	AS_list = list(AS)
-
-	PLTS = Sponsor.objects.filter(spons_type='PLTS').values()
-
+	for spons in AS:
+		sponsor['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(sponsor['pic'])
+	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
+	for spons in PLTS:
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	GS = Sponsor.objects.filter(spons_type='GS').values()
+	for spons in GS:
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	TS = Sponsor.objects.filter(spons_type='TS').values()
-
+	for spons in TS:
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	PRTS = Sponsor.objects.filter(spons_type='PRTS').values()
+	for spons in PRTS:
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 
+	AS_list = list(AS)
 	PLTS_list = list(PLTS)
 	GS_list = list(GS)
 	TS_list = list(TS)

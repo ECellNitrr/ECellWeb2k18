@@ -1,5 +1,4 @@
 body {
-    overflow: hidden;
     background: #18181c;
     color: #18181c;
     overflow: hidden;
@@ -23,14 +22,18 @@ body {
 
 #logo {
     transition: fill 1s ease;
+    fill: yellowgreen;
     /* stroke: rgb(153, 255, 0); */
-    /* stroke: gold; */
+    stroke: black !important;
+    stroke-width: 3;
 }
 
 .loader svg {
-    /* margin-top: -30px; */
+    /* margin-top: 30px; */
+    /* width: 95%; */
     display: none;
-    height: 100vh;
+    margin-top: 5vh;
+    height: 95vh;
 }
 
 text {

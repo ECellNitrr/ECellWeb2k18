@@ -1,0 +1,115 @@
+.center_the_modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    top: -125vh;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .5);
+    transition: all .7s ease;
+}
+
+.user_modal {
+    background-color: white;
+    padding: 45px 75px;
+    box-shadow: 5px 5px 50px -5px black;
+    text-align: center;
+}
+
+.user_modal input {
+    text-align: center;
+    width: 350px;
+    border: 2px solid black;
+    padding: 10px;
+    outline: none;
+    display: block;
+    color: black;
+    margin: 6px auto !important;
+    box-sizing: border-box;
+}
+
+.user_modal h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 25px;
+}
+
+.modal_btn {
+    background: black;
+    margin-top: 30px;
+    border: 2px solid black !important;
+    /* border-radius: 2px; */
+    padding: 7px 15px;
+    border: none;
+    color: white;
+    outline: none;
+    font-weight: bold;
+}
+
+.alternative_btn {
+    background: none;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    color: blue;
+}
+
+.alternative_btn:focus {
+    outline: none;
+}
+
+#loggedin_user {
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#loggedin_user i {
+    border: 2px solid black;
+    padding: 5px 10px;
+    margin-left: 15px;
+}
+
+#loggedin_user span {
+    text-transform: uppercase;
+    font-size: 20px;
+    align-self: center;
+}
+
+.close_btn {
+    background: white;
+    border: 2px solid rgb(211, 9, 9) !important;
+    color: rgb(211, 9, 9);
+}
+
+@media(max-width: 700px) {
+    #loggedin_user {
+        display: none;
+        color: black;
+        background: white;
+        text-align: center;
+        top: 17px;
+        left: 15px;
+        z-index: 1001;
+        padding: 10px 15px;
+        font-weight: bold;
+        width: 75%;
+        overflow: hidden;
+        position: fixed;
+    }
+    #loggedin_user i {
+        display: none;
+    }
+    .user_modal {
+        width: 95vw;
+        padding: 25px 15px;
+        box-sizing: border-box;
+    }
+    .user_modal input {
+        width: 100%;
+    }
+}
