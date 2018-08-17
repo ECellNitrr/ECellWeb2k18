@@ -1,33 +1,4 @@
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCUfO-QARJuNgCXB7O3AasvqD4XDDjiUqw'></script>
-<div style='overflow:hidden;height:400px;width:100%;' id="map-frame">
-    <div id='gmap_canvas' style='height:100%;width:100%;'></div>
-    <style>
-        #gmap_canvas img {
-            max-width: none !important;
-            background: none !important
-        }
-    </style>
+<div id="gmap_canvas">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.548956964595!2d81.60284041432216!3d21.249727185575306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dde213f66723%3A0x21543965c50c43c7!2sNational+Institute+Of+Technology%2C+Raipur%2C+Chhatisgarh!5e0!3m2!1sen!2sin!4v1534483869333"
+        width="100%" height="400px" frameborder="0" style="border:0;border-radius:10px" allowfullscreen></iframe>
 </div>
-<a href='https://www.embed-map.net/'>google maps html widget</a>
-<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=542f91b13385ae93dc8b4b129ed558787736e07d'></script>
-<script type='text/javascript'>
-    function init_map() {
-        var myOptions = {
-            zoom: 17,
-            center: new google.maps.LatLng(21.2497222, 81.60502910000002),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-        marker = new google.maps.Marker({
-            map: map,
-            position: new google.maps.LatLng(21.2497222, 81.60502910000002)
-        });
-        // infowindow = new google.maps.InfoWindow({
-        //     content: '<strong>E-Cell NIT Raipur</strong>'
-        // });
-        google.maps.event.addListener(marker, 'click', function () {
-            infowindow.open(map, marker);
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', init_map);
-</script>
