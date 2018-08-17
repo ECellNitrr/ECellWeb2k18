@@ -4,24 +4,24 @@ var body = document.querySelector('body')
 body.style.background = 'white'
 body.style.color = 'black'
 
-new Vivus('loader_svg', {
-    type: 'sync',
-    duration: 300,
-    animTimingFunction: Vivus.EASE
-});
+// new Vivus('loader_svg', {
+//     type: 'sync',
+//     duration: 300,
+//     animTimingFunction: Vivus.EASE
+// });
 
 // draw the lines
-// var lineDrawing = anime({
-//     targets: 'path:not(#logo)',
-//     strokeDashoffset: [anime.setDashoffset, 0],
-//     easing: 'easeInOutQuad',
-//     duration: 3000,
-//     delay: function (el, i) {
-//         return 500 + (i%2)*250
-//     },
-//     direction: 'alternate',
-//     loop: false
-// });
+var lineDrawing = anime({
+    targets: 'path:not(#logo)',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: 'easeInOutQuad',
+    duration: 4000,
+    delay: function (el, i) {
+        return 500 + (i%2)*250
+    },
+    direction: 'alternate',
+    loop: false
+});
 
 // show the circles
 var circles = document.querySelectorAll('circle');
