@@ -181,7 +181,11 @@ def appregister(request):
 		msg=msg+otp
 		msg = msg.encode('utf-8')
 		msg = str(msg)
+		msg = msg[2:-1]
+		print(msg)
 		stringmsg=stringmsg+msg
+		
+		print(stringmsg)
 		conn.request("GET", stringmsg)
 		user.profile.otp = otp
 		user.profile.save()
