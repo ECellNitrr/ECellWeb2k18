@@ -334,6 +334,7 @@ def send_otp(request, *args, **kwargs):
 		Atkey = config('Atkey')
 
 
+<<<<<<< HEAD
 		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		# otpobj =  sendotp.sendotp(Atkey,Msg)
 		# otp = otpobj.generateOtp()
@@ -347,6 +348,13 @@ def send_otp(request, *args, **kwargs):
 
 		# otps = otpobj.send(contact_no,'ECelll',otp)
 		# #Don't change the name 'ECelll' in above line
+=======
+		otpobj.send(contact_no,'ECellR',otp)
+		#Don't change the name 'ECelll' in above line
+
+		otps = otpobj.send(contact_no,'ECellR',otp)
+		#Don't change the name 'ECelll' in above line
+>>>>>>> 97f3f6cd0bbdc4071f931eea68fdfc85de641dc8
 
 
 		# contact_no = str(contact_no)
