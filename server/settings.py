@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1', '192.168.2.10','192.168.2.6','df0dd4f8.ngrok.io']
+ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1', '*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'events',
     'bquiz',
-    #'contactus',
+    'contactus',
     # 'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
     'app',

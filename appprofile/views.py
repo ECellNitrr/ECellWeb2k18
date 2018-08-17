@@ -79,7 +79,7 @@ def applogin(request, *args, **kwargs):
 			return JsonResponse(error_msg)
 
 		if user:
-			user.is_active=True;
+			user.profile.status=1;
 			login(request,user)
 			payload = {
 				'id' : user.id,
@@ -95,6 +95,7 @@ def applogin(request, *args, **kwargs):
 			})
 
 		else:
+			print("status issue")
 			return JsonResponse(error_msg)
 	return render(request,'login.html')
 
@@ -247,9 +248,9 @@ def weblogin(request):
 		'message' : 'Invalid credentials'
 		}
 	if request.method == 'POST':
-		if 'username' in request.session:
-			print("USER IN SESSION")
-			return
+		# if 'username' in request.session:
+		# 	print("USER IN SESSION")
+		# 	return
 		req_data = json.loads(request.body)
 		email = req_data['email']
 		password = req_data['password']
@@ -282,7 +283,7 @@ def webregister(request):
 		req_data = json.loads(request.body)
 		email = req_data['email']
 		password = req_data['password']
-		print(req_data)
+		#print(req_data)
 
 		if User.objects.filter(email=email).exists():
 			return JsonResponse({'success':False,'message':'Email already exists'})
@@ -422,6 +423,9 @@ def verify_otp(request, *args, **kwargs):
 			profile = Profile.objects.get(user=current_user)
 			profile.contact_no = str(contact_no)
 			profile.status = True
+			current_user.is_active = True
+			current_user.save()
+
 			profile.save()
 			return JsonResponse({'success':True,'msg':'OTP verified successfully'})
 		else:

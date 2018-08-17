@@ -21,7 +21,6 @@ from django.conf.urls import url
 from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
-#from home import views as homeviews
 from app import views as app_views
 
 urlpatterns = [

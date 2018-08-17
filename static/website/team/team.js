@@ -2,7 +2,11 @@ function show_with_pic(target, members) {
     members.forEach(function (member) {
         var member_html = `
             <div class="member">
+<<<<<<< HEAD
                 <img src="${member.url}">
+=======
+                <img src="/${member.url}">
+>>>>>>> 97f3f6cd0bbdc4071f931eea68fdfc85de641dc8
                 <div class="description">
                     <h4 class="name">${member.name}</h4>
                 </div>
@@ -33,7 +37,11 @@ $(function () {
     var head_career_dev = $('#head_career-dev')
     var faculty_incharge = $('#faculty_incharge')
 
+<<<<<<< HEAD
     $.get('list').then(function (data) {
+=======
+    $.get(base_url + '/team/list').then(function (data) {
+>>>>>>> 97f3f6cd0bbdc4071f931eea68fdfc85de641dc8
         $('#spinner').hide();
 
         // get the data of the given member_type
