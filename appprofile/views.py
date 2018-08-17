@@ -100,21 +100,21 @@ def appregister(request):
 	registered = False
 	if request.method == "POST":
 		print(request.body)
-
-		#req_data = json.loads(request.body)
 		req_data = request.body
-		email = req_data.email
-		password = req_data.password
+		req_data = req_data.decode('utf-8')
+		#req_data = json.loads(request.body)
+		email = req_data['email']
+		password = req_data['password']
 
 		#Checking Duplicate records of Email or contact no
-		conno = req_data.contact_no
+		conno = req_data['contact_no']
 		if(Profile.objects.filter(contact_no=conno).exists()):
 			return JsonResponse({
 				'success':False,
 				'message':'Contact No. must be unique',
 			})
 		print('First check')
-		checkemail = req_data.email
+		checkemail = req_data['email']
 		if(User.objects.filter(email=checkemail).exists()):
 			return JsonResponse({
 				'success':False,
@@ -123,8 +123,8 @@ def appregister(request):
 
 		print('Second check')
 		#Saving Data in Variables
-		first = req_data.first_name
-		last = req_data.last_name
+		first = req_data['first_name']
+		last = req_data['last_name']
 		user = User.objects.create_user(
 			username=first+last+conno,
 			email=email,
@@ -140,7 +140,7 @@ def appregister(request):
 
 		#User created, Creating a linked Profile of user
 		#user.profile.avatar = req_data['avatar']
-		user.profile.contact_no = req_data.contact_no
+		user.profile.contact_no = req_data['contact_no']
 		#user.profile.facebook = req_data['facebook']
 		#user.profile.linkedin = req_data['linkedin']
 		user.profile.status=0
