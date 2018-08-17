@@ -21,13 +21,15 @@
 
 <!-- loader_css -->
 {% block loader_css %}
-<link rel="stylesheet" href="{% static 'website/common/loader.css' %}">
-<script src="{% static 'website/common/anime.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'website/index/loader.css' %}">
+<!-- <script src="{% static 'website/common/anime.min.js' %}"></script> -->
+<script src="{% static 'website/index/vivus.min.js' %}"></script>
+
 {% endblock loader_css %}
 
 <!-- loader_html and script -->
 {% block loader_html_js %} {% include "website/loader.html" %}
-<script src="{% static 'website/common/loader.js' %}"></script>
+<script src="{% static 'website/index/loader.js' %}"></script>
 {% endblock loader_html_js %}
 
 
