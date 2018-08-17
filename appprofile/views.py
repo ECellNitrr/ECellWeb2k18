@@ -1,5 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .models import Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -29,6 +29,10 @@ from .models import WebMsg
 import multiprocessing
 from . import send_mail
 from random import randint
+
+
+def event_detail(request,event_id):
+    return render(request, 'website/event_detail.html')
 
 def homepage(request):
     return render(request, 'website/index.html')

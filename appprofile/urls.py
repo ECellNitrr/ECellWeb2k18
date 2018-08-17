@@ -5,6 +5,7 @@ from django.conf.urls import url
 from . import views
 urlpatterns = [
     path('',views.homepage),
+    path('event_detail/<int:event_id>', views.event_detail, name='Event_Detail'),
     path('message/',views.message),
     path('gallery/', views.gallerypage),
     path('terms/', views.terms_page),
