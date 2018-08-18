@@ -7,7 +7,7 @@ put_events_in_place = (data) => {
             <article>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class="">${event.name}</h2>
+                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
@@ -20,7 +20,7 @@ put_events_in_place = (data) => {
             </article>
             `)
         } else {
-            events.innerHTML +=(`
+            events.innerHTML += (`
             <div class=right-grey>
                 <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
                     <polygon points="100 0 100 10 0 10" /> </svg>
@@ -28,7 +28,7 @@ put_events_in_place = (data) => {
             <article class=reverse-layout>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class="">${event.name}</h2>
+                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
@@ -49,7 +49,7 @@ put_events_in_place = (data) => {
 }
 
 $(function () {
-    $.get('list/').then(function (data) {
+    $.get('/event/list/').then(function (data) {
         console.log(data)
         // hide the spinner
         $('#spinner').hide(1000);

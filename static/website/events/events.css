@@ -149,3 +149,7 @@ html {
 .register_btn:focus {
     outline: none;
 }
+
+article a:hover {
+    color: black !important;
+}
