@@ -5,13 +5,10 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'venue', 'date','time')
     search_fields = ('id', 'name','venue','date', 'time')
 
-
-
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user')
     #search_fields = ('id', 'name','venue','date', 'time')
-
-
+    
 class EventOrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'cart','event')
 
