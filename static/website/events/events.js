@@ -11,7 +11,7 @@ put_events_in_place = (data) => {
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <button class="register_btn" data-eid=${event.id}>Register</button>
+                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">
@@ -32,7 +32,7 @@ put_events_in_place = (data) => {
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <button class="register_btn" data-eid=${event.id}>Register</button>
+                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">

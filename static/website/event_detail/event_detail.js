@@ -6,20 +6,16 @@ put_event_in_place = (event) => {
             <article class="container">
                 <h2 class="">${event.name}</h2>
                 <hr>
-                <div class="img ">
-                    <img src='${event.cover_pic}' alt=""> </div>
-                </div>
-                <div class=text>
-                    <p><strong>Date: </strong>${event.date}</p>
-                    <p><strong>Time: </strong>${event.time}</p>
-                    <p><strong>Email: </strong>${event.email}</p>
-                    <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
-                    <p class="text-justify">${event.details}</p>
-                    <div class='text-center mt-5'>
-                        <button class="register_btn" data-eid=${event.id}>Register</button>
-                    </div>
-                </div>
+                <img src='${event.cover_pic}' alt=""> </div>
+                <p><strong>Date: </strong>${event.date}</p>
+                <p><strong>Time: </strong>${event.time}</p>
+                <p><strong>Email: </strong>${event.email}</p>
+                <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
+                <p class="text-justify">${event.details}</p>
             </article>
+            <div class='text-center mt-5'>
+                <button class="register_btn" data-eid=${event.id}>Register</button>
+            </div>
         `)
 }
 

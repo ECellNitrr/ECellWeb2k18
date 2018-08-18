@@ -10,30 +10,27 @@ html {
 * {
     padding: 0;
     margin: 0;
-    font-family: Open Sans, "sans-serif"
+    font-family: Open Sans, "sans-serif";
 }
 
-@media (min-width:700px) {
-    hr {
-        width: 100px;
-        border: 2px solid #000;
-        margin: 20px auto 40px;
-        background: #000
-    }
+hr {
+    width: 100px;
+    border: 2px solid #000;
+    margin: 10px auto 40px;
+    background: #000
 }
-
-/* new style */
 
 @media (min-width:700px) {
     h2 {
         font-weight: bold;
         text-align: center;
+        font-size: 35px;
+        letter-spacing: 3px;
     }
     h3 {
         font-weight: bold;
         text-align: center;
     }
-    /* speaker */
     .speaker{
         position: relative;
     }
@@ -88,7 +85,9 @@ html {
 
 @media(max-width: 700px){
     h2 {
+
         font-weight: bold;
+        font-size: 25px;
         text-align: center;
     }
     h3 {

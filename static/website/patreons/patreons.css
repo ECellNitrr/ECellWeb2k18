@@ -17,14 +17,14 @@ h1 {
     font-family: Open Sans;
     letter-spacing: 2px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     text-transform: uppercase
 }
 
 hr {
     width: 100px;
     border: 2px solid #000;
-    margin: 20px auto 40px;
+    margin: 8px auto 40px;
     background: #000
 }
 
