@@ -3,7 +3,7 @@ from django.db import models
 from .models import App
 
 class AppAdmin(admin.ModelAdmin):
-    list_display = ('id','name', 'log', 'link')
+    list_display = ('id','name', 'log', 'link', 'flag')
     search_fields = ('id', 'name')
     #list_filter = ('user_type',)
     #ordering = ('-created_at',)

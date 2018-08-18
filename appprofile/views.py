@@ -54,10 +54,8 @@ def message(request):
 
 	return JsonResponse({'success':True,'message':'message recieved by server'})
 
-
 @csrf_exempt
 def applogin(request, *args, **kwargs):
-
 	error_msg = {
 		'success' : False,
 		'message' : 'Invalid credentials'
@@ -71,10 +69,14 @@ def applogin(request, *args, **kwargs):
 		try:
 			obj = User.objects.filter(email=email)
 			username = obj[0].username
+			print(username)
+			user = authenticate(username=username, password=password)
+			print(user)
 		except:
 			return JsonResponse(error_msg)
 		try:
 			user = authenticate(username=username, password=password)
+			print(user)
 		except User.DoesNotExist:
 			return JsonResponse(error_msg)
 
@@ -182,7 +184,6 @@ def appregister(request):
 		otp = str(randint(1000,9999))
 		msg = "Your otp is: "
 		msg=msg+otp
-		msg = msg.encode('utf-8')
 		msg = str(msg)
 		msg = msg[2:-1]
 		print(msg)
@@ -192,22 +193,10 @@ def appregister(request):
 		conn.request("GET", stringmsg)
 		user.profile.otp = otp
 		user.profile.save()
-	
-
-
 		res = conn.getresponse()
-
 		data = res.read()
-
-
-
 		print(data.decode("utf-8"))
-
-
-
 		print(otp)
-
-
 		payload = {
 			'id' : user.id,
 			'email': user.email,
@@ -221,11 +210,6 @@ def appregister(request):
 			'message' : 'Registration successfull',
 			'token' : token
 		})
-
-		#------------------
-
-	
-
 	else:
 		return JsonResponse({
 				'success' :False,
@@ -346,6 +330,13 @@ def send_otp(request, *args, **kwargs):
 		Atkey = config('Atkey')
 
 
+<<<<<<< HEAD
+		otpobj.send(contact_no,'ECellR',otp)
+		#Don't change the name 'ECelll' in above line
+
+		otps = otpobj.send(contact_no,'ECellR',otp)
+		#Don't change the name 'ECelll' in above line
+=======
 		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
 		# otpobj =  sendotp.sendotp(Atkey,Msg)
 		# otp = otpobj.generateOtp()
@@ -359,6 +350,7 @@ def send_otp(request, *args, **kwargs):
 
 		# otps = otpobj.send(contact_no,'ECelll',otp)
 		# #Don't change the name 'ECelll' in above line
+>>>>>>> 3a5ee6144493375b401c03b1980bcd89d20faa94
 
 
 		# contact_no = str(contact_no)
@@ -410,7 +402,7 @@ def retry_otp(request, *args, **kwargs):
 @csrf_exempt
 @decoder
 def verify_otp(request, *args, **kwargs):
-
+	print("OTP verification requested")
 	current_userid = kwargs['user_id']
 	current_user = User.objects.get(id=current_userid)
 	profile = Profile.objects.get(user=current_user)
@@ -419,14 +411,11 @@ def verify_otp(request, *args, **kwargs):
 	contact_no = int(contact_no)
 	totp = profile.otp
 	totp = str(totp)
-
+	print("API call successful")
 	if request.method == 'POST':
 		req_data = json.loads(request.body)
-		
-
 		otp = req_data['otp']
 		if(totp == otp):
-
 			profile = Profile.objects.get(user=current_user)
 			profile.contact_no = str(contact_no)
 			profile.status = True
@@ -434,12 +423,13 @@ def verify_otp(request, *args, **kwargs):
 			current_user.save()
 
 			profile.save()
-			return JsonResponse({'success':True,'msg':'OTP verified successfully'})
+			print("OTP Verified")
+			return JsonResponse({'success':True,'message':'OTP verified successfully'})
 		else:
-
-			return JsonResponse({'success':False,'msg':'Invalid OTP'})
-
-
+			print("OTP not verified")
+			return JsonResponse({'success':False,'message':'Invalid OTP'})
+	print("Method not valid")
+	return JsonResponse({'success':False,'message':'Invalid method'})
 
 def social_settings(request):
 	user = request.user
