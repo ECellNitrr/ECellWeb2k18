@@ -72,7 +72,7 @@ commence_login = () => {
     }
 
     // after validation
-    console.log('login commenced')
+    console.log('login commenced',login_csrf)
     login_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>';
     // disable login btn to prevent multiple requests
     login_btn.disabled = true
@@ -80,7 +80,8 @@ commence_login = () => {
     fetch('/login/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json; charset=utf-8',
+            'X-CSRFToken': login_csrf
         },
         body: JSON.stringify({
             'email': lemail.value,

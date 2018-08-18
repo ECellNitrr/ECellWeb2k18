@@ -32,6 +32,9 @@ var s2l_btn = document.querySelector('#signup_modal .alternative_btn')
 // menubar
 let menuTrigger = document.querySelector('.menu-trigger');
 let menubar = document.querySelector('.menubar');
+// csrf tokens
+let login_csrf = document.querySelector('#login_modal [name=csrfmiddlewaretoken]').value
+
 // miscellaneous
 var body = document.querySelector('body')
 var loggedin_user = document.querySelector('#loggedin_user span') // used to show the logged in user
