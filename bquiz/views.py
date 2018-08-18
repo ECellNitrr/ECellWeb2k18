@@ -166,7 +166,7 @@ def submit_answer(request, *args, **kwargs):
     if request.method == 'POST':
         if not Answer.objects.filter(user_id=user_id, question_id=question_id, answer_id=answer_id).exists():
             response['success'] = True
-            response['message'] = Answer.objects.get(key='ANS')
+            response['message'] = Setting.objects.get(key='ANS')
             question_id = request.POST.get('questionId')
             option_id = request.POST.get('optionId')
             user_id = kwargs['user_id']
@@ -174,7 +174,7 @@ def submit_answer(request, *args, **kwargs):
             answer.save()
         else:
             response['success'] = True
-            response['message'] = Answer.objects.get(key='ANS')
+            response['message'] = Setting.objects.get(key='ANS')
     else:
         response['success'] = True
         response['message'] = "Invalid request"

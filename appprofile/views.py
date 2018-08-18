@@ -69,14 +69,11 @@ def applogin(request, *args, **kwargs):
 		try:
 			obj = User.objects.filter(email=email)
 			username = obj[0].username
-			print(username)
 			user = authenticate(username=username, password=password)
-			print(user)
 		except:
 			return JsonResponse(error_msg)
 		try:
 			user = authenticate(username=username, password=password)
-			print(user)
 		except user.DoesNotExist:
 			return JsonResponse(error_msg)
 

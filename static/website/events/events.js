@@ -49,7 +49,7 @@ put_events_in_place = (data) => {
 }
 
 $(function () {
-    $.get('/event/list/').then(function (data) {
+    $.get('/events/list/').then(function (data) {
         console.log(data)
         // hide the spinner
         $('#spinner').hide(1000);
