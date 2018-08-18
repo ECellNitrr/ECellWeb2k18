@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body,
+html {
+    width: 100%;
+    overflow-x: hidden
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Open Sans, "sans-serif"
+}
+
+@media (max-width:700px) {
+    
+}
+
+@media (min-width:700px) {
+    #event_detail h2 {
+        font-weight: bold;
+        text-align: center;
+        font-size: 40px;
+    }
+    
+    #event_detail img {
+        float: right;
+        margin: 25px;
+    }
+    
+    hr {
+        width: 100px;
+        border: 2px solid #000;
+        margin: 10px auto 40px;
+        background: #000
+    }
+
+}
+
+.register_btn {
+    background: transparent;
+    border: 2px solid black;
+    padding: 8px 12px;
+    outline: none;
+    width: 150px;
+    transition: all .5s ease;
+}
+
+.register_btn:focus {
+    outline: none;
+}
+
+article a:hover {
+    color: black !important;
+}

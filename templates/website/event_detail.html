@@ -15,18 +15,18 @@
 <link rel="stylesheet" href="{% static 'website/common/footer.css' %}"> 
 <link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}"> 
 
-<link rel="stylesheet" href="{% static 'website/events/events.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> 
 
 {% endblock css %}
 <!-- js -->
 {% block js %}
-<script src="{% static 'website/events/register_event.js' %}"></script>
-<script src="{% static 'website/events/events.js' %}"></script>
+<!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
+<script src="{% static 'website/event_detail/event_detail.js' %}"></script>
 {% endblock js %}
 <!-- main content -->
 {% block content %}
 <!-- spinner -->
 {% include 'website/spinner.html' %}
-<section id=articles></section>
+<section id=event_detail></section>
 
 {% endblock content %}
