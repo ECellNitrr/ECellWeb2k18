@@ -12,9 +12,14 @@ html {
     font-family: Open Sans, "sans-serif"
 }
 
+h2 {
+    text-transform: uppercase;
+}
+
 @media (max-width:700px) {
     #articles article {
-        padding: 20px;
+        padding: 10px;
+        box-sizing: border-box;
         text-align: justify
     }
 
@@ -148,4 +153,8 @@ html {
 
 .register_btn:focus {
     outline: none;
+}
+
+article a:hover {
+    color: black !important;
 }

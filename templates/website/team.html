@@ -12,18 +12,19 @@
 <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
 <link rel="stylesheet" href='{% static "website/common/footer.css" %}'>
 
-<link rel="stylesheet" href="{% static 'website/team/team.css' %}"> 
-{% endblock css %}
+<link rel="stylesheet" href="{% static 'website/team/team.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/team/team.js' %}"></script>
 {% endblock js %}
 <!-- content -->
-{% block content %}
-{% include 'website/spinner.html' %}
-<h2 class="underline h5 font-weight-bold container my-5 ">Director NIT Raipur</h2>
-<hr>
-<div class="members container" id="director"></div>
+{% block content %} {% include 'website/spinner.html' %}
+
+<div>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Director NIT Raipur</h2>
+    <hr>
+    <div class="members container" id="director"></div>
+</div>
 
 <div>
     <h2 class="underline h5 font-weight-bold container my-5 ">Head of Career development cell</h2>
@@ -37,21 +38,29 @@
     <div class="members container" id="faculty_incharge"></div>
 </div>
 
-<h2 class="underline h5 font-weight-bold container py-5 ">Overall Co-ordinators</h2>
-<hr>
-<div class="members container" id="overall-co"></div>
+<div>
+    <h2 class="underline h5 font-weight-bold container py-5 ">Overall Co-ordinators</h2>
+    <hr>
+    <div class="members container" id="overall-co"></div>
+</div>
 
-<h2 class="underline h5 font-weight-bold container my-5 ">Head Co-ordinators</h2>
-<hr>
-<div class="members container" id="head-co"></div>
+<div>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Head Co-ordinators</h2>
+    <hr>
+    <div class="members container" id="head-co"></div>
+</div>
 
-<h2 class="underline h5 font-weight-bold container my-5 ">Managers</h2>
-<hr>
-<div class="members container" id="managers"></div>
+<div>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Managers</h2>
+    <hr>
+    <div class="members container" id="managers"></div>
+</div>
 
-<h2 class="underline h5 font-weight-bold container my-5 ">Executives</h2>
-<hr>
-<div class="members container" id="executives"></div>
+<div>
+    <h2 class="underline h5 font-weight-bold container my-5 ">Executives</h2>
+    <hr>
+    <div class="members container" id="executives"></div>
+</div>
 <style>
     hr {
         margin-top: -35px;

@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
 from django.contrib.auth.decorators import login_required
 from .models import Event, EventOrder, Cart
+
 
 @csrf_exempt
 def get_event(request):

@@ -56,6 +56,10 @@ circle {
     display: none;
 }
 
+.no_draw {
+    stroke-dasharray: 0 !important;
+}
+
 @media(max-width: 700px){
     .loader {
         width: 100vw;
