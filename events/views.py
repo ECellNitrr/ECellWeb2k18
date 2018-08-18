@@ -20,7 +20,7 @@ def get_event(request):
         e['icon']= config('HOST')+str(e['icon'])
         e['cover_pic'] = config('HOST')+'/'+str(e['cover_pic'])
     events_list=list(events)
-    return JsonResponse({'sucess':True,'events':events_list}, safe=False)
+    return JsonResponse({'success':True,'events':events_list}, safe=False)
 
 @login_req
 @csrf_exempt
@@ -112,3 +112,6 @@ def edit_event(request,pk,**kwargs):
 			'sucess':False,
 			'message':'Method Error'
 })
+
+def post_event(request):
+	return render(request, 'website/events.html')
