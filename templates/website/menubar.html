@@ -52,9 +52,9 @@
                     MENTORS</a>
             </div>
             <div class="user-account">
-                <button id="wlogin_trigger"> login</button>
+                <button class="ml-0" id="wlogin_trigger"> login</button>
                 <button id="wsignup_trigger">signup</button>
-                <a href="{% url 'social:begin' 'facebook' %}">Signup with facebook</a>
+                <a class="text-center" href="{% url 'social:begin' 'facebook' %}">login with <i class="fa fa-facebook text-primary d-inline-block ml-2"></i></a>
             </div>
         </div>
     </nav>
@@ -72,7 +72,7 @@
     }
 
     .user-account {
-        margin-top: 50px;
+        margin-top: 10px;
     }
 
     .user-account button {
@@ -85,7 +85,21 @@
         outline: none;
     }
 
-    .user-account button:hover {
+    .user-account a {
+        padding: 5px;
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+        margin-top: 6px;
+        width: 150px;
+        box-sizing: border-box;
+    }
+
+    .user-account button:hover,
+    .user-account a:hover {
         background: white;
         color: black !important;
     }

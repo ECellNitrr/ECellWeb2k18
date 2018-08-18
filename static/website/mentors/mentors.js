@@ -2,9 +2,9 @@ $(function () {
     $.get(base_url + '/mentor/list/').done(function (data) {
         var mentors = $('.people');
         console.log(data)
-
+        $('#spinner').hide();
+        
         data.mentors.forEach(function (mentor) {
-            $('#spinner').hide();
             console.log(mentor);
             mentors.append(`
                 <div>
