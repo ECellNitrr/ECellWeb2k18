@@ -77,7 +77,7 @@ def applogin(request, *args, **kwargs):
 		try:
 			user = authenticate(username=username, password=password)
 			print(user)
-		except User.DoesNotExist:
+		except user.DoesNotExist:
 			return JsonResponse(error_msg)
 
 		if user:
@@ -182,10 +182,9 @@ def appregister(request):
 		stringmsg=stringmsg+conno
 		stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
 		otp = str(randint(1000,9999))
-		msg = "Your otp is: "
+		msg = "Your OTP for E-Cell NITRR App is: "
 		msg=msg+otp
 		msg = str(msg)
-		msg = msg[2:-1]
 		print(msg)
 		stringmsg=stringmsg+msg
 		
