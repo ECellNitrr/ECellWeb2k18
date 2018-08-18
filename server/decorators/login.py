@@ -6,11 +6,13 @@ from django.conf import settings
 import jwt
 import json
 from functools import wraps
+from django.conf import settings as conf_settings
 
 def login_req(function):
     def wrap(request, *args, **kwargs):
         token = request.META['HTTP_AUTHID']
         try:
+            print(token)
             print("Trying to decode TOKEN")
             payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
@@ -25,7 +27,7 @@ def login_req(function):
             msg = 'No user matching this token was found.'
             return JsonResponse({'success':False,'message':msg})
         
-        if user.profile.status is not True:
+        if user.status is not True:
             return JsonResponse({'success':False,'message':'Your Account hasn\'t been activated yet.'})
             
         kwargs['user_id'] = payload['id']
