@@ -32,6 +32,16 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
+    def save(self, *args, **kwargs):
+        if self.flag is True:
+            if Question.objects.filter(flag=True).exists():
+                questions = Question.objects.filter(flag=True)
+                for question in questions:
+                    question.flag = False
+                    question.save()
+            self.flag = True
+        super(Question, self).save(*args, **kwargs)
+
 class QuestionAcknowledge(models.Model):
     acknowledge_id = models.IntegerField()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
