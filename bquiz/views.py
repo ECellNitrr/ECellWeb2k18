@@ -173,7 +173,7 @@ def submit_answer(request, *args, **kwargs):
         question = Question.objects.get(pk=question_id)
         option = Option.objects.get(pk=option_id)
         user = Profile.objects.get(pk=user_id)
-        if not Answer.objects.filter(user=user, question=question, answer=option).exists():
+        if not Answer.objects.filter(user=user, question=question).exists():
             response['success'] = True
             response['message'] = Setting.objects.get(key='ANS').text
             answer = Answer(user=user, question=question, answer=option)

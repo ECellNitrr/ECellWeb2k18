@@ -56,7 +56,7 @@ $(function () {
         // put data
         put_events_in_place(data)
         // to add event listener
-        register_stuff(data)
+        // register_stuff(data)
     })
 })
 
