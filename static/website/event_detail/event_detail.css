@@ -11,6 +11,9 @@ html {
     margin: 0;
     font-family: Open Sans, "sans-serif"
 }
+#event_detail {
+    margin-bottom: 40px;
+}
 
 @media (max-width:700px) {
     #event_detail h2 {
