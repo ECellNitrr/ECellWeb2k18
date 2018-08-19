@@ -19,7 +19,7 @@ $(document).ready(function () {
                 console.log(JSON.stringify(sponsor, null, 2));
                 sponsors_html.innerHTML += ` 
                     <div class='sponsor'>
-                        <img src='/${sponsor.pic}'>
+                        <img src='${sponsor.pic}'>
                         <div class='details'>
                             <h2>${sponsor.name}</h2>
                             <p class='body'>${sponsor.details}</p>
