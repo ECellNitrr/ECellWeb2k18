@@ -13,6 +13,13 @@ def get_speakers(request):
 	for speaker in speakers:
 		speaker['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(speaker['profile_pic'])
 	speakers_list = list(speakers)
+	
+	if len(speakers_list)==0:
+		return JsonResponse({
+		'success':False,
+		'message':'Error! No Data Available in Database'
+		})
+
 	return JsonResponse({
 		'success':True,
 		'speakers':speakers_list

@@ -19,6 +19,12 @@ def get_event(request):
         e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
         e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
     events_list=list(events)
+
+    if len(events_list)==0:
+        return JsonResponse({
+            'success':False,
+            'message':'Error! No Data Available in Database'
+        })
     return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
 
 def post_event(request):

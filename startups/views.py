@@ -14,6 +14,11 @@ def get_startups(request):
 	for startup in startups:
 		startup['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(startup['pic'])
 	startups_list = list(startups)
+	if len(startups_list)==0:
+		return JsonResponse({
+		'success' : False,
+		'message': 'Error! No Data Available in Database'
+		 },safe=False)
 	return JsonResponse({
 		'success' : True,
 		'startups': startups_list

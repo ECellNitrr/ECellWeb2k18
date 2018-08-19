@@ -12,8 +12,14 @@ def get_mentors(request):
     for m in mentors:
         m['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(m['profile_pic'])
     mentors = list(mentors)
+    if len(mentors)==0:
+        return JsonResponse({
+            'success':False,
+            'message':'Error! No Data Available in Database'
+        })
+
     return JsonResponse({
-            'success':True,
+            'success':False,
             'mentors':mentors
         }, safe=False)
 

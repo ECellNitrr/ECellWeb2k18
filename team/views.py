@@ -21,7 +21,8 @@ def get_team(request):
 	Faculty= list(Faculty)
 
 	student_list = [item for item in member_list if item not in Faculty]
-
+	if len(member_list)==0 and len(student_list)==0:
+		return JsonResponse({'success':False, 'message':'Error! No Data available in Database'})	
 	response = {'success':True, 'message':'Team Members are available','Faculty':Faculty, 'Student':student_list}
 	return JsonResponse(response, safe=False)
 
