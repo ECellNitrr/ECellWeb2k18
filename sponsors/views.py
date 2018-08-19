@@ -15,7 +15,7 @@ def get_sponsors(request):
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
 	AS = Sponsor.objects.filter(spons_type='AS').values()
 	for spons in AS:
-		spons['pic'] = config('HOST')+str(sponsor['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
 	for spons in PLTS:
 		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
