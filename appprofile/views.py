@@ -62,7 +62,7 @@ def applogin(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 
@@ -105,7 +105,7 @@ def appregister(request):
 	if request.method == "POST":
 		print(request.body)
 
-		req_data = request.body
+		req_data = request.body.decode('UTF-8')
 		# req_data = req_data.decode('utf-8')
 		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
@@ -238,7 +238,7 @@ def weblogin(request):
 		# if 'username' in request.session:
 		# 	print("USER IN SESSION")
 		# 	return
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		print(email,password)
@@ -267,7 +267,7 @@ def weblogin(request):
 def webregister(request):
 
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		#print(req_data)
@@ -311,7 +311,7 @@ def send_otp(request, *args, **kwargs):
 	if request.method =='POST':
 
 		print("post request done")
-		#req_data = json.loads(request.body)
+		#req_data = json.loads(request.body.decode('UTF-8))
 		#print(req_data)
 		current_userid = kwargs['user_id']
 		print(current_userid)
@@ -326,27 +326,11 @@ def send_otp(request, *args, **kwargs):
 		Atkey = config('Atkey')
 
 
-<<<<<<< HEAD
 		otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
 
 		otps = otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
-=======
-		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
-		# otpobj =  sendotp.sendotp(Atkey,Msg)
-		# otp = otpobj.generateOtp()
-		# otp = int(otp)
-		# print(otp)
-
-		otps = otpobj.send(contact_no,'ECellr',otp)
-		#Don't change the name 'ECellr' in above line
-		# otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
-
-		# otps = otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
->>>>>>> 3a5ee6144493375b401c03b1980bcd89d20faa94
 
 
 		# contact_no = str(contact_no)
@@ -409,7 +393,7 @@ def verify_otp(request, *args, **kwargs):
 	totp = str(totp)
 	print("API call successful")
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		otp = req_data['otp']
 		if(totp == otp):
 			profile = Profile.objects.get(user=current_user)
@@ -472,12 +456,7 @@ def password(request):
 	else:
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
-
-
-
-
-
-
+	
 ##########Event Registration ###############################
 
 from django.contrib.auth.decorators import login_required
@@ -551,3 +530,12 @@ def bag(request):
 
 	}
 	return JsonResponse(context)
+
+@csrf_exempt
+def login_fb(request):
+	response = {}
+	req_data = json.loads(request.body.decode('UTF-8'))
+	name = req_data['name']
+	email = req_data['email']
+	contact_no = req_data['contact_no']
+	print(req_data)

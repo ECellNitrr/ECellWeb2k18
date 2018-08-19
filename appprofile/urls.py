@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/',views.weblogin, name='login'),
     #url(r'^send_otp/',views.send_otp),
     url(r'^retry_otp',views.retry_otp),
+    url(r'^login/facebook',views.login_fb),
     path('verify_otp/',views.verify_otp),
     path('appregister/', views.appregister, name='appregister'),
     path('register/', views.webregister, name='register'),
