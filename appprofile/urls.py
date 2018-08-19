@@ -11,7 +11,7 @@ urlpatterns = [
     path('terms/', views.terms_page),
     path('privacy_policy/', views.privacy_policy_page),
     path('applogin/',views.applogin, name='applogin'),
-    path('login/',views.weblogin, name='login'),
+    path('loginweb/',views.weblogin, name='login'),
     #url(r'^send_otp/',views.send_otp),
     url(r'^retry_otp',views.retry_otp),
     path('verify_otp/',views.verify_otp),
