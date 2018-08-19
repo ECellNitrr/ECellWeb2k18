@@ -165,7 +165,7 @@ def bquiz_status(request, *args, **kwargs):
 def submit_answer(request, *args, **kwargs):
     response = {}
     if request.method == 'POST':
-        req_data = json.loads(request.body)
+        req_data = json.loads(request.body.decode('UTF-8'))
         question_id = req_data['questionId']
         option_id = req_data['optionId']
         print(option_id)
