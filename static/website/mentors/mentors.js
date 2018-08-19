@@ -1,5 +1,5 @@
 $(function () {
-    $.get(base_url + '/mentor/list/').done(function (data) {
+    $.get(base_url + '/mentors/list/').done(function (data) {
         var mentors = $('.people');
         console.log(data)
         $('#spinner').hide();

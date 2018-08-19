@@ -3,7 +3,7 @@ from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .forms import EventForm
-
+from decouple import config
 import json
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
@@ -16,8 +16,9 @@ def get_event(request):
     events= Event.objects.all().values()
     scheme = urlsplit(request.build_absolute_uri(None)).scheme
     for e in events:
-        e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
-        e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
+        # e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
+        e['icon']= config('HOST')+str(e['icon'])
+        e['cover_pic'] = config('HOST')+'/'+str(e['cover_pic'])
     events_list=list(events)
 
     if len(events_list)==0:
@@ -59,21 +60,15 @@ def post_event(request):
 @csrf_exempt
 def event_detail(request,pk):
 	event = Event.objects.get( pk=pk)
-
-
-
 	events = model_to_dict(event, fields=['name', 'venue','details','date', 'time', 'email','flag'])
-
 	events['cover_pic'] = str(event.cover_pic)
 	events['icon'] = str(event.icon)
-
 	return JsonResponse({'Event':events}, safe=False)
 
 @csrf_exempt
 @login_req
 def delete_event(request,pk,**kwargs):
 	event = Event.objects.get(pk=pk)
-
 	if not event:
 		return JsonResponse({
 			'success':False,
@@ -87,15 +82,11 @@ def delete_event(request,pk,**kwargs):
 @login_req
 @csrf_exempt
 def add_event(request,**kwargs):
-
 	if request.method == "POST":
 		event_form = EventForm(request.POST,request.FILES)
-
 		if event_form.is_valid():
-
 			event = event_form.save()
 			event.save()
-
 			return JsonResponse({
 				'success' : True,
 				'message' : 'Event added successfully'
@@ -105,14 +96,11 @@ def add_event(request,**kwargs):
 						'success' :False,
 						'message' : 'Invalid Form'
 					})
-
 	else:
 		return JsonResponse({
 				'success' :False,
 				'message' : 'form method error'
 			})
-
-
 
 @csrf_exempt
 @login_req
@@ -159,4 +147,5 @@ def edit_event(request,pk,**kwargs):
 			'message':'Method Error'
 })
 
-
+def post_event(request):
+	return render(request, 'website/events.html')

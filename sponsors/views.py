@@ -7,28 +7,31 @@ from .forms import SponsorForm
 import json
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
+from decouple import config
 
 @csrf_exempt
 def get_sponsors(request):
 	sponsors = Sponsor.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-
-	
 	AS = Sponsor.objects.filter(spons_type='AS').values()
 	for spons in AS:
-		sponsor['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(sponsor['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
 	for spons in PLTS:
-		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	GS = Sponsor.objects.filter(spons_type='GS').values()
 	for spons in GS:
-		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	TS = Sponsor.objects.filter(spons_type='TS').values()
 	for spons in TS:
-		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	PRTS = Sponsor.objects.filter(spons_type='PRTS').values()
 	for spons in PRTS:
-		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 
 	AS_list = list(AS)
 	count = len(AS_list)
