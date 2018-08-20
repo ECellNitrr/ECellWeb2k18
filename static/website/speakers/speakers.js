@@ -20,7 +20,7 @@ function insert_speaker(speakers, location, to_hide) {
                     </div>
                     <div class='s-info d-flex align-items-center'>
                         <div class="wow fadeInUp">
-                            <h4>${speaker.name} <span class='badge badge-primary'>${speakers.year}</span></h4>
+                            <h4>${speaker.name} <span class='badge badge-primary'>${speaker.year}</span></h4>
                             <h5>${speaker.company}</h5>
                             <p>${speaker.description}</p>
                             <div class='text-center text-md-left'>
