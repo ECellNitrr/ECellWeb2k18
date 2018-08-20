@@ -33,6 +33,23 @@ html {
     }
     #gallery img{
         width: 100%;
+        cursor: pointer;
+    }
+    #big_container {
+        z-index: 1002;
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #big_img{
+        transition: all .3s ease;
+        height: 0%;
     }
 }
 
