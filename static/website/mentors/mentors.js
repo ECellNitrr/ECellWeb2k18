@@ -8,10 +8,10 @@ $(function () {
             console.log(mentor);
             mentors.append(`
                 <div>
-                    <img class="" src='/${mentor.profile_pic}' alt="">
+                    <img class="" src='${mentor.profile_pic}' alt="">
                         <div class="">
                         <h3>${mentor.name}</h3>
-                        <h4>${mentor.detail}</h4>
+                        <h4>${mentor.description}</h4>
                     </div>
                 </div>
             `)
