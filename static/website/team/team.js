@@ -23,27 +23,28 @@ function draw_as_table(target, members) {
     })
 }
 
-$(function () {
+var director = $('#director')
+var overall_co = $('#overall-co')
+var head_co = $('#head-co')
+var managers = $('#managers')
+var executives = $('#executives')
+var head_career_dev = $('#head_career-dev')
+var faculty_incharge = $('#faculty_incharge')
 
-    var director = $('#director')
-    var overall_co = $('#overall-co')
-    var head_co = $('#head-co')
-    var managers = $('#managers')
-    var executives = $('#executives')
-    var head_career_dev = $('#head_career-dev')
-    var faculty_incharge = $('#faculty_incharge')
-
-    $.get(base_url + '/team/list').then(function (data) {
-        $('#spinner').hide();
+fetch(base_url + '/team/list')
+    .then(data => data.json())
+    .then(function (data) {
+        document.querySelector('#serverload').style.opacity = 1
+        document.querySelector('#spinner').remove();
 
         // get the data of the given member_type
-        function dataOfFaculty(mtype){
-            return data.Faculty.filter(val=>val.member_type==mtype)
+        function dataOfFaculty(mtype) {
+            return data.Faculty.filter(val => val.member_type == mtype)
         }
-        function dataOfStudent(mtype){
-            return data.Student.filter(val=>val.member_type==mtype)
+        function dataOfStudent(mtype) {
+            return data.Student.filter(val => val.member_type == mtype)
         }
-        
+
         console.log(dataOfFaculty('Dir'));
         show_with_pic(director, dataOfFaculty('Dir'))
         show_with_pic(head_career_dev, dataOfFaculty('HCD'))
@@ -53,5 +54,3 @@ $(function () {
         draw_as_table(managers, dataOfStudent('MNG'))
         draw_as_table(executives, dataOfStudent('EXEC'))
     })
-
-})
