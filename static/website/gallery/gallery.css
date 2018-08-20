@@ -12,3 +12,33 @@ html {
     margin: 0;
     font-family: Open Sans, "sans-serif"
 }
+
+@media(min-width:700px){
+    h2 {
+        font-weight: 700;
+        font-family: Open Sans;
+        letter-spacing: 2px;
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase
+    }
+    #gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .gimg{
+        flex-basis: 300px;
+        margin: 3px;
+    }
+    #gallery img{
+        width: 100%;
+    }
+}
+
+hr {
+    width: 100px;
+    border: 2px solid #000;
+    margin: 10px auto 40px;
+    background: #000
+}
