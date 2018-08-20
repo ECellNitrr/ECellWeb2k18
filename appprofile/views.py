@@ -186,7 +186,6 @@ def appregister(request):
 		msg = "Your otp is: "
 		msg=msg+otp
 		msg = str(msg)
-		msg = msg[2:-1]
 		print(msg)
 		stringmsg=stringmsg+msg
 		
@@ -331,27 +330,11 @@ def send_otp(request, *args, **kwargs):
 		Atkey = config('Atkey')
 
 
-<<<<<<< HEAD
 		otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
 
 		otps = otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
-=======
-		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
-		# otpobj =  sendotp.sendotp(Atkey,Msg)
-		# otp = otpobj.generateOtp()
-		# otp = int(otp)
-		# print(otp)
-
-		otps = otpobj.send(contact_no,'ECellr',otp)
-		#Don't change the name 'ECellr' in above line
-		# otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
-
-		# otps = otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
->>>>>>> 3a5ee6144493375b401c03b1980bcd89d20faa94
 
 
 		# contact_no = str(contact_no)

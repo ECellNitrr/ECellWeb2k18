@@ -11,9 +11,9 @@ class QuestionsetAdmin(admin.ModelAdmin):
 admin.site.register(Questionset, QuestionsetAdmin)
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'question_id', 'user_id', 'answer')
-    search_fields = ('id', 'question_id', 'user_id', 'answer')
-    list_filter = ('question_id',)
+    list_display = ('id', 'question', 'user', 'option')
+    search_fields = ('id', 'question', 'user', 'option')
+    list_filter = ('question',)
 
 admin.site.register(Answer, AnswerAdmin)
 

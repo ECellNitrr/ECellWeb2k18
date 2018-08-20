@@ -76,7 +76,8 @@ def bquiz_status(request, *args, **kwargs):
 def submit_answer(request, *args, **kwargs):
     response = {}
     if request.method == 'POST':
-        req_data = json.dumps(request.body.decode('UTF-8'))
+        req_data = json.loads(request.body.decode('UTF-8'))
+        print(req_data)
         question_id = req_data['questionId']
         option_id = req_data['optionId']
         user_id = kwargs['user_id']
@@ -85,12 +86,12 @@ def submit_answer(request, *args, **kwargs):
         option = Option.objects.get(pk=option_id)
         if not Answer.objects.filter(user=user, question=question).exists():
             response['success'] = True
-            response['message'] = Answer.objects.get(key='ANS')
-            answer = Answer(user=user, question=question, answer=option)
+            response['message'] = Setting.objects.get(key='ANS').text
+            answer = Answer(user=user, question=question, option=option)
             answer.save()
         else:
             response['success'] = True
-            response['message'] = Answer.objects.get(key='ANS')
+            response['message'] = Setting.objects.get(key='ANS').text
     else:
         response['success'] = True
         response['message'] = "Invalid request"
