@@ -18,7 +18,7 @@ def get_event(request):
     for e in events:
         # e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
         e['icon']= config('HOST')+str(e['icon'])
-        e['cover_pic'] = config('HOST')+'/'+str(e['cover_pic'])
+        e['cover_pic'] = config('HOST')+str(e['cover_pic'])
     events_list=list(events)
 
     if len(events_list)==0:
@@ -26,7 +26,10 @@ def get_event(request):
             'success':False,
             'message':'Error! No Data Available in Database'
         })
-    return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
+    response = {}
+    response['success'] = True
+    response['events'] = events_list
+    return JsonResponse(response)
 
 def post_event(request):
 	# events = Event.objects.all()
