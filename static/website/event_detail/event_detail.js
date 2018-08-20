@@ -30,7 +30,7 @@ fetch('/events/list')
     .then((data) => {
         // close the spinner
         document.querySelector('#spinner').remove()
-
+        console.log(data);
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
         var event = data.events.filter((event) => event.id == page_eid)[0]
