@@ -1,7 +1,7 @@
 reverse = false
 
 function insert_speaker(speakers, location, to_hide) {
-    var year = speakers[0].year
+    var year = 2018
     // create a div
     var div = document.createElement('div')
     div.id = year
@@ -41,7 +41,7 @@ function insert_speaker(speakers, location, to_hide) {
 }
 
 $(function () {
-    $.get(base_url + '/speaker/list/').done(function (data) {
+    $.get(base_url + '/speakers/list/').done(function (data) {
         console.log(data)
         $('#spinner').hide()
         var speakers_div = $('.people');

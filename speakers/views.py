@@ -5,13 +5,14 @@ from django.forms.models import model_to_dict
 from .models import Speaker
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
+from decouple import config
 
 @csrf_exempt
 def get_speakers(request):
 	speakers = Speaker.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
 	for speaker in speakers:
-		speaker['profile_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(speaker['profile_pic'])
+		speaker['profile_pic'] = config('HOST')+str(speaker['profile_pic'])
 	speakers_list = list(speakers)
 	return JsonResponse({
 		'success':True,
