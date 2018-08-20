@@ -47,9 +47,24 @@ html {
         align-items: center;
         justify-content: center;
     }
+    #big_container>div {
+        position: relative;
+    }
     #big_img{
         transition: all .3s ease;
-        height: 0%;
+        height: 0;
+    }
+    #bcloseBtn {
+        background: white;
+        border: 2px solid red;
+        width: 30px;
+        height: 30px;
+        font-weight: bold;
+        border-radius: 50%;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        outline: none;
     }
 }
 

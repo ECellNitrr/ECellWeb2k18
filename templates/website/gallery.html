@@ -1,11 +1,10 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery">
-{% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Gallery | E-Cell NIT Raipur</title>
+<title>Gallery | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
@@ -13,8 +12,7 @@
 <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
 <link rel="stylesheet" href='{% static "website/common/footer.css" %}'>
 
-<link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}">
-{% endblock css %}
+<link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/gallery/gallery.js' %}"></script>
@@ -26,7 +24,9 @@
 <div id="gallery" class="container">
 </div>
 <div id="big_container">
-    <img src="/static/website/gallery/img/1.jpg" alt="" id="big_img">
-    <button id="bcloseBtn">X</button>
+    <div>
+        <img src="/static/website/gallery/img/1.jpg" alt="" id="big_img">
+        <button id="bcloseBtn">X</button>
+    </div>
 </div>
 {% endblock content %}

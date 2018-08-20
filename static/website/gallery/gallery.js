@@ -19,7 +19,7 @@ gimgs.forEach(gimg => {
         e.preventDefault()
         bimg.src = gimg.src
         bcontainer.style.top = 0
-        bimg.style.height = '90%'
+        bimg.style.height = '70vh'
     })
 })
 
@@ -30,10 +30,11 @@ bcontainer.addEventListener('click', (e) => {
     if (e.target != bcontainer) return
     // if clicked on the container
     bcontainer.style.top = "-100vh"
-    bimg.style.height = '0%'
+    bimg.style.height = '0'
 })
 
 bcloseBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    console.log('bcloseBtn')
+    bcontainer.style.top = "-100vh"
+    bimg.style.height = '0'
 })
