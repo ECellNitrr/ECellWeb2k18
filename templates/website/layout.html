@@ -70,9 +70,9 @@
     <div id="modal"></div>
     <link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
     <script src="{% static 'website/modal/modal_dom.js' %}"></script>
-    <script src="{% static 'website/modal/logout_modal.js' %}"></script>
+    <!-- <script src="{% static 'website/modal/logout_modal.js' %}"></script>
     <script src="{% static 'website/modal/login_modal.js' %}"></script>
-    <script src="{% static 'website/modal/signup_modal.js' %}"></script>
+    <script src="{% static 'website/modal/signup_modal.js' %}"></script> -->
 
 
     <!-- menubar js-->
@@ -98,7 +98,7 @@
     {% block js %}{% endblock js %}
 
     <!-- urgent js -->
-    <script>
+    <!-- <script>
         if (localStorage.ecell_nitrr_user) {
             loggedin_user.innerText = localStorage.ecell_nitrr_user.split('@')[0]
             wlogin_trigger.innerText = 'logout'
@@ -106,7 +106,7 @@
         } else {
             loggedin_user.innerText = 'login / signup'
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
