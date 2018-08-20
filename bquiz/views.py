@@ -76,13 +76,17 @@ def bquiz_status(request, *args, **kwargs):
 def submit_answer(request, *args, **kwargs):
     response = {}
     if request.method == 'POST':
-        if not Answer.objects.filter(user_id=user_id, question_id=question_id, answer_id=answer_id).exists():
+        req_data = json.dumps(request.body.decode('UTF-8'))
+        question_id = req_data['questionId']
+        option_id = req_data['optionId']
+        user_id = kwargs['user_id']
+        question = Question.objects.get(pk=question_id)
+        user = Profile.objects.get(pk=user_id)
+        option = Option.objects.get(pk=option_id)
+        if not Answer.objects.filter(user=user, question=question).exists():
             response['success'] = True
             response['message'] = Answer.objects.get(key='ANS')
-            question_id = request.POST.get('questionId')
-            option_id = request.POST.get('optionId')
-            user_id = kwargs['user_id']
-            answer = Answer(user_id=user_id, question_id=question_id, answer_id=answer_id)
+            answer = Answer(user=user, question=question, answer=option)
             answer.save()
         else:
             response['success'] = True

@@ -47,7 +47,7 @@ def terms_page(request):
 	return render(request, 'website/terms.html')
 
 def message(request):
-	post = json.loads(request.body)
+	post = json.loads(request.body.decode('UTF-8'))
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
 	print(post)
 	msg.save()
@@ -62,7 +62,7 @@ def applogin(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 
@@ -106,9 +106,9 @@ def appregister(request):
 
 	registered = False
 	if request.method == "POST":
-		print(request.body)
+		print(request.body.decode('UTF-8'))
 
-		req_data = request.body
+		req_data = request.body.decode('UTF-8')
 		# req_data = req_data.decode('utf-8')
 		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
@@ -242,7 +242,7 @@ def weblogin(request):
 		# if 'username' in request.session:
 		# 	print("USER IN SESSION")
 		# 	return
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		print(email,password)
@@ -271,7 +271,7 @@ def weblogin(request):
 def webregister(request):
 
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		#print(req_data)
@@ -315,14 +315,14 @@ def send_otp(request, *args, **kwargs):
 	if request.method =='POST':
 
 		print("post request done")
-		#req_data = json.loads(request.body)
+		#req_data = json.loads(request.body.decode('UTF-8'))
 		#print(req_data)
 		current_userid = kwargs['user_id']
 		print(current_userid)
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = json.loads(request.body)['contact_no']
+		contact_no = json.loads(request.body.decode('UTF-8'))['contact_no']
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
 		print('otp not printed')
@@ -413,7 +413,7 @@ def verify_otp(request, *args, **kwargs):
 	totp = str(totp)
 	print("API call successful")
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		otp = req_data['otp']
 		if(totp == otp):
 			profile = Profile.objects.get(user=current_user)

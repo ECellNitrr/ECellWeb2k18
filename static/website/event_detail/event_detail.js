@@ -19,9 +19,6 @@ put_event_in_place = (event) => {
                     </div>
                 </div>
             </div>
-            <div class='text-center mt-5 mb-5'>
-                <button class="register_btn" data-eid=${event.id}>Register</button>
-            </div>
         `)
 }
 
