@@ -13,13 +13,16 @@ var gimgs = document.querySelectorAll('.gimg img')
 var bimg = document.querySelector('#big_img')
 var bcontainer = document.querySelector('#big_container')
 var bcloseBtn = document.querySelector('#bcloseBtn')
+var leftBtn = document.querySelector('#left')
+var rightBtn = document.querySelector('#right')
+
 
 gimgs.forEach(gimg => {
     gimg.addEventListener('click', function (e) {
         e.preventDefault()
         bimg.src = gimg.src
         bcontainer.style.top = 0
-        bimg.style.height = '70vh'
+        bimg.style.height = '75vh'
     })
 })
 
@@ -37,4 +40,32 @@ bcloseBtn.addEventListener('click', (e) => {
     e.preventDefault()
     bcontainer.style.top = "-100vh"
     bimg.style.height = '0'
+})
+
+leftBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    var bsrc = bimg.src.split('/')
+    var newImgNo = Number(bsrc.pop().split('.')[0]) - 1
+    // if new img is out of range let quit
+    if (newImgNo < 1) return
+    // else proceed
+    var leftImg = newImgNo + '.jpg'
+    bsrc.push(leftImg)
+
+    // update the new bimg
+    bimg.src = bsrc.join('/')
+})
+
+rightBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    var bsrc = bimg.src.split('/')
+    var newImgNo = Number(bsrc.pop().split('.')[0]) + 1
+    // if new img is out of range let quit
+    if (newImgNo > 12) return
+    // else proceed
+    var rightImg = newImgNo + '.jpg'
+    bsrc.push(rightImg)
+
+    // update the new bimg
+    bimg.src = bsrc.join('/')
 })
