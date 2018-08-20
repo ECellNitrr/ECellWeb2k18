@@ -9,10 +9,12 @@ let type = {
     'PRTS': 'Partner Sponsors',
 }
 
-$(document).ready(function () {
-    $.get(base_url + '/sponsors/list/').done(function (data) {
-        $('#spinner').hide();
-        
+fetch(base_url + '/sponsors/list/')
+    .then(data => data.json())
+    .then(function (data) {
+        document.querySelector('.patreons').style.opacity = 1
+        document.querySelector('#spinner').remove();
+
         sponsors = data.spons;
         sponsors.forEach(function (type) {
             type.sponsors.forEach(function (sponsor) {
@@ -30,5 +32,4 @@ $(document).ready(function () {
             })
         })
     })
-})
 
