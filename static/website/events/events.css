@@ -16,6 +16,10 @@ h2 {
     text-transform: uppercase;
 }
 
+#articles {
+    opacity: 0;
+}
+
 @media (max-width:700px) {
     #articles article {
         padding: 10px;

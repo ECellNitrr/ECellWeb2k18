@@ -48,18 +48,13 @@ put_events_in_place = (data) => {
     })
 }
 
-$(function () {
-    $.get('/events/list/').then(function (data) {
-        console.log(data)
-        // hide the spinner
-        $('#spinner').hide(1000);
-        // put data
-        put_events_in_place(data)
-        // to add event listener
-        // register_stuff(data)
-    })
+
+fetch('/events/list/').then(data => data.json()).then(function (data) {
+    console.log(data)
+    events.style.opacity = 1
+    // hide the spinner
+    document.querySelector('#spinner').remove()
+    // put data
+    put_events_in_place(data)
 })
 
-// document.querySelector('#spinner').remove();
-// put_events_in_place(data)
-// register_stuff(data)
