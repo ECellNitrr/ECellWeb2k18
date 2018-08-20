@@ -5,7 +5,7 @@ function insert_speaker(speakers, location, to_hide) {
     // create a div
     var div = document.createElement('div')
     div.id = year
-    div.classList.add('years', to_hide ? "d-none" : "d-block")
+    // div.classList.add('years', to_hide ? "d-none" : "d-block")
     // make the template
     speakers.forEach(speaker => {
         div.innerHTML += reverse?`

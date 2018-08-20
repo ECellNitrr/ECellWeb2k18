@@ -18,7 +18,7 @@ def get_sponsors(request):
 	AS = Sponsor.objects.filter(spons_type='AS').values()
 	for spons in AS:
 		# sponsor['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(sponsor['pic'])
-		sponsor['pic'] = config('HOST')+str(sponsor['pic'])
+		spons['pic'] = config('HOST')+str(spons['pic'])
 	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
 	for spons in PLTS:
 		spons['pic'] = config('HOST')+str(spons['pic'])
