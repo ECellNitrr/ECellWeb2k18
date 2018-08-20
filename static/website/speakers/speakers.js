@@ -1,7 +1,7 @@
 reverse = false
 
 function insert_speaker(speakers, location, to_hide) {
-    var year = 2018
+    var year = speakers[0].year
     // create a div
     var div = document.createElement('div')
     div.id = year
