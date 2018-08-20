@@ -35,7 +35,6 @@ urlpatterns = [
     path('mentors/', include('mentors.urls')),
     path('startups/', include('startups.urls')),
     path('speakers/', include('speakers.urls')),
-    path('quiz/', include('bquiz.urls')),
     path('team/',include('team.urls')),
     path('bquiz/',include('bquiz.urls')),
     url(r'^is_update_available', app_views.latest_build),

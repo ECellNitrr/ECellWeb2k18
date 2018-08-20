@@ -19,7 +19,7 @@ put_event_in_place = (event) => {
         `)
 }
 
-fetch('/event/list')
+fetch('/events/list')
     .then(data => data.json())
     .then((data) => {
         // close the spinner
@@ -27,7 +27,7 @@ fetch('/event/list')
 
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
-        var event = data.Events.filter((event) => event.id == page_eid)[0]
+        var event = data.events.filter((event) => event.id == page_eid)[0]
         put_event_in_place(event)
         console.log(JSON.stringify(event, null, 2))
 
