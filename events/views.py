@@ -21,7 +21,7 @@ def get_event(request):
         # e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
         e['cover_pic'] = config('HOST')+str(e['cover_pic'])
     events_list=list(events)
-    return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
+    return JsonResponse({'sucess':True,'events':events_list}, safe=False)
 
 def post_event(request):
 	# events = Event.objects.all()
@@ -54,7 +54,7 @@ def post_event(request):
 @login_req
 @csrf_exempt
 def event_detail(request,pk):
-	event = Event.objects.get( pk=pk)
+	event = Event.objects.get(pk=pk)
 
 
 
@@ -63,7 +63,7 @@ def event_detail(request,pk):
 	events['cover_pic'] = str(event.cover_pic)
 	events['icon'] = str(event.icon)
 
-	return JsonResponse({'Event':events}, safe=False)
+	return JsonResponse({'event':events}, safe=False)
 
 @csrf_exempt
 @login_req
@@ -146,7 +146,7 @@ def edit_event(request,pk,**kwargs):
 		events['icon'] = str(event.icon)
 		return JsonResponse({
 				'success':True,
-				'Event': events,
+				'event': events,
 
 		},safe=False)
 	else:

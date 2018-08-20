@@ -7,11 +7,11 @@ put_events_in_place = (data) => {
             <article>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
+                        <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
+                            <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">
@@ -28,11 +28,11 @@ put_events_in_place = (data) => {
             <article class=reverse-layout>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
+                        <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
+                            <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">
