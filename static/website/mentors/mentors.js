@@ -1,9 +1,12 @@
-$(function () {
-    $.get(base_url + '/mentors/list/').done(function (data) {
+fetch(base_url + '/mentors/list/')
+    .then(data => data.json())
+    .then(function (data) {
+
         var mentors = $('.people');
         console.log(data)
-        $('#spinner').hide();
-        
+        document.querySelector('.people').style.opacity = 1
+        document.querySelector('#spinner').remove();
+
         data.mentors.forEach(function (mentor) {
             console.log(mentor);
             mentors.append(`
@@ -17,4 +20,3 @@ $(function () {
             `)
         })
     })
-})
