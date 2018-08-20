@@ -5,8 +5,7 @@ from django.forms.models import model_to_dict
 from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting
 from .forms import AnswerForm
 from appprofile.models import Profile
-from django.conf import settings as conf_settings
-import random, json
+import random
 
 @csrf_exempt
 def get_quiz(request):
@@ -102,6 +101,7 @@ def submit_ans(request,id,**kwargs):
 def get_question(request, *args, **kwargs):
     response = {}
     try: 
+        response['success'] = True
         # if Questionset.objects.filter(flag=True).exists() and request.GET.get('retryQuestion'):
         if Questionset.objects.filter(flag=True).exists():
             question_set = Questionset.objects.get(flag=True)
@@ -164,22 +164,17 @@ def bquiz_status(request, *args, **kwargs):
 def submit_answer(request, *args, **kwargs):
     response = {}
     if request.method == 'POST':
-        req_data = json.loads(request.body.decode('UTF-8'))
-        question_id = req_data['questionId']
-        option_id = req_data['optionId']
-        print(option_id)
-        user_id = kwargs['user_id']
-        question = Question.objects.get(pk=question_id)
-        option = Option.objects.get(pk=option_id)
-        user = Profile.objects.get(pk=user_id)
-        if not Answer.objects.filter(user=user, question=question).exists():
+        if not Answer.objects.filter(user_id=user_id, question_id=question_id, answer_id=answer_id).exists():
             response['success'] = True
-            response['message'] = Setting.objects.get(key='ANS').text
-            answer = Answer(user=user, question=question, answer=option)
+            response['message'] = Answer.objects.get(key='ANS')
+            question_id = request.POST.get('questionId')
+            option_id = request.POST.get('optionId')
+            user_id = kwargs['user_id']
+            answer = Answer(user_id=user_id, question_id=question_id, answer_id=answer_id)
             answer.save()
         else:
             response['success'] = True
-            response['message'] = Setting.objects.get(key='ANS').text
+            response['message'] = Answer.objects.get(key='ANS')
     else:
         response['success'] = True
         response['message'] = "Invalid request"

@@ -20,10 +20,6 @@ hr {
     background: #000
 }
 
-.people {
-    opacity: 0;
-}
-
 @media (min-width:700px) {
     h2 {
         font-weight: bold;

@@ -16,10 +16,6 @@ h2 {
     text-transform: uppercase;
 }
 
-#articles {
-    opacity: 0;
-}
-
 @media (max-width:700px) {
     #articles article {
         padding: 10px;
@@ -51,10 +47,6 @@ h2 {
     .article-layout .text {
         grid-row: 2/3;
     }
-    
-    article img {
-        width: 100%;
-    }
 
     /* diagonal stuff */
     #articles .reverse-layout {
@@ -81,9 +73,6 @@ h2 {
 }
 
 @media (min-width:700px) {
-    article img {
-        width: 300px;
-    }
     #articles article .article-layout {
         margin: auto;
         display: block;

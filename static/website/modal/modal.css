@@ -87,20 +87,10 @@
 }
 
 @media(max-width: 700px) {
-    #loggedin_user {
-        display: none;
-        color: black;
-        background: white;
-        text-align: center;
-        top: 17px;
-        left: 15px;
-        z-index: 1001;
-        padding: 10px 15px;
-        font-weight: bold;
-        width: 75%;
-        overflow: hidden;
-        position: fixed;
+    h2 {
+        font-size: 20px;
     }
+    
     #loggedin_user i {
         display: none;
     }
@@ -111,5 +101,21 @@
     }
     .user_modal input {
         width: 100%;
+    }
+    @media(max-width: 880px){
+        #loggedin_user {
+            display: none;
+            color: black;
+            background: white;
+            text-align: center;
+            top: 17px;
+            left: 15px;
+            z-index: 1001;
+            padding: 10px 15px;
+            font-weight: bold;
+            width: 75%;
+            overflow: hidden;
+            position: fixed;
+        }
     }
 }

@@ -9,16 +9,14 @@ let type = {
     'PRTS': 'Partner Sponsors',
 }
 
-fetch(base_url + '/sponsors/list/')
-    .then(data => data.json())
-    .then(function (data) {
-        document.querySelector('.patreons').style.opacity = 1
-        document.querySelector('#spinner').remove();
-
+$(document).ready(function () {
+    $.get(base_url + '/sponsor/list/').done(function (data) {
+        $('#spinner').hide();
+        
         sponsors = data.spons;
         sponsors.forEach(function (type) {
             type.sponsors.forEach(function (sponsor) {
-                console.log(JSON.stringify(sponsor, null, 2));
+                // console.log(JSON.stringify(sponsor, null, 2));
                 sponsors_html.innerHTML += ` 
                     <div class='sponsor'>
                         <img src='${sponsor.pic}'>
@@ -32,4 +30,5 @@ fetch(base_url + '/sponsors/list/')
             })
         })
     })
+})
 

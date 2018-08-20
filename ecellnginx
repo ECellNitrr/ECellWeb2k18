@@ -1,8 +1,6 @@
 server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
-
-    # listen 80;
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
 
     server_name 18.204.111.26 ecell.nitrr.ac.in www.ecell.nitrr.ac.in;
     ssl_certificate /etc/letsencrypt/live/ecell.nitrr.ac.in/fullchain.pem; # managed by Certbot

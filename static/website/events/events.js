@@ -1,7 +1,7 @@
 var events = document.querySelector('#articles')
 
 put_events_in_place = (data) => {
-    data.events.forEach(function (event, i) {
+    data.Events.forEach(function (event, i) {
         if (i % 2 == 0) {
             events.innerHTML += (`
             <article>
@@ -48,13 +48,18 @@ put_events_in_place = (data) => {
     })
 }
 
-
-fetch('/events/list/').then(data => data.json()).then(function (data) {
-    console.log(data)
-    events.style.opacity = 1
-    // hide the spinner
-    document.querySelector('#spinner').remove()
-    // put data
-    put_events_in_place(data)
+$(function () {
+    $.get('/event/list/').then(function (data) {
+        console.log(data)
+        // hide the spinner
+        $('#spinner').hide(1000);
+        // put data
+        put_events_in_place(data)
+        // to add event listener
+        register_stuff(data)
+    })
 })
 
+// document.querySelector('#spinner').remove();
+// put_events_in_place(data)
+// register_stuff(data)
