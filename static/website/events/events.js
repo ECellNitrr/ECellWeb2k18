@@ -1,7 +1,7 @@
 var events = document.querySelector('#articles')
 
 put_events_in_place = (data) => {
-    data.Events.forEach(function (event, i) {
+    data.events.forEach(function (event, i) {
         if (i % 2 == 0) {
             events.innerHTML += (`
             <article>
