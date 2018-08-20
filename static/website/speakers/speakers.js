@@ -10,12 +10,12 @@ function insert_speaker(speakers, location, to_hide) {
     // div.classList.add('years', to_hide ? "d-none" : "d-block")
     // make the template
     speakers.forEach(speaker => {
-        div.innerHTML += reverse?`
+        div.innerHTML += reverse ? `
             <svg  class=svg-top xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
                 <polygon points="100 0 100 10 0 10" /> </svg>
-        `:''
+        `: ''
         div.innerHTML +=
-            `<div class=${reverse? 'grey':''}>
+            `<div class=${reverse ? 'grey' : ''}>
                 <div class='d-md-flex speaker container ${reverse ? "reverse pb-4" : ""}'>
                     <div class='s-img text-center'>
                         <img src='${speaker.profile_pic}' class="wow flipInX my-2" alt="">
@@ -31,10 +31,10 @@ function insert_speaker(speakers, location, to_hide) {
                         </div>
                     </div>
             </div></div>`
-        div.innerHTML +=reverse?`
+        div.innerHTML += reverse ? `
             <svg class=svg-bottom xmlns=http://www.w3.org/2000/svg viewBox="0 0 100 10" preserveAspectRatio=none>
                 <polygon points="100 0 100 10 0 10" /> </svg>
-        `:''
+        `: ''
 
         reverse = !reverse
     })
@@ -42,10 +42,12 @@ function insert_speaker(speakers, location, to_hide) {
     location.append(div)
 }
 
-$(function () {
-    $.get(base_url + '/speakers/list/').done(function (data) {
+fetch(base_url + '/speakers/list/')
+    .then(data => data.json())
+    .then(function (data) {
         console.log(data)
-        $('#spinner').hide()
+        document.querySelector('.people').style.opacity=1
+        document.querySelector('#spinner').remove()
         var speakers_div = $('.people');
 
         var k18 = data.speakers.filter(speaker => speaker.year == 2018)
@@ -59,13 +61,12 @@ $(function () {
         insert_speaker(k15, speakers_div, true)
 
     })
-})
 
 // load more button handler
 
-$('#load_more_btn').on('click', function() {
+$('#load_more_btn').on('click', function () {
     document.querySelector('.d-none').classList.remove('d-none')
-    if(!document.querySelector('.d-none')){
+    if (!document.querySelector('.d-none')) {
         $(this).hide()
     }
 })
