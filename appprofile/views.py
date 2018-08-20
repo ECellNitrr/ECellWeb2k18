@@ -46,13 +46,14 @@ def privacy_policy_page(request):
 def terms_page(request):
 	return render(request, 'website/terms.html')
 
+@csrf_exempt
 def message(request):
 	post = json.loads(request.body.decode('UTF-8'))
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
 	print(post)
 	msg.save()
 
-	return JsonResponse({'success':True,'message':'message recieved by server'})
+	return JsonResponse({'success':True,'message':'Your response has been recorded successfully'})
 
 @csrf_exempt
 def applogin(request, *args, **kwargs):
