@@ -21,7 +21,7 @@ def get_event(request):
         # e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
         e['cover_pic'] = config('HOST')+str(e['cover_pic'])
     events_list=list(events)
-    return JsonResponse({'sucess':True,'events':events_list}, safe=False)
+    return JsonResponse({'success':True,'events':events_list}, safe=False)
 
 def post_event(request):
 	# events = Event.objects.all()
