@@ -7,42 +7,34 @@ from .forms import SponsorForm
 import json
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
-from decouple import config
 
 @csrf_exempt
 def get_sponsors(request):
 	sponsors = Sponsor.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
+
+	
 	AS = Sponsor.objects.filter(spons_type='AS').values()
 	for spons in AS:
-		spons['pic'] = config('HOST')+str(spons['pic'])
+		sponsor['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(sponsor['pic'])
 	PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
 	for spons in PLTS:
-		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
-		spons['pic'] = config('HOST')+str(spons['pic'])
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	GS = Sponsor.objects.filter(spons_type='GS').values()
 	for spons in GS:
-		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
-		spons['pic'] = config('HOST')+str(spons['pic'])
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	TS = Sponsor.objects.filter(spons_type='TS').values()
 	for spons in TS:
-		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
-		spons['pic'] = config('HOST')+str(spons['pic'])
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 	PRTS = Sponsor.objects.filter(spons_type='PRTS').values()
 	for spons in PRTS:
-		# spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
-		spons['pic'] = config('HOST')+str(spons['pic'])
+		spons['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(spons['pic'])
 
 	AS_list = list(AS)
-	count = len(AS_list)
 	PLTS_list = list(PLTS)
-	count = count + len(PLTS_list)
 	GS_list = list(GS)
-	count = count + len(GS_list)
 	TS_list = list(TS)
-	count = count + len(TS_list)
 	PRTS_list = list(PRTS)
-	count = count + len(PRTS_list)
 	#spons = [{AS_list,PLTS_list,GS_list,TS_list,PRTS_list]
 
 	spons = [ {'section_name':'Associate Sponsors', "sponsors":AS_list},
@@ -55,14 +47,9 @@ def get_sponsors(request):
 
 	#Response = {'success':True,"message":"Spons available", "":[]}
 
-	if count == 0:
-		return JsonResponse({
-		'success':False,
-		'message':"Error! No Data Available in Database",
-		})	
-
 	return JsonResponse({
 		'success':True,
+		'message':"Sponsors available",
 		'spons':spons,
 		})
 

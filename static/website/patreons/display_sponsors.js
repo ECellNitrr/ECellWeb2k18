@@ -10,13 +10,13 @@ let type = {
 }
 
 $(document).ready(function () {
-    $.get(base_url + '/sponsors/list/').done(function (data) {
+    $.get(base_url + '/sponsor/list/').done(function (data) {
         $('#spinner').hide();
         
         sponsors = data.spons;
         sponsors.forEach(function (type) {
             type.sponsors.forEach(function (sponsor) {
-                console.log(JSON.stringify(sponsor, null, 2));
+                // console.log(JSON.stringify(sponsor, null, 2));
                 sponsors_html.innerHTML += ` 
                     <div class='sponsor'>
                         <img src='${sponsor.pic}'>

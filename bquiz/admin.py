@@ -24,11 +24,6 @@ class OptionAdmin(admin.ModelAdmin):
 
 admin.site.register(Option, OptionAdmin)
 
-class QuestionAcknowledgeAdmin(admin.ModelAdmin):
-    list_display = ('user', 'question')
-
-admin.site.register(QuestionAcknowledge, QuestionAcknowledgeAdmin)
-
 class SettingAdmin(admin.ModelAdmin):
     list_display = ('key', 'text')
     list_filter = ('key',)
@@ -59,3 +54,8 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ItemInline]
 
 admin.site.register(Question, QuestionAdmin)
+
+class QuestionAcknowledgeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'question')
+    
+admin.site.register(QuestionAcknowledge, QuestionAcknowledgeAdmin)

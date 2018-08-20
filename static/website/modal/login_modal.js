@@ -77,7 +77,7 @@ commence_login = () => {
     // disable login btn to prevent multiple requests
     login_btn.disabled = true
 
-    fetch('/login/', {
+    fetch('/loginweb/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8',

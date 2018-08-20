@@ -10,6 +10,8 @@ from django.conf import settings as conf_settings
 
 def decoder(function):
     def wrap(request, *args, **kwargs):
+        
+        token = request.META['HTTP_AUTHID']
         # if not auth_header:
         #     return JsonResponse({'success':False,'message':'Error at auth_header'})
 
@@ -25,7 +27,6 @@ def decoder(function):
         # if prefix.lower() != auth_header_prefix:
         #     return JsonResponse({'success':False,'message':'Error at auth_header_prefix'})
         # print("Stage 3")
-        token = request.META['HTTP_AUTHID']
         try:
             print("Trying to decode TOKEN")
             payload = jwt.decode(token, conf_settings.SECRET_KEY)

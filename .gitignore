@@ -3,7 +3,7 @@ db.sqlite3
 *.pyc
 .env
 env/
-static/uploads/
+
 
 appprofile/__pycache__/models.cpython-36.pyc
 server/__pycache__/settings.cpython-36.pyc

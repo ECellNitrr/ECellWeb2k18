@@ -1,13 +1,11 @@
 reverse = false
 
 function insert_speaker(speakers, location, to_hide) {
-    console.log(speakers)
-    var today = new Date();
-    var year = today.getFullYear();
+    var year = speakers[0].year
     // create a div
     var div = document.createElement('div')
     div.id = year
-    // div.classList.add('years', to_hide ? "d-none" : "d-block")
+    div.classList.add('years', to_hide ? "d-none" : "d-block")
     // make the template
     speakers.forEach(speaker => {
         div.innerHTML += reverse?`
@@ -22,7 +20,7 @@ function insert_speaker(speakers, location, to_hide) {
                     </div>
                     <div class='s-info d-flex align-items-center'>
                         <div class="wow fadeInUp">
-                            <h4>${speaker.name} <span class='badge badge-primary'>${speaker.year}</span></h4>
+                            <h4>${speaker.name} <span class='badge badge-primary'>${year}</span></h4>
                             <h5>${speaker.company}</h5>
                             <p>${speaker.description}</p>
                             <div class='text-center text-md-left'>
@@ -43,7 +41,7 @@ function insert_speaker(speakers, location, to_hide) {
 }
 
 $(function () {
-    $.get(base_url + '/speakers/list/').done(function (data) {
+    $.get(base_url + '/speaker/list/').done(function (data) {
         console.log(data)
         $('#spinner').hide()
         var speakers_div = $('.people');

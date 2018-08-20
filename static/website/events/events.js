@@ -1,7 +1,7 @@
 var events = document.querySelector('#articles')
 
 put_events_in_place = (data) => {
-    data.events.forEach(function (event, i) {
+    data.Events.forEach(function (event, i) {
         if (i % 2 == 0) {
             events.innerHTML += (`
             <article>
@@ -49,14 +49,14 @@ put_events_in_place = (data) => {
 }
 
 $(function () {
-    $.get('/events/list/').then(function (data) {
+    $.get('/event/list/').then(function (data) {
         console.log(data)
         // hide the spinner
         $('#spinner').hide(1000);
         // put data
         put_events_in_place(data)
         // to add event listener
-        // register_stuff(data)
+        register_stuff(data)
     })
 })
 
