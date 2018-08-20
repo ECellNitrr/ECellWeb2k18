@@ -14,7 +14,6 @@ $(document).ready(function () {
         $('#spinner').hide();
         
         sponsors = data.spons;
-<<<<<<< HEAD
         sponsors.forEach(function (type) {
             type.sponsors.forEach(function (sponsor) {
                 // console.log(JSON.stringify(sponsor, null, 2));
@@ -28,23 +27,6 @@ $(document).ready(function () {
                             <p class='website'><a href='${sponsor.website}'>website</a></p>
                         </div>
                     </div>`;
-=======
-        if(sponsors != null){
-            sponsors.forEach(function (type) {
-                type.sponsors.forEach(function (sponsor) {
-                    console.log(JSON.stringify(sponsor, null, 2));
-                    sponsors_html.innerHTML += ` 
-                        <div class='sponsor'>
-                            <img src='${sponsor.pic}'>
-                            <div class='details'>
-                                <h2>${sponsor.name}</h2>
-                                <p class='body'>${sponsor.details}</p>
-                                <p class='contact_no'>${sponsor.contact}</p>
-                                <p class='website'><a href='${sponsor.website}'>website</a></p>
-                            </div>
-                        </div>`;
-                })
->>>>>>> dev_new
             })
         }else{
             sponsors_html.innerHTML += `<h4>Coming Soon</h4>`
