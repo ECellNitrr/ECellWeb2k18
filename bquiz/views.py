@@ -102,7 +102,6 @@ def submit_ans(request,id,**kwargs):
 def get_question(request, *args, **kwargs):
     response = {}
     try: 
-        response['success'] = True
         # if Questionset.objects.filter(flag=True).exists() and request.GET.get('retryQuestion'):
         if Questionset.objects.filter(flag=True).exists():
             question_set = Questionset.objects.get(flag=True)
