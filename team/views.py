@@ -11,32 +11,37 @@ from decouple import config
 # Create your views here.
 
 def get_team(request):
-	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	member = Member.objects.filter(member_type = 'OC').values()
-	for m in member:
-		m['image'] = config('HOST')+str(m['image'])
-	member_list = list(member)
-	member = Member.objects.filter(member_type = 'HC').values()
-	for m in member:
-		m['image'] = config('HOST')+str(m['image'])
-	member_list.append(list(member))
-	member = Member.objects.filter(member_type = 'MNG').values()
-	for m in member:
-		m['image'] = config('HOST')+str(m['image'])
-	member_list.append(list(member))
-	member = Member.objects.filter(member_type = 'EXEC').values()
-	for m in member:
-		m['image'] = config('HOST')+str(m['image'])
-	member_list.append(list(member))
-	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
-	for f in Faculty:
-		f['image'] = config('HOST')+str(f['image'])
-	Faculty= list(Faculty)
+	response = {}
+	if Member.objects.all().exists():
+		scheme = urlsplit(request.build_absolute_uri(None)).scheme
+		member = Member.objects.filter(member_type = 'OC').values()
+		for m in member:
+			m['image'] = config('HOST')+str(m['image'])
+		member_list = list(member)
+		member = Member.objects.filter(member_type = 'HC').values()
+		for m in member:
+			m['image'] = config('HOST')+str(m['image'])
+		member_list.append(list(member))
+		member = Member.objects.filter(member_type = 'MNG').values()
+		for m in member:
+			m['image'] = config('HOST')+str(m['image'])
+		member_list.append(list(member))
+		member = Member.objects.filter(member_type = 'EXEC').values()
+		for m in member:
+			m['image'] = config('HOST')+str(m['image'])
+		member_list.append(list(member))
+		Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
+		for f in Faculty:
+			f['image'] = config('HOST')+str(f['image'])
+		Faculty= list(Faculty)
 
-	student_list = [item for item in member_list if item not in Faculty]
-	if len(member_list)==0 and len(student_list)==0:
-		return JsonResponse({'success':False, 'message':'Error! No Data available in Database'})	
-	response = {'success':True, 'message':'Team Members are available','faculty':Faculty, 'student':student_list}
+		student_list = [item for item in member_list if item not in Faculty]
+		if len(member_list)==0 and len(student_list)==0:
+			return JsonResponse({'success':False, 'message':'Error! No Data available in Database'})	
+		response = {'success':True, 'message':'Team Members are available','faculty':Faculty, 'student':student_list}
+	else:
+		response['success'] = False
+		response['message'] = "Coming Soon"
 	return JsonResponse(response, safe=False)
 
 def team_site(request):
