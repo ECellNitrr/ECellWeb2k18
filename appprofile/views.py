@@ -388,7 +388,7 @@ def retry_otp(request, *args, **kwargs):
 	message = "Your OTP is {{otp}}"
 	url = "http://www.merasandesh.com/api/sendsms"
 
-	querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUPORT","message": message,"numbers": contact,"unicode":"0"}
+	querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"ECellR","message": message,"numbers": contact_no,"unicode":"0"}
 
 	response = requests.request("GET", url, params=querystring)
 
