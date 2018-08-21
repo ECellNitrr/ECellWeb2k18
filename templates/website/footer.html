@@ -7,19 +7,30 @@
     <div class="container">
         <div class="row justify-content-center">
             <!-- <h4 class="col-md-1 footer-es18 font-weight-bold m-0 text-center d-md-block d-none">E-SUMMIT 18</h4> -->
+            <!-- <div class="col-md-1">
+                <img id="en-logo" src="{% static 'website/common/entrepreneur.svg' %}" alt="">
+            </div> -->
             <div class="col-md-2 d-md-block d-none">
                 <h4 class="text-center font-weight-bold mb-3">Quick links</h4>
                 <div id="quick-links" class="text-center">
                     <a class="text-capitalize" href=/>Home</a>
-                    <a class="text-capitalize" href=/event>Events</a>
+                    <a class="text-capitalize" href=/events>Events</a>
                     <a class="text-capitalize" href=/team>Team</a>
-                    <a class="text-capitalize" href=/sponsor>Sponsors</a>
-                    <a class="text-capitalize" href=/speaker>Speakers</a>
-                    <a class="text-capitalize" href=/mentor>Mentors</a>
+                    <a class="text-capitalize" href=/sponsors>Sponsors</a>
+                    <a class="text-capitalize" href=/speakers>Speakers</a>
+                    <a class="text-capitalize" href=/mentors>Mentors</a>
                 </div>
             </div>
             <div class="col-md-6 text-center d-md-block d-none">
-                <img src="{% static 'website/img/logo-white.png' %}" id="footer-logo" class="img-responsive">
+                <div class="d-flex justify-content-around align-items-center">
+                    <div>
+                        <img src="{% static 'website/img/logo-white.png' %}" id="footer-logo" class="img-responsive">
+                    </div>
+                    <div>
+                        <img id="en-logo" src="{% static 'website/common/entrepreneur.svg' %}" alt="">
+                    </div>
+                </div>
+
                 <p class="text-justify text-white">E-Cell, NIT Raipur is established to motivate and educate people about entrepreneurship and serve as a meeting
                     ground for corporate and young budding entrepreneurs from distinguished institutions.</p>
                 <p class="text-center m-0">
