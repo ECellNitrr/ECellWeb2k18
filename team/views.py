@@ -23,12 +23,12 @@ def get_team(request):
 			m['image'] = config('HOST')+str(m['image'])
 		member_list = member_list + list(member)
 		member = Member.objects.filter(member_type = 'MNG').values()
-		for m in member:
-			m['image'] = config('HOST')+str(m['image'])
+		# for m in member:
+		# 	m['image'] = config('HOST')+str(m['image'])
 		member_list = member_list + list(member)
 		member = Member.objects.filter(member_type = 'EXEC').values()
-		for m in member:
-			m['image'] = config('HOST')+str(m['image'])
+		# for m in member:
+		# 	m['image'] = config('HOST')+str(m['image'])
 		member_list = member_list + list(member)
 		Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
 		for f in Faculty:
