@@ -3,15 +3,15 @@ db.sqlite3
 *.pyc
 .env
 env/
+mydatabase
 
-
-appprofile/__pycache__/models.cpython-36.pyc
-server/__pycache__/settings.cpython-36.pyc
-server/__pycache__/urls.cpython-36.pyc
+#appprofile/__pycache__/models.cpython-36.pyc
+#server/__pycache__/settings.cpython-36.pyc
+#server/__pycache__/urls.cpython-36.pyc
 # Byte-compiled / optimized / DLL files
 **/__pycache__
 *.py[cod]
-db.sqlite3
+
 # migrations/
 media/
 .Python
