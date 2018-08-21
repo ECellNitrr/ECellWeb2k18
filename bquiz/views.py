@@ -21,7 +21,9 @@ def get_question(request, *args, **kwargs):
             if Question.objects.filter(flag=True, set=question_set).exists():
                 user = Profile.objects.get(id = kwargs['user_id'])
                 question = Question.objects.get(flag=True)
-                if not QuestionAcknowledge.objects.filter(user=user, question=question).exists() or request.GET['retryQuestion']:
+                print(request.GET['retryQuestion'])
+                # if not Answer.objects.filter(user=user, question=question).exists() or request.GET['retryQuestion']:
+                if not Answer.objects.filter(user=user, question=question).exists():
                 # if not QuestionAcknowledge.objects.filter(user = kwargs['user_id'], question=question).exists() or request.GET.get('retryQuestion'):
                     response['message'] = Setting.objects.get(key='ON').text
                     response['isImageIncluded'] = False if question.type == 'TXT' else True
