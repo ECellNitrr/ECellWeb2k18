@@ -16,6 +16,7 @@ class Sponsor(models.Model):
 	website = models.URLField(blank=True)
 	spons_type = models.CharField(max_length=4, choices=SPONS_TYPE, default='AS')
 	flag = models.BooleanField(default=False)
+	year = models.CharField(max_length=4, default=2018)
 
 	def __str__(self):
 		return self.name
