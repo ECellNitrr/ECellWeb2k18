@@ -3,12 +3,12 @@ from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .forms import EventForm
-
+from decouple import config
 import json
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
 from django.contrib.auth.decorators import login_required
-from .models import Event, EventOrder, Cart
+from .models import Event
 
 
 @csrf_exempt
@@ -16,10 +16,12 @@ def get_event(request):
     events= Event.objects.all().values()
     scheme = urlsplit(request.build_absolute_uri(None)).scheme
     for e in events:
-        e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
-        e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
+        # e['icon']= scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['icon'])
+        e['icon'] = config('HOST')+str(e['icon'])
+        # e['cover_pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(e['cover_pic'])
+        e['cover_pic'] = config('HOST')+str(e['cover_pic'])
     events_list=list(events)
-    return JsonResponse({'sucess':True,'Events':events_list}, safe=False)
+    return JsonResponse({'success':True,'events':events_list}, safe=False)
 
 def post_event(request):
 	# events = Event.objects.all()
@@ -52,7 +54,7 @@ def post_event(request):
 @login_req
 @csrf_exempt
 def event_detail(request,pk):
-	event = Event.objects.get( pk=pk)
+	event = Event.objects.get(pk=pk)
 
 
 
@@ -61,7 +63,7 @@ def event_detail(request,pk):
 	events['cover_pic'] = str(event.cover_pic)
 	events['icon'] = str(event.icon)
 
-	return JsonResponse({'Event':events}, safe=False)
+	return JsonResponse({'event':events}, safe=False)
 
 @csrf_exempt
 @login_req
@@ -144,7 +146,7 @@ def edit_event(request,pk,**kwargs):
 		events['icon'] = str(event.icon)
 		return JsonResponse({
 				'success':True,
-				'Event': events,
+				'event': events,
 
 		},safe=False)
 	else:

@@ -1,17 +1,17 @@
 var events = document.querySelector('#articles')
 
 put_events_in_place = (data) => {
-    data.Events.forEach(function (event, i) {
+    data.events.forEach(function (event, i) {
         if (i % 2 == 0) {
             events.innerHTML += (`
             <article>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
+                        <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
+                            <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">
@@ -28,11 +28,11 @@ put_events_in_place = (data) => {
             <article class=reverse-layout>
                 <div class=article-layout>
                     <div class=text>
-                        <h2 class=""><a href="/event_detail/${event.id}">${event.name}</a></h2>
+                        <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
                         <p><strong>Venue: </strong>${event.venue} on ${event.date} at ${event.time}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
-                            <a href="/event_detail/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
+                            <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
                         </div>
                     </div>
                     <div class="img ">
@@ -49,7 +49,7 @@ put_events_in_place = (data) => {
 }
 
 $(function () {
-    $.get('/event/list/').then(function (data) {
+    $.get('/events/list/').then(function (data) {
         console.log(data)
         // hide the spinner
         $('#spinner').hide(1000);

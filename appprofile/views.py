@@ -29,7 +29,7 @@ from .models import WebMsg
 import multiprocessing
 from . import send_mail
 from random import randint
-
+import requests
 
 def event_detail(request,event_id):
     return render(request, 'website/event_detail.html')
@@ -46,13 +46,14 @@ def privacy_policy_page(request):
 def terms_page(request):
 	return render(request, 'website/terms.html')
 
+@csrf_exempt
 def message(request):
-	post = json.loads(request.body)
+	post = json.loads(request.body.decode('UTF-8'))
 	msg = WebMsg(name=post['name'],email=post['email'],msg=post['msg'])
 	print(post)
 	msg.save()
 
-	return JsonResponse({'success':True,'message':'message recieved by server'})
+	return JsonResponse({'success':True,'message':'Your response has been recorded successfully'})
 
 @csrf_exempt
 def applogin(request, *args, **kwargs):
@@ -62,7 +63,7 @@ def applogin(request, *args, **kwargs):
 		}
 
 	if request.method=='POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 
@@ -106,15 +107,15 @@ def appregister(request):
 
 	registered = False
 	if request.method == "POST":
-		print(request.body)
+		print(request.body.decode('UTF-8'))
 
-		req_data = request.body
+		req_data = request.body.decode('UTF-8')
 		# req_data = req_data.decode('utf-8')
 		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
 		email = req_data['email']
 		password = req_data['password']
-
+		contact_no = str(req_data['contact_no'])
 		#Checking Duplicate records of Email or contact no
 		conno = req_data['contact_no']
 		if(Profile.objects.filter(contact_no=conno).exists()):
@@ -171,31 +172,35 @@ def appregister(request):
 		# email.send()
 
 
-		import http.client
+		# import http.client
 
 
 
-		conn = http.client.HTTPConnection("api.msg91.com")
+		# conn = http.client.HTTPConnection("api.msg91.com")
 
 
-		stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
-		stringmsg=stringmsg+conno
-		stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
-		otp = str(randint(1000,9999))
-		msg = "Your otp is: "
-		msg=msg+otp
-		msg = str(msg)
-		msg = msg[2:-1]
-		print(msg)
-		stringmsg=stringmsg+msg
+		# stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
+		# stringmsg=stringmsg+conno
+		# stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
 		
-		print(stringmsg)
-		conn.request("GET", stringmsg)
+		# msg = "Your otp is: "
+		# msg=msg+otp
+		# msg = str(msg)
+		# print(msg)
+		# stringmsg=stringmsg+ms
+		otp = str(randint(1000,9999))
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
+		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+
+		response = requests.request("GET", url, params=querystring)
+
+		print(response.text)
 		user.profile.otp = otp
 		user.profile.save()
-		res = conn.getresponse()
-		data = res.read()
-		print(data.decode("utf-8"))
+		# res = conn.getresponse()
+		# data = res.read()
+		# print(data.decode("utf-8"))
 		print(otp)
 		payload = {
 			'id' : user.id,
@@ -242,7 +247,7 @@ def weblogin(request):
 		# if 'username' in request.session:
 		# 	print("USER IN SESSION")
 		# 	return
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		print(email,password)
@@ -271,7 +276,7 @@ def weblogin(request):
 def webregister(request):
 
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		#print(req_data)
@@ -315,14 +320,14 @@ def send_otp(request, *args, **kwargs):
 	if request.method =='POST':
 
 		print("post request done")
-		#req_data = json.loads(request.body)
+		#req_data = json.loads(request.body.decode('UTF-8'))
 		#print(req_data)
 		current_userid = kwargs['user_id']
 		print(current_userid)
 		current_user = User.objects.get(id=current_userid)
 
 
-		contact_no = json.loads(request.body)['contact_no']
+		contact_no = json.loads(request.body.decode('UTF-8'))['contact_no']
 		contact_no = str(91)+str(contact_no)
 		contact_no = int(contact_no)
 		print('otp not printed')
@@ -330,27 +335,11 @@ def send_otp(request, *args, **kwargs):
 		Atkey = config('Atkey')
 
 
-<<<<<<< HEAD
 		otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
 
 		otps = otpobj.send(contact_no,'ECellR',otp)
 		#Don't change the name 'ECelll' in above line
-=======
-		# Msg = 'Your otp is {{otp}}. Respond with otp. Regards Team Ecell'
-		# otpobj =  sendotp.sendotp(Atkey,Msg)
-		# otp = otpobj.generateOtp()
-		# otp = int(otp)
-		# print(otp)
-
-		otps = otpobj.send(contact_no,'ECellr',otp)
-		#Don't change the name 'ECellr' in above line
-		# otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
-
-		# otps = otpobj.send(contact_no,'ECelll',otp)
-		# #Don't change the name 'ECelll' in above line
->>>>>>> 3a5ee6144493375b401c03b1980bcd89d20faa94
 
 
 		# contact_no = str(contact_no)
@@ -388,13 +377,22 @@ def retry_otp(request, *args, **kwargs):
 	contact_no = contact_no[0:12]
 	contact_no = int(contact_no)
 
-	Atkey = config('Atkey')
+	# Atkey = config('Atkey')
 
-	Msg = 'Your otp is {{otp}}.'
-	otpobj =  sendotp.sendotp(Atkey,Msg)
+	# Msg = 'Your otp is {{otp}}.'
+	# otpobj =  sendotp.sendotp(Atkey,Msg)
 
 
-	otpobj.retry(contact_no,'ECelll')
+	# otpobj.retry(contact_no,'ECelll')
+
+	message = "Your OTP is {{otp}}"
+	url = "http://www.merasandesh.com/api/sendsms"
+
+	querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"ECellR","message": message,"numbers": contact_no,"unicode":"0"}
+
+	response = requests.request("GET", url, params=querystring)
+
+	print(response.text)
 	#Don't change the name 'ECelll' in above line
 
 	return JsonResponse({'success':True,'message':'OTP sent through call'})
@@ -413,7 +411,7 @@ def verify_otp(request, *args, **kwargs):
 	totp = str(totp)
 	print("API call successful")
 	if request.method == 'POST':
-		req_data = json.loads(request.body)
+		req_data = json.loads(request.body.decode('UTF-8'))
 		otp = req_data['otp']
 		if(totp == otp):
 			profile = Profile.objects.get(user=current_user)
@@ -476,82 +474,3 @@ def password(request):
 	else:
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
-
-
-
-
-
-
-##########Event Registration ###############################
-
-from django.contrib.auth.decorators import login_required
-from events.models import Event, EventOrder, Cart
-
-
-@csrf_exempt
-@login_required
-def add_to_cart(request, event_id):
-
-	try:
-		event = Event.objects.get(pk=event_id)
-		print(event)
-
-	except :
-		pass
-		
-	else:
-		try:
-			cart = Cart.objects.get(user=request.user, active=True)
-			cart.add_to_cart(event_id)
-		except :
-			cart = Cart.objects.create(
-			user= request.user
-			)
-			cart.save()
-			cart.add_to_cart(event_id)
-
-	return JsonResponse({'success':True,
-						 'message':"Event added successfully"})
-
-
-#Remove Event Function
-@csrf_exempt
-@login_required
-def remove_from_cart(request, event_id):
-	try:
-		event = Event.objects.get(pk=event_id)
-		print(request.user)
-	except :
-		pass
-	else:
-		cart=Cart.objects.get(user=request.user, active=True)
-		print(cart)
-		cart.remove_from_cart(event_id)
-
-	return bag(request)
-
-
-#View Cart/Event List Function
-@csrf_exempt
-@login_required
-def bag(request):
-
-	eventlist=[]
-
-	cart= Cart.objects.filter(user=request.user, active=True)
-	gre = list(EventOrder.objects.filter(cart=cart[0]))
-
-	i=0
-
-	for eve in gre:
-		if eve.event.name not in eventlist:
-			eventlist.append(eve.event.name)
-		i=i+1
-
-	context={
-		'success':True,
-		'message':'Event List Fetched Succesfully',
-		'events':eventlist,
-
-	}
-	return JsonResponse(context)

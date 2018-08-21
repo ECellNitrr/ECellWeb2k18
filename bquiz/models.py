@@ -13,6 +13,16 @@ class Questionset(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if self.flag is True:
+            if Questionset.objects.filter(flag=True).exists():
+                questionsets = Questionset.objects.filter(flag=True)
+                for questionset in questionsets:
+                    questionset.flag = False
+                    questionset.save()
+            self.flag = True
+        super(Questionset, self).save(*args, **kwargs)
+
 class Question(models.Model):
     CHOICES = (
         ('IMG', 'Image Question'),
@@ -32,25 +42,24 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
-class Answer(models.Model):
-    question_id = models.ForeignKey(Question,on_delete=models.CASCADE)
-    user_id = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    answer = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    modified_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def __int__(self):
-        return self.answer
+    def save(self, *args, **kwargs):
+        if self.flag is True:
+            if Question.objects.filter(flag=True).exists():
+                questions = Question.objects.filter(flag=True)
+                for question in questions:
+                    question.flag = False
+                    question.save()
+            self.flag = True
+        super(Question, self).save(*args, **kwargs)
 
 class QuestionAcknowledge(models.Model):
-    acknowledge_id = models.IntegerField()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
-        return str(self.user.name + self.question.name)
+        return str(str(self.user) + " => " + str(self.question))
 
 class Option(models.Model):
     option = models.CharField(max_length=20, null=False, blank=False)
@@ -76,3 +85,13 @@ class Setting(models.Model):
 
     def __str__(self):
         return str(self.key)
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    option = models.ForeignKey(Option, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)
+
+    def __int__(self):
+        return self.answer

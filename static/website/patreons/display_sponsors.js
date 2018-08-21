@@ -10,7 +10,7 @@ let type = {
 }
 
 $(document).ready(function () {
-    $.get(base_url + '/sponsor/list/').done(function (data) {
+    $.get(base_url + '/sponsors/list/').done(function (data) {
         $('#spinner').hide();
         
         sponsors = data.spons;

@@ -19,21 +19,18 @@ put_event_in_place = (event) => {
                     </div>
                 </div>
             </div>
-            <div class='text-center mt-5 mb-5'>
-                <button class="register_btn" data-eid=${event.id}>Register</button>
-            </div>
         `)
 }
 
-fetch('/event/list')
+fetch('/events/list')
     .then(data => data.json())
     .then((data) => {
         // close the spinner
         document.querySelector('#spinner').remove()
-
+        console.log(data);
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
-        var event = data.Events.filter((event) => event.id == page_eid)[0]
+        var event = data.events.filter((event) => event.id == page_eid)[0]
         put_event_in_place(event)
         console.log(JSON.stringify(event, null, 2))
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Questionset, Question, Answer, Option, Setting
+from .models import Questionset, Question, Answer, Option, Setting, QuestionAcknowledge
 from django.utils.translation import ugettext_lazy as _
 
 class QuestionsetAdmin(admin.ModelAdmin):
@@ -11,9 +11,9 @@ class QuestionsetAdmin(admin.ModelAdmin):
 admin.site.register(Questionset, QuestionsetAdmin)
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'question_id', 'user_id', 'answer')
-    search_fields = ('id', 'question_id', 'user_id', 'answer')
-    list_filter = ('question_id',)
+    list_display = ('id', 'question', 'user', 'option')
+    search_fields = ('id', 'question', 'user', 'option')
+    list_filter = ('question',)
 
 admin.site.register(Answer, AnswerAdmin)
 
@@ -54,3 +54,8 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ItemInline]
 
 admin.site.register(Question, QuestionAdmin)
+
+class QuestionAcknowledgeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'question')
+    
+admin.site.register(QuestionAcknowledge, QuestionAcknowledgeAdmin)
