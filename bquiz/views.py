@@ -21,7 +21,7 @@ def get_question(request, *args, **kwargs):
             if Question.objects.filter(flag=True, set=question_set).exists():
                 user = Profile.objects.get(id = kwargs['user_id'])
                 question = Question.objects.get(flag=True)
-                if not QuestionAcknowledge.objects.filter(user=user, question=question).exists():
+                if not QuestionAcknowledge.objects.filter(user=user, question=question).exists() or request.GET['retryQuestion']:
                 # if not QuestionAcknowledge.objects.filter(user = kwargs['user_id'], question=question).exists() or request.GET.get('retryQuestion'):
                     response['message'] = Setting.objects.get(key='ON').text
                     response['isImageIncluded'] = False if question.type == 'TXT' else True
@@ -45,11 +45,13 @@ def get_question(request, *args, **kwargs):
                     acknowledge = QuestionAcknowledge(user=user, question=question)
                     acknowledge.save()
                 else:
-                    response['success'] = True
+                    response['success'] = False
                     response['message'] = Setting.objects.get(key='ANS').text
             else:
-                response['message'] = Setting.objects.get(key='OFF').text
+                response['success'] = False
+                response['message'] = Setting.objects.get(key='ON').text
         else:
+            response['success'] = False
             response['message'] = Setting.objects.get(key='OFF').text
     except Exception as e:
         response['success'] = False
@@ -79,18 +81,22 @@ def submit_answer(request, *args, **kwargs):
         req_data = json.loads(request.body.decode('UTF-8'))
         print(req_data)
         question_id = req_data['questionId']
-        option_id = req_data['optionId']
         user_id = kwargs['user_id']
         question = Question.objects.get(pk=question_id)
         user = Profile.objects.get(pk=user_id)
-        option = Option.objects.get(pk=option_id)
+        try:
+            option_id = req_data['optionId']
+            option = Option.objects.get(pk=option_id)
+        except Exception as e:
+            print(e)
+            option = Option.objects.get(option='NULL')
         if not Answer.objects.filter(user=user, question=question).exists():
             response['success'] = True
             response['message'] = Setting.objects.get(key='ANS').text
             answer = Answer(user=user, question=question, option=option)
             answer.save()
         else:
-            response['success'] = True
+            response['success'] = False
             response['message'] = Setting.objects.get(key='ANS').text
     else:
         response['success'] = True

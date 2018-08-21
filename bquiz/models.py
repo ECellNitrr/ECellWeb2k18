@@ -13,6 +13,16 @@ class Questionset(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if self.flag is True:
+            if Questionset.objects.filter(flag=True).exists():
+                questionsets = Questionset.objects.filter(flag=True)
+                for questionset in questionsets:
+                    questionset.flag = False
+                    questionset.save()
+            self.flag = True
+        super(Questionset, self).save(*args, **kwargs)
+
 class Question(models.Model):
     CHOICES = (
         ('IMG', 'Image Question'),
@@ -31,6 +41,16 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question
+
+    def save(self, *args, **kwargs):
+        if self.flag is True:
+            if Question.objects.filter(flag=True).exists():
+                questions = Question.objects.filter(flag=True)
+                for question in questions:
+                    question.flag = False
+                    question.save()
+            self.flag = True
+        super(Question, self).save(*args, **kwargs)
 
 class QuestionAcknowledge(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)

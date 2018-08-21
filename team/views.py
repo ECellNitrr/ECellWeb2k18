@@ -12,7 +12,7 @@ from decouple import config
 
 def get_team(request):
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	member = Member.objects.all().values()
+	member = Member.objects.filter(member_type = 'OC').values() | Member.objects.filter(member_type = 'HC').values() | Member.objects.filter(member_type = 'MNG').values() | Member.objects.filter(member_type = 'EXEC').values()
 	for m in member:
 		m['image'] = config('HOST')+str(m['image'])
 	member_list = list(member)
