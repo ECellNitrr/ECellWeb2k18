@@ -8,7 +8,6 @@ fetch(base_url + '/speakers/list/')
     .then(data => data.json())
     .then(function (data) {
         document.querySelector('#spinner').remove()
-        heading.forEach(ele => ele.style.display = 'block')
 
         var speakers = data.speakers
         var this_year = speakers.filter(e => e.year == 2018)
@@ -18,8 +17,10 @@ fetch(base_url + '/speakers/list/')
         console.log(JSON.stringify(prev_years, null, 2))
 
         insert_speakers(this_year, this_year_loc)
-        insert_speakers(prev_years,prev_year_loc)
+        insert_speakers(prev_years, prev_year_loc)
 
+        // display the speakers
+        heading.forEach(ele => ele.style.display = 'block')
     })
 
 function insert_speakers(speakers, location) {
@@ -34,7 +35,7 @@ function insert_speakers(speakers, location) {
                         <h4 class='name'>${speaker.name}</h4>
                         <h5 class='company'>( ${speaker.company} )</h5>
                         <div class='year'><span>Year: </span>${speaker.year}</div>
-                        <p class='desc text-justify mt-3'>${speaker.description!=='none'? speaker.description:''}</p>
+                        <p class='desc text-justify mt-3'>${speaker.description !== 'none' ? speaker.description : ''}</p>
                         <div>
                             <a href='${speaker.social_media}' class='social_media'><i class='fa fa-anchor'></i> Follow on social media </a>
                         </div>
