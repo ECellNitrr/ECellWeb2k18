@@ -25,18 +25,18 @@ fetch(base_url + '/speakers/list/')
 function insert_speakers(speakers, location) {
     speakers.forEach(speaker => {
         location.innerHTML +=
-            `<div>
-                <div class='s-img text-center'>
+            `<div class='speaker row'>
+                <div class='s-img justify-content-center align-items-center col-lg-4'>
                     <img src='${speaker.profile_pic}'>
                 </div>
-                <div class='s-info'>
+                <div class='s-info justify-content-center align-items-center col-lg-7'>
                     <div>
-                        <h4>${speaker.name}</h4>
-                        <h5 class='company'>${speaker.company}</h5>
-                        <div class='year'>${speaker.year}</div>
-                        <p class='desc'>${speaker.description}</p>
-                        <div class='text-right'>
-                            <a href='${speaker.social_media}' class='social_media'><i class='fa fa-anchor'></i><strong> follow</strong></a>
+                        <h4 class='name'>${speaker.name}</h4>
+                        <h5 class='company'>( ${speaker.company} )</h5>
+                        <div class='year'><span>Year: </span>${speaker.year}</div>
+                        <p class='desc text-justify mt-3'>${speaker.description!=='none'? speaker.description:''}</p>
+                        <div>
+                            <a href='${speaker.social_media}' class='social_media'><i class='fa fa-anchor'></i> Follow on social media </a>
                         </div>
                     </div>
                 </div>

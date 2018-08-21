@@ -24,6 +24,10 @@ hr {
     display: none;
 }
 
+.speaker a:hover {
+    color: black !important;
+}
+
 
 @media (min-width:700px) {
     h2 {
@@ -31,10 +35,44 @@ hr {
         font-family: Open Sans;
         letter-spacing: 2px;
         text-align: center;
-        font-size: 23px;
+        font-size: 25px;
         text-transform: uppercase
     }
-    
+    /* speaker */
+    .speaker {
+        margin-top: 50px;
+        margin: 70px 0;
+    }
+    .s-img img {
+        width: 250px;
+        height: 250px;
+        box-shadow: 5px 10px 10px black;
+    }
+    .name {
+        font-weight: bold;
+    }
+    .s-info {
+        display: flex;
+    }
+    .s-info div {
+        width: 100%;
+    }
+    .company {
+        color: grey;
+    }
+    .year {
+        margin-top: 10px;
+    }
+    .social_media i{
+        display: inline-block;
+        text-align: center;
+        align-self: center;
+        padding: 10px;
+        margin-right: 10px;
+        background: black;
+        color: white;
+        border-radius: 50%;
+    }
 }
 
 @media(max-width: 700px){
