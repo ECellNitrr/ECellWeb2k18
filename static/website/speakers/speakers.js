@@ -26,7 +26,7 @@ function insert_speakers(speakers, location) {
     speakers.forEach(speaker => {
         location.innerHTML +=
             `<div class='speaker row'>
-                <div class='s-img justify-content-center align-items-center col-lg-4'>
+                <div class='s-img text-center align-items-center col-lg-4'>
                     <img src='${speaker.profile_pic}'>
                 </div>
                 <div class='s-info justify-content-center align-items-center col-lg-7'>
