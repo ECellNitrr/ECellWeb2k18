@@ -19,7 +19,7 @@ html {
         font-family: Open Sans;
         letter-spacing: 2px;
         text-align: center;
-        font-size: 30px;
+        font-size: 20px;
         text-transform: uppercase
     }
     .people {
@@ -52,7 +52,7 @@ html {
     hr {
         width: 100px;
         border: 2px solid #000;
-        margin: 20px auto 40px;
+        margin: 10px auto 40px;
         background: #000
     }
     svg {
@@ -64,11 +64,11 @@ html {
 
 @media (min-width:700px) {
     h2 {
-        font-weight: 800 !important;
+        font-weight: 700;
         font-family: Open Sans;
         letter-spacing: 2px;
         text-align: center;
-        font-size: 30px;
+        font-size: 20px;
         text-transform: uppercase
     }
     .people {
@@ -102,7 +102,7 @@ html {
     hr {
         width: 100px;
         border: 2px solid #000;
-        margin: 20px auto 40px;
+        margin: 10px auto 40px;
         background: #000
     }
 }
