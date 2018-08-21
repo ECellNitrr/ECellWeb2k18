@@ -12,10 +12,22 @@ from decouple import config
 
 def get_team(request):
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	member = Member.objects.filter(member_type = 'OC').values() | Member.objects.filter(member_type = 'HC').values() | Member.objects.filter(member_type = 'MNG').values() | Member.objects.filter(member_type = 'EXEC').values()
+	member = Member.objects.filter(member_type = 'OC').values()
 	for m in member:
 		m['image'] = config('HOST')+str(m['image'])
 	member_list = list(member)
+	member = Member.objects.filter(member_type = 'HC').values()
+	for m in member:
+		m['image'] = config('HOST')+str(m['image'])
+	member_list.append(list(member))
+	member = Member.objects.filter(member_type = 'MNG').values()
+	for m in member:
+		m['image'] = config('HOST')+str(m['image'])
+	member_list.append(list(member))
+	member = Member.objects.filter(member_type = 'EXEC').values()
+	for m in member:
+		m['image'] = config('HOST')+str(m['image'])
+	member_list.append(list(member))
 	Faculty = Member.objects.filter(member_type = 'Dir').values()  | Member.objects.filter( member_type='HCD').values() | Member.objects.filter(member_type = 'Fclty').values()
 	for f in Faculty:
 		f['image'] = config('HOST')+str(f['image'])
