@@ -33,13 +33,13 @@ $(function () {
     var faculty_incharge = $('#faculty_incharge')
 
     $.get(base_url + '/team/list').then(function (data) {
-        $('#spinner').hide();
+        document.querySelector('#spinner').remove();
         // get the data of the given member_type
-        function dataOfFaculty(mtype){
-            return data.faculty.filter(val=>val.member_type==mtype)
+        function dataOfFaculty(mtype) {
+            return data.faculty.filter(val => val.member_type == mtype)
         }
-        function dataOfStudent(mtype){
-            return data.student.filter(val=>val.member_type==mtype)
+        function dataOfStudent(mtype) {
+            return data.student.filter(val => val.member_type == mtype)
         }
 
         console.log(dataOfFaculty('Dir'));
