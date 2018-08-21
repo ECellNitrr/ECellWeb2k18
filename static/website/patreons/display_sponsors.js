@@ -35,8 +35,8 @@ fetch(base_url + '/sponsors/list/')
         insert_sponsors(this_spons,this_spons_div)
         insert_sponsors(prev_spons,prev_spons_div)
 
-        console.log(JSON.stringify(this_spons, null, 2))
-        console.log(JSON.stringify(prev_spons, null, 2))
+        // console.log(JSON.stringify(this_spons, null, 2))
+        // console.log(JSON.stringify(prev_spons, null, 2))
     })
 
 insert_sponsors = (spons, location) => {

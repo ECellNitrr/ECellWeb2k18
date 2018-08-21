@@ -13,6 +13,11 @@ html {
     font-family: Open Sans, "sans-serif";
 }
 
+#this_div,
+#prev_div {
+    display: none;
+}
+
 hr {
     width: 100px;
     border: 2px solid #000;
@@ -39,6 +44,9 @@ hr {
         text-transform: uppercase
     }
     /* speaker */
+    .speakers{
+        margin-bottom: 100px;
+    }
     .speaker {
         margin-top: 50px;
         margin: 70px 0;

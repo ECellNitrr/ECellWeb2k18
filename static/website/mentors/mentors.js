@@ -17,8 +17,8 @@ fetch(base_url + '/mentors/list/')
         if (this_data.length) this_div.style.display = 'block'
         if (prev_data.length) prev_div.style.display = 'block'
 
-        console.log(JSON.stringify(this_data, null, 2))
-        console.log(JSON.stringify(prev_data, null, 2))
+        // console.log(JSON.stringify(this_data, null, 2))
+        // console.log(JSON.stringify(prev_data, null, 2))
 
 
     })
@@ -26,7 +26,7 @@ fetch(base_url + '/mentors/list/')
 
 insert_mentors = (mentors, location) => {
     mentors.forEach(function (mentor) {
-        console.log(mentor);
+        // console.log(mentor);
         location.innerHTML += (`
             <div>
                 <img class="" src='${mentor.profile_pic}' alt="">

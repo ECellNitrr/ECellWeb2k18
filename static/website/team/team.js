@@ -42,7 +42,7 @@ $(function () {
             return data.student.filter(val => val.member_type == mtype)
         }
 
-        console.log(dataOfFaculty('Dir'));
+        // console.log(dataOfFaculty('Dir'));
         show_with_pic(director, dataOfFaculty('Dir'))
         show_with_pic(head_career_dev, dataOfFaculty('HCD'))
         show_with_pic(faculty_incharge, dataOfFaculty('Fclty'))

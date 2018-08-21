@@ -1,8 +1,10 @@
 var this_year_loc = document.querySelector('#this_year')
 var prev_year_loc = document.querySelector('#prev_year')
+var this_div = document.querySelector('#this_div')
+var prev_div = document.querySelector('#prev_div')
 var heading = document.querySelectorAll('.heading')
 
-console.log(this_year_loc, prev_year_loc)
+// console.log(this_year_loc, prev_year_loc)
 
 fetch(base_url + '/speakers/list/')
     .then(data => data.json())
@@ -13,8 +15,8 @@ fetch(base_url + '/speakers/list/')
         var this_year = speakers.filter(e => e.year == 2018)
         var prev_years = speakers.filter(e => e.year != 2018)
 
-        console.log(JSON.stringify(this_year, null, 2))
-        console.log(JSON.stringify(prev_years, null, 2))
+        if (this_year.length) this_div.style.display = 'block'
+        if (prev_years.length) prev_div.style.display = 'block'
 
         insert_speakers(this_year, this_year_loc)
         insert_speakers(prev_years, prev_year_loc)
