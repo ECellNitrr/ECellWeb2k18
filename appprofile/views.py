@@ -29,7 +29,7 @@ from .models import WebMsg
 import multiprocessing
 from . import send_mail
 from random import randint
-
+import requests
 
 def event_detail(request,event_id):
     return render(request, 'website/event_detail.html')
@@ -115,7 +115,7 @@ def appregister(request):
 		req_data = json.loads(req_data)
 		email = req_data['email']
 		password = req_data['password']
-
+		contact_no = str(req_data['contact_no'])
 		#Checking Duplicate records of Email or contact no
 		conno = req_data['contact_no']
 		if(Profile.objects.filter(contact_no=conno).exists()):
@@ -172,30 +172,35 @@ def appregister(request):
 		# email.send()
 
 
-		import http.client
+		# import http.client
 
 
 
-		conn = http.client.HTTPConnection("api.msg91.com")
+		# conn = http.client.HTTPConnection("api.msg91.com")
 
 
-		stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
-		stringmsg=stringmsg+conno
-		stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
-		otp = str(randint(1000,9999))
-		msg = "Your otp is: "
-		msg=msg+otp
-		msg = str(msg)
-		print(msg)
-		stringmsg=stringmsg+msg
+		# stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
+		# stringmsg=stringmsg+conno
+		# stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
 		
-		print(stringmsg)
-		conn.request("GET", stringmsg)
+		# msg = "Your otp is: "
+		# msg=msg+otp
+		# msg = str(msg)
+		# print(msg)
+		# stringmsg=stringmsg+ms
+		otp = str(randint(1000,9999))
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP is "+otp+""
+		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"ECellR","message": message ,"numbers": contact_no,"unicode":"0"}
+
+		response = requests.request("GET", url, params=querystring)
+
+		print(response.text)
 		user.profile.otp = otp
 		user.profile.save()
-		res = conn.getresponse()
-		data = res.read()
-		print(data.decode("utf-8"))
+		# res = conn.getresponse()
+		# data = res.read()
+		# print(data.decode("utf-8"))
 		print(otp)
 		payload = {
 			'id' : user.id,
@@ -372,13 +377,22 @@ def retry_otp(request, *args, **kwargs):
 	contact_no = contact_no[0:12]
 	contact_no = int(contact_no)
 
-	Atkey = config('Atkey')
+	# Atkey = config('Atkey')
 
-	Msg = 'Your otp is {{otp}}.'
-	otpobj =  sendotp.sendotp(Atkey,Msg)
+	# Msg = 'Your otp is {{otp}}.'
+	# otpobj =  sendotp.sendotp(Atkey,Msg)
 
 
-	otpobj.retry(contact_no,'ECelll')
+	# otpobj.retry(contact_no,'ECelll')
+
+	message = "Your OTP is {{otp}}"
+	url = "http://www.merasandesh.com/api/sendsms"
+
+	querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUPORT","message": message,"numbers": contact,"unicode":"0"}
+
+	response = requests.request("GET", url, params=querystring)
+
+	print(response.text)
 	#Don't change the name 'ECelll' in above line
 
 	return JsonResponse({'success':True,'message':'OTP sent through call'})
