@@ -112,7 +112,7 @@ if os.getenv('ENV') == 'production':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ecelldb1',
+            'NAME': 'ecelldb2',
             'USER': 'ubuntu',
             'PASSWORD': 'datapostgres',
             'HOST': 'localhost',
