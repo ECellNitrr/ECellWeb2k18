@@ -8,7 +8,7 @@ import json
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
 from django.contrib.auth.decorators import login_required
-from .models import Event, EventOrder, Cart
+from .models import Event
 
 
 @csrf_exempt
