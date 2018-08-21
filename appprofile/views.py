@@ -190,8 +190,8 @@ def appregister(request):
 		# stringmsg=stringmsg+ms
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
-		message = "Your OTP is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"ECellR","message": message ,"numbers": contact_no,"unicode":"0"}
+		message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
+		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 		response = requests.request("GET", url, params=querystring)
 
