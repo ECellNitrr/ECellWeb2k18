@@ -71,16 +71,14 @@ def applogin(request, *args, **kwargs):
 			print(username)
 			user = authenticate(username=username, password=password)
 			print(user)
-		except:
+		except User.DoesNotExist:
 			error_msg['message'] = "Please create an account to continue"
 			return JsonResponse(error_msg)
-		try:
-			user = authenticate(username=username, password=password)
-			print(user)
-		except User.DoesNotExist:
-			error_msg['message'] = "Invalid credentials"
+		except Exception as e:
+			print(e)
+			error_msg['message'] = "Please try again later"
 			return JsonResponse(error_msg)
-
+		
 		if user:
 			user.profile.status=1;
 			login(request,user)
@@ -100,7 +98,8 @@ def applogin(request, *args, **kwargs):
 			})
 
 		else:
-			print("status issue")
+			print("Invalid credentials")
+			error_msg['message'] = "Invalid Credentials"
 			return JsonResponse(error_msg)
 	return render(request,'login.html')
 
@@ -213,7 +212,7 @@ def appregister(request):
 
 		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 		token = jwt_token.decode('utf-8')
-		print(token)
+		# print(token)
 		return JsonResponse({
 			'success' : True,
 			'message' : 'Registration successfull',
@@ -311,95 +310,52 @@ def logout_view(request):
 	return JsonResponse({'success':True,
 						 'message':'User logged out successsfully'})
 
-
-"""
-
 @csrf_exempt
-@decoder
+def retry_otp(request):
+	response = {}
+	if request.method == "POST":
+		req_data = request.body.decode('UTF-8')
+		# req_data = req_data.decode('utf-8')
+		# req_data = ast.literal_eval(req_data)
+		req_data = json.loads(req_data)
+		email = req_data['email']
+		password = req_data['password']
+		contact_no = str(req_data['contact_no'])
+		if User.objects.filter(email=email).exists():
+			user = User.objects.get(email=email)
+			otp = str(randint(1000,9999))
+			url = "http://www.merasandesh.com/api/sendsms"
+			message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
+			querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
-def send_otp(request, *args, **kwargs):
-	print("REACHED HERE")
+			response_otp = requests.request("GET", url, params=querystring)
 
+			print(response_otp.text)
+			user.profile.otp = otp
+			user.profile.save()
+			# res = conn.getresponse()
+			# data = res.read()
+			# print(data.decode("utf-8"))
+			print(otp)
+			payload = {
+				'id' : user.id,
+				'email': user.email,
+			}
 
-	if request.method =='POST':
-
-		print("post request done")
-		#req_data = json.loads(request.body.decode('UTF-8'))
-		#print(req_data)
-		current_userid = kwargs['user_id']
-		print(current_userid)
-		current_user = User.objects.get(id=current_userid)
-
-
-		contact_no = json.loads(request.body.decode('UTF-8'))['contact_no']
-		contact_no = str(91)+str(contact_no)
-		contact_no = int(contact_no)
-		print('otp not printed')
-		print(contact_no)
-		Atkey = config('Atkey')
-
-
-		otpobj.send(contact_no,'ECellR',otp)
-		#Don't change the name 'ECelll' in above line
-
-		otps = otpobj.send(contact_no,'ECellR',otp)
-		#Don't change the name 'ECelll' in above line
-
-
-		# contact_no = str(contact_no)
-
-		# otps = str(otps)
-
-
-		profile = Profile.objects.get(user=current_user)
-		profile.contact_no = contact_no
-		profile.otp = otps
-		profile.save()
-
-		print(otps)
-
-		return JsonResponse({'success':True,'message':'OTP sent successfully',})
+			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
+			token = jwt_token.decode('utf-8')
+			# print(token)
+			response['success'] = True
+			response['message'] = "OTP resent"
+			response['token'] = token
+		else:
+			response['success'] = False
+			response['message'] = "Please try to sign up after few minutes"
 	else:
-		print('Method error')
-		return render(request,'phone.html')
-
-
-	#return render(request,'phone.html')
-	"""
-
-@csrf_exempt
-@decoder
-def retry_otp(request, *args, **kwargs):
-	current_userid = kwargs['user_id']
-
-	current_user = User.objects.get(id=current_userid)
-
-
-	profile = Profile.objects.get(user= current_user)
-	contact_no = profile.contact_no
-	contact_no = str(contact_no)
-	contact_no = contact_no[0:12]
-	contact_no = int(contact_no)
-
-	# Atkey = config('Atkey')
-
-	# Msg = 'Your otp is {{otp}}.'
-	# otpobj =  sendotp.sendotp(Atkey,Msg)
-
-
-	# otpobj.retry(contact_no,'ECelll')
-
-	message = "Your OTP is {{otp}}"
-	url = "http://www.merasandesh.com/api/sendsms"
-
-	querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"ECellR","message": message,"numbers": contact_no,"unicode":"0"}
-
-	response = requests.request("GET", url, params=querystring)
-
-	print(response.text)
-	#Don't change the name 'ECelll' in above line
-
-	return JsonResponse({'success':True,'message':'OTP sent through call'})
+		response['success'] = False
+		response['message'] = "Method not allowed"
+	return JsonResponse(response)
+			
 
 @csrf_exempt
 @decoder
