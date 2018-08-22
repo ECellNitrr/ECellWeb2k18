@@ -42,14 +42,14 @@ fetch(base_url + '/sponsors/list/')
 insert_sponsors = (spons, location) => {
     spons.forEach(function (sponsor) {
         location.innerHTML += ` 
-                <div class='sponsor'>
-                    <img src='${sponsor.pic}'>
-                    <div class='details'>
-                        <h2>${sponsor.name}</h2>
-                        <p class='body'>${sponsor.details}</p>
-                        <p class='contact_no'>${sponsor.contact}</p>
-                        <p class='website'><a href='${sponsor.website}'>website</a></p>
-                    </div>
-                </div>`;
+            <div class='sponsor'>
+                <img src='${sponsor.pic}'>
+                <div class='details'>
+                    <h2>${sponsor.name}</h2>
+                    <p class='body'>${sponsor.details}</p>
+                    <p class='contact_no'>${sponsor.contact}</p>
+                    <p class='website'><a href='${sponsor.website}'>website</a></p>
+                </div>
+            </div>`;
     })
 }

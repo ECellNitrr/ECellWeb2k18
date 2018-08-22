@@ -8,24 +8,3 @@ class Migration(migrations.Migration):
     dependencies = [
         ('events', '0001_initial'),
     ]
-
-    operations = [
-        migrations.RemoveField(
-            model_name='cart',
-            name='user',
-        ),
-        migrations.RemoveField(
-            model_name='eventorder',
-            name='cart',
-        ),
-        migrations.RemoveField(
-            model_name='eventorder',
-            name='event',
-        ),
-        migrations.DeleteModel(
-            name='Cart',
-        ),
-        migrations.DeleteModel(
-            name='EventOrder',
-        ),
-    ]
