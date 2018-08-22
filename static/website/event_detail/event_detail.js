@@ -5,7 +5,7 @@ put_event_in_place = (event) => {
     event_detail.innerHTML += (`
             <div class="container">
                 <div class='row justify-content-center'>
-                    <div class='col-md-5'>                    
+                    <div class='col-md-5 align-self-center d-flex justify-content-center'>                    
                         <img src='${event.cover_pic}'>
                     </div>
                     <div class='col-md-7'>                    
