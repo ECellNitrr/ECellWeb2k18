@@ -54,7 +54,7 @@ hr {
     .s-img img {
         width: 250px;
         height: 250px;
-        box-shadow: 5px 10px 10px black;
+        box-shadow: 5px 10px 25px black;
     }
     .name {
         font-weight: bold;
