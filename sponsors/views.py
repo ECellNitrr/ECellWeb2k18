@@ -43,7 +43,7 @@ def get_sponsors(request):
 			  {'section_name':'Title Sponsors', "sponsors":TS_list},
 			  {'section_name':'Partner Sponsors', "sponsors":PRTS_list},
 			]
-		response['sponsors'] = spons
+		response['spons'] = spons
 	else:
 		response['success'] = False
 		response['message'] = "Coming soon"
