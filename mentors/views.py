@@ -9,15 +9,19 @@ from decouple import config
 
 @csrf_exempt
 def get_mentors(request):
-    mentors = Mentor.objects.all().values()
-    scheme = urlsplit(request.build_absolute_uri(None)).scheme
-    for m in mentors:
-        m['profile_pic'] = config('HOST')+str(m['profile_pic'])
-    mentors = list(mentors)
-    return JsonResponse({
-            'success':True,
-            'mentors':mentors
-        }, safe=False)
+    response = {}
+    if Mentor.objects.filter(flag=True).exists():
+        mentors = Mentor.objects.all().values()
+        scheme = urlsplit(request.build_absolute_uri(None)).scheme
+        for m in mentors:
+            m['profile_pic'] = config('HOST')+str(m['profile_pic'])
+        mentors = list(mentors)
+        response['success'] = True
+        response['mentors'] = mentors
+    else:
+        response['success'] = False
+        response['message'] = "Coming Soon"
+    return JsonResponse(response)
 
 
 def post_mentors(request):

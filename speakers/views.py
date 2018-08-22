@@ -9,15 +9,19 @@ from decouple import config
 
 @csrf_exempt
 def get_speakers(request):
-	speakers = Speaker.objects.all().values()
-	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	for speaker in speakers:
-		speaker['profile_pic'] = config('HOST')+str(speaker['profile_pic'])
-	speakers_list = list(speakers)
-	return JsonResponse({
-		'success':True,
-		'speakers':speakers_list
-		},safe=False)
+	response = {}
+	if Speaker.objects.filter(flag=True).exists():
+		speakers = Speaker.objects.all().values()
+		scheme = urlsplit(request.build_absolute_uri(None)).scheme
+		for speaker in speakers:
+			speaker['profile_pic'] = config('HOST')+str(speaker['profile_pic'])
+		speakers_list = list(speakers)
+		response['success'] = True
+		response['speakers'] = speakers_list
+	else:
+		response['success'] = False
+		response['message'] = "Coming Soon"
+	return JsonResponse(response)
 
 
 def post_speakers(request):

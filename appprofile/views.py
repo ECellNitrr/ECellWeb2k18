@@ -57,10 +57,8 @@ def message(request):
 
 @csrf_exempt
 def applogin(request, *args, **kwargs):
-	error_msg = {
-		'success' : False,
-		'message' : 'Invalid credentials'
-		}
+	error_msg = {}
+	error_msg['success'] = False
 
 	if request.method=='POST':
 		req_data = json.loads(request.body.decode('UTF-8'))
@@ -74,11 +72,13 @@ def applogin(request, *args, **kwargs):
 			user = authenticate(username=username, password=password)
 			print(user)
 		except:
+			error_msg['message'] = "Please create an account to continue"
 			return JsonResponse(error_msg)
 		try:
 			user = authenticate(username=username, password=password)
 			print(user)
 		except User.DoesNotExist:
+			error_msg['message'] = "Invalid credentials"
 			return JsonResponse(error_msg)
 
 		if user:
@@ -94,6 +94,8 @@ def applogin(request, *args, **kwargs):
 			return JsonResponse({
 				'success' : True,
 				'message' : 'authentication successfull',
+				'first_name' : user.first_name,
+				'last_name' : user.last_name,
 				'token' : token
 			})
 
@@ -137,6 +139,8 @@ def appregister(request):
 		last = req_data['last_name']
 		user = User.objects.create_user(
 			username=first+last+conno,
+			first_name=first,
+			last_name=last,
 			email=email,
 			password=password,
 			is_active=False
