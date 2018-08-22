@@ -13,6 +13,11 @@ html {
     font-family: Open Sans, "sans-serif";
 }
 
+#this_div,
+#prev_div {
+    display: none;
+}
+
 hr {
     width: 100px;
     border: 2px solid #000;
@@ -20,145 +25,74 @@ hr {
     background: #000
 }
 
-@media (min-width:700px) {
+.heading {
+    display: none;
+}
+
+.speaker a:hover {
+    color: black !important;
+}
+
+
+/* @media (min-width:700px) { */
     h2 {
-        font-weight: bold;
+        font-weight: 700;
+        font-family: Open Sans;
+        letter-spacing: 2px;
         text-align: center;
-        font-size: 35px;
-        letter-spacing: 3px;
+        font-size: 25px;
+        text-transform: uppercase
     }
-    h3 {
+    /* speaker */
+    .speakers{
+        margin-bottom: 100px;
+    }
+    .speaker {
+        margin-top: 50px;
+        margin: 70px 0;
+    }
+    .s-img img {
+        width: 250px;
+        height: 250px;
+        box-shadow: 5px 10px 10px black;
+    }
+    .name {
         font-weight: bold;
-        text-align: center;
-    }
-    .speaker{
-        position: relative;
-    }
-    .speaker hr {
-        margin-bottom: 50px;
-    }
-    .people img {
-        max-width: 400px;
-        max-height: 300px;
-        padding: 4px;
-        background: white;
-        border: 6px solid grey;
-        box-shadow: 0 0 30px black;
-        z-index: 2;
-        border-radius: 15px;
-    }
-    .people h5 {
-        margin: 10px 0 30px;
-        font-weight: bold;
-        font-size: 20px;
-        color: grey;
-    }
-    .people h4 {
-        font-weight: bold;
+        margin-top: 22px;
     }
     .s-info {
-        margin: 0 80px 0 60px;
+        display: flex;
     }
-    .years p {
-        text-align: justify;
+    .s-info div {
+        width: 100%;
     }
-    /* svgs */
-    .svg {
-        z-index: 1;
+    .company {
+        color: grey;
     }
-    .svg-top {
-        background: white;
-        fill: #dcdcdc;
-        transform: translateY(6px);
+    .year {
+        margin-top: 10px;
     }
-    .svg-bottom {
-        background: #dcdcdc;
-        fill: white;
+    .social_media i{
+        display: inline-block;
+        text-align: center;
+        align-self: center;
+        padding: 10px;
+        margin-right: 10px;
+        background: black;
+        color: white;
+        border-radius: 50%;
     }
-    .reverse {
-        flex-direction: row-reverse;
-    }
-    .grey {
-        background: #dcdcdc;
-    }
-}
+/* } */
 
 @media(max-width: 700px){
     h2 {
-
-        font-weight: bold;
-        font-size: 25px;
+        font-weight: 700;
+        font-family: Open Sans;
+        letter-spacing: 2px;
         text-align: center;
-    }
-    h3 {
-        font-weight: bold;
-        text-align: center;
-    }
-    .speaker img {
-        max-width: 400px;
-        max-height: 300px;
-        padding: 4px;
-        background: white;
-        border: 6px solid grey;
-        z-index: 2;
-        border-radius: 15px;
+        font-size: 20px;
+        text-transform: uppercase
     }
     /* speaker */
-    .speaker{
-        position: relative;
-    }
-    .speaker hr {
-        margin-bottom: 50px;
-    }
-    .people img {
-        max-width: 100%;
-        max-height: 300px;
-        padding: 4px;
-        background: white;
-        border: 6px solid grey;
-        box-shadow: 0 0 30px black;
-        z-index: 2;
-        border-radius: 15px;
-    }
-    .people h5 {
-        font-weight: bold;
-        color: grey;
-        margin-bottom: 15px;
-        font-size: 18px;
-        text-align: center;
-    }
-    .speaker a{
-        margin: auto;
-        display: inline-block;
-    }
-    .people h4 {
-        font-size: 20px;
-        text-align: center;
-        font-weight: bold;
-    }
-    .s-info {
-        margin: 5px;
-    }
-    .years p {
-        text-align: justify;
-    }
-    /* svgs */
-    .svg {
-        z-index: 1;
-    }
-    .svg-top {
-        background: white;
-        fill: #dcdcdc;
-        transform: translateY(6px);
-    }
-    .svg-bottom {
-        background: #dcdcdc;
-        fill: white;
-    }
-    .reverse {
-        flex-direction: row-reverse;
-    }
-    .grey {
-        background: #dcdcdc;
-    }
+    
 }

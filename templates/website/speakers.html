@@ -1,11 +1,10 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, speakers">
-{% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, speakers"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Speakers | E-Cell NIT Raipur</title>
+<title>Speakers | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
@@ -19,12 +18,18 @@
 <script src="{% static 'website/speakers/speakers.js' %}"></script>
 {% endblock js %}
 <!-- content -->
-{% block content %}
-{% include 'website/spinner.html' %}
-<h2 class="">OUR SPEAKERS</h2>
-<hr>
-<div class="people"></div>
-<!-- <div class="text-center">
-    <button class="btn btn-outline-dark mt-5" id="load_more_btn">previous years</button>
-</div> -->
+{% block content %} {% include 'website/spinner.html' %}
+<div class="container">
+    <div id="this_div">
+        <h2>OUR SPEAKERS</h2>
+        <hr>
+        <div class="speakers" id="this_year"></div>
+    </div>
+
+    <div id="prev_div">
+        <h2>PREVIOUS SPEAKERS</h2>
+        <hr>
+        <div class="speakers" id="prev_year"></div>
+    </div>
+</div>
 {% endblock content %}

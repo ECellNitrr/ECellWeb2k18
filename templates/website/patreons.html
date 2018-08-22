@@ -1,11 +1,10 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr,sponsors">
-{% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr,sponsors"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Sponsors | E-Cell NIT Raipur</title>
+<title>Sponsors | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
@@ -17,11 +16,18 @@
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/patreons/display_sponsors.js' %}"></script>
-{% endblock js %} 
+{% endblock js %}
 <!-- content -->
-{% block content %}
-{% include 'website/spinner.html' %}
-<h1 class="">Our sponsors</h1>
-<hr>
-<div class="patreons container"> </div>
+{% block content %} {% include 'website/spinner.html' %}
+<div class="hide_until_req" id="this_spons">
+    <h1>Our sponsors</h1>
+    <hr>
+    <div class="patreons container"> </div>
+</div>
+<div class="hide_until_req" id="prev_spons">
+    <h1>Previous sponsors</h1>
+    <hr>
+    <div class="patreons container"> </div>
+</div>
+
 {% endblock content %}

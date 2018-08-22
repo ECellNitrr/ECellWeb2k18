@@ -1,11 +1,10 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, mentors">
-{% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, mentors"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Mentors | E-Cell NIT Raipur</title>
+<title>Mentors | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
@@ -19,11 +18,17 @@
 <script src="{% static 'website/mentors/mentors.js' %}"></script>
 {% endblock js %}
 <!-- content -->
-{% block content %}
-{% include 'website/spinner.html' %}
-<h2 >Our Mentors</h2>
-<hr>
+{% block content %} {% include 'website/spinner.html' %}
 <div class="container">
-    <div class=people></div>
+    <div class="hide_until_req" id="this_year">
+        <h2>Our Mentors</h2>
+        <hr>
+        <div class="people"></div>
+    </div>
+    <div class="hide_until_req" id="prev_year">
+        <h2>Previous mentors</h2>
+        <hr>
+        <div class="people"></div>
+    </div>
 </div>
 {% endblock content %}
