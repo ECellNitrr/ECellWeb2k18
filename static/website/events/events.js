@@ -8,7 +8,7 @@ put_events_in_place = (data) => {
                 <div class=article-layout>
                     <div class=text>
                         <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
-                        <p><strong>Venue: </strong>${event.venue} on ${event.date} ${event.time!='null'?`at ${event.time}`:''}</p>
+                        <p><strong>Venue: </strong>${event.venue} on ${event.date} ${event.time != 'null' ? `at ${event.time}` : ''}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
                             <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
@@ -29,7 +29,7 @@ put_events_in_place = (data) => {
                 <div class=article-layout>
                     <div class=text>
                         <h2 class=""><a href="/event/${event.id}">${event.name}</a></h2>
-                        <p><strong>Venue: </strong>${event.venue} on ${event.date} ${event.time!='null'?`at ${event.time}`:''}</p>
+                        <p><strong>Venue: </strong>${event.venue} on ${event.date} ${event.time != 'null' ? `at ${event.time}` : ''}</p>
                         <p>${event.details}</p>
                         <div class='center_btn'>
                             <a href="/event/${event.id}" class="register_btn" data-eid=${event.id}>read more</a>
@@ -51,10 +51,13 @@ put_events_in_place = (data) => {
 fetch('/events/list/')
     .then(data => data.json())
     .then(function (data) {
-        // console.log(data)
-        // hide the spinner
-        document.querySelector('#spinner').remove();
-        // put data
-        put_events_in_place(data)
+        if (data.success = true) {
+            // hide the spinner
+            document.querySelector('#spinner').remove();
+            // put data
+            put_events_in_place(data)
+        } else {
+            events.innerHTML = `<center><h3>Coming Soon</h3></center>`
+        }
     })
 
