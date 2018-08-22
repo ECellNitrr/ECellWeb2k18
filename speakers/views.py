@@ -17,6 +17,7 @@ def get_speakers(request):
 			speaker['profile_pic'] = config('HOST')+str(speaker['profile_pic'])
 		speakers_list = list(speakers)
 		response['success'] = True
+		sorted(speakers_list, key=lambda i:i['year'], reverse=True)
 		response['speakers'] = speakers_list
 	else:
 		response['success'] = False
