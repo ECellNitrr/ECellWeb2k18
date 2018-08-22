@@ -10,19 +10,23 @@ fetch(base_url + '/speakers/list/')
     .then(data => data.json())
     .then(function (data) {
         document.querySelector('#spinner').remove()
+        if(data.success == true){
+            var speakers = data.speakers
+            var this_year = speakers.filter(e => e.year == 2018)
+            var prev_years = speakers.filter(e => e.year != 2018)
 
-        var speakers = data.speakers
-        var this_year = speakers.filter(e => e.year == 2018)
-        var prev_years = speakers.filter(e => e.year != 2018)
+            if (this_year.length) this_div.style.display = 'block'
+            if (prev_years.length) prev_div.style.display = 'block'
 
-        if (this_year.length) this_div.style.display = 'block'
-        if (prev_years.length) prev_div.style.display = 'block'
+            insert_speakers(this_year, this_year_loc)
+            insert_speakers(prev_years, prev_year_loc)
 
-        insert_speakers(this_year, this_year_loc)
-        insert_speakers(prev_years, prev_year_loc)
-
-        // display the speakers
-        heading.forEach(ele => ele.style.display = 'block')
+            // display the speakers
+            heading.forEach(ele => ele.style.display = 'block')
+        }else{
+            this_div.style.display = 'block'
+            this_div.innerHTML += `<center><h3>Coming Soon</h3></center>`
+        }
     })
 
 function insert_speakers(speakers, location) {
