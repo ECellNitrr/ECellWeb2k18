@@ -1,6 +1,6 @@
 // show the gallery
 var gallery_div = document.querySelector('#gallery')
-for (var i = 0; i < 12; i++) {
+for (var i = 0; i < 15; i++) {
     gallery_div.innerHTML += `
         <div class='gimg'>
             <img src='/static/website/gallery/img/${i + 1}.jpg'>
@@ -61,7 +61,7 @@ rightBtn.addEventListener('click', (e) => {
     var bsrc = bimg.src.split('/')
     var newImgNo = Number(bsrc.pop().split('.')[0]) + 1
     // if new img is out of range let quit
-    if (newImgNo > 12) return
+    if (newImgNo > 15) return
     // else proceed
     var rightImg = newImgNo + '.jpg'
     bsrc.push(rightImg)
