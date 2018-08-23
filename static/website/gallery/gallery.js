@@ -22,7 +22,7 @@ gimgs.forEach(gimg => {
         e.preventDefault()
         bimg.src = gimg.src
         bcontainer.style.top = 0
-        bimg.style.height = '75vh'
+        bimg.style.height = '90vh'
     })
 })
 
