@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('list/',views.get_event, name='Get_Event'),
+    path('bmodel/',views.register_bmodel_api, name='register_bmodel_api'),
     url(r'^$', views.post_event, name='Post_Event'),
  
     #url(r'^add/', views.add_event),

@@ -33,24 +33,6 @@ def post_event(request):
     
 	return render(request,'website/events.html')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @login_req
 @csrf_exempt
 def event_detail(request,pk):
@@ -155,4 +137,12 @@ def edit_event(request,pk,**kwargs):
 			'message':'Method Error'
 })
 
+def register_bmodel(request):
+	return render(request, 'website/bmodel.html')
 
+def register_bmodel_api(request):
+	response = {}
+	response['success'] = True
+	response['message'] = "Register for B-Model, Links open"
+	response['link'] = "https://docs.google.com/forms/d/e/1FAIpQLSfea9gBSQDp_zSzYmTJOioTbpFNoePdfkO6kTe5PDblJ7yR4w/viewform"
+	return JsonResponse(response)

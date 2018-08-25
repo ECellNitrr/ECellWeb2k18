@@ -1,0 +1,109 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events, bmodel, registration">
+{% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Business Model | E-Cell NIT Raipur</title>
+{% endblock title %}
+    
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/header.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/common/footer.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}"> 
+
+<link rel="stylesheet" href="{% static 'website/events/events.css' %}"> 
+
+{% endblock css %}
+<!-- js -->
+{% block js %}
+<!-- <script src="{% static 'website/events/sample_data.js' %}"></script> -->
+<!-- <script src="{% static 'website/events/register_event.js' %}"></script> -->
+<!-- <script src="{% static 'website/events/events.js' %}"></script> -->
+{% endblock js %}
+<!-- main content -->
+{% block content %}
+<style>
+    @media only screen and (max-width: 480px){
+    .mobshow  {display: inline-block !important; width:auto !important; height:auto !important; overflow:visible !important; visibility:visible !important;}
+
+    .mobnotshow  {display: none !important; width:auto !important; height:auto !important; overflow:visible !important; visibility:visible !important;}
+    }
+
+    iframe {
+
+        width: 100%;
+        /*overflow:hidden;*/
+        /*min-height:100%;*/
+        display:inline;
+        padding-left:5%;
+        padding-right:5%;
+        /* height:400%; */
+        /* position:absolute; */
+    }
+    /* section{
+        height: 100%;
+    } */
+    /* ::-webkit-scrollbar {
+        display: none;
+    } */
+</style>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12" style="padding-left: 5%; padding-right: 5%">
+            <br>
+            <br>
+            <br>
+                <h1 class="text-center card-title">B-Model</h1>
+                <hr style="width:100%;">
+                <p class="card-text">
+                    Ignition is the business model competition designed to emulate the process of the growth of an idea
+                    towards a full-fledged startup. The basic motive of this B-model is to connect the budding
+                    entrepreneurs with investors giving start-ups a leap. Right from acknowledging that your idea has
+                    potential, to drafting a B-Model, and pitching in front of an esteemed panel of investor- this
+                    platform has it all. The stages of the B-model competition include-
+                </p>
+                <center>
+                    <div class="row">
+                        <div class="offset-md-4 offset-lg-4 offset-xl-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Workshop – 1 st September</li>
+                                    <li class="list-group-item">Submission of model</li>
+                                    <li class="list-group-item">Presentation</li>
+                                    <li class="list-group-item">Mentorship</li>
+                                    <li class="list-group-item">Final round</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+                <p class="card-text">
+                    B-model is indeed of great importance because along with giving clarity for business, it provides the
+                    budding entrepreneurs the required details about a business including the target audience,
+                    competitors and scope in the future. Also the B-model contains the relevant information that is
+                    required by the investor. The primary motive for implementing this competition in our college is
+                    solely intended to set alight the entrepreneurial spirits among the students so as to educate and
+                    inspire smarter entrepreneurs who want to launch ventures that are more successful.
+                </p>
+                <center>
+                    <form action="https://drive.google.com/file/d/1uptxDkjypt5zItA3tp4TNXHRAqWEpmbv/view?usp=sharing">
+                        <button type="submit" class="btn btn-outline-primary">View Guidelines</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mobshow">
+    <div class="col-lg-12">
+        <!-- <iframe height="1000px" src="https://ecell.nitrr.ac.in/pdf/rules_bmodel.pdf">Loading...</iframe> -->
+        <embed src="https://docs.google.com/forms/d/e/1FAIpQLSfea9gBSQDp_zSzYmTJOioTbpFNoePdfkO6kTe5PDblJ7yR4w/viewform" width="100%" height="1600px"  id="embeded_pdf">
+    </div>
+</div>
+
+{% endblock content %}

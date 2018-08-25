@@ -22,6 +22,7 @@ from django.views import static as stat
 from appprofile import views
 from django.contrib.auth import views as auth_views
 from app import views as app_views
+from events import views as events_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,7 @@ urlpatterns = [
     url(r'^settings/$',views.social_settings, name='settings'),
     url(r'^settings/password/$',views.password, name='password'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
+    path('register_bmodel/', events_views.register_bmodel),
     path('events/', include('events.urls')),
     path('sponsors/', include('sponsors.urls')),
     path('mentors/', include('mentors.urls')),
