@@ -27,11 +27,17 @@
 <!-- main content -->
 {% block content %}
 <style>
+
     @media only screen and (max-width: 480px){
     .mobshow  {display: inline-block !important; width:auto !important; height:auto !important; overflow:visible !important; visibility:visible !important;}
 
     .mobnotshow  {display: none !important; width:auto !important; height:auto !important; overflow:visible !important; visibility:visible !important;}
     }
+
+    .padd-form {
+        padding: 0% 0% 0% 0%;
+    }
+
 
     iframe {
 
@@ -44,6 +50,10 @@
         /* height:400%; */
         /* position:absolute; */
     }
+
+    .padd-form {
+        padding: 0% 10% 0% 10%;
+    }
     /* section{
         height: 100%;
     } */
@@ -51,7 +61,7 @@
         display: none;
     } */
 </style>
-<div class="row">
+<div class="row padd-form">
     <div class="col-lg-12 col-sm-12 col-md-12">
         <!-- <iframe height="1000px" src="https://ecell.nitrr.ac.in/pdf/rules_bmodel.pdf">Loading...</iframe> -->
         <embed src="https://docs.google.com/forms/d/e/1FAIpQLSfea9gBSQDp_zSzYmTJOioTbpFNoePdfkO6kTe5PDblJ7yR4w/viewform" width="100%" height="1700px"  id="embeded_pdf">
