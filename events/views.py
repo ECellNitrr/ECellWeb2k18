@@ -137,10 +137,10 @@ def edit_event(request,pk,**kwargs):
 			'message':'Method Error'
 })
 
-def register_bmodel(request):
-	return render(request, 'website/bmodel.html')
+def register_esummit(request):
+	return render(request, 'website/esummit_register.html')
 
-def register_bmodel_api(request):
+def register_esummit_api(request):
 	response = {}
 	response['success'] = True
 	response['message'] = "Register for B-Model, Links open"

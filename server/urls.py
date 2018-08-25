@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^settings/$',views.social_settings, name='settings'),
     url(r'^settings/password/$',views.password, name='password'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    path('register_bmodel/', events_views.register_bmodel),
+    path('esummit/register/', events_views.register_esummit),
     path('events/', include('events.urls')),
     path('sponsors/', include('sponsors.urls')),
     path('mentors/', include('mentors.urls')),
