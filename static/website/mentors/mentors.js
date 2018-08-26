@@ -2,6 +2,8 @@ var this_mentors = document.querySelector('#this_year .people')
 var prev_mentors = document.querySelector('#prev_year .people')
 var this_div = document.querySelector('#this_year')
 var prev_div = document.querySelector('#prev_year')
+this_div.style.display = 'none'
+prev_div.style.display = 'none'
 
 fetch(base_url + '/mentors/list/')
     .then(data => data.json())
@@ -24,6 +26,11 @@ fetch(base_url + '/mentors/list/')
         } else {
             this_div.style.display = 'block'
             this_div.innerHTML += `<center><h3>Coming Soon</h3></center>`
+            people_div = document.getElementsByClassName('people')
+            for (div in people_div){
+                console.log(div)
+                people_div[div].style.display = 'none'
+            }
         }
     })
 

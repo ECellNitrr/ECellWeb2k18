@@ -146,3 +146,6 @@ def register_esummit_api(request):
 	response['message'] = "Register for B-Model, Links open"
 	response['link'] = "https://docs.google.com/forms/d/e/1FAIpQLSfea9gBSQDp_zSzYmTJOioTbpFNoePdfkO6kTe5PDblJ7yR4w/viewform"
 	return JsonResponse(response)
+
+def show_ignition(request):
+	return render(request, 'website/ignition.html')
