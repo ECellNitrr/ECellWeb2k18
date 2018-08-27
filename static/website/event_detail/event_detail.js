@@ -1,5 +1,6 @@
 var event_detail = document.querySelector('#event_detail')
-console.log(event_detail)
+// document.getElementById('mentors_details').style.display = 'none'
+document.getElementById('mentors_details').style.display = 'none'
 
 put_event_in_place = (event) => {
     event_detail.innerHTML += (`
@@ -27,12 +28,13 @@ fetch('/events/list')
     .then((data) => {
         // close the spinner
         document.querySelector('#spinner').remove()
-        console.log(data);
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
         var event = data.events.filter((event) => event.id == page_eid)[0]
+        if(event.id == 7) {
+            document.getElementById('mentors_details').style.display = 'block'
+        }
         put_event_in_place(event)
-        console.log(JSON.stringify(event, null, 2))
 
     })
     .catch(err => console.error(err))
