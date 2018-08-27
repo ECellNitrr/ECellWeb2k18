@@ -31,7 +31,7 @@ fetch('/events/list')
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
         var event = data.events.filter((event) => event.id == page_eid)[0]
-        if(event.id == 7) {
+        if(event.id == 7 || event.id == 'ignition') {
             document.getElementById('mentors_details').style.display = 'block'
         }
         put_event_in_place(event)
