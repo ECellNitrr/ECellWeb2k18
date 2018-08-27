@@ -34,10 +34,10 @@ import requests
 def event_detail(request, event_id):
 	if (event_id == 'ignition'):
 		event_id = 7
-    return render(request, 'website/event_detail.html')
+	return render(request, 'website/event_detail.html')
 
 def homepage(request):
-    return render(request, 'website/index.html')
+	return render(request, 'website/index.html')
 
 def gallerypage(request):
 	return render(request, 'website/gallery.html')
@@ -228,18 +228,18 @@ def appregister(request):
 
 @csrf_exempt
 def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.profile.status=1
-        user.is_active = True
-        user.save()
-        return JsonResponse({'success':True,'message':'Account Activated Successfully'})
-    else:
-        return JsonResponse({'success':False,'message':'Activation link is invalid!'})
+	try:
+		uid = force_text(urlsafe_base64_decode(uidb64))
+		user = User.objects.get(pk=uid)
+	except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+		user = None
+	if user is not None and account_activation_token.check_token(user, token):
+		user.profile.status=1
+		user.is_active = True
+		user.save()
+		return JsonResponse({'success':True,'message':'Account Activated Successfully'})
+	else:
+		return JsonResponse({'success':False,'message':'Activation link is invalid!'})
 
 
 @csrf_exempt
