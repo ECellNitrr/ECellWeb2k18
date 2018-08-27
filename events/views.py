@@ -38,8 +38,6 @@ def post_event(request):
 def event_detail(request,pk):
 	event = Event.objects.get(pk=pk)
 
-
-
 	events = model_to_dict(event, fields=['name', 'venue','details','date', 'time', 'email','flag'])
 
 	events['cover_pic'] = str(event.cover_pic)
