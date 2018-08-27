@@ -1,23 +1,20 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events">
-{% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Events | E-Cell NIT Raipur</title>
+<title>Events | E-Cell NIT Raipur</title>
 {% endblock title %}
-    
+
 <!-- css -->
 {% block css %}
 <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
-<link rel="stylesheet" href="{% static 'website/common/header.css' %}"> 
-<link rel="stylesheet" href="{% static 'website/common/footer.css' %}"> 
-<link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}"> 
+<link rel="stylesheet" href="{% static 'website/common/header.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/footer.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/mobile_menubar.css' %}">
 
-<link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> 
-
-{% endblock css %}
+<link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
 <!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
@@ -28,48 +25,43 @@
 <!-- spinner -->
 {% include 'website/spinner.html' %}
 <section id=event_detail></section>
-<div id="mentors_details">
+<div id="mentors_details" class="d-block">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 com-sm-12">
-                <center>
-                    <h2>Ignition</h2>
-                </center>
-                <hr>
-                <p class="card-text">
-                    Ignition is the business model competition designed to emulate the process of the growth of an idea
-                    towards a full-fledged startup. The basic motive of this B-model is to connect the budding
-                    entrepreneurs with investors giving start-ups a leap. Right from acknowledging that your idea has
-                    potential, to drafting a B-Model, and pitching in front of an esteemed panel of investor- this
-                    platform has it all. The stages of the B-model competition include-
+                <p class="text-justify">
+                    Ignition is the business model competition designed to emulate the process of the growth of an idea towards a full-fledged
+                    startup. The basic motive of this B-model is to connect the budding entrepreneurs with investors giving
+                    start-ups a leap. Right from acknowledging that your idea has potential, to drafting a B-Model, and pitching
+                    in front of an esteemed panel of investor- this platform has it all. The stages of the B-model competition
+                    include-
                 </p>
-                <center>
-                    <div class="row">
-                        <div class="offset-md-4 offset-lg-4 offset-xl-4 col-md-4 col-lg-4 col-xl-4">
-                            <div class="card">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Workshop – 1 st September</li>
-                                    <li class="list-group-item">Submission of model</li>
-                                    <li class="list-group-item">Presentation</li>
-                                    <li class="list-group-item">Mentorship</li>
-                                    <li class="list-group-item">Final round</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="row justify-content-center text-center">
+                    <div class="card">
+                        <ul class="list-group">
+                            <li class="list-group-item">Workshop – 1 st September</li>
+                            <li class="list-group-item">Submission of model</li>
+                            <li class="list-group-item">Questionnaire</li>
+                            <li class="list-group-item">Mentorship</li>
+                            <li class="list-group-item">Final round</li>
+                        </ul>
                     </div>
-                </center>
+                </div>
                 <br />
-                <p class="card-text">
-                    B-model is indeed of great importance because along with giving clarity for business, it provides the
-                    budding entrepreneurs the required details about a business including the target audience,
-                    competitors and scope in the future. Also the B-model contains the relevant information that is
-                    required by the investor. The primary motive for implementing this competition in our college is
-                    solely intended to set alight the entrepreneurial spirits among the students so as to educate and
-                    inspire smarter entrepreneurs who want to launch ventures that are more successful.
+                <p class="text-justify">
+                    B-model is indeed of great importance because along with giving clarity for business, it provides the budding entrepreneurs
+                    the required details about a business including the target audience, competitors and scope in the future.
+                    Also the B-model contains the relevant information that is required by the investor. The primary motive
+                    for implementing this competition in our college is solely intended to set alight the entrepreneurial
+                    spirits among the students so as to educate and inspire smarter entrepreneurs who want to launch ventures
+                    that are more successful.
+                </p>
+                <p class="font-weight-bold text-center">
+                    Download or View the Rules, Format of Abstract and other details
                 </p>
                 <center>
                     <form action="https://drive.google.com/file/d/1VfNd4UxXaltYLAkICzPB6q07uJ2hvp6i/view?usp=sharing">
-                        <button type="submit" class="btn btn-outline-primary">View Guidelines</button>
+                        <button type="submit" class="register_btn">View Guidelines</button>
                     </form>
                 </center>
             </div>

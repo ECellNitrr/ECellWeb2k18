@@ -75,3 +75,12 @@ html {
 article a:hover {
     color: black !important;
 }
+
+.register_btn {
+    background: transparent;
+    border: 2px solid black;
+    padding: 8px 12px;
+    outline: none;
+    width: 150px;
+    transition: all .5s ease;
+}
