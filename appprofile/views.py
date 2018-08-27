@@ -31,7 +31,7 @@ from . import send_mail
 from random import randint
 import requests
 
-def event_detail(request,event_id):
+def event_detail(request, event_id):
     return render(request, 'website/event_detail.html')
 
 def homepage(request):
