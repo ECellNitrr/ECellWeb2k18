@@ -36,12 +36,7 @@ def post_event(request):
 @login_req
 @csrf_exempt
 def event_detail(request,pk):
-	if (pk == 'ignition'):
-		pk = 7
-		
 	event = Event.objects.get(pk=pk)
-
-
 
 	events = model_to_dict(event, fields=['name', 'venue','details','date', 'time', 'email','flag'])
 
