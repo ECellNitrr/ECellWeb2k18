@@ -8,5 +8,6 @@ urlpatterns = [
     #path('view/question/<int:id>/',views.view_question, name='View_question'),
     path('get_question/', views.get_question, name="get_live_question"),
     path('is_active/', views.bquiz_status, name="get_bquiz_status"),
-    path('submit_answer/', views.submit_answer, name="submit_answer")
+    path('submit_answer/', views.submit_answer, name="submit_answer"),
+    path('myscore/', views.individual_leaderboard, name="myscore")
 ]

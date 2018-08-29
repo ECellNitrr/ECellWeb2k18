@@ -93,8 +93,11 @@ def submit_answer(request, *args, **kwargs):
             option_id = req_data['optionId']
 
             #LeaderBoard Changes-------------------------------------------------
+            
             if option_id==right_answer :
-                user.Profile.cumulative_score = user.Profile.cumulative_score + 1
+                
+                user.Profile.score = user.Profile.score+1   
+            #user.Profile.cumulative_score = user.Profile.cumulative_score + score
             #--------------------------------------------------------------------
 
             
@@ -114,3 +117,27 @@ def submit_answer(request, *args, **kwargs):
         response['success'] = True
         response['message'] = "Invalid request"
     return JsonResponse(response)
+
+@csrf_exempt    
+@login_req
+def individual_leaderboard(request, *args, **kwargs):
+    user_id = kwargs['user_id']
+    user = Profile.objects.get(pk=user_id)
+    score = user.Profile.score
+    cummulative_score = user.Profile.cummulative_score
+    response = {}
+    response['success'] = True
+    response['dailyscore'] = score
+    response['cummulativescore'] = cummulative_score
+    return JsonResponse(response)
+
+@csrf_exempt
+def leaderboard(request):
+    top_scores = Profile.objects.order_by('-score').values_list('score', flat=True)
+    response = {}
+    response['success'] = True
+    response['leaders'] = top_scores
+    return JsonResponse(response)
+
+
+    
