@@ -121,9 +121,17 @@ def individual_leaderboard(request, *args, **kwargs):
 @csrf_exempt
 def leaderboard(request, *args, **kwargs):
     response = {}
-    list_of_users = Profile.objects.all().order_by('score')
-    print(list_of_users)
+    list_of_users = Profile.objects.all().order_by('score').reverse()
     response['success'] = True
+    leaders = []
+    for user in list_of_users:
+        print(user.user)
+        name = str(user.user.first_name)+str(user.user.last_name)
+        leaders.append(name)
+    print(leaders)
+    print(list_of_users)
+    response['leaders']= leaders
+   
     for us in list_of_users:
         response[us.id] = us.score
     
