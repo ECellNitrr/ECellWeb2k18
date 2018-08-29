@@ -100,5 +100,7 @@ class RightAnswer(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
     right_option = models.ForeignKey(Option,on_delete=models.CASCADE)
 
-    #def __init__(self):
-     #   return self.question
+class Leader(models.Model):
+    questionset = models.ForeignKey(Questionset,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    score = models.IntegerField(default=0)
