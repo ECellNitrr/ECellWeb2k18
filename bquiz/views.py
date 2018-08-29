@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
-from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting
+from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting, RightAnswer
 from .forms import AnswerForm
 from appprofile.models import User,Profile
 from django.conf import settings as conf_settings
@@ -85,21 +85,9 @@ def submit_answer(request, *args, **kwargs):
         question_id = req_data['questionId']
         user_id = kwargs['user_id']
         question = Question.objects.get(pk=question_id)
-        #------------------------------------------------------------------------------------
-        points = question.score
-        right_answer = RightAnswer.objects.get(question = question_id).first()['right_option']
-        #------------------------------------------------------------------------------------
         user = Profile.objects.get(pk=user_id)
         try:
             option_id = req_data['optionId']
-
-            #LeaderBoard Changes-------------------------------------------------
-            if option_id==right_answer :
-                user.Profile.score = user.Profile.score + points   
-                user.Profile.cumulative_score = user.Profile.cumulative_score + points
-            #--------------------------------------------------------------------
-
-            
             option = Option.objects.get(pk=option_id)
         except Exception as e:
             print(e)
@@ -141,5 +129,21 @@ def leaderboard(request, *args, **kwargs):
     
     return JsonResponse(response)
     
-#@csrf_exempt
-#def calculate_score(request, *args, **kwargs):
+@csrf_exempt
+def calculate_score(request, *args, **kwargs):
+    response = {}
+    answers = Answer.objects.all()
+    for answer in answers:
+        right_ans = RightAnswer.objects.get(question=answer.question)
+        if answer.option == right_ans.right_option:
+            user = answer.user
+            question = answer.question        
+            points = question.score
+            user.score = user.score + points
+            user.cumulative_score = user.cumulative_score + points
+            response[user.id] = user.score
+            user.save()
+
+    return JsonResponse(response)
+        
+

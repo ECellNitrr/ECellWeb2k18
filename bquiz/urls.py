@@ -10,5 +10,6 @@ urlpatterns = [
     path('is_active/', views.bquiz_status, name="get_bquiz_status"),
     path('submit_answer/', views.submit_answer, name="submit_answer"),
     path('myscore/', views.individual_leaderboard, name="myscore"),
-    path('leaderboard/', views.leaderboard, name="leaderboard")
+    path('leaderboard/', views.leaderboard, name="leaderboard"),
+    path('calculate/',views.calculate_score,name="calculate")
 ]
