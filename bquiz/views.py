@@ -85,9 +85,19 @@ def submit_answer(request, *args, **kwargs):
         question_id = req_data['questionId']
         user_id = kwargs['user_id']
         question = Question.objects.get(pk=question_id)
+        #------------------------------------------------------------------------------------
+        right_answer = RightAnswer.objects.get(question = question_id).first()['right_option']
+        #------------------------------------------------------------------------------------
         user = Profile.objects.get(pk=user_id)
         try:
             option_id = req_data['optionId']
+
+            #LeaderBoard Changes-------------------------------------------------
+            if option_id==right_answer :
+                user.Profile.cumulative_score = user.Profile.cumulative_score + 1
+            #--------------------------------------------------------------------
+
+            
             option = Option.objects.get(pk=option_id)
         except Exception as e:
             print(e)
