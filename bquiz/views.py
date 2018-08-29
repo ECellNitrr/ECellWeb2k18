@@ -121,9 +121,10 @@ def individual_leaderboard(request, *args, **kwargs):
 @csrf_exempt
 def leaderboard(request, *args, **kwargs):
     response = {}
+    response['success'] = True
 
     list_of_users = Leader.objects.all().order_by('score').reverse()
-    response['success'] = True
+    
     leaders = []
     for user in list_of_users:
         
@@ -177,7 +178,7 @@ def calculate_score(request, *args, **kwargs):
     return JsonResponse(response)
         
 
-def calc_score(request):
+def calc_score(request, id):
     response = {}
     user = User.objects.all()
     for user in user:
@@ -189,18 +190,21 @@ def calc_score(request):
         
         for answer in ans:
 
-            right_ans = RightAnswer.objects.get(question=answer.question)
-            if answer.option == right_ans.right_option :
-                leader.questionset = answer.question.set
-                question = answer.question        
-                points = question.score
-                
-                
-                leader.questionset = answer.question.set
-                leader.score = leader.score + points
-                leader.save()
-            else:
-                leader.questionset = answer.question.set
-                leader.save()
-    response[leader.profile.id] = leader.score
+            if(answer.question.set.id == id):
+                right_ans = RightAnswer.objects.get(question=answer.question)
+                if answer.option == right_ans.right_option :
+                    leader.questionset = answer.question.set
+                    question = answer.question        
+                    points = question.score
+                    
+                    
+                    leader.questionset = answer.question.set
+                    leader.score = leader.score + points
+                    leader.save()
+                else:
+                    leader.questionset = answer.question.set
+                    leader.save()
+                    
+    #response[leader.profile.id] = leader.score
+    response["success"]= True
     return JsonResponse(response)

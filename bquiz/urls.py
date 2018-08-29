@@ -12,5 +12,6 @@ urlpatterns = [
     path('myscore/', views.individual_leaderboard, name="myscore"),
     path('leaderboard/', views.leaderboard, name="leaderboard"),
     path('calculate/',views.calculate_score,name="calculate"),
-    path('calc/', views.calc_score)
+    #path('calc/', views.calc_score),
+    path('calc/<int:id>/', views.calc_score),
 ]
