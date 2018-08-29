@@ -119,34 +119,75 @@ def individual_leaderboard(request, *args, **kwargs):
     return JsonResponse(response)
 
 @csrf_exempt
-def leaderboard(request, *args, **kwargs):
+def leaderboard(request, id):
     response = {}
     response['success'] = True
 
-    list_of_users = Leader.objects.all().order_by('score').reverse()
+    list_of_users = Leader.objects.filter(questionset__id=id).order_by('score').reverse()
+    #print(list_of_users)
+
     
     leaders = []
     for user in list_of_users:
         
         name = str(user.profile.user.first_name)+str(user.profile.user.last_name)
         leaders.append(name)
-    # print(leaders)
-    # print(list_of_users)
+
    
     response['leaders']= leaders
-   
-    for us in list_of_users:
-        response[us.id] = us.score
-    
 
-    # leaderboard = Leader.objects.all().order_by('score').reverse()
-    # for leader in leaderboard:
-    #     response[leader.profile.id] = leader.score
+    scores = [x.score for x in list_of_users]
+    response["scores"] = scores
    
-    
+
 
     return JsonResponse(response)
-    
+
+@csrf_exempt
+def calc_score(request, id):
+    response = {}
+    user = User.objects.all()
+    for user in user:
+        ans = Answer.objects.filter(user=user.profile)
+        print(ans)
+        leader = Leader()
+        leader.profile = user.profile
+        leader.score =0
+        
+        for answer in ans:
+
+            if(answer.question.set.id == id):
+                right_ans = RightAnswer.objects.get(question=answer.question)
+                if answer.option == right_ans.right_option :
+                    leader.questionset = answer.question.set
+                    question = answer.question        
+                    points = question.score
+                    
+                    
+                    leader.questionset = answer.question.set
+                    leader.score = leader.score + points
+                    leader.save()
+                else:
+                    leader.questionset = answer.question.set
+                    leader.save()
+
+    #response[leader.profile.id] = leader.score
+    response["success"]= True
+    return JsonResponse(response)
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
 @csrf_exempt
 def calculate_score(request, *args, **kwargs):
     response = {}
@@ -176,35 +217,4 @@ def calculate_score(request, *args, **kwargs):
 
 
     return JsonResponse(response)
-        
-
-def calc_score(request, id):
-    response = {}
-    user = User.objects.all()
-    for user in user:
-        ans = Answer.objects.filter(user=user.profile)
-        print(ans)
-        leader = Leader()
-        leader.profile = user.profile
-        leader.score =0
-        
-        for answer in ans:
-
-            if(answer.question.set.id == id):
-                right_ans = RightAnswer.objects.get(question=answer.question)
-                if answer.option == right_ans.right_option :
-                    leader.questionset = answer.question.set
-                    question = answer.question        
-                    points = question.score
-                    
-                    
-                    leader.questionset = answer.question.set
-                    leader.score = leader.score + points
-                    leader.save()
-                else:
-                    leader.questionset = answer.question.set
-                    leader.save()
-                    
-    #response[leader.profile.id] = leader.score
-    response["success"]= True
-    return JsonResponse(response)
+"""
