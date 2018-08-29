@@ -100,5 +100,5 @@ class RightAnswer(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
     right_option = models.ForeignKey(Option,on_delete=models.CASCADE)
 
-    def __init__(self):
-        return self.option
+    #def __init__(self):
+     #   return self.question

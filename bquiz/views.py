@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting
 from .forms import AnswerForm
-from appprofile.models import Profile
+from appprofile.models import User,Profile
 from django.conf import settings as conf_settings
 from decouple import config
 import random, json
@@ -86,6 +86,7 @@ def submit_answer(request, *args, **kwargs):
         user_id = kwargs['user_id']
         question = Question.objects.get(pk=question_id)
         #------------------------------------------------------------------------------------
+        points = question.score
         right_answer = RightAnswer.objects.get(question = question_id).first()['right_option']
         #------------------------------------------------------------------------------------
         user = Profile.objects.get(pk=user_id)
@@ -93,11 +94,9 @@ def submit_answer(request, *args, **kwargs):
             option_id = req_data['optionId']
 
             #LeaderBoard Changes-------------------------------------------------
-            
             if option_id==right_answer :
-                
-                user.Profile.score = user.Profile.score+1   
-            #user.Profile.cumulative_score = user.Profile.cumulative_score + score
+                user.Profile.score = user.Profile.score + points   
+                user.Profile.cumulative_score = user.Profile.cumulative_score + points
             #--------------------------------------------------------------------
 
             
@@ -132,12 +131,15 @@ def individual_leaderboard(request, *args, **kwargs):
     return JsonResponse(response)
 
 @csrf_exempt
-def leaderboard(request):
-    top_scores = Profile.objects.order_by('-score').values_list('score', flat=True)
+def leaderboard(request, *args, **kwargs):
     response = {}
+    list_of_users = Profile.objects.all().order_by('score')
+    print(list_of_users)
     response['success'] = True
-    response['leaders'] = top_scores
-    return JsonResponse(response)
-
-
+    for us in list_of_users:
+        response[us.id] = us.score
     
+    return JsonResponse(response)
+    
+#@csrf_exempt
+#def calculate_score(request, *args, **kwargs):
