@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Questionset, Question, Answer, Option, Setting, QuestionAcknowledge,RightAnswer
+from .models import Questionset, Question, Answer, Option, Setting, QuestionAcknowledge,RightAnswer,Leader
 from django.utils.translation import ugettext_lazy as _
 
 class QuestionsetAdmin(admin.ModelAdmin):
@@ -23,6 +23,14 @@ class RightAnswerAdmin(admin.ModelAdmin):
     list_filter = ('question',)
 
 admin.site.register(RightAnswer,RightAnswerAdmin)
+
+
+class LeaderAdmin(admin.ModelAdmin):
+    list_display = ('questionset','profile','score')
+    search_display = ('questionset','profile','score')
+    list_filter = ('questionset',)
+
+admin.site.register(Leader,LeaderAdmin)
 
 class OptionAdmin(admin.ModelAdmin):
     list_display = ('id', 'option', 'question')

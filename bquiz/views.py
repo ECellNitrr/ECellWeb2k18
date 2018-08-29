@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
-from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting, RightAnswer
+from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting, RightAnswer,Leader
 from .forms import AnswerForm
 from appprofile.models import User,Profile
 from django.conf import settings as conf_settings
@@ -121,12 +121,11 @@ def individual_leaderboard(request, *args, **kwargs):
 @csrf_exempt
 def leaderboard(request, *args, **kwargs):
     response = {}
-    list_of_users = Profile.objects.all().order_by('score')
-    print(list_of_users)
+    leaderboard = Leader.objects.all().order_by('score')
+    for leader in leaderboard:
+        response[leader.profile.id] = leader.score
+    print(response)
     response['success'] = True
-    for us in list_of_users:
-        response[us.id] = us.score
-    
     return JsonResponse(response)
     
 @csrf_exempt
@@ -135,14 +134,26 @@ def calculate_score(request, *args, **kwargs):
     answers = Answer.objects.all()
     for answer in answers:
         right_ans = RightAnswer.objects.get(question=answer.question)
-        if answer.option == right_ans.right_option:
+        if answer.option == right_ans.right_option :
             user = answer.user
             question = answer.question        
             points = question.score
-            user.score = user.score + points
+            leader = Leader()
+            leader.profile = user
+            leader.questionset = answer.question.set
+            leader.score = leader.score + points
+            leader.save()
             user.cumulative_score = user.cumulative_score + points
-            response[user.id] = user.score
+            response[leader.profile.id] = leader.score
             user.save()
+        else:
+            leader = Leader()
+            leader.profile = answer.user
+            leader.questionset = answer.question.set
+            leader.score = leader.score + 0
+            leader.save()
+            response[leader.profile.id] = leader.score
+
 
     return JsonResponse(response)
         

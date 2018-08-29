@@ -39,7 +39,7 @@ class Profile(models.Model):
         choices=USER_TYPE,
         default='GST'
     )
-    score = models.IntegerField(default=0)   #To Store Daily Score of Bquiz
+    #score = models.IntegerField(default=0)   #To Store Daily Score of Bquiz
     cumulative_score = models.IntegerField(default=0)   #To Store Total Score of Bquiz
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
