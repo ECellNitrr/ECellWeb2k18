@@ -180,6 +180,27 @@ def calculate_score(request, *args, **kwargs):
 def calc_score(request):
     response = {}
     user = User.objects.all()
-    ans = Answer.objects.filter(user)
-    print(ans)
+    for user in user:
+        ans = Answer.objects.filter(user=user.profile)
+        print(ans)
+        leader = Leader()
+        leader.profile = user.profile
+        leader.score =0
+        
+        for answer in ans:
+
+            right_ans = RightAnswer.objects.get(question=answer.question)
+            if answer.option == right_ans.right_option :
+                leader.questionset = answer.question.set
+                question = answer.question        
+                points = question.score
+                
+                
+                leader.questionset = answer.question.set
+                leader.score = leader.score + points
+                leader.save()
+            else:
+                leader.questionset = answer.question.set
+                leader.save()
+    response[leader.profile.id] = leader.score
     return JsonResponse(response)
