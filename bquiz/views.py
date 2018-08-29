@@ -126,22 +126,23 @@ def leaderboard(request, *args, **kwargs):
     response['success'] = True
     leaders = []
     for user in list_of_users:
-        print(user.profile.user)
+        
         name = str(user.profile.user.first_name)+str(user.profile.user.last_name)
         leaders.append(name)
-    print(leaders)
-    print(list_of_users)
+    # print(leaders)
+    # print(list_of_users)
+   
     response['leaders']= leaders
    
     for us in list_of_users:
         response[us.id] = us.score
     
 
-    leaderboard = Leader.objects.all().order_by('score')
-    for leader in leaderboard:
-        response[leader.profile.id] = leader.score
-    print(response)
-    response['success'] = True
+    # leaderboard = Leader.objects.all().order_by('score').reverse()
+    # for leader in leaderboard:
+    #     response[leader.profile.id] = leader.score
+   
+    
 
     return JsonResponse(response)
     
@@ -156,6 +157,7 @@ def calculate_score(request, *args, **kwargs):
             question = answer.question        
             points = question.score
             leader = Leader()
+
             leader.profile = user
             leader.questionset = answer.question.set
             leader.score = leader.score + points
@@ -175,3 +177,9 @@ def calculate_score(request, *args, **kwargs):
     return JsonResponse(response)
         
 
+def calc_score(request):
+    response = {}
+    user = User.objects.all()
+    ans = Answer.objects.filter(user)
+    print(ans)
+    return JsonResponse(response)

@@ -11,5 +11,6 @@ urlpatterns = [
     path('submit_answer/', views.submit_answer, name="submit_answer"),
     path('myscore/', views.individual_leaderboard, name="myscore"),
     path('leaderboard/', views.leaderboard, name="leaderboard"),
-    path('calculate/',views.calculate_score,name="calculate")
+    path('calculate/',views.calculate_score,name="calculate"),
+    path('calc/', views.calc_score)
 ]
