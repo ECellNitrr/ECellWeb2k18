@@ -137,13 +137,11 @@ def individual_leaderboard(request, id, *args, **kwargs):
     return JsonResponse(response)
 
 @csrf_exempt
-#@login_req
-def leaderboard(request, id, *args, **kwargs):
+def leaderboard(request, id):
     response = {}
-    response['success'] = False
-    response['message'] = "LeaderBoard Empty"
+    response['success'] = True
+
     list_of_users = Leader.objects.filter(questionset__id=id).order_by('score').reverse()
-<<<<<<< HEAD
     #print(list_of_users)
     leaders = []
     for user in list_of_users:
@@ -152,28 +150,6 @@ def leaderboard(request, id, *args, **kwargs):
     response['leaders']= leaders
     scores = [x.score for x in list_of_users]
     response["scores"] = scores
-=======
-
-    if list_of_users.count()==0 :
-        return JsonResponse(response)
-    
-    response['success'] = True
-    response['message'] = "LeaderBoard Fetched Successfully"
-
-    l_board = []
-    for userx in list_of_users:
-        #if userx.profile.user.id == kwargs['user_id']:
-        #    response['userRank'] = user.score
-        leaders = {}
-        name = str(userx.profile.user.first_name)+" "+str(userx.profile.user.last_name)
-        leaders["name"] = name
-        leaders["rank"] = userx.score
-        print(leaders)
-        l_board.append(leaders)
-
-    response['leaderboard']= l_board
-
->>>>>>> c682e1413972f58efb2cf0504d4b2ed696c46bbb
     return JsonResponse(response)
 
 @csrf_exempt
