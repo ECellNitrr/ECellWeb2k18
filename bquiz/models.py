@@ -99,8 +99,12 @@ class Answer(models.Model):
 class RightAnswer(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
     right_option = models.ForeignKey(Option,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)
 
 class Leader(models.Model):
     questionset = models.ForeignKey(Questionset,on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)

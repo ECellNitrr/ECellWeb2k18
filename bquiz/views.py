@@ -67,6 +67,7 @@ def bquiz_status(request, *args, **kwargs):
         if Questionset.objects.filter(flag=True).exists():
             response['message'] = Setting.objects.get(key='ON').text
             response['isActive'] = True
+            response['questionsetId'] = Questionset.objects.get(flag=True).pk
         else:
             response['isActive'] = False
             response['message'] = Setting.objects.get(key='OFF').text
@@ -107,15 +108,32 @@ def submit_answer(request, *args, **kwargs):
 
 @csrf_exempt    
 @login_req
-def individual_leaderboard(request, *args, **kwargs):
-    user_id = kwargs['user_id']
-    user = Profile.objects.get(pk=user_id)
-    score = user.Profile.score
-    cummulative_score = user.Profile.cummulative_score
+def individual_leaderboard(request, id, *args, **kwargs):
     response = {}
-    response['success'] = True
-    response['dailyscore'] = score
-    response['cummulativescore'] = cummulative_score
+    try:
+        question_set = Questionset.objects.get(pk=id)
+        if Leader.objects.filter(questionset=question_set).exists():
+            user_id = kwargs['user_id']
+            user = Profile.objects.get(pk=user_id)
+            leaderboard = []
+            temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
+            for idx, temp_user in enumerate(temp_leaderboard):
+                leader = {}
+                leader['rank'] = idx
+                leader['name'] = str(temp_user.profile.user.first_name + " " + temp_user.profile.user.last_name)
+                leaderboard.append(leader)
+                if temp_user.profile == user:
+                    response['userRank'] = idx
+            response['leaderBoard'] = leaderboard
+            response['success'] = True
+            response['message'] = "Leaderboard has been generated"
+        else:
+            response['success'] = False
+            response['message'] = "Please wait while we generate the leaderboard"
+    except Exception as e:
+        print(e)
+        response['success'] = False
+        response['message'] = "Please try again later"
     return JsonResponse(response)
 
 @csrf_exempt
@@ -125,22 +143,13 @@ def leaderboard(request, id):
 
     list_of_users = Leader.objects.filter(questionset__id=id).order_by('score').reverse()
     #print(list_of_users)
-
-    
     leaders = []
     for user in list_of_users:
-        
         name = str(user.profile.user.first_name)+str(user.profile.user.last_name)
         leaders.append(name)
-
-   
     response['leaders']= leaders
-
     scores = [x.score for x in list_of_users]
     response["scores"] = scores
-   
-
-
     return JsonResponse(response)
 
 @csrf_exempt
@@ -175,16 +184,45 @@ def calc_score(request, id):
     response["success"]= True
     return JsonResponse(response)
 
-
-
-
-
-
-
-
-
-
-
+@csrf_exempt
+def generate_leaderboard(request, id):
+    response = {}
+    try:
+        question_set = Questionset.objects.get(pk=id)
+        questions = Question.objects.filter(set=question_set)
+        for question in questions:
+            right_answer_pair = RightAnswer.objects.get(question=question)
+            if Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option).exists():
+                right_answers = Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option)
+                for right_answer in right_answers:
+                    if Leader.objects.filter(profile=right_answer.user, questionset=question_set).exists():
+                        temp_profile = Leader.objects.get(profile=right_answer.user, questionset=question_set)
+                        temp_profile.score = temp_profile.score + question.score
+                        temp_profile.save()
+                    else:
+                        temp_profile = Leader(questionset=question_set, profile=right_answer.user, score=question.score)
+                        temp_profile.save()
+            else:
+                wrong_answers = Answer.objects.filter(question=right_answer_pair.question)
+                for wrong_answer in wrong_answers:
+                    if not Leader.objects.filter(profile=wrong_answer.user, questionset=question_set).exists():
+                        temp_profile = Leader(questionset=question_set, profile=wrong_answer.user, score=0)
+                        temp_profile.save()
+        response['success'] = True
+        response['message'] = "Leaderboard generated"
+        leaderboard = []
+        temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
+        for idx, user in enumerate(temp_leaderboard):
+            leader = {}
+            leader['rank'] = idx
+            leader['name'] = str(user.profile.user.first_name + " " + user.profile.user.last_name)
+            leaderboard.append(leader)
+        response['leaderBoard'] = leaderboard
+    except Exception as e:
+        print(e)
+        response['success'] = False
+        response['message'] = "It's not you its us. Give us a try again. Please try again later"
+    return JsonResponse(response)
 
 """
 
