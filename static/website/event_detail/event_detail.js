@@ -30,6 +30,10 @@ fetch('/events/list')
         document.querySelector('#spinner').remove()
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
+        if(page_eid == 'ignition') {
+            page_eid = 7
+        }
+        
         var event = data.events.filter((event) => event.id == page_eid)[0]
         if(event.id == 7) {
             document.getElementById('mentors_details').style.display = 'block'
