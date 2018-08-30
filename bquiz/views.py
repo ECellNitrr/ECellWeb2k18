@@ -108,9 +108,11 @@ def submit_answer(request, *args, **kwargs):
 
 @csrf_exempt    
 @login_req
-def individual_leaderboard(request, id, *args, **kwargs):
+def individual_leaderboard(request, *args, **kwargs):
     response = {}
     try:
+        id = request.GET.get('questionsetId')
+        print(id)
         question_set = Questionset.objects.get(pk=id)
         if Leader.objects.filter(questionset=question_set).exists():
             user_id = kwargs['user_id']
@@ -119,11 +121,11 @@ def individual_leaderboard(request, id, *args, **kwargs):
             temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
             for idx, temp_user in enumerate(temp_leaderboard):
                 leader = {}
-                leader['rank'] = idx
+                leader['rank'] = idx + 1
                 leader['name'] = str(temp_user.profile.user.first_name + " " + temp_user.profile.user.last_name)
                 leaderboard.append(leader)
                 if temp_user.profile == user:
-                    response['userRank'] = idx
+                    response['userRank'] = idx + 1
             response['leaderBoard'] = leaderboard
             response['success'] = True
             response['message'] = "Leaderboard has been generated"
@@ -214,7 +216,7 @@ def generate_leaderboard(request, id):
         temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
         for idx, user in enumerate(temp_leaderboard):
             leader = {}
-            leader['rank'] = idx
+            leader['rank'] = idx+1
             leader['name'] = str(user.profile.user.first_name + " " + user.profile.user.last_name)
             leaderboard.append(leader)
         response['leaderBoard'] = leaderboard

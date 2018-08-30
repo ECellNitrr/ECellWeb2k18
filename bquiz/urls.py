@@ -9,7 +9,7 @@ urlpatterns = [
     path('get_question/', views.get_question, name="get_live_question"),
     path('is_active/', views.bquiz_status, name="get_bquiz_status"),
     path('submit_answer/', views.submit_answer, name="submit_answer"),
-    path('leaderboard/<int:id>/', views.individual_leaderboard, name="myscore"),
+    path('leaderboard/', views.individual_leaderboard, name="myscore"),
     path('generate_leaderboard/<int:id>/', views.generate_leaderboard, name="leaderboard"),
    	#path('calculate/',views.calculate_score,name="calculate"),
     #path('calc/', views.calc_score),
