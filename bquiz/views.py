@@ -126,7 +126,7 @@ def individual_leaderboard(request, *args, **kwargs):
                 leaderboard.append(leader)
                 if temp_user.profile == user:
                     response['userRank'] = idx + 1
-            response['leaderBoard'] = leaderboard
+            response['leaderboard'] = leaderboard[:10]
             response['success'] = True
             response['message'] = "Leaderboard has been generated"
         else:
@@ -136,6 +136,7 @@ def individual_leaderboard(request, *args, **kwargs):
         print(e)
         response['success'] = False
         response['message'] = "Please try again later"
+    print(response)
     return JsonResponse(response)
 
 @csrf_exempt
