@@ -2,9 +2,9 @@ from django.http import JsonResponse
 from server.decorators.login import login_req
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
-from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting
+from .models import Questionset, Question, Answer, Option, QuestionAcknowledge, Setting, RightAnswer,Leader
 from .forms import AnswerForm
-from appprofile.models import Profile
+from appprofile.models import User,Profile
 from django.conf import settings as conf_settings
 from decouple import config
 import random, json
@@ -67,6 +67,7 @@ def bquiz_status(request, *args, **kwargs):
         if Questionset.objects.filter(flag=True).exists():
             response['message'] = Setting.objects.get(key='ON').text
             response['isActive'] = True
+            response['questionsetId'] = Questionset.objects.get(flag=True).pk
         else:
             response['isActive'] = False
             response['message'] = Setting.objects.get(key='OFF').text
@@ -104,3 +105,157 @@ def submit_answer(request, *args, **kwargs):
         response['success'] = True
         response['message'] = "Invalid request"
     return JsonResponse(response)
+
+@csrf_exempt    
+@login_req
+def individual_leaderboard(request, *args, **kwargs):
+    response = {}
+    try:
+        id = request.GET.get('questionsetId')
+        print(id)
+        question_set = Questionset.objects.get(pk=id)
+        if Leader.objects.filter(questionset=question_set).exists():
+            user_id = kwargs['user_id']
+            user = Profile.objects.get(pk=user_id)
+            leaderboard = []
+            temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
+            for idx, temp_user in enumerate(temp_leaderboard):
+                leader = {}
+                leader['rank'] = idx + 1
+                leader['name'] = str(temp_user.profile.user.first_name + " " + temp_user.profile.user.last_name)
+                leaderboard.append(leader)
+                if temp_user.profile == user:
+                    response['userRank'] = idx + 1
+            response['leaderboard'] = leaderboard[:10]
+            response['success'] = True
+            response['message'] = "Leaderboard has been generated"
+        else:
+            response['success'] = False
+            response['message'] = "Please wait while we generate the leaderboard"
+    except Exception as e:
+        print(e)
+        response['success'] = False
+        response['message'] = "Please try again later"
+    print(response)
+    return JsonResponse(response)
+
+@csrf_exempt
+def leaderboard(request, id):
+    response = {}
+    response['success'] = True
+
+    list_of_users = Leader.objects.filter(questionset__id=id).order_by('score').reverse()
+    #print(list_of_users)
+    leaders = []
+    for user in list_of_users:
+        name = str(user.profile.user.first_name)+str(user.profile.user.last_name)
+        leaders.append(name)
+    response['leaders']= leaders
+    scores = [x.score for x in list_of_users]
+    response["scores"] = scores
+    return JsonResponse(response)
+
+@csrf_exempt
+def calc_score(request, id):
+    response = {}
+    user = User.objects.all()
+    for user in user:
+        ans = Answer.objects.filter(user=user.profile)
+        print(ans)
+        leader = Leader()
+        leader.profile = user.profile
+        leader.score =0
+        
+        for answer in ans:
+
+            if(answer.question.set.id == id):
+                right_ans = RightAnswer.objects.get(question=answer.question)
+                if answer.option == right_ans.right_option :
+                    leader.questionset = answer.question.set
+                    question = answer.question        
+                    points = question.score
+                    
+                    
+                    leader.questionset = answer.question.set
+                    leader.score = leader.score + points
+                    leader.save()
+                else:
+                    leader.questionset = answer.question.set
+                    leader.save()
+
+    #response[leader.profile.id] = leader.score
+    response["success"]= True
+    return JsonResponse(response)
+
+@csrf_exempt
+def generate_leaderboard(request, id):
+    response = {}
+    try:
+        question_set = Questionset.objects.get(pk=id)
+        questions = Question.objects.filter(set=question_set)
+        for question in questions:
+            right_answer_pair = RightAnswer.objects.get(question=question)
+            if Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option).exists():
+                right_answers = Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option)
+                for right_answer in right_answers:
+                    if Leader.objects.filter(profile=right_answer.user, questionset=question_set).exists():
+                        temp_profile = Leader.objects.get(profile=right_answer.user, questionset=question_set)
+                        temp_profile.score = temp_profile.score + question.score
+                        temp_profile.save()
+                    else:
+                        temp_profile = Leader(questionset=question_set, profile=right_answer.user, score=question.score)
+                        temp_profile.save()
+            else:
+                wrong_answers = Answer.objects.filter(question=right_answer_pair.question)
+                for wrong_answer in wrong_answers:
+                    if not Leader.objects.filter(profile=wrong_answer.user, questionset=question_set).exists():
+                        temp_profile = Leader(questionset=question_set, profile=wrong_answer.user, score=0)
+                        temp_profile.save()
+        response['success'] = True
+        response['message'] = "Leaderboard generated"
+        leaderboard = []
+        temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
+        for idx, user in enumerate(temp_leaderboard):
+            leader = {}
+            leader['rank'] = idx+1
+            leader['name'] = str(user.profile.user.first_name + " " + user.profile.user.last_name)
+            leaderboard.append(leader)
+        response['leaderBoard'] = leaderboard
+    except Exception as e:
+        print(e)
+        response['success'] = False
+        response['message'] = "It's not you its us. Give us a try again. Please try again later"
+    return JsonResponse(response)
+
+"""
+
+@csrf_exempt
+def calculate_score(request, *args, **kwargs):
+    response = {}
+    answers = Answer.objects.all()
+    for answer in answers:
+        right_ans = RightAnswer.objects.get(question=answer.question)
+        if answer.option == right_ans.right_option :
+            user = answer.user
+            question = answer.question        
+            points = question.score
+            leader = Leader()
+
+            leader.profile = user
+            leader.questionset = answer.question.set
+            leader.score = leader.score + points
+            leader.save()
+            user.cumulative_score = user.cumulative_score + points
+            response[leader.profile.id] = leader.score
+            user.save()
+        else:
+            leader = Leader()
+            leader.profile = answer.user
+            leader.questionset = answer.question.set
+            leader.score = leader.score + 0
+            leader.save()
+            response[leader.profile.id] = leader.score
+
+
+    return JsonResponse(response)
+"""
