@@ -9,3 +9,13 @@ class App(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def save(self, *args, **kwargs):
+		if self.flag is True:
+			if App.objects.filter(flag=True).exists():
+				apps = App.objects.filter(flag=True)
+				for app in apps:
+					app.flag = False
+					app.save()
+			self.flag = True
+		super(App, self).save(*args, **kwargs)
