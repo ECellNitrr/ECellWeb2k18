@@ -31,7 +31,7 @@ def decoder(function):
             print("Trying to decode TOKEN")
             payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
-            print("Unable to decode")
+            print("Unable to decode token: ", token)
             msg = 'Invalid authentication. Could not decode token.'
             return JsonResponse({'success':False,'message':msg})
         try:
