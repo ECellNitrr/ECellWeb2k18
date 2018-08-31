@@ -113,6 +113,9 @@ def individual_leaderboard(request, *args, **kwargs):
     try:
         id = request.GET.get('questionsetId')
         print(id)
+        # Quick fix for existing bug
+        if id == -1:
+            id = 3
         question_set = Questionset.objects.get(pk=id)
         if Leader.objects.filter(questionset=question_set).exists():
             user_id = kwargs['user_id']
