@@ -36,7 +36,7 @@ def decoder(function):
             return JsonResponse({'success':False,'message':msg})
         try:
             print("Trying to find profile")
-            user = Profile.objects.get(pk=payload['id'])
+            user = Profile.objects.get(user_id=payload['id'])
         except Profile.DoesNotExist:
             print("Profile not found")
             msg = 'No user matching this token was found.'
