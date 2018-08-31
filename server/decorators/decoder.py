@@ -28,7 +28,7 @@ def decoder(function):
         #     return JsonResponse({'success':False,'message':'Error at auth_header_prefix'})
         # print("Stage 3")
         try:
-            print("Trying to decode TOKEN")
+            print("Trying to decode TOKEN: ", token)
             payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
             print("Unable to decode token: ", token)
