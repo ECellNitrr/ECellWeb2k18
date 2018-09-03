@@ -114,7 +114,7 @@ def individual_leaderboard(request, *args, **kwargs):
         id = request.GET.get('questionsetId')
         print(id)
         # Quick fix for existing bug
-        if id == -1:
+        if id is -1:
             id = 3
         question_set = Questionset.objects.get(pk=id)
         if Leader.objects.filter(questionset=question_set).exists():
@@ -129,6 +129,9 @@ def individual_leaderboard(request, *args, **kwargs):
                 leaderboard.append(leader)
                 if temp_user.profile == user:
                     response['userRank'] = idx + 1
+            
+            if response['userRank'] is None:
+                response['userRank'] = 0
             response['leaderboard'] = leaderboard[:10]
             response['success'] = True
             response['message'] = "Leaderboard has been generated"
