@@ -197,36 +197,40 @@ def calc_score(request, id):
 def generate_leaderboard(request, id):
     response = {}
     try:
-        question_set = Questionset.objects.get(pk=id)
-        questions = Question.objects.filter(set=question_set)
-        for question in questions:
-            right_answer_pair = RightAnswer.objects.get(question=question)
-            if Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option).exists():
-                right_answers = Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option)
-                for right_answer in right_answers:
-                    if Leader.objects.filter(profile=right_answer.user, questionset=question_set).exists():
-                        temp_profile = Leader.objects.get(profile=right_answer.user, questionset=question_set)
-                        temp_profile.score = temp_profile.score + question.score
-                        temp_profile.save()
-                    else:
-                        temp_profile = Leader(questionset=question_set, profile=right_answer.user, score=question.score)
-                        temp_profile.save()
-            else:
-                wrong_answers = Answer.objects.filter(question=right_answer_pair.question)
-                for wrong_answer in wrong_answers:
-                    if not Leader.objects.filter(profile=wrong_answer.user, questionset=question_set).exists():
-                        temp_profile = Leader(questionset=question_set, profile=wrong_answer.user, score=0)
-                        temp_profile.save()
-        response['success'] = True
-        response['message'] = "Leaderboard generated"
-        leaderboard = []
-        temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
-        for idx, user in enumerate(temp_leaderboard):
-            leader = {}
-            leader['rank'] = idx+1
-            leader['name'] = str(user.profile.user.first_name + " " + user.profile.user.last_name)
-            leaderboard.append(leader)
-        response['leaderBoard'] = leaderboard
+        if request.user.is_superuser:
+            question_set = Questionset.objects.get(pk=id)
+            questions = Question.objects.filter(set=question_set)
+            for question in questions:
+                right_answer_pair = RightAnswer.objects.get(question=question)
+                if Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option).exists():
+                    right_answers = Answer.objects.filter(question=right_answer_pair.question, option=right_answer_pair.right_option)
+                    for right_answer in right_answers:
+                        if Leader.objects.filter(profile=right_answer.user, questionset=question_set).exists():
+                            temp_profile = Leader.objects.get(profile=right_answer.user, questionset=question_set)
+                            temp_profile.score = temp_profile.score + question.score
+                            temp_profile.save()
+                        else:
+                            temp_profile = Leader(questionset=question_set, profile=right_answer.user, score=question.score)
+                            temp_profile.save()
+                else:
+                    wrong_answers = Answer.objects.filter(question=right_answer_pair.question)
+                    for wrong_answer in wrong_answers:
+                        if not Leader.objects.filter(profile=wrong_answer.user, questionset=question_set).exists():
+                            temp_profile = Leader(questionset=question_set, profile=wrong_answer.user, score=0)
+                            temp_profile.save()
+            response['success'] = True
+            response['message'] = "Leaderboard generated"
+            leaderboard = []
+            temp_leaderboard = Leader.objects.filter(questionset=question_set).order_by('score').reverse()
+            for idx, user in enumerate(temp_leaderboard):
+                leader = {}
+                leader['rank'] = idx+1
+                leader['name'] = str(user.profile.user.first_name + " " + user.profile.user.last_name)
+                leaderboard.append(leader)
+            response['leaderBoard'] = leaderboard
+        else:
+            response['success'] = False
+            response['message'] = "You need to be an admin to generate a leaderboard"
     except Exception as e:
         print(e)
         response['success'] = False
