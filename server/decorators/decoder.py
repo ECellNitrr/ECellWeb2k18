@@ -28,15 +28,15 @@ def decoder(function):
         #     return JsonResponse({'success':False,'message':'Error at auth_header_prefix'})
         # print("Stage 3")
         try:
-            print("Trying to decode TOKEN")
+            print("Trying to decode TOKEN: ", token)
             payload = jwt.decode(token, conf_settings.SECRET_KEY)
         except:
-            print("Unable to decode")
+            print("Unable to decode token: ", token)
             msg = 'Invalid authentication. Could not decode token.'
             return JsonResponse({'success':False,'message':msg})
         try:
             print("Trying to find profile")
-            user = Profile.objects.get(pk=payload['id'])
+            user = Profile.objects.get(user_id=payload['id'])
         except Profile.DoesNotExist:
             print("Profile not found")
             msg = 'No user matching this token was found.'

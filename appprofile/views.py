@@ -139,7 +139,7 @@ def appregister(request):
 		first = req_data['first_name']
 		last = req_data['last_name']
 		user = User.objects.create_user(
-			username=first+last+conno,
+			username=first+last+'xx'+conno,
 			first_name=first,
 			last_name=last,
 			email=email,
