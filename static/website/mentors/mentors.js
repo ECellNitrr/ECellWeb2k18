@@ -28,7 +28,6 @@ fetch(base_url + '/mentors/list/')
             this_div.innerHTML += `<center><h3>Coming Soon</h3></center>`
             people_div = document.getElementsByClassName('people')
             for (div in people_div){
-                console.log(div)
                 people_div[div].style.display = 'none'
             }
         }
