@@ -1,107 +1,19 @@
 {% load static %}
-<div id="menubar">
-    <nav>
-        <div class=menu-trigger>
-            <div class=bar1></div>
-            <div class=bar2></div>
-            <div class=bar3></div>
-        </div>
-        <div class='menubar'>
-            <a href='/'>HOME</a>
-            <a href=/events>EVENTS</a>
-            <a href=/team>TEAM</a>
-            <a href="/gallery">GALLERY</a>
-            <a href=/sponsors>SPONSORS</a>
-            <a href=/speakers>SPEAKERS</a>
-            <a href=/mentors>MENTORS</a>
-            <a href=/esummit/register>REGISTER</a>
-            <a href=https://medium.com/e-cell-nit-raipur>BLOGS</a>
-            <!-- <div class="user-account mt-2">
-                <button id="mlogin_trigger"> login</button>
-                <button id="msignup_trigger">signup</button>
-            </div> -->
-        </div>
-    </nav>
-    <svg class=hidden>
-        <symbol id=icon-menu viewBox="0 0 14 37">
-            <title>menu</title>
-            <path d=M13.95.94v36.01h-3.858V.94zM3.919.94v36.01H.06V.94z /> </symbol>
-    </svg>
-    <!-- desktop menubar -->
-    <nav class='menu'>
-        <div class=menu__button-wrap>
-            <button class=menu__button>
-                <img src="{% static 'website/img/menu-trigger.svg' %}" height=50px alt=""> </button>
-        </div>
-        <div class='menu__inner d-flex justify-content-start'>
-            <div class="sidebar_img ">
-                <img src="{% static 'website/img/logo-white.png' %}" alt="">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-                <a class='menu__item my-2' href='/'> HOME</a>
-                <a class='menu__item my-2' href=/events>EVENTS</a>
-                <a class='menu__item my-2' href=/team>TEAM</a>
-                <a class='menu__item my-2' href=/gallery>GALLERY</a>
-                <a class='menu__item my-2' href=/sponsors>SPONSORS</a>
-                <a class='menu__item my-2' href=/speakers>SPEAKERS</a>
-                <a class='menu__item my-2' href=/mentors>MENTORS</a>
-                <a class='menu__item my-2' href=/esummit/register>REGISTER</a>
-                <a class='menu__item my-2' href='https://medium.com/e-cell-nit-raipur'>BLOGS</a>
-            </div>
-            <!-- <div class="user-account">
-                <button class="ml-0" id="wlogin_trigger"> login</button>
-                <button id="wsignup_trigger">signup</button>
-                <a class="text-center" href="{% url 'social:begin' 'facebook' %}">login with <i class="fa fa-facebook text-primary d-inline-block ml-2"></i></a>
-            </div> -->
-        </div>
-    </nav>
-</div>
-<style>
-    .menu__inner img {
-        width: 100px;
-        height: 100px;
-        margin: 30px 50px;
-    }
-
-    .menu__inner i {
-        display: inline-block;
-        margin-right: 15px;
-    }
-
-    .user-account {
-        margin-top: 10px;
-    }
-
-    .user-account button {
-        padding: 8px;
-        border: 2px solid white;
-        color: white;
-        background: transparent;
-        margin: 8px;
-        font-weight: bold;
-        outline: none;
-    }
-
-    .user-account a {
-        padding: 5px;
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-        font-weight: bold;
-        text-align: center;
-        display: block;
-        margin-top: 6px;
-        width: 150px;
-        box-sizing: border-box;
-    }
-
-    .user-account button:hover,
-    .user-account a:hover {
-        background: white;
-        color: black !important;
-    }
-
-    .sidebar_img {
-        margin-left: -20px;
-    }
-</style>
+<nav>
+    <div class=menu-trigger>
+        <div class=bar1></div>
+        <div class=bar2></div>
+        <div class=bar3></div>
+    </div>
+    <div class='menubar'>
+        <a href='/'>HOME</a>
+        <a href=/events>EVENTS</a>
+        <a href=/team>TEAM</a>
+        <a href="/gallery">GALLERY</a>
+        <a href=/sponsors>SPONSORS</a>
+        <a href=/speakers>SPEAKERS</a>
+        <a href=/mentors>MENTORS</a>
+        <a href=/esummit/register>REGISTER</a>
+        <a href=https://medium.com/e-cell-nit-raipur>BLOGS</a>
+    </div>
+</nav>

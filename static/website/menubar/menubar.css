@@ -1,0 +1,101 @@
+.menubar {
+    position: fixed;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    transition: all .3s ease;
+    transform-origin: right center;
+    display: flex;
+    justify-content: center;
+    overflow-x: none;
+    transform: translateX(100%);
+    perspective: 1000px;
+}
+
+.menubar a {
+    padding: 5px;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.menubar a:active,
+.menubar a:hover {
+    color: yellow;
+}
+
+.menu-trigger {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 15;
+    margin: 20px
+}
+
+.menu-trigger .bar1,
+.menu-trigger .bar2,
+.menu-trigger .bar3 {
+    width: 40px;
+    margin: 6px 0;
+    height: 6px;
+    background: #fff;
+    box-shadow: 0 0 5px #000;
+    display: block;
+    transition: all .3s ease;
+}
+
+.menu-close {
+    /* transform: rotateY(0); */
+    transform: translateX(0);
+}
+
+.menu-close a {
+    transform: translateX(0);
+}
+
+.menu-close .bar1 {
+    transform-origin: center left;
+    transform: rotate(45deg)
+}
+
+.menu-close .bar2 {
+    background: transparent;
+    box-shadow: 0 0 transparent;
+}
+
+.menu-close .bar3 {
+    transform-origin: center left;
+    transform: rotate(-45deg)
+}
+
+/* this is to fix the blueish color of links */
+a i,
+footer a {
+    color: white;
+}
+
+@media (min-width:500px) {
+    .menubar {
+        right: 0;
+        width: 300px;
+        box-sizing: border-box;
+        overflow-X: hidden;
+    }
+
+    .menubar a {
+        text-align: left;
+        margin-left: 150px;
+    }
+}
