@@ -1,7 +1,7 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Startups"> 
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Startups">
 {%endblock keywords %}
 <!-- title -->
 {% block title %}
@@ -18,8 +18,12 @@
 <!-- content -->
 {% block content %}
 <h2 class="text-center font-weight-bold">Our Startups</h2>
-<div id="startups"></div>
 <hr>
+
+
+<div id="startups" class="container"></div>
+
+<!-- loading content -->
 {% include 'website/spinner.html' %}
 <p id="coming_soon">Coming Soon</p>
 
