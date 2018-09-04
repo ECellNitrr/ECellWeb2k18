@@ -62,7 +62,7 @@ class QuestionAcknowledge(models.Model):
         return str(str(self.user) + " => " + str(self.question))
 
 class Option(models.Model):
-    option = models.CharField(max_length=20, null=False, blank=False)
+    option = models.CharField(max_length=50, null=False, blank=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
