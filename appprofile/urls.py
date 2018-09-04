@@ -12,7 +12,7 @@ urlpatterns = [
     path('terms/', views.terms_page),
     path('privacy_policy/', views.privacy_policy_page),
     path('applogin/',views.applogin, name='applogin'),
-    path('loginweb/',views.weblogin, name='login'),
+    path('loginweb/',views.weblogin, name='loginweb'),
     path('new_conno/',views.new_conno,name='new_conno'),
     #url(r'^send_otp/',views.send_otp),
     url(r'^retry_otp',views.retry_otp),

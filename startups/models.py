@@ -10,6 +10,7 @@ class Startup(models.Model):
 	founder = models.CharField(max_length=256)
 	address = models.TextField()
 	flag = models.BooleanField(default=False)
+	#details
 	created_at = models.DateTimeField(auto_now_add=True, editable=False)
 	modified_at = models.DateTimeField(auto_now=True, editable=False)
    
@@ -21,10 +22,10 @@ class Startup(models.Model):
 
 class StartupRegister(models.Model):
 	profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
-	preference1 = models.ForeignKey(Startup, null=False, blank=False,on_delete=models.CASCADE, related_name='preference1')
-	preference2 = models.ForeignKey(Startup, null=True, blank=True,on_delete=models.CASCADE, related_name='preference2')
+	startup = models.ForeignKey(Startup, null=False, blank=False,on_delete=models.CASCADE, related_name='preference1')
+	#preference2 = models.ForeignKey(Startup, null=True, blank=True,on_delete=models.CASCADE, related_name='preference2')
 	created_at = models.DateTimeField(auto_now_add=True, editable=False)
 	modified_at = models.DateTimeField(auto_now=True, editable=False)
 
 	def __str__(self):
-		return self.profile
+		return self.profile.user.username

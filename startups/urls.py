@@ -4,6 +4,9 @@ from . import views
 
 urlpatterns = [
     path('list/', views.get_startups),
-    url(r'^post/', views.post_startups, name='Post_Startups')
+    url(r'^post/', views.post_startups, name='Post_Startups'),
     #path('view/<int:id>/', views.view_startup)
+    path('register/<int:id>/', views.startupregister, name='startupregister'),
+    path('unregister/<int:id>/', views.startupunregister, name='startupunregister'),
+    path('userstartups/', views.userstartups, name='userstartups')
 ]

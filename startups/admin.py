@@ -10,8 +10,8 @@ class StartupAdmin(admin.ModelAdmin):
     #readonly_fields = ('created_at', 'modified_at')
 
 class StartupRegisterAdmin(admin.ModelAdmin):
-    list_display = ('id', 'profile', 'preference1', 'preference2')
-    search_fields = ('id', 'profile', 'preference1', 'preference2')
+    list_display = ('id', 'profile', 'startup')
+    search_fields = ('id', 'profile', 'startup')
 
 
 
