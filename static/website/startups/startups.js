@@ -1,43 +1,10 @@
-// show the gallery
-var gallery_div = document.querySelector('#gallery')
-for (var i = 0; i < 15; i++) {
-    gallery_div.innerHTML += `
-        <div class='gimg'>
-            <img src='/static/website/gallery/img/${i + 1}.jpg'>
-        </div>
-    `
-}
+var startups_div = document.querySelector('#startups')
+var cover = document.querySelector('#cover')
+var modal = document.querySelector('#modal')
 
-// on click show big img
-var gimgs = document.querySelectorAll('.gimg img')
-var bimg = document.querySelector('#big_img')
-var bcontainer = document.querySelector('#big_container')
-var bcloseBtn = document.querySelector('#bcloseBtn')
-var leftBtn = document.querySelector('#left')
-var rightBtn = document.querySelector('#right')
-
-
-gimgs.forEach(gimg => {
-    gimg.addEventListener('click', function (e) {
-        e.preventDefault()
-        bimg.src = gimg.src
-        bcontainer.style.top = 0
-        bimg.style.height = '90vh'
+fetch('/startups/list/')
+    .then(d => d.json())
+    .then(d => {
+        console.log(JSON.stringify(d, null, 2))
     })
-})
-
-
-bcontainer.addEventListener('click', (e) => {
-    e.preventDefault()
-    // if clicked on img return 
-    if (e.target != bcontainer) return
-    // if clicked on the container
-    bcontainer.style.top = "-100vh"
-    bimg.style.height = '0'
-})
-
-bcloseBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    bcontainer.style.top = "-100vh"
-    bimg.style.height = '0'
-})
+    .catch(err => console.error(err))

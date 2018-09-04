@@ -18,12 +18,13 @@
 <!-- content -->
 {% block content %}
 <h2 class="text-center font-weight-bold">Our Startups</h2>
-<hr>
 <div id="startups"></div>
-<div id="big_container">
-    <div>
-        <img src="/static/website/gallery/img/1.jpg" alt="" id="big_img">
-        <button id="bcloseBtn"><i class="fa fa-times"></i></button>
-    </div>
+<hr>
+{% include 'website/spinner.html' %}
+<p id="coming_soon">Coming Soon</p>
+
+<!-- modal stuff -->
+<div id="cover">
+    <div id="modal"></div>
 </div>
 {% endblock content %}
