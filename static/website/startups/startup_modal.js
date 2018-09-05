@@ -16,7 +16,7 @@ startup_modal = () => {
         })
     })
 
-    show_modal(1)
+    // show_modal(1)
 }
 
 show_modal = (id) => {

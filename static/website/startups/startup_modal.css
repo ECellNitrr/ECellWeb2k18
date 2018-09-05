@@ -148,6 +148,7 @@ h3 {
 
 .show #modal .row {
     padding: 40px;
+    padding-top: 0;
 }
 
 .show #modal {
@@ -166,6 +167,7 @@ h3 {
     padding: 20px 0;
     bottom: 0;
     width: 100%;
+    
 }
 
 @media(max-width:770px) {
@@ -181,7 +183,7 @@ h3 {
     .row {
         padding: 0;
     }
-    hr {
+    .show hr {
         margin: 5px auto;
     }
     .show #modal .row {

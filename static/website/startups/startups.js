@@ -15,14 +15,14 @@ fetch('/startups/list/')
 create_startups = (items) => {
     items.forEach((i) => {
         startups_div.innerHTML +=  `
-            <div class=startup>
-                <div class=mimg-holder>
-                    <img src=${i.pic}>
-                </div>
-                <h3 class=title>${i.name}</h3>
-                <p class=desc>${i.details}</p>
-                <button class=more data-id=${i.id}>more</button>
+        <div class=startup>
+            <div class='iholder'>
+                <img src=${i.pic}>
             </div>
+            <div class= 'details'>
+                <button class='more text-right' data-id=${i.id}>read more</button>
+            </div>
+        </div>
         `
     })
 
