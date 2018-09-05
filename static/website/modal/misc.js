@@ -6,8 +6,8 @@ var cno_regex = /^(\+\d{2,4})?\s?(\d{10})$/g
 var m_basic = document.querySelectorAll('.m_basic')
 var l_cont = document.querySelector('#l_cont')
 var s_cont = document.querySelector('#s_cont')
-var x_cont = document.querySelector('#x_cont') 
-var o_cont = document.querySelector('#o_cont') 
+var x_cont = document.querySelector('#x_cont')
+var o_cont = document.querySelector('#o_cont')
 
 // extras
 var covers = document.querySelectorAll('.cover')
@@ -27,7 +27,9 @@ user.addEventListener('click', (e) => {
     e.preventDefault()
 
     console.log('show', user.innerHTML.toLowerCase())
-    if (user.innerHTML.toLowerCase() == 'login/signup') {
+    if (user.innerHTML[0] == '#') {
+        o_cont.classList.add('show')
+    } else if (user.innerHTML.toLowerCase() == 'login/signup') {
         s_cont.classList.add('show')
     } else {
         x_cont.classList.add('show')

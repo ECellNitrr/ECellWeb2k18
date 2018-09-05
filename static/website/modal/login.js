@@ -84,8 +84,6 @@ verify_btn.addEventListener('click', (e) => {
 // incorrect phno case
 var ic_phno = document.querySelector('#ic_phno')
 
-o_cont.classList.add('show')
-
 ic_phno.addEventListener('click', (e) => {
     e.preventDefault()
     var new_phno = prompt('Please enter the correct phone no:')
