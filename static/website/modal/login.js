@@ -30,15 +30,19 @@ login_btn.addEventListener('click', (e) => {
         .then(d => {
             console.log(d)
             if (d.success && d.status) {
-                user.innerText = "@" + l_email.value.split('@')[0]
+                // if otp verification is done close all modals
+                sessionStorage.user = "@" + l_email.value.split('@')[0]
+                user.innerText = sessionStorage.user
                 close_modals()
-            }else if(d.success && !d.status) {
-                user.innerText = "#" + l_email.value.split('@')[0]
+            } else if (d.success && !d.status) {
+                // if the otp verification is not done show otp modal
+                sessionStorage.user = "#" + l_email.value.split('@')[0]
+                user.innerText = sessionStorage.user
+
                 close_modals()
-                alert("please verify the otp recieved in your phone")
                 o_cont.classList.add('show')
             } else {
-                alert(d.message ? d.message: "something went wrong")
+                alert(d.message ? d.message : "something went wrong")
             }
         })
         .catch(err => {
@@ -65,10 +69,11 @@ verify_btn.addEventListener('click', (e) => {
             console.log(d)
             if (d.success) {
                 close_modals()
-                user.innerText = "@" + l_email.value.split('@')[0]
-                alert('You have successfully verified the OTP')
+
+                sessionStorage.user = "@" + l_email.value.split('@')[0]
+                user.innerText = sessionStorage.user
             } else {
-                alert(d.message ? d.message: "something went wrong")
+                alert(d.message ? d.message : "something went wrong")
             }
         })
         .catch(err => {
@@ -76,3 +81,54 @@ verify_btn.addEventListener('click', (e) => {
         })
 })
 
+// incorrect phno case
+var ic_phno = document.querySelector('#ic_phno')
+
+o_cont.classList.add('show')
+
+ic_phno.addEventListener('click', (e) => {
+    e.preventDefault()
+    var new_phno = prompt('Please enter the correct phone no:')
+    if(!cno_regex.test(new_phno)){
+        alert("please try again with proper phno")
+        return false
+    }
+    verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+
+    fetch('/new_conno/', {
+        method: 'post',
+        body: JSON.stringify({
+            contact_no: new_phno
+        })
+    })
+        .then(d => {
+            verify_btn.innerHTML = 'Verify OTP'
+            return d.json()
+        })
+        .then(d => {
+            console.log(d)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+})
+
+// resend otp case
+var rs_otp = document.querySelector('#rs_otp')
+
+rs_otp.addEventListener('click', (e) => {
+    e.preventDefault()
+    verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+
+    fetch('/resend_otp/')
+        .then(d => {
+            verify_btn.innerHTML = 'Verify OTP'
+            return d.json()
+        })
+        .then(d => {
+            console.log(d)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+})
