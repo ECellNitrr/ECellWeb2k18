@@ -5,13 +5,16 @@ var startups = []
 var regsitered_startups = []
 
 // fetch already registered startups
-fetch('/startups/userstartups')
-    .then(d => d.json())
-    .then(d => {
-        regsitered_startups = d.id
-        update_color()
-    })
-    .catch(err => console.error(err))
+if (user.innerHTML[0] == '@') {
+    console.log('fetching startups')
+    fetch('/startups/userstartups')
+        .then(d => d.json())
+        .then(d => {
+            regsitered_startups = d.id
+            update_color()
+        })
+        .catch(err => console.error(err))
+}
 
 // fetch list of startups
 fetch('/startups/list/')
