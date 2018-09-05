@@ -22,6 +22,9 @@ close_modals = () => {
     m_basic.forEach(div => div.classList.remove('show'))
 }
 
+// if user data is available in sessionstorage then login the user
+user.innerHTML = sessionStorage.user
+
 // clicking on loggedin_user unveils the modal
 user.addEventListener('click', (e) => {
     e.preventDefault()
