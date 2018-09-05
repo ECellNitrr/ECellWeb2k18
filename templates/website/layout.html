@@ -64,19 +64,16 @@
     {% block content %}
     <h1>from the layout.html</h1>
     {% endblock content %}
+    
+    <!-- modal -->
+    <link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
+    {% include 'website/modal.html' %}
 
     <!-- footer -->
     {% include 'website/footer.html' %}
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- modal -->
-    <!-- link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
-    <script src="{% static 'website/modal/modal_dom.js' %}"></script>
-    <script src="{% static 'website/modal/logout_modal.js' %}"></script>
-    <script src="{% static 'website/modal/login_modal.js' %}"></script>
-    <script src="{% static 'website/modal/signup_modal.js' %}"></script> -->
 
 
     <!-- menubar js-->

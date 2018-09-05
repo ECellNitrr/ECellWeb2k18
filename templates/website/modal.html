@@ -1,46 +1,32 @@
-<!-- <div id="loggedin_user">
-    <span>login / signup</span>
-    <i class="fa fa-user fa-2x"></i>
-</div>
-
-<div class="center_the_modal" id="logout_modal">
-    <div class="user_modal">
-        <h2 class="mb-3 h3">Are you sure to logout?</h2>
-        <button class="modal_btn" id="logout_btn">logout</button>
-        <button class="modal_btn close_btn">close</button>
-    </div>
-</div> -->
-
-
-<div class="center_the_modal" id="login_modal">
-    <div class="user_modal">
-        <h2>Login to E-Cell</h2>
+<div id="s_cont" class="m-basic">
+    <div class="cover"></div>
+    <div class="content text-center">
         <form>
-            {% csrf_token %}
-            <input type="text" id="lemail" placeholder="Email" required>
-            <input type="password" id="lpass" placeholder="Password" required>
-            <button class="modal_btn" id="login_btn">login</button>
-            <button class="modal_btn close_btn">close</button>
-            <p class="mt-4">Dont have an account?
-                <button class="alternative_btn">Signup</button>
-            </p>
+            <input type="text" id="s_name" placeholder="Name">
+            <input type="text" id="s_email" placeholder="Email">
+            <input type="text" id="s_cno" placeholder="Contact No. ">
+            <input type="text" id="s_p1" placeholder="Password">
+            <input type="text" id="s_p2" placeholder="Confirm Password ">
+            <button id="signup_btn">Signup</button>
+            <div class="close_btn">
+                <i class="fa fa-times"></i>
+            </div>
         </form>
+        <p class="mt-2">already have and account? <span id="login_alt">Login</span> </p>
     </div>
 </div>
 
-<div class="center_the_modal" id="signup_modal">
-    <div class="user_modal">
-        <h2>Signup to E-Cell</h2>
+<div id="l_cont" class="m-basic">
+    <div class="cover"></div>
+    <div class="content text-center">
         <form>
-            <input type="text" id="semail" placeholder="Email">
-            <input type="text" id="scontactno" placeholder="Contact no.">
-            <input type="password" id="spassword1" placeholder="Password">
-            <input type="password" id="spassword2" placeholder="Retype Password">
-            <button class="modal_btn" id="signup_btn">signup</button>
-            <button class="modal_btn close_btn">close</button>
-            <p class="mt-4">Already have an account?
-                <button class="alternative_btn">Login</button>
-            </p>
+            <input type="text" id="l_email" placeholder="Email">
+            <input type="text" id="l_p1" placeholder="Password">
+            <button id="login_btn">Login</button>
+            <div class="close_btn">
+                <i class="fa fa-times"></i>
+            </div>
         </form>
+        <p class="mt-2">dont have an account? <span id="signup_alt">signup</span> </p>
     </div>
 </div>
