@@ -6,6 +6,32 @@ var modal_container = document.querySelector('#modal_container')
 var more_btns, register_btn, close_btn;
 var registered;
 
+// update colors 
+update_color = () => {
+    more_btns.forEach(i => {
+        var flag = regsitered_startups.find(rs => rs == i.dataset.id)
+        if (flag) {
+            i.classList.add('greeny')
+        } else {
+            i.classList.remove('greeny')
+        }
+    })
+
+
+    if (register_btn) {
+        var flag = regsitered_startups.find(rs => rs == register_btn.dataset.sid)
+        if (flag) {
+            register_btn.innerHTML = 'Deregister'
+            register_btn.classList.add('green')
+        } else {
+            register_btn.innerHTML = 'Register'
+            register_btn.classList.remove('green')
+        }
+    }
+
+}
+
+
 // adding events listeners to more btns
 startup_modal = () => {
     more_btns = document.querySelectorAll('.more')
@@ -46,6 +72,7 @@ show_modal = (id) => {
     modal_container.classList.add('show')
     register_btn = document.querySelector('#modal .register')
     close_btn = document.querySelector('#modal .mclose')
+    update_color()
     // monitor for events
     events()
 }
@@ -89,15 +116,15 @@ events = () => {
 register_event = () => {
     fetch(`/startups/register/${register_btn.dataset.sid}/`)
         .then(d => {
-            register_btn.innerHTML = 'Register'
+            update_color()
             register_btn.disabled = false
             return d.json()
         })
         .then(d => {
             if (d.success) {
-                register_btn.innerHTML = 'Deregister'
                 register_btn.disabled = false
-                register_btn.classList.add('green')
+                regsitered_startups.push(register_btn.dataset.sid)
+                update_color()
             } else {
                 alert(d.message ? d.message : "something went wrong")
             }
@@ -116,9 +143,13 @@ deregister_event = () => {
         })
         .then(d => {
             if (d.success) {
-                register_btn.innerHTML = 'Register'
                 register_btn.disabled = false
-                register_btn.classList.remove('green')
+                regsitered_startups.splice(
+                    regsitered_startups.indexOf(
+                        register_btn.dataset.sid
+                    ),1
+                )
+                update_color()
             } else {
                 alert(d.message ? d.message : "something went wrong")
             }

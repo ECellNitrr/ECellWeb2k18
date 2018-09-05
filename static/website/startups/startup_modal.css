@@ -1,3 +1,7 @@
+button:disabled {
+    background: grey;
+}
+
 #cover {
     display: none;
 }
@@ -43,6 +47,11 @@ h3 {
 .green {
     background: green;
     box-shadow: 0 0 50px green;
+}
+
+.greeny {
+    background: green !important;
+    color: white !important;
 }
 
 /* showing the model */

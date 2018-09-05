@@ -58,12 +58,6 @@ h2 {
     align-items: center;
 }
 
-.startup .details {
-    background: #ddd;
-    color: white;
-    padding: 5px 0;
-}
-
 .iholder img {
     max-width: 95%;
     max-height: 95%;
@@ -75,9 +69,12 @@ h2 {
 }
 
 .startup button {
-    background: transparent;
+    background: #ddd;
+    z-index: 1;
     border: none;
+    padding: 5px 0;
     font-weight: bold;
     cursor: pointer;
     outline: none;
+    width: 100%;
 }
