@@ -5,6 +5,7 @@ var m_basic = document.querySelectorAll('.m_basic')
 var l_cont = document.querySelector('#l_cont')
 var s_cont = document.querySelector('#s_cont')
 var x_cont = document.querySelector('#x_cont') 
+var o_cont = document.querySelector('#o_cont') 
 
 // extras
 var covers = document.querySelectorAll('.cover')

@@ -10,7 +10,7 @@ login_btn.addEventListener('click', (e) => {
     signup_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
 
     fetch("/loginweb/", {
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify({
             email: l_email.value,
             password: l_p1.value
@@ -25,6 +25,7 @@ login_btn.addEventListener('click', (e) => {
             if (d.success) {
                 user.innerText = "@" + l_email.value.split('@')[0]
                 m_basic.forEach(div => div.classList.remove('show'))
+                alert('you have successfully logged in!')
             } else {
                 alert(d.message ? d.message: "something went wrong")
             }
