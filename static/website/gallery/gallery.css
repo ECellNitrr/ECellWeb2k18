@@ -119,3 +119,7 @@ hr {
     margin: 10px auto 40px;
     background: #000
 }
+
+i {
+    cursor: pointer;
+}

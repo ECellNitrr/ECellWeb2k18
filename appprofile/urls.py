@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls import url
+from django.views.generic import TemplateView
 from . import views
 from django.contrib.auth import views as auth_views
 urlpatterns = [
@@ -11,6 +12,7 @@ urlpatterns = [
     path('event/<str:event_id>', views.event_detail, name='Event_Detail'),
     path('message/',views.message),
     path('gallery/', views.gallerypage),
+    path('startups/', TemplateView.as_view(template_name='website/startups.html')),
     path('terms/', views.terms_page),
     path('privacy_policy/', views.privacy_policy_page),
     path('applogin/',views.applogin, name='applogin'),

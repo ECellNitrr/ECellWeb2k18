@@ -1,67 +1,55 @@
-// trigger
-var wlogin_trigger = document.querySelector('#wlogin_trigger')
-var wsignup_trigger = document.querySelector('#wsignup_trigger')
+var user = document.querySelector('#loggedin_user')
 
-var mlogin_trigger = document.querySelector('#mlogin_trigger')
-var msignup_trigger = document.querySelector('#msignup_trigger')
-// btn to send the ajax request
-var login_btn = document.querySelector('#login_btn')
-var signup_btn = document.querySelector('#signup_btn')
-var logout_btn = document.querySelector('#logout_btn')
-// details
-var lemail = document.querySelector('#lemail')
-var lpass = document.querySelector('#lpass')
+// core models stuff
+var m_basic = document.querySelectorAll('.m_basic')
+var l_cont = document.querySelector('#l_cont')
+var s_cont = document.querySelector('#s_cont')
+var x_cont = document.querySelector('#x_cont') 
 
-var semail = document.querySelector('#semail')
-var spassword1 = document.querySelector('#spassword1')
-var spassword2 = document.querySelector('#spassword2')
-var scontactno = document.querySelector('#scontactno')
-// modal html
-var login_modal = document.querySelector('#login_modal')
-var signup_modal = document.querySelector('#signup_modal')
-var logout_modal = document.querySelector('#logout_modal')
-// modal h2
-var modal_h2 = document.querySelector('.login_modal h2')
-// respective modal close btn
-var login_modal_close_btn = document.querySelector('#login_modal .close_btn')
-var signup_modal_close_btn = document.querySelector('#signup_modal .close_btn')
-var logout_modal_close_btn = document.querySelector('#logout_modal .close_btn')
-// login vs signup
-var l2s_btn = document.querySelector('#login_modal .alternative_btn')
-var s2l_btn = document.querySelector('#signup_modal .alternative_btn')
-// menubar
-let menuTrigger = document.querySelector('.menu-trigger');
-let menubar = document.querySelector('.menubar');
-// csrf tokens
-let login_csrf = document.querySelector('#login_modal [name=csrfmiddlewaretoken]').value
+// extras
+var covers = document.querySelectorAll('.cover')
+var close_btns = document.querySelectorAll('.close_btn')
 
-// miscellaneous
-var body = document.querySelector('body')
-var loggedin_user = document.querySelector('#loggedin_user span') // used to show the logged in user
-var loggedin_user_box = document.querySelector('#loggedin_user')
-var modal_bg = document.querySelectorAll('.center_the_modal')
-var user_modal = document.querySelector('.user_modal')
+// alts
+var to_signup = document.querySelector('#to_signup')
+var to_login = document.querySelector('#to_login')
 
+// clicking on loggedin_user unveils the modal
+user.addEventListener('click', (e) => {
+    e.preventDefault()
 
-// validation
-var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-var phno_regex = /^[0-9]{10}$/
-
-// click on modal_bg to disable disable the modal
-modal_bg.forEach(bg => bg.addEventListener('click', (e) => {
-    if (e.target != bg) {
-        return
+    console.log('show', user.innerHTML.toLowerCase())
+    if (user.innerHTML.toLowerCase() == 'login/signup') {
+        s_cont.classList.add('show')
+    } else {
+        x_cont.classList.add('show')
     }
-    // hide other models
-    modal_bg.forEach(m => m.style.top = "-125vh")
-    // show the model
-    body.style['overflow'] = 'none'
-    body.style.height = 'auto'
-}))
+})
 
-// close mobile menubar
-close_mobile_menubar = () => {
-    menubar.style.display = 'none'
-    menuTrigger.classList.remove('menu-close')
-    loggedin_user_box.style.display = 'none'
-}
+// clicking on close btn closes modal
+close_btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        m_basic.forEach(div => div.classList.remove('show'))
+    })
+})
+
+// clicking on cover closes modal
+covers.forEach((cover) => {
+    cover.addEventListener('click', (e) => {
+        e.preventDefault()
+        m_basic.forEach(div => div.classList.remove('show'))
+    })
+})
+
+// alternatives
+to_signup.addEventListener('click', (e) => {
+    e.preventDefault()
+    m_basic.forEach(div => div.classList.remove('show'))
+    s_cont.classList.add('show')
+})
+to_login.addEventListener('click', (e) => {
+    e.preventDefault()
+    m_basic.forEach(div => div.classList.remove('show'))
+    l_cont.classList.add('show')
+})

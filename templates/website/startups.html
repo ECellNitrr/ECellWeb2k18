@@ -1,0 +1,38 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Startups">
+{%endblock keywords %}
+<!-- title -->
+{% block title %}
+<title>Startups | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+<link rel="stylesheet" href="{% static 'website/startups/startups.css' %}">
+<link rel="stylesheet" href="{% static 'website/startups/startup_modal.css' %}">
+{% endblock css %}
+<!-- js -->
+{% block js %}
+<script src="{% static 'website/startups/startups.js' %}"></script>
+<script src="{% static 'website/startups/startup_modal.js' %}"></script>
+{% endblock js %}
+<!-- content -->
+{% block content %}
+<h2 class="text-center font-weight-bold">Our Startups</h2>
+<hr>
+
+
+<div id="startups" class="container"></div>
+
+<!-- loading content -->
+{% include 'website/spinner.html' %}
+<p id="coming_soon">Coming Soon</p>
+
+<!-- modal stuff -->
+<div id="modal_container">
+    <div id="cover"></div>
+    <div id="modal"></div>
+</div>
+{% endblock content %}

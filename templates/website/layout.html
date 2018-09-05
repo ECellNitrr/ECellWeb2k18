@@ -29,12 +29,12 @@
     <!-- bootstrap css-->
     <link rel="stylesheet" href="{% static 'website/common/bootstrap.min.css' %}">
     <!-- menubar css-->
-    <link href="{% static 'website/menubar/demo4.css' %}" rel="stylesheet">
-    <link href="{% static 'website/menubar/base.css' %}" rel="stylesheet">
+    <link href="{% static 'website/menubar/menubar.css' %}" rel="stylesheet">
     <!-- custom css -->
     {% block css %} css goes here {% endblock css %}
     <!-- common css -->
     <link rel="stylesheet" href="{% static 'website/common/common.css' %}">
+    <link rel="stylesheet" href="{% static 'website/common/footer.css' %}"> 
 </head>
 
 <body>
@@ -44,11 +44,14 @@
     <!-- menubar -->
     {% include 'website/menubar.html' %}
 
+    <!-- logged in username -->
+    <button id="loggedin_user">Login/Signup</button>
+
     <!-- header -->
     <img src="{% static 'website/img/logo.png' %}" alt="" id="logo-img"> {% block header %}
     <header>
-        <h1 class="wow fadeInUp">E-SUMMIT 18</h1>
-        <p class="p-1 m-0 wow zoomIn" data-wow-delay=.3s>
+        <h1>E-SUMMIT 18</h1>
+        <p class="p-1 m-0">
             <span class=bold>"</span> Don't fit in, just stand out
             <span class=bold>"</span>
         </p>
@@ -61,6 +64,14 @@
     {% block content %}
     <h1>from the layout.html</h1>
     {% endblock content %}
+    
+    <!-- modal -->
+    <link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
+    {% include 'website/modal.html' %}
+    <script src="{% static 'website/modal/modal_dom.js' %}"></script>    
+    <script src="{% static 'website/modal/login.js' %}"></script>    
+    <script src="{% static 'website/modal/signup.js' %}"></script>    
+    <script src="{% static 'website/modal/misc.js' %}"></script>    
 
     <!-- footer -->
     {% include 'website/footer.html' %}
@@ -68,22 +79,9 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- modal -->
-    {% include 'website/modal.html' %}
-    <div id="modal"></div>
-    <link rel="stylesheet" href="{% static 'website/modal/modal.css' %}">
-    <script src="{% static 'website/modal/modal_dom.js' %}"></script>
-    <!-- <script src="{% static 'website/modal/logout_modal.js' %}"></script>
-    <script src="{% static 'website/modal/login_modal.js' %}"></script>
-    <script src="{% static 'website/modal/signup_modal.js' %}"></script> -->
-
 
     <!-- menubar js-->
-    <script src="{% static 'website/menubar/TweenMax.min.js' %}"></script>
-    <script src="{% static 'website/menubar/mobile-menu.js' %}"></script>
-    <script src="{% static 'website/menubar/nearby.js' %}"></script>
-    <script src="{% static 'website/menubar/demo.js' %}"></script>
-    <script src="{% static 'website/menubar/demo4.js' %}"></script>
+    <script src="{% static 'website/menubar/menubar.js' %}"></script>
 
 
     <!-- wow js -->
@@ -96,21 +94,10 @@
         wow.init();
     </script>
 
-
     <!-- custom js -->
     {% block js %}{% endblock js %}
 
-    <!-- urgent js -->
-    <!-- <script>
-        if (localStorage.ecell_nitrr_user) {
-            loggedin_user.innerText = localStorage.ecell_nitrr_user.split('@')[0]
-            wlogin_trigger.innerText = 'logout'
-            mlogin_trigger.innerText = 'logout'
-        } else {
-            loggedin_user.innerText = 'login / signup'
-        }
-    </script> -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- map js -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104074998-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -119,7 +106,6 @@
 
         gtag('config', 'UA-104074998-1');
     </script>
-
 </body>
 
 </html>
