@@ -39,7 +39,7 @@ a:hover {
         display: block;
         position: relative;
         margin-bottom: 30px;
-    }
+    }/
 }
 
 @media(max-width: 700px) {
