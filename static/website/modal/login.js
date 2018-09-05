@@ -29,10 +29,13 @@ login_btn.addEventListener('click', (e) => {
         })
         .then(d => {
             console.log(d)
-            if (d.success) {
+            if (d.success && d.status) {
+                user.innerText = "@" + l_email.value.split('@')[0]
+                close_modals()
+            }else if(d.success && !d.status) {
                 user.innerText = "#" + l_email.value.split('@')[0]
                 close_modals()
-
+                alert("please verify the otp recieved in your phone")
                 o_cont.classList.add('show')
             } else {
                 alert(d.message ? d.message: "something went wrong")

@@ -269,10 +269,14 @@ def weblogin(request):
 
 		user = authenticate(username=username, password=password)
 		login(request,user)
+		user = request.user
+		profile = user.profile
+		status = profile.status
 		request.session['username'] = username
 		return JsonResponse({
 			'success' : True,
 			'message' : 'authentication successfull',
+			'status':status
 
 		})
 	else:
@@ -570,7 +574,7 @@ def password(request):
 	if request.method == 'POST':
 		form = PasswordForm(request.user, request.POST)
 		if form.is_valid():
-			form.save()
+			form.save()	
 			update_session_auth_hash(request,'Your password was succesfully updated!')
 			return redirect('password')
 

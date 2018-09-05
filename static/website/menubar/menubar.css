@@ -33,7 +33,7 @@
     width: 100%;
     color: #fff;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: 700;
     transform: rotateY(90deg);
     transform-origin: left center;
@@ -98,7 +98,7 @@ footer a {
 @media (min-width:500px) {
     .menubar {
         right: 0;
-        width: 300px;
+        width: 250px;
         box-sizing: border-box;
         overflow-X: hidden;
     }
