@@ -22,22 +22,22 @@ show_modal = (id) => {
     var i = startups.find((startup) => startup.id == id)
 
     modal.innerHTML = `
-    <div id='in_modal' class='row'>
-        <div class='mimg-holder col-md-5'>
+    <h3 class='title mt-5 text-center text-uppercase'>${i.name}</h3>
+    <div class='row'>
+        <div class='mimg-holder text-center col-md-5'>
             <img src=${i.pic}>
-            <div class='text-center'>
-                <button class=register>Register</button>
-                <button class=mclose>Close</button>
-            </div>
         </div>
         <div class='col-md-7'>
-            <h3 class=title>${i.name}</h3>
-            <p>Founder: ${i.founder}</p>
-            <p>Contact: ${i.contact}</p>
-            <p>Email: ${i.email}</p>
-            <p>Address: ${i.address}</p>
-            <p class=desc>${i.details}</p>
+            <p><strong>Founder:</strong> ${i.founder}</p>
+            <p><strong>Contact:</strong> ${i.contact}</p>
+            <p><strong>Email:</strong> ${i.email}</p>
+            <p><strong>Address:</strong> ${i.address}</p>
+            <p id=desc>${i.details}</p>
         </div>
+    </div>
+    <div class='text-center btns'>
+        <button class='register green' data-sid=${i.id}>Register</button>
+        <button class=mclose>Close</button>
     </div>
     `
     // add the show class

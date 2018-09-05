@@ -4,9 +4,58 @@
 
 #modal {
     height: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
 }
 
+h3 {
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+#modal button {
+    padding: 10px 30px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+#modal .btns {
+    background: grey;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 0 30px 30px grey;
+}
+
+#modal img{
+    width: 250px;
+}
+
+.register {
+    background: black;
+}
+
+.mclose {
+    background: rgb(116, 21, 21);
+}
+
+#desc {
+    text-align: justify;
+}
+
+.green {
+    background: green;
+    box-shadow: 0 0 50px green;
+}
+
+/* showing the model */
 .show #cover {
     display: block;
     background: rgba(0,0,0,0.8);
@@ -18,22 +67,18 @@
     z-index: 15;
 }
 
+.show #modal .row {
+    padding: 40px;
+}
+
 .show #modal {
     background: white;
     position: fixed;
     top: 5%;
-    left: 10%;
-    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
     height: 90%;
     overflow-y: auto;
     z-index: 20;
-    padding: 40px;
-}
-
-.close {
-    background: red;
-    top: 0;
-    right: 0;
-    border: none;
-    padding: 5px;
 }
