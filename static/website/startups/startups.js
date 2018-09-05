@@ -1,6 +1,4 @@
 var startups_div = document.querySelector('#startups')
-var cover = document.querySelector('#cover')
-var modal = document.querySelector('#modal')
 var spinner = document.querySelector('#spinner')
 
 var startups = []
@@ -18,7 +16,7 @@ create_startups = (items) => {
     items.forEach((i) => {
         startups_div.innerHTML +=  `
             <div class=startup>
-                <div class=img-holder>
+                <div class=mimg-holder>
                     <img src=${i.pic}>
                 </div>
                 <h3 class=title>${i.name}</h3>
@@ -27,4 +25,7 @@ create_startups = (items) => {
             </div>
         `
     })
+
+    // this adds the event listeners for more btn
+    startup_modal()
 }

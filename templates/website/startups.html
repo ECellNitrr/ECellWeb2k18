@@ -10,10 +10,13 @@
 <!-- css -->
 {% block css %}
 <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
-<link rel="stylesheet" href="{% static 'website/startups/startups.css' %}"> {% endblock css %}
+<link rel="stylesheet" href="{% static 'website/startups/startups.css' %}">
+<link rel="stylesheet" href="{% static 'website/startups/startup_modal.css' %}">
+{% endblock css %}
 <!-- js -->
 {% block js %}
 <script src="{% static 'website/startups/startups.js' %}"></script>
+<script src="{% static 'website/startups/startup_modal.js' %}"></script>
 {% endblock js %}
 <!-- content -->
 {% block content %}
@@ -28,7 +31,8 @@
 <p id="coming_soon">Coming Soon</p>
 
 <!-- modal stuff -->
-<div id="cover">
+<div id="modal_container">
+    <div id="cover"></div>
     <div id="modal"></div>
 </div>
 {% endblock content %}
