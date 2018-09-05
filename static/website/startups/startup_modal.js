@@ -4,6 +4,7 @@ var cover = document.querySelector('#cover')
 var modal = document.querySelector('#modal')
 var modal_container = document.querySelector('#modal_container')
 var more_btns, register_btn, close_btn;
+var registered;
 
 // adding events listeners to more btns
 startup_modal = () => {
@@ -28,7 +29,7 @@ show_modal = (id) => {
             <div class='mimg-holder text-center col-md-5'>
                 <img src=${i.pic}>
             </div>
-            <div class='col-md-7'>
+            <div class='col-md-7 detail'>
                 <p><strong>Founder:</strong> ${i.founder}</p>
                 <p><strong>Contact:</strong> ${i.contact}</p>
                 <p><strong>Email:</strong> ${i.email}</p>
@@ -54,6 +55,7 @@ events = () => {
     close_btn.addEventListener('click', (e) => {
         modal_container.classList.remove('show')
     })
+
     // register event
     register_btn.addEventListener('click', (e) => {
         e.preventDefault()
@@ -69,26 +71,59 @@ events = () => {
             return false
         }
 
-        // disable the btn
-        register_btn.innerHTML = "<i class='fa fa-cog fa-spin'></i>"
-        register_btn.disabled = true
-        fetch(`/startups/register/${register_btn.dataset.sid}/`)
-            .then(d => {
+        // take action
+        console.log(register_btn.innerHTML)
+        if (register_btn.innerHTML == 'Register') {
+            register_btn.innerHTML = "<i class='fa fa-cog fa-spin'></i>"
+            register_btn.disabled = true
+            register_event()
+        } else {
+            register_btn.innerHTML = "<i class='fa fa-cog fa-spin'></i>"
+            register_btn.disabled = true
+            deregister_event()
+        }
+
+    })
+}
+
+register_event = () => {
+    fetch(`/startups/register/${register_btn.dataset.sid}/`)
+        .then(d => {
+            register_btn.innerHTML = 'Register'
+            register_btn.disabled = false
+            return d.json()
+        })
+        .then(d => {
+            if (d.success) {
+                register_btn.innerHTML = 'Deregister'
+                register_btn.disabled = false
+                register_btn.classList.add('green')
+            } else {
+                alert(d.message ? d.message : "something went wrong")
+            }
+        })
+        .catch(err => {
+            console.error(err)
+        })
+}
+
+deregister_event = () => {
+    fetch(`/startups/unregister/${register_btn.dataset.sid}/`)
+        .then(d => {
+            register_btn.innerHTML = 'Deregister'
+            register_btn.disabled = false
+            return d.json()
+        })
+        .then(d => {
+            if (d.success) {
                 register_btn.innerHTML = 'Register'
                 register_btn.disabled = false
-                return d.json()
-            })
-            .then(d => {
-                if (d.success) {
-                    register_btn.innerHTML = 'Deregister'
-                    register_btn.disabled = false
-                    register_btn.classList.add('green')
-                } else {
-                    alert(d.message ? d.message : "something went wrong")
-                }
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    })
+                register_btn.classList.remove('green')
+            } else {
+                alert(d.message ? d.message : "something went wrong")
+            }
+        })
+        .catch(err => {
+            console.error(err)
+        })
 }
