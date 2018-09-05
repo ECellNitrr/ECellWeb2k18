@@ -1,5 +1,11 @@
 var login_btn = document.querySelector('#login_btn')
-var logout_bnt = document.querySelector('#logout_bnt')
+var logout_btn = document.querySelector('#logout_btn')
+
+// logout action
+logout_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+    user.innerText = 'Login/Signup'
+})
 
 // login form data
 var l_email = document.querySelector('#l_email')
@@ -23,9 +29,10 @@ login_btn.addEventListener('click', (e) => {
         .then(d => {
             console.log(d)
             if (d.success) {
-                user.innerText = "@" + l_email.value.split('@')[0]
-                m_basic.forEach(div => div.classList.remove('show'))
-                alert('you have successfully logged in!')
+                user.innerText = "#" + l_email.value.split('@')[0]
+                close_modals()
+
+                o_cont.classList.add('show')
             } else {
                 alert(d.message ? d.message: "something went wrong")
             }
@@ -34,3 +41,34 @@ login_btn.addEventListener('click', (e) => {
             console.error(err)
         })
 })
+
+// verify otp
+verify_btn.addEventListener('click', (e) => {
+    e.preventDefault()
+    verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+
+    fetch("/web_verify_otp/", {
+        method: 'POST',
+        body: JSON.stringify({
+            otp: o_otp.value,
+        })
+    })
+        .then(d => {
+            verify_btn.innerHTML = 'Verify OTP'
+            return d.json()
+        })
+        .then(d => {
+            console.log(d)
+            if (d.success) {
+                close_modals()
+                user.innerText = "@" + l_email.value.split('@')[0]
+                alert('You have successfully verified the OTP')
+            } else {
+                alert(d.message ? d.message: "something went wrong")
+            }
+        })
+        .catch(err => {
+            console.error(err)
+        })
+})
+

@@ -15,6 +15,11 @@ var close_btns = document.querySelectorAll('.close_btn')
 var to_signup = document.querySelector('#to_signup')
 var to_login = document.querySelector('#to_login')
 
+// close all modals 
+close_modals = () => {
+    m_basic.forEach(div => div.classList.remove('show'))
+}
+
 // clicking on loggedin_user unveils the modal
 user.addEventListener('click', (e) => {
     e.preventDefault()
@@ -31,7 +36,7 @@ user.addEventListener('click', (e) => {
 close_btns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         e.preventDefault()
-        m_basic.forEach(div => div.classList.remove('show'))
+        close_modals()
     })
 })
 
@@ -39,18 +44,18 @@ close_btns.forEach((btn) => {
 covers.forEach((cover) => {
     cover.addEventListener('click', (e) => {
         e.preventDefault()
-        m_basic.forEach(div => div.classList.remove('show'))
+        close_modals()
     })
 })
 
 // alternatives
 to_signup.addEventListener('click', (e) => {
     e.preventDefault()
-    m_basic.forEach(div => div.classList.remove('show'))
+    close_modals()
     s_cont.classList.add('show')
 })
 to_login.addEventListener('click', (e) => {
     e.preventDefault()
-    m_basic.forEach(div => div.classList.remove('show'))
+    close_modals()
     l_cont.classList.add('show')
 })

@@ -10,6 +10,7 @@ var s_p2 = document.querySelector('#s_p2')
 
 var o_otp = document.querySelector('#o_otp')
 
+// signup
 signup_btn.addEventListener('click', (e) => {
     e.preventDefault()
     signup_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
@@ -29,8 +30,9 @@ signup_btn.addEventListener('click', (e) => {
         .then(d => {
             console.log(d)
             if (d.success) {
-                m_basic.forEach(div => div.classList.remove('show'))
-                o_cont.classList.add('show')
+                close_modals()
+                alert('you have successfully signedup. Please proceed to login!')
+                l_cont.classList.add('show')
             } else {
                 alert(d.message ? d.message: "something went wrong")
             }
@@ -39,32 +41,3 @@ signup_btn.addEventListener('click', (e) => {
             console.error(err)
         })
 })
-
-verify_btn.addEventListener('click', (e) => {
-    e.preventDefault()
-    verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
-
-    fetch("/web_verify_otp/", {
-        method: 'POST',
-        body: JSON.stringify({
-            otp: o_otp.value,
-        })
-    })
-        .then(d => {
-            verify_btn.innerHTML = 'Verify OTP'
-            return d.json()
-        })
-        .then(d => {
-            console.log(d)
-            if (d.success) {
-                m_basic.forEach(div => div.classList.remove('show'))
-                alert('You have successfully completed the signup process. Please proceed to login!')
-            } else {
-                alert(d.message ? d.message: "something went wrong")
-            }
-        })
-        .catch(err => {
-            console.error(err)
-        })
-})
-
