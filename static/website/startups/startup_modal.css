@@ -27,4 +27,13 @@
     height: 90%;
     overflow-y: auto;
     z-index: 20;
+    padding: 40px;
+}
+
+.close {
+    background: red;
+    top: 0;
+    right: 0;
+    border: none;
+    padding: 5px;
 }
