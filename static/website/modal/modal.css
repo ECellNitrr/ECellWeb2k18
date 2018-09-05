@@ -20,7 +20,8 @@
     background: white;
     padding: 40px;
     padding-bottom: 20px;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%) scale(0);
+    transition: all 0.3s ease;
     box-sizing: border-box;
     width: 400px;
 }
@@ -68,4 +69,12 @@
 
 .close_btn {
     cursor: pointer;
+}
+
+.show {
+    transform: translateY(0);
+}
+
+.show {
+    transform: scale(1);
 }
