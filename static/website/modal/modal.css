@@ -33,7 +33,7 @@
     padding: 10px;
     width: 100%;
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     outline: none;
 }
 
@@ -77,4 +77,16 @@
 
 .show .content {
     transform: translate(-50%,-50%) scale(1);    
+}
+
+@media(max-width: 450px) {
+    .m_basic .content {
+        width: calc(100% - 30px);
+        padding: 40px 5px;
+    }
+
+    .close_btn i{
+        top: -55px;
+        right: -20px;
+    }
 }

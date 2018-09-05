@@ -26,10 +26,28 @@ a:hover {
 }
 
 @media(max-width: 700px) {
+    #loggedin_user {
+        padding: 5px 15px;
+        font-size: 13px;
+        top: 5px;
+        left: 5px;
+        margin: auto;
+        color: #ECC073;
+        font-weight: bold;
+        border-radius: 30px;
+        background: black;
+        display: block;
+        position: relative;
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width: 700px) {
     header h1 {
         padding-top: 100px;
         font-size: 30px;
     }
+
     footer h3 {
         font-size: 15px;
         letter-spacing: 3px;

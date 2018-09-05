@@ -1,7 +1,8 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-<meta name="keywords" content="ecell, NIT Raipur, raipur, NIT, e-summit, esummit, e summmit, entrepreneurship, E-Cell, nitrr"> {% endblock keywords %}
+<meta name="keywords" content="ecell, NIT Raipur, raipur, NIT, e-summit, esummit, e summmit, entrepreneurship, E-Cell, nitrr">
+{% endblock keywords %}
 <!-- title -->
 {% block title %}
 <title>Home | E-Cell NIT Raipur</title>
@@ -46,7 +47,10 @@
             <span class=bold>"</span> Don't fit in, just standout
             <span class=bold>"</span>
         </p>
-        <img src='{% static "website/img/enterpreneurs.svg" %}' alt=""> </div>
+        <!-- logged in username -->
+        <button id="loggedin_user">Login/Signup</button>
+        <img src='{% static "website/img/enterpreneurs.svg" %}' alt="">
+    </div>
     <div class=diagonal></div>
 </header>
 {% endblock header %}
@@ -84,14 +88,22 @@
             </h2>
         </div>
         <div class=col-md-8>
-            <p class="wow fadeInUp" data-wow-delay=.3s>The Entrepreneurship cell, NIT Raipur is a non-profit organization that manifests the essence of entrepreneurship
-                in the passionate youngsters who have the zeal to pursue entrepreneurship and advocate this vehement enthusiasm
-                in the generations to come. Keeping this ideology in mind we not only provide the foundation to the entrepreneurial
-                capabilities of the promising young minds but also help in nurturing their skills by providing resources
-                such as new ideas , funding mentoring, other mentorship programs, workshops to help them organize their strategy
-                and frequent, highly interactive speaker sessions and lecture series. At E-Summit we aspire to create a mélange
-                of eminent speakers who have proved themselves in diverse fields and are at the zenith of glory. E-Summit’18
-                will not just be a conclave of innovative minds and epistemic elocutionists, but it will be the place where
+            <p class="wow fadeInUp" data-wow-delay=.3s>The Entrepreneurship cell, NIT Raipur is a non-profit
+                organization that manifests the essence of entrepreneurship
+                in the passionate youngsters who have the zeal to pursue entrepreneurship and advocate this vehement
+                enthusiasm
+                in the generations to come. Keeping this ideology in mind we not only provide the foundation to the
+                entrepreneurial
+                capabilities of the promising young minds but also help in nurturing their skills by providing
+                resources
+                such as new ideas , funding mentoring, other mentorship programs, workshops to help them organize their
+                strategy
+                and frequent, highly interactive speaker sessions and lecture series. At E-Summit we aspire to create a
+                mélange
+                of eminent speakers who have proved themselves in diverse fields and are at the zenith of glory.
+                E-Summit’18
+                will not just be a conclave of innovative minds and epistemic elocutionists, but it will be the place
+                where
                 ideas not only thrive but become the greatest revelations of the century.</p>
         </div>
     </div>
@@ -103,11 +115,16 @@
 <section id=vision class=mx-auto>
     <h2 class="wow fadeInUp" data-wow-delay=.3s>Vision</h2>
     <hr>
-    <p class="wow fadeInDown" data-wow-delay=.1s> The Entrepreneurship Cell, NIT Raipur is a platform for the aspiring young minds who wish to pursue entrepreneurship
-        and reach the pinnacle of glory. The cell aims at manifesting the essence of entrepreneurship in the convoluting
-        gray matters of the young force coming up. This delegation gives wings to ideas and support in the form of investors
-        and seed funding along with mentorship guidance to the pioneering and budding entrepreneurs. The cell aims at promoting
-        the startup culture and building up entrepreneurs who have it in them to become the greatest pioneers of this century.
+    <p class="wow fadeInDown" data-wow-delay=.1s> The Entrepreneurship Cell, NIT Raipur is a platform for the aspiring
+        young minds who wish to pursue entrepreneurship
+        and reach the pinnacle of glory. The cell aims at manifesting the essence of entrepreneurship in the
+        convoluting
+        gray matters of the young force coming up. This delegation gives wings to ideas and support in the form of
+        investors
+        and seed funding along with mentorship guidance to the pioneering and budding entrepreneurs. The cell aims at
+        promoting
+        the startup culture and building up entrepreneurs who have it in them to become the greatest pioneers of this
+        century.
     </p>
 </section>
 <!-- contact section -->
