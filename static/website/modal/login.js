@@ -5,6 +5,7 @@ var logout_btn = document.querySelector('#logout_btn')
 logout_btn.addEventListener('click', (e) => {
     e.preventDefault()
     close_modals()
+    sessionStorage.removeItem('user')
     user.innerText = 'Login/Signup'
 })
 
@@ -14,7 +15,8 @@ var l_p1 = document.querySelector('#l_p1')
 
 login_btn.addEventListener('click', (e) => {
     e.preventDefault()
-    signup_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    login_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    login_btn.disabled = true
 
     fetch("/loginweb/", {
         method: 'POST',
@@ -25,6 +27,7 @@ login_btn.addEventListener('click', (e) => {
     })
         .then(d => {
             signup_btn.innerHTML = 'Login'
+            login_btn.disabled = false
             return d.json()
         })
         .then(d => {
@@ -54,6 +57,7 @@ login_btn.addEventListener('click', (e) => {
 verify_btn.addEventListener('click', (e) => {
     e.preventDefault()
     verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    verify_btn.disabled = true
 
     fetch("/web_verify_otp/", {
         method: 'POST',
@@ -63,6 +67,7 @@ verify_btn.addEventListener('click', (e) => {
     })
         .then(d => {
             verify_btn.innerHTML = 'Verify OTP'
+            verify_btn.disabled = false
             return d.json()
         })
         .then(d => {
@@ -87,11 +92,12 @@ var ic_phno = document.querySelector('#ic_phno')
 ic_phno.addEventListener('click', (e) => {
     e.preventDefault()
     var new_phno = prompt('Please enter the correct phone no:')
-    if(!cno_regex.test(new_phno)){
+    if (!cno_regex.test(new_phno)) {
         alert("please try again with proper phno")
         return false
     }
     verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    verify_btn.disabled = true
 
     fetch('/new_conno/', {
         method: 'post',
@@ -101,6 +107,7 @@ ic_phno.addEventListener('click', (e) => {
     })
         .then(d => {
             verify_btn.innerHTML = 'Verify OTP'
+            verify_btn.disabled = false
             return d.json()
         })
         .then(d => {
@@ -117,10 +124,12 @@ var rs_otp = document.querySelector('#rs_otp')
 rs_otp.addEventListener('click', (e) => {
     e.preventDefault()
     verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    verify_btn.disabled = true
 
     fetch('/resend_otp/')
         .then(d => {
             verify_btn.innerHTML = 'Verify OTP'
+            verify_btn.disabled = false
             return d.json()
         })
         .then(d => {

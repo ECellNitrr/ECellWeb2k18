@@ -14,12 +14,13 @@ var o_otp = document.querySelector('#o_otp')
 signup_btn.addEventListener('click', (e) => {
     e.preventDefault()
     // if input is not valid return
-    if(!s_validator()){
-        
+    if (!s_validator()) {
+
         return false
     }
-    
+
     signup_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
+    signup_btn.disabled = true
 
     fetch("/register/", {
         method: 'POST',
@@ -31,6 +32,7 @@ signup_btn.addEventListener('click', (e) => {
     })
         .then(d => {
             signup_btn.innerHTML = 'Signup'
+            signup_btn.disabled = false
             return d.json()
         })
         .then(d => {
@@ -40,7 +42,7 @@ signup_btn.addEventListener('click', (e) => {
                 alert('you have successfully signedup. Please proceed to login!')
                 l_cont.classList.add('show')
             } else {
-                alert(d.message ? d.message: "something went wrong")
+                alert(d.message ? d.message : "something went wrong")
             }
         })
         .catch(err => {
@@ -49,26 +51,26 @@ signup_btn.addEventListener('click', (e) => {
 })
 
 s_validator = () => {
-    if(s_p1.value.length<6) {
+    if (s_p1.value.length < 6) {
         alert("please enter a stronger password")
         return false
     }
-    if(s_p1.value !== s_p2.value){
+    if (s_p1.value !== s_p2.value) {
         alert("password dont match")
         return false
     }
-    if(!email_regex.test(s_email.value)){
+    if (!email_regex.test(s_email.value)) {
         alert("please enter a valid email")
         return false
     }
-    if(!cno_regex.test(s_cno.value)){
+    if (!cno_regex.test(s_cno.value)) {
         alert("please enter a valid contact no")
         return false
     }
-    if(s_name.value.length<4){
+    if (s_name.value.length < 4) {
         alert("name should be atleast 3 chars")
         return false
     }
-    
+
     return true
 }

@@ -44,6 +44,7 @@
     font-weight: bold;
     background: #000;
     cursor: pointer;
+    transition: all .5s ease;
 }
 
 .m_basic form {
@@ -77,6 +78,10 @@
 
 .show .content {
     transform: translate(-50%,-50%) scale(1);    
+}
+
+button:disabled {
+    background: grey;
 }
 
 @media(max-width: 450px) {
