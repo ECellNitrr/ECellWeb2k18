@@ -4,6 +4,7 @@ var logout_btn = document.querySelector('#logout_btn')
 // logout action
 logout_btn.addEventListener('click', (e) => {
     e.preventDefault()
+    close_modals()
     user.innerText = 'Login/Signup'
 })
 
