@@ -7,6 +7,7 @@ logout_btn.addEventListener('click', (e) => {
     close_modals()
     sessionStorage.removeItem('user')
     user.innerText = 'Login/Signup'
+    location.reload()
 })
 
 // login form data
@@ -37,6 +38,7 @@ login_btn.addEventListener('click', (e) => {
                 sessionStorage.user = "@" + l_email.value.split('@')[0]
                 user.innerText = sessionStorage.user
                 close_modals()
+                location.reload()
             } else if (d.success && !d.status) {
                 // if the otp verification is not done show otp modal
                 sessionStorage.user = "#" + l_email.value.split('@')[0]
@@ -77,6 +79,7 @@ verify_btn.addEventListener('click', (e) => {
 
                 sessionStorage.user = "@" + l_email.value.split('@')[0]
                 user.innerText = sessionStorage.user
+                location.reload()
             } else {
                 alert(d.message ? d.message : "something went wrong")
             }

@@ -1,3 +1,4 @@
+var update_color;
 var user = document.querySelector('#loggedin_user')
 var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var cno_regex = /^(\+\d{2,4})?\s?(\d{10})$/g

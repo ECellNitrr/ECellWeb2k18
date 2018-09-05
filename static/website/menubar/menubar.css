@@ -98,7 +98,7 @@ footer a {
 @media (min-width:500px) {
     .menubar {
         right: 0;
-        width: 250px;
+        width: 300px;
         box-sizing: border-box;
         overflow-X: hidden;
     }

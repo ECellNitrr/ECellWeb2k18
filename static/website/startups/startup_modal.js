@@ -11,8 +11,10 @@ update_color = () => {
         var flag = regsitered_startups.find(rs => rs == i.dataset.id)
         if (flag) {
             i.classList.add('greeny')
+            i.innerHTML = 'registered'
         } else {
             i.classList.remove('greeny')
+            i.innerHTML = 'read more'
         }
     })
 
