@@ -463,6 +463,42 @@ def new_conno(request):
 		})
 
 
+@csrf_exempt
+@login_required
+def resend_otp(request):
+	user = request.user
+	profile = user.profile
+	print(profile.get_time_diff())
+	time = profile.get_time_diff()
+	contact_no = profile.contact_no
+	if time <= 150:
+		otp = profile.otp
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		
+		response = requests.request("GET", url, params=querystring)
+		profile.save()
+		print(otp)
+		print(response.text)
+	else:
+		otp = str(randint(1000,9999))
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+
+		response = requests.request("GET", url, params=querystring)
+		profile.save()
+		print(otp)
+		print(response.text)
+
+	return JsonResponse({
+		'success' :True,
+		'message' : 'OTP sent successfully',
+		})
+
+
+
 
 			
 
