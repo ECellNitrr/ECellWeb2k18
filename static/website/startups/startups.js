@@ -4,6 +4,7 @@ var spinner = document.querySelector('#spinner')
 var startups = []
 var regsitered_startups = []
 
+// fetch already registered startups
 fetch('/startups/userstartups')
     .then(d => d.json())
     .then(d => {
@@ -12,6 +13,7 @@ fetch('/startups/userstartups')
     })
     .catch(err => console.error(err))
 
+// fetch list of startups
 fetch('/startups/list/')
     .then(d => d.json())
     .then(d => {
@@ -21,6 +23,7 @@ fetch('/startups/list/')
     })
     .catch(err => console.error(err))
 
+// display the startups
 create_startups = (items) => {
     items.forEach((i) => {
         startups_div.innerHTML += `
@@ -33,6 +36,6 @@ create_startups = (items) => {
         `
     })
 
-    // this adds the event listeners for more btn
+    // this adds the event listeners for read more btn
     startup_modal()
 }

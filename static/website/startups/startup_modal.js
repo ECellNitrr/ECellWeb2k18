@@ -4,7 +4,6 @@ var cover = document.querySelector('#cover')
 var modal = document.querySelector('#modal')
 var modal_container = document.querySelector('#modal_container')
 var more_btns, register_btn, close_btn;
-var registered;
 
 // update colors 
 update_color = () => {
@@ -41,8 +40,6 @@ startup_modal = () => {
             show_modal(btn.dataset.id)
         })
     })
-
-    // show_modal(1)
 }
 
 show_modal = (id) => {
@@ -137,7 +134,7 @@ register_event = () => {
 deregister_event = () => {
     fetch(`/startups/unregister/${register_btn.dataset.sid}/`)
         .then(d => {
-            register_btn.innerHTML = 'Deregister'
+            update_color()
             register_btn.disabled = false
             return d.json()
         })
