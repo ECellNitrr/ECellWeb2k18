@@ -35,13 +35,13 @@ login_btn.addEventListener('click', (e) => {
             console.log(d)
             if (d.success && d.status) {
                 // if otp verification is done close all modals
-                sessionStorage.user = "@" + l_email.value.split('@')[0]
+                sessionStorage.user = "@ " + d.first_name + ' ' + d.last_name
                 user.innerText = sessionStorage.user
                 close_modals()
                 location.reload()
             } else if (d.success && !d.status) {
                 // if the otp verification is not done show otp modal
-                sessionStorage.user = "#" + l_email.value.split('@')[0]
+                sessionStorage.user = "# " + d.first_name + ' ' + d.last_name
                 user.innerText = sessionStorage.user
 
                 close_modals()
@@ -77,7 +77,6 @@ verify_btn.addEventListener('click', (e) => {
             if (d.success) {
                 close_modals()
 
-                sessionStorage.user = "@" + l_email.value.split('@')[0]
                 user.innerText = sessionStorage.user
                 location.reload()
             } else {
@@ -95,10 +94,6 @@ var ic_phno = document.querySelector('#ic_phno')
 ic_phno.addEventListener('click', (e) => {
     e.preventDefault()
     var new_phno = prompt('Please enter the correct phone no:')
-    if (!cno_regex.test(new_phno)) {
-        alert("please try again with proper phno")
-        return false
-    }
     verify_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
     verify_btn.disabled = true
 
