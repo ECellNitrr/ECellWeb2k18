@@ -77,6 +77,7 @@ verify_btn.addEventListener('click', (e) => {
             if (d.success) {
                 close_modals()
 
+                sessionStorage.user = '@' + sessionStorage.user.slice(1)
                 user.innerText = sessionStorage.user
                 location.reload()
             } else {

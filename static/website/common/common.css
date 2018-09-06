@@ -16,6 +16,7 @@ a:hover {
 
 #loggedin_user {
     position: absolute;
+    text-transform: capitalize;
     right: 148px;
     top: 54px;
     border: 2px solid black;

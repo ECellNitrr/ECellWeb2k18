@@ -28,6 +28,12 @@ fetch('/startups/list/')
 
 // display the startups
 create_startups = (items) => {
+    if(!items) {
+        startups_div.innerHTML = `
+        <p class='text-center display-4'>Coming soon</p>
+        `
+    } 
+
     items.forEach((i) => {
         startups_div.innerHTML += `
         <div class=startup>
