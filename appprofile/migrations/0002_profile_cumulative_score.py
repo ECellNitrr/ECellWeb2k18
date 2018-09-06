@@ -10,9 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='profile',
-            name='cumulative_score',
-            field=models.IntegerField(default=0),
-        ),
+        
     ]
