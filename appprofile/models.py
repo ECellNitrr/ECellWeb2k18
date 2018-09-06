@@ -26,6 +26,7 @@ class Profile(models.Model):
         ('MNG', 'Manager'),
         ('HC', 'Head Co-ordinator'),
         ('OC', 'Overall Co-ordinator'),
+        ('CA', 'Campus Ambassador')
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
