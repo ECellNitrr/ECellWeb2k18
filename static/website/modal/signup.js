@@ -2,7 +2,8 @@ var signup_btn = document.querySelector('#signup_btn')
 var verify_btn = document.querySelector('#verify_btn')
 
 // signup form data
-var s_name = document.querySelector('#s_name')
+var s_n1 = document.querySelector('#s_n1')
+var s_n2 = document.querySelector('#s_n2')
 var s_email = document.querySelector('#s_email')
 var s_cno = document.querySelector('#s_cno')
 var s_p1 = document.querySelector('#s_p1')
@@ -25,6 +26,8 @@ signup_btn.addEventListener('click', (e) => {
     fetch("/register/", {
         method: 'POST',
         body: JSON.stringify({
+            first_name: s_n1.value,
+            last_name: s_n2.value,
             email: s_email.value,
             password: s_p1.value,
             contact_no: s_cno.value
@@ -63,11 +66,7 @@ s_validator = () => {
         alert("please enter a valid email")
         return false
     }
-    if (!cno_regex.test(s_cno.value)) {
-        alert("please enter a valid contact no")
-        return false
-    }
-    if (s_name.value.length < 4) {
+    if (s_n1.value.length < 4 || s_n2.value.length < 4) {
         alert("name should be atleast 3 chars")
         return false
     }

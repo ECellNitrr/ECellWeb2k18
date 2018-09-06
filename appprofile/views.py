@@ -83,7 +83,7 @@ def applogin(request, *args, **kwargs):
 			return JsonResponse(error_msg)
 		
 		if user:
-			user.profile.status=1;
+			user.profile.status=1
 			login(request,user)
 			payload = {
 				'id' : user.id,
@@ -109,7 +109,6 @@ def applogin(request, *args, **kwargs):
 @csrf_exempt
 def appregister(request):
 
-	registered = False
 	if request.method == "POST":
 		#print(request.body.decode('UTF-8'))
 
@@ -246,10 +245,6 @@ def activate(request, uidb64, token):
 @csrf_exempt
 def weblogin(request):
 	response = {}
-	error_msg = {
-		'success' : False,
-		'message' : 'Invalid credentials'
-		}
 	if request.method == 'POST':
 		
 		req_data = json.loads(request.body.decode('UTF-8'))
@@ -258,8 +253,6 @@ def weblogin(request):
 		print(email,password)
 
 		try:
-			obj = User.objects.get(email=email)
-		
 			username = email
 			print(username)
 			user = authenticate(username=username, password=password)
@@ -278,7 +271,7 @@ def weblogin(request):
 			response['success'] = False
 			response['message'] = "Please create an account to login"
 		except Exception as e:
-			print(e);
+			print(e)
 			response['success'] = False
 			response['message'] = "Invalid Credentials"
 
@@ -357,7 +350,6 @@ def retry_otp(request):
 		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
 		email = req_data['email']
-		password = req_data['password']
 		contact_no = str(req_data['contact_no'])
 		if User.objects.filter(email=email).exists():
 			user = User.objects.get(email=email)
