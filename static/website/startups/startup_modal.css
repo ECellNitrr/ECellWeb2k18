@@ -68,6 +68,8 @@ h3 {
 
 .show #modal .row {
     padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
     padding-top: 0;
 }
 
@@ -78,7 +80,9 @@ h3 {
     left: 50%;
     transform: translateX(-50%);
     width: 900px;
-    height: 90%;
+    overflow-x: hidden;
+    height: auto;
+    max-height: 90%;
     z-index: 20;
 }
 

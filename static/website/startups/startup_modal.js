@@ -5,6 +5,11 @@ var modal = document.querySelector('#modal')
 var modal_container = document.querySelector('#modal_container')
 var more_btns, register_btn, close_btn;
 
+cover.addEventListener('click', (e) => {
+    e.preventDefault()
+    modal_container.classList.remove('show')
+})
+
 // update colors 
 update_color = () => {
     more_btns.forEach(i => {
@@ -56,9 +61,7 @@ show_modal = (id) => {
             </div>
             <div class='col-md-7 detail'>
                 <p><strong>Founder:</strong> ${i.founder}</p>
-                <p><strong>Contact:</strong> ${i.contact}</p>
-                <p><strong>Email:</strong> ${i.email}</p>
-                <p><strong>Address:</strong> ${i.address}</p>
+                <p><strong>Website:</strong><a href='${i.url}' target=_blank>  ${i.url}</a></p>
                 <p id=desc>${i.details}</p>
             </div>
         </div>
