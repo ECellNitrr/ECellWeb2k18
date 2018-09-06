@@ -256,7 +256,7 @@ def weblogin(request):
 			username = email
 			print(username)
 			user = authenticate(username=username, password=password)
-			login(request,user)
+			login(request,user, backend='django.contrib.auth.backends.ModelBackend')
 			user = request.user
 			profile = user.profile
 			status = profile.status
