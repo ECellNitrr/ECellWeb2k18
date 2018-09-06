@@ -3,6 +3,10 @@ html {
     overflow-x: hidden !important;
 }
 
+a {
+    color: black;
+}
+
 a:hover {
     text-decoration: none !important;
 }
