@@ -36,6 +36,7 @@ user.addEventListener('click', (e) => {
     if (user.innerHTML[0] == '#') {
         o_cont.classList.add('show')
     } else if (user.innerHTML.toLowerCase() == 'login/signup') {
+        console.log('open signup modal')
         s_cont.classList.add('show')
     } else {
         x_cont.classList.add('show')
