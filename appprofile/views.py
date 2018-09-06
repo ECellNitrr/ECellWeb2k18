@@ -111,7 +111,7 @@ def appregister(request):
 
 	registered = False
 	if request.method == "POST":
-		print(request.body.decode('UTF-8'))
+		#print(request.body.decode('UTF-8'))
 
 		req_data = request.body.decode('UTF-8')
 		# req_data = req_data.decode('utf-8')
@@ -197,7 +197,7 @@ def appregister(request):
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 		response = requests.request("GET", url, params=querystring)
 
@@ -245,48 +245,48 @@ def activate(request, uidb64, token):
 
 @csrf_exempt
 def weblogin(request):
+	response = {}
 	error_msg = {
 		'success' : False,
 		'message' : 'Invalid credentials'
 		}
 	if request.method == 'POST':
-		# if 'username' in request.session:
-		# 	print("USER IN SESSION")
-		# 	return
+		
 		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
-		# email = request.POST.get('email')
-		# password = request.POST.get('password')
 		print(email,password)
 
 		try:
 			obj = User.objects.get(email=email)
+		
 			username = email
 			print(username)
-		except:
-			return JsonResponse(error_msg)
+			user = authenticate(username=username, password=password)
+			login(request,user)
+			user = request.user
+			profile = user.profile
+			status = profile.status
+			request.session['username'] = username
+			response['success'] = True
+			response['message']	= 'Authentication Successfull'
+			response['status'] = status
+			response['first_name'] = user.first_name
+			response['last_name'] = user.last_name
+		except User.DoesNotExist:
+			print("User Doesn't Exist")
+			response['success'] = False
+			response['message'] = "Please create an account to login"
+		except Exception as e:
+			print(e);
+			response['success'] = False
+			response['message'] = "Invalid Credentials"
 
-		user = authenticate(username=username, password=password)
-		login(request,user)
-		user = request.user
-		profile = user.profile
-		status = profile.status
-		request.session['username'] = username
-		return JsonResponse({
-			'success' : True,
-			'message' : 'authentication successfull',
-			'status':status
-
-		})
 	else:
-		#print(request.user)
-		#return render(request,'login.html')
-		return JsonResponse({
-		'success' :False,
-		'message' : 'form method error',
-		})
-
+		response['success']=False
+		response['message']="Please Try Again"
+	
+	return JsonResponse(response)
 
 
 @csrf_exempt
@@ -308,15 +308,17 @@ def webregister(request):
 			user.email = email
 			user.set_password(password)
 			user.is_active = True
+			user.first_name = req_data['first_name']
+			user.last_name = req_data['last_name']
+			#print(user.first_name)
+			#print(user.last_name)
 			user.save()
-			#user.profile.contact_no = req_data['contactno']
-			#contact_no = request.POST.get('contact_no')
 			contact_no = req_data['contact_no']
 			user.profile.contact_no = contact_no
 			otp = str(randint(1000,9999))
 			url = "http://www.merasandesh.com/api/sendsms"
 			message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
-			querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+			querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 			response = requests.request("GET", url, params=querystring)
 			print(otp)
@@ -362,7 +364,7 @@ def retry_otp(request):
 			otp = str(randint(1000,9999))
 			url = "http://www.merasandesh.com/api/sendsms"
 			message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
-			querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+			querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 			response_otp = requests.request("GET", url, params=querystring)
 
@@ -444,7 +446,7 @@ def new_conno(request):
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 		response = requests.request("GET", url, params=querystring)
 		print(otp)
@@ -479,7 +481,7 @@ def resend_otp(request):
 		otp = profile.otp
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 		
 		response = requests.request("GET", url, params=querystring)
 		profile.save()
@@ -489,7 +491,7 @@ def resend_otp(request):
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 		response = requests.request("GET", url, params=querystring)
 		profile.save()
