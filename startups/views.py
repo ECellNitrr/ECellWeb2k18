@@ -18,6 +18,7 @@ def get_startups(request):
 		start = {}
 		for startup in startups:
 			print()
+			start['id'] = startup.pk
 			start['name'] = startup.name
 			start['founder'] = startup.founder
 			start['url'] = startup.url
