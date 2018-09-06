@@ -6,19 +6,32 @@ from .models import Startup, StartupRegister
 from django.shortcuts import render
 from django.utils.six.moves.urllib.parse import urlsplit
 from django.contrib.auth.decorators import login_required
-
+from decouple import config
 
 @csrf_exempt
 def get_startups(request):
-	startups = Startup.objects.all().values()
-	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	for startup in startups:
-		startup['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(startup['pic'])
-	startups_list = list(startups)
-	return JsonResponse({
-		'success' : True,
-		'startups': startups_list
-		 },safe=False)
+	response = {}
+	startup_list = []
+	if Startup.objects.filter(flag=True).exists():
+		response['success']=True
+		startups = Startup.objects.filter(flag=True)
+		start = {}
+		for startup in startups:
+			print()
+			start['name'] = startup.name
+			start['founder'] = startup.founder
+			start['url'] = startup.url
+			start['pic'] = config('HOST')+str(startup.pic)
+			start['details'] = startup.details
+			startup_list.append(start)
+			start = {}
+		response['startups'] = startup_list
+		response['message'] = 'Startups are available'
+	else:
+		response['success']=False
+		response['message']='Coming Soon'
+	
+	return JsonResponse(response)
 
 def post_startups(request):
 	return render(request,'startup.html')
