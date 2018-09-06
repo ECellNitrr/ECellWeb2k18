@@ -22,18 +22,19 @@ fetch('/startups/list/')
     .then(d => {
         spinner.remove()
         startups = d.startups
+
+        if (startups.length==0) {
+            startups_div.innerHTML = `
+            <p class='text-center display-4'>Coming soon</p>
+            `
+        }
+
         create_startups(startups)
     })
     .catch(err => console.error(err))
 
 // display the startups
 create_startups = (items) => {
-    if(!items) {
-        startups_div.innerHTML = `
-        <p class='text-center display-4'>Coming soon</p>
-        `
-    } 
-
     items.forEach((i) => {
         startups_div.innerHTML += `
         <div class=startup>
