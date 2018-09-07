@@ -6,7 +6,6 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('appprofile', '0002_profile_cumulative_score'),
         ('appprofile', '0003_remove_profile_score'),
     ]
 
