@@ -246,12 +246,10 @@ def activate(request, uidb64, token):
 def weblogin(request):
 	response = {}
 	if request.method == 'POST':
-		
 		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		print(email,password)
-
 		try:
 			username = email
 			print(username)
@@ -274,7 +272,6 @@ def weblogin(request):
 			print(e)
 			response['success'] = False
 			response['message'] = "Invalid Credentials"
-
 	else:
 		response['success']=False
 		response['message']="Please Try Again"
