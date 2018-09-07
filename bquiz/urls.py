@@ -14,4 +14,5 @@ urlpatterns = [
    	#path('calculate/',views.calculate_score,name="calculate"),
     #path('calc/', views.calc_score),
     path('calc/<int:id>/', views.calc_score),
+    path('generate_cummulative_leaderboard/', views.generate_cummulative_leaderboard)
 ]
