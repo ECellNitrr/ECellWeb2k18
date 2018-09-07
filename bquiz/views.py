@@ -243,46 +243,23 @@ def generate_cummulative_leaderboard(request):
     response = {}
     try:
         if request.user.is_superuser:
-
             dis_users = Leader.objects.values('profile').distinct()
             leaderboard = {}
-           
             leaderboard_final = []
-          
-            for u in dis_users:
-               
-                prof = Profile.objects.get(id=u['profile'])
-                print(prof)
-                leader = Leader.objects.filter(profile=u['profile'])
+            for user in dis_users:
+                profile = Profile.objects.get(pk=user['profile'])
+                positions = Leader.objects.filter(profile=profile)
                 score = 0
-                for l in leader:
-                    score = score + l.score
-                print(score)
-                leaderboard[str(prof.user.first_name)+str(prof.user.last_name)] = score
-
-            new_leaderboard =list(leaderboard)
-            temp_leaderboard = sorted(leaderboard, reverse=True)
-            temp_scoreboard = sorted(leaderboard.values(), reverse=True)
-            print(temp_scoreboard)
-
-
-
-            length = len(temp_leaderboard)
-          
-            print(length)
-            for i in range(length):
-              
-                final_leader= {}
-                final_leader['rank'] = i+1
-                final_leader['name'] = temp_leaderboard[i]
-                final_leader['score'] = temp_scoreboard[i]
-                leaderboard_final.append(final_leader)
-
-            print(leaderboard_final)
+                for position in positions:
+                    score = score + position.score
+                leaderboard['name'] = str(profile.user.first_name) + " " + str(profile.user.last_name)
+                leaderboard['score'] = score
+                leaderboard_final.append(leaderboard)
+                leaderboard = {}
+            leaderboard_final = sorted(leaderboard_final, key=lambda i:i['score'], reverse=True)
             response['success'] = True
             response['message'] = 'Leaderboard generated'
             response['leaderboard'] = leaderboard_final
-
         else:
             response['success'] = False
             response['message'] = "You need to be an admin to generate a leaderboard"
@@ -292,64 +269,7 @@ def generate_cummulative_leaderboard(request):
         response['message'] = "It's not you its us. Give us a try again. Please try again later"
     return JsonResponse(response)
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @csrf_exemptc
 def calculate_score(request, *args, **kwargs):
     response = {}
