@@ -27,7 +27,7 @@ login_btn.addEventListener('click', (e) => {
         })
     })
         .then(d => {
-            signup_btn.innerHTML = 'Login'
+            login_btn.innerHTML = 'Login'
             login_btn.disabled = false
             return d.json()
         })
