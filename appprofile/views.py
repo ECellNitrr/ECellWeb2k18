@@ -253,11 +253,12 @@ def weblogin(request):
 		print(email,password)
 
 		try:
-			username = email
+			user = User.objects.get(email=email)
+			username = user.username
 			print(username)
 			user = authenticate(username=username, password=password)
 			login(request,user)
-			user = request.user
+			
 			profile = user.profile
 			status = profile.status
 			request.session['username'] = username
