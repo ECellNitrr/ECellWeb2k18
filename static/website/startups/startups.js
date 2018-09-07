@@ -21,14 +21,15 @@ fetch('/startups/list/')
     .then(d => d.json())
     .then(d => {
         spinner.remove()
-        startups = d.startups
-
-        if (startups.length==0) {
+        console.log(d)
+        if (!d.success) {
             startups_div.innerHTML = `
-            <p class='text-center display-4'>Coming soon</p>
+            <h4 class='text-center'>Coming soon</h4>
             `
+            return false
         }
 
+        startups = d.startups
         create_startups(startups)
     })
     .catch(err => console.error(err))
