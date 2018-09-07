@@ -1,121 +1,97 @@
-.center_the_modal {
-    position: absolute;
-    left: 0;
+.m_basic {
+    display: none;
+}
+
+.m_basic .cover {
+    z-index: 30;
+    position: fixed;
     top: 0;
-    top: -125vh;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, .5);
-    transition: all .7s ease;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .85) !important;
 }
 
-.user_modal {
-    background-color: white;
-    padding: 45px 75px;
-    box-shadow: 5px 5px 50px -5px black;
-    text-align: center;
-}
-
-.user_modal input {
-    text-align: center;
-    width: 350px;
-    border: 2px solid black;
-    padding: 10px;
-    outline: none;
-    display: block;
-    color: black;
-    margin: 6px auto !important;
+.m_basic .content {
+    z-index: 35;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: white;
+    padding: 40px;
+    padding-bottom: 20px;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s ease;
     box-sizing: border-box;
+    width: 400px;
 }
 
-.user_modal h2 {
-    font-weight: bold;
-    margin-bottom: 40px;
-    font-size: 25px;
+.m_basic input {
+    border: 2px solid black;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 8px;
+    outline: none;
 }
 
-.modal_btn {
-    background: black;
-    margin-top: 30px;
-    border: 2px solid black !important;
-    /* border-radius: 2px; */
-    padding: 7px 15px;
+.m_basic button {
+    padding: 10px 30px;
     border: none;
     color: white;
-    outline: none;
     font-weight: bold;
+    background: #000;
+    cursor: pointer;
+    transition: all .5s ease;
 }
 
-.alternative_btn {
-    background: none;
+.m_basic form {
+    position: relative;
+}
+
+.m_basic span {
     font-weight: bold;
-    border: none;
-    outline: none;
     color: blue;
-}
-
-.alternative_btn:focus {
-    outline: none;
-}
-
-#loggedin_user {
-    position: absolute;
-    top: 60px;
-    right: 50px;
     cursor: pointer;
 }
 
-#loggedin_user i {
-    border: 2px solid black;
-    padding: 5px 10px;
-    margin-left: 15px;
-}
-
-#loggedin_user span {
-    text-transform: uppercase;
-    font-size: 20px;
-    align-self: center;
+.close_btn i{
+    position: absolute;
+    top: -56px;
+    right: -56px;
+    padding: 10px 12px;
+    background: red;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 0 10px black;
 }
 
 .close_btn {
-    background: white;
-    border: 2px solid rgb(211, 9, 9) !important;
-    color: rgb(211, 9, 9);
+    cursor: pointer;
 }
 
-@media(max-width: 700px) {
-    h2 {
-        font-size: 20px;
+.show {
+    display: block;
+}
+
+/* .show .content {
+    transform: translate(-50%,-50%) scale(1);    
+} */
+
+button:disabled {
+    background: grey;
+}
+
+@media(max-width: 450px) {
+    .m_basic .content {
+        width: calc(100% - 30px);
+        padding: 40px 5px;
     }
-    
-    #loggedin_user i {
-        display: none;
-    }
-    .user_modal {
-        width: 95vw;
-        padding: 25px 15px;
-        box-sizing: border-box;
-    }
-    .user_modal input {
-        width: 100%;
-    }
-    @media(max-width: 880px){
-        #loggedin_user {
-            display: none;
-            color: black;
-            background: white;
-            text-align: center;
-            top: 17px;
-            left: 15px;
-            z-index: 1001;
-            padding: 10px 15px;
-            font-weight: bold;
-            width: 75%;
-            overflow: hidden;
-            position: fixed;
-        }
+
+    .close_btn i{
+        top: -55px;
+        right: -20px;
     }
 }

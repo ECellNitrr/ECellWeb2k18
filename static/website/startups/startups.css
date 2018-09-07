@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body,
+html {
+    width: 100%;
+    overflow-x: hidden
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Open Sans, "sans-serif"
+}
+
+#coming_soon {
+    font-size: 25px;
+    margin-top: 60px;
+    text-align: center;
+    display: none;
+}
+
+hr {
+    width: 100px;
+    border: 2px solid #000;
+    margin: 10px auto 40px;
+    background: #000
+}
+
+h2 {
+    font-weight: 700;
+    font-family: Open Sans;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase
+}
+
+#startups {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.startup {
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.iholder {
+    width: 250px;
+    height: 200px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.iholder img {
+    max-width: 95%;
+    max-height: 95%;
+    margin: auto;
+}
+
+.startup p {
+    text-align: justify;
+}
+
+.startup button {
+    background: #ddd;
+    z-index: 1;
+    border: none;
+    padding: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+}

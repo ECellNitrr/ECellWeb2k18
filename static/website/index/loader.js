@@ -52,7 +52,6 @@ setTimeout(() => {
     document.querySelector('.loader svg').style.opacity = 0;
     body.style['overflow-y']='auto'
     body.style.height='auto'
-    document.querySelector('#menubar').style.display='block'
 }, 6300)
 // }, 0)    
 

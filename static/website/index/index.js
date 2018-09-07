@@ -1,3 +1,7 @@
+// regex
+var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+var phno_regex = /^[0-9]{10}$/
+
 // adjust the size of the man in the suit
 var cover = document.querySelector('.cover');
 var header = document.querySelector('header');
@@ -39,8 +43,6 @@ submit_btn.addEventListener('click', (e) => {
 
     // put button on the loading state
     submit_btn.innerHTML = '<i class="fa fa-1x fa-spinner fa-spin"></i>'
-    submit_btn.style.width = '75px'
-    submit_btn.style.borderRadius = '10px'
     // disable the btn to prevent multiple requests
     submit_btn.disabled = true
 
@@ -69,14 +71,10 @@ submit_btn.addEventListener('click', (e) => {
             // reenable the submit btn
             submit_btn.disabled = false
             // style the button
-            TweenMax.to("#submit_btn", 1, {
-                width: 'auto',
-                borderRadius: 0,
-                background: 'green',
-                boxShadow: '0 0 30px green'
-            });
+            submit_btn.style.background = 'green'
+            submit_btn.style.boxShadow = '0 0 30px green'
             setTimeout(() => {
-                submit_btn.innerHTML = 'successfully submitted'
+                submit_btn.innerHTML = 'success'
             }, 500)
         })
         .catch(error => {

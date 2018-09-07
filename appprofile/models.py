@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.utils.timezone import utc
+import datetime
 
 
 class WebMsg(models.Model):
@@ -26,7 +27,7 @@ class Profile(models.Model):
         ('MNG', 'Manager'),
         ('HC', 'Head Co-ordinator'),
         ('OC', 'Overall Co-ordinator'),
-        ('CA', 'Campus Ambassador')
+        ('CA', 'Campus Ambassador'),
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -50,6 +51,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_time_diff(self):
+        if self.modified_at:
+            now =datetime.datetime.utcnow().replace(tzinfo=utc)
+            timediff = now - self.modified_at
+            return timediff.total_seconds()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

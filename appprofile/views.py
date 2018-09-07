@@ -3,6 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from .models import Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm, ContactForm
 from django import forms
@@ -82,7 +83,7 @@ def applogin(request, *args, **kwargs):
 			return JsonResponse(error_msg)
 		
 		if user:
-			user.profile.status=1;
+			user.profile.status=1
 			login(request,user)
 			payload = {
 				'id' : user.id,
@@ -108,9 +109,8 @@ def applogin(request, *args, **kwargs):
 @csrf_exempt
 def appregister(request):
 
-	registered = False
 	if request.method == "POST":
-		print(request.body.decode('UTF-8'))
+		#print(request.body.decode('UTF-8'))
 
 		req_data = request.body.decode('UTF-8')
 		# req_data = req_data.decode('utf-8')
@@ -196,7 +196,7 @@ def appregister(request):
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
-		querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 		response = requests.request("GET", url, params=querystring)
 
@@ -244,37 +244,39 @@ def activate(request, uidb64, token):
 
 @csrf_exempt
 def weblogin(request):
-	error_msg = {
-		'success' : False,
-		'message' : 'Invalid credentials'
-		}
+	response = {}
 	if request.method == 'POST':
-		# if 'username' in request.session:
-		# 	print("USER IN SESSION")
-		# 	return
 		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
 		print(email,password)
-
 		try:
-			obj = User.objects.filter(email=email)
-			username = obj[0].username
-		except:
-			return JsonResponse(error_msg)
-
-		user = authenticate(username=username, password=password)
-		login(request,user)
-		request.session['username'] = username
-		return JsonResponse({
-			'success' : True,
-			'message' : 'authentication successfull',
-
-		})
+			user = User.objects.get(email=email)
+			username = user.username
+			print(username)
+			user = authenticate(username=username, password=password)
+			login(request,user, backend='django.contrib.auth.backends.ModelBackend')
+			profile = user.profile
+			status = profile.status
+			request.session['username'] = username
+			response['success'] = True
+			response['message']	= 'Authentication Successfull'
+			response['status'] = status
+			response['first_name'] = user.first_name
+			response['last_name'] = user.last_name
+		except User.DoesNotExist:
+			print("User Doesn't Exist")
+			response['success'] = False
+			response['message'] = "Please create an account to login"
+		except Exception as e:
+			print(e)
+			response['success'] = False
+			response['message'] = "Invalid Credentials"
 	else:
-		print(request.user)
-		return render(request,'login.html')
-
+		response['success']=False
+		response['message']="Please Try Again"
+	
+	return JsonResponse(response)
 
 
 @csrf_exempt
@@ -284,6 +286,8 @@ def webregister(request):
 		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
+		# email = request.POST.get('email')
+		# password = request.POST.get('password')
 		#print(req_data)
 
 		if User.objects.filter(email=email).exists():
@@ -293,18 +297,40 @@ def webregister(request):
 			user.username = email
 			user.email = email
 			user.set_password(password)
+			user.is_active = True
+			user.first_name = req_data['first_name']
+			user.last_name = req_data['last_name']
+			#print(user.first_name)
+			#print(user.last_name)
 			user.save()
-			user.profile.contact_no = req_data['contactno']
+			contact_no = req_data['contact_no']
+			user.profile.contact_no = contact_no
+			otp = str(randint(1000,9999))
+			url = "http://www.merasandesh.com/api/sendsms"
+			message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+			querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
-
+			response = requests.request("GET", url, params=querystring)
+			print(otp)
+			print(response.text)
+			user.profile.otp = otp
+			user.profile.status = False
 			user.profile.save()
+
+
+
 
 			return JsonResponse({
 				'success' : True,
 				'message' : 'registration successfull'
 			})
 	else:
-		return render(request,'reg.html')
+		#return render(request,'reg.html')
+
+		return JsonResponse({
+		'success' :False,
+		'message' : 'form method error',
+		})
 
 
 def logout_view(request):
@@ -321,14 +347,13 @@ def retry_otp(request):
 		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
 		email = req_data['email']
-		password = req_data['password']
 		contact_no = str(req_data['contact_no'])
 		if User.objects.filter(email=email).exists():
 			user = User.objects.get(email=email)
 			otp = str(randint(1000,9999))
 			url = "http://www.merasandesh.com/api/sendsms"
 			message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
-			querystring = {"username":"E_SUMMIT","password":"Summit125@","senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+			querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
 
 			response_otp = requests.request("GET", url, params=querystring)
 
@@ -357,6 +382,119 @@ def retry_otp(request):
 		response['success'] = False
 		response['message'] = "Method not allowed"
 	return JsonResponse(response)
+
+@csrf_exempt
+@login_required
+def web_verify_otp(request):
+	print("OTP verification requested")
+	if request.method == 'POST':
+		
+		req_data = json.loads(request.body.decode('UTF-8'))
+		otp = req_data['otp']
+		# otp = request.POST.get('otp')
+		current_user = request.user
+		print(current_user)
+		profile = Profile.objects.get(user=current_user)
+		contact_no = profile.contact_no
+		contact_no = str(contact_no)
+		contact_no = int(contact_no)
+		totp = profile.otp
+		totp = str(totp)
+		if(totp == otp):
+			profile = Profile.objects.get(user=current_user)
+			profile.contact_no = str(contact_no)
+			profile.status = True
+			current_user.is_active = True
+			current_user.save()
+
+			profile.save()
+			print("OTP Verified")
+			return JsonResponse({'success':True,'message':'OTP verified successfully'})
+		else:
+			print("OTP not verified")
+			return JsonResponse({'success':False,'message':'OTP verification failed'})
+	else:
+		# return render(request,'otp.html')
+		return JsonResponse({
+		'success' :False,
+		'message' : 'form method error',
+		})
+
+
+@csrf_exempt
+@login_required
+def new_conno(request):
+	if request.method == 'POST':
+		req_data = json.loads(request.body.decode('UTF-8'))
+		contact_no = req_data['contact_no']
+		# contact_no = request.POST.get('contact_no')
+		current_user = request.user
+		print(current_user)
+		profile = Profile.objects.get(user=current_user)
+	
+		otp = str(randint(1000,9999))
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+
+		response = requests.request("GET", url, params=querystring)
+		print(otp)
+		print(response.text)
+		profile.contact_no = contact_no
+		profile.otp = otp
+		profile.status = False
+		profile.save()
+
+
+		return JsonResponse({
+			'success' : True,
+			'message' : 'otp sent successfully'
+		})
+	else:
+		#return render(request,'new_conno.html')
+		return JsonResponse({
+		'success' :False,
+		'message' : 'form method error',
+		})
+
+
+@csrf_exempt
+@login_required
+def resend_otp(request):
+	user = request.user
+	profile = user.profile
+	print(profile.get_time_diff())
+	time = profile.get_time_diff()
+	contact_no = profile.contact_no
+	if time <= 150:
+		otp = profile.otp
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+		
+		response = requests.request("GET", url, params=querystring)
+		profile.save()
+		print(otp)
+		print(response.text)
+	else:
+		otp = str(randint(1000,9999))
+		url = "http://www.merasandesh.com/api/sendsms"
+		message = "Your OTP for E-Cell NIT Raipur Website registeration is "+otp+""
+		querystring = {"username":config('MSG_USERNAME'),"password":config('MSG_PASSWORD'),"senderid":"SUMMIT","message": message ,"numbers": contact_no,"unicode":"0"}
+
+		response = requests.request("GET", url, params=querystring)
+		profile.save()
+		print(otp)
+		print(response.text)
+
+	return JsonResponse({
+		'success' :True,
+		'message' : 'OTP sent successfully',
+		})
+
+
+
+
 			
 
 @csrf_exempt
@@ -427,7 +565,7 @@ def password(request):
 	if request.method == 'POST':
 		form = PasswordForm(request.user, request.POST)
 		if form.is_valid():
-			form.save()
+			form.save()	
 			update_session_auth_hash(request,'Your password was succesfully updated!')
 			return redirect('password')
 
