@@ -6,7 +6,7 @@ class Startup(models.Model):
 	email = models.CharField(max_length=256)
 	pic = models.ImageField(upload_to='static/uploads/startups')
 	contact = models.TextField(max_length=13, null=True, blank=True)
-	url = models.URLField(null=False, blank=False)
+	url = models.URLField(null=False, blank=False, default="https://ecell.nitrr.ac.in")
 	founder = models.CharField(max_length=256)
 	address = models.TextField()
 	flag = models.BooleanField(default=False)
