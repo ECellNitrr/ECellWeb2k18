@@ -21,8 +21,20 @@ html {
     box-shadow: 0 0 35px -10px black;
 }
 
+#winners {
+    border: 2px dashed black;
+    padding: 10px 40px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
 @media(max-width: 700px) {
     #map-frame{
         box-shadow: none;
+    }
+
+    #winners {
+        padding: 10px;
     }
 }

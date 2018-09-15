@@ -13,6 +13,7 @@ urlpatterns = [
     path('message/',views.message),
     path('gallery/', views.gallerypage),
     path('startups/', TemplateView.as_view(template_name='website/startups.html')),
+    path('winners/', TemplateView.as_view(template_name='website/winners.html')),
     path('terms/', views.terms_page),
     path('privacy_policy/', views.privacy_policy_page),
     path('applogin/',views.applogin, name='applogin'),
