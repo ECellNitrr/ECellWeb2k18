@@ -45,7 +45,13 @@ hr {
         letter-spacing: 2px;
         text-align: left;
         font-size: 18px;
+        margin-left: 40px;
         text-transform: uppercase;
+    }
+
+    ol {
+        text-align: left;
+        margin-left: 90px;
     }
 }
 
