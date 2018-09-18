@@ -545,10 +545,14 @@ def ca_certi(request):
 				print(name)
 				return render(request,'ca1.html',{'name':name,})
 			else:
-				print('Not a CA or unverified account')
+				error = 'You are not authorised to access this page'
+				print('You are not authorised to access this page')
+
+				return render(request,'ca_form.html',{'error':error,})
 		except User.DoesNotExist:
 			print("not a registered email")
-			return render(request,'ca_form.html')
+			error = 'Not a registered email'
+			return render(request,'ca_form.html',{'error':error,})
 			
 	else:
 		return render(request,'ca_form.html')
