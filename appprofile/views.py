@@ -529,6 +529,33 @@ def verify_otp(request, *args, **kwargs):
 	print("Method not valid")
 	return JsonResponse({'success':False,'message':'Invalid method'})
 
+
+
+
+def ca_certi(request):
+	if request.method == 'POST':
+		email = request.POST.get('email')
+		try:
+			req_user = User.objects.get(email=email)
+			if req_user.profile.status == 1 and req_user.profile.user_type == 'CA':
+				print('YEs')
+				first_name = req_user.first_name
+				last_name = req_user.last_name
+				name = str(first_name)+" "+str(last_name)
+				print(name)
+				return render(request,'ca1.html',{'name':name,})
+			else:
+				print('Not a CA or unverified account')
+		except User.DoesNotExist:
+			print("not a registered email")
+			return render(request,'ca_form.html')
+			
+	else:
+		return render(request,'ca_form.html')
+
+	
+
+
 def social_settings(request):
 	user = request.user
 	try:

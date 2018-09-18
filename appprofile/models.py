@@ -47,6 +47,7 @@ class Profile(models.Model):
     modified_at = models.DateTimeField(auto_now=True, editable=False)
     #last_login = models.DateTimeField(auto_now=True, editable=False)
     otp = models.CharField(max_length=4, blank=True, null=True)
+    college = models.CharField(max_length=80, blank=True, null=True)
 
 
     def __str__(self):
