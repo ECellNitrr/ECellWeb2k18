@@ -9,19 +9,8 @@ var s_cno = document.querySelector('#contact_no')
 var s_p1 = document.querySelector('#designation')
 var s_p2 = document.querySelector('#remarks')
 
-// var o_otp = document.querySelector('#o_otp')
-
-// signup
-// console.log(if(signup_btn))
 signup_btn.addEventListener('click', (e) => {
     e.preventDefault()
-    // if input is not valid return
-    // if (!s_validator()) {
-
-    //     return false
-    // }
-
-    // signup_btn.innerHTML = '<i class="fa fa-cog fa-spin"></i>'
     signup_btn.disabled = true
 
     fetch("/speakers/new_speaker/add", {
@@ -55,7 +44,4 @@ signup_btn.addEventListener('click', (e) => {
                 alert(d.message)
             }
         })
-        // .catch(err => {
-        //     console.error(err)
-        // })
 })

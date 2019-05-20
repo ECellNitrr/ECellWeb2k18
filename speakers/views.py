@@ -73,10 +73,6 @@ def add_speakers(request):
 					print('erroer')
 					response['success'] = False
 					response['message'] = 'Speaker already exists.'
-					# print('saving')
-					
-					# response['success']=True
-					# response['message']= 'Speaker added successfully'
 				else:
 					print('saving')
 					speaker.save()
@@ -86,12 +82,8 @@ def add_speakers(request):
 				response['message'] = 'You are not authorized to add speaker.'
 				print('not authorized')
 		else:
-			response['message'] = 'You are not authorized to add speaker.'
+			response['message'] = 'This action requires you to sign in..'
 			print('not authorized')
-
-			# print('erroer')
-			# response['success'] = False
-			# response['message'] = 'Speaker already exists.'
 	else:
 		response['success'] = False
 		response['message'] = 'Form method error'
@@ -145,36 +137,3 @@ def retrieve_speakers(request):
 		response['success'] = False
 		response['message']= 'You are not authorized to access this data'
 	return JsonResponse(response)
-		
-		
-
-  
-# Start from the first cell. 
-# # Rows and columns are zero indexed. 
-# row = 0
-# column = 0
-  
-# content = ["ankit", "rahul", "priya", "harshita", 
-#                     "sumit", "neeraj", "shivam"] 
-  
-# # iterating through content list 
-# for item in content : 
-  
-#     # write operation perform 
-#     worksheet.write(row, column, item) 
-  
-#     # incrementing the value of row by one 
-#     # with each iteratons. 
-#     row += 1
-      
-# workbook.close() 
-
-
-def download(request, path):
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            return response
-    raise Http404
