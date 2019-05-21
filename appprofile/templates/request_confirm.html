@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+    <head>
+        <title> Confirm requests </title>
+    </head>
+    <body>
+        {% for ca_request in ca_requests %}
+            <img src="{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;">
+            <h3>{{ca_request.social_platform}}</h3>
+            <a href="#" class="btn">Approve</a>
+            <a href="#" class="btn"> Reject</a>
+            <br>
+        {% endfor %}
+    </body>
+</html>

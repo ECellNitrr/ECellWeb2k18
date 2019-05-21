@@ -1,6 +1,6 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
-from .models import Profile
+from .models import Profile,CA_Requests
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -509,15 +509,24 @@ def password(request):
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
 
-@login_req
+# @login_req
 @csrf_exempt
 def request_approval(request):
-	if request.user.user_type == 'CA':
+	# if request.user.user_type == 'CA':
 		if request.method == 'POST':
 			form = RequestApprovalForm(request.POST, request.FILES)
 			if form.is_valid():
 				print("Form valid")
 				form.save()
 		return render(request, 'request_approval.html')
-	else:
-		return redirect('loginweb')
+	# else:
+		#return redirect('loginweb')
+
+#@login_req
+@csrf_exempt
+def confirm_approval(request):
+	# if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
+		ca_requests = CA_Requests.objects.filter(approve_flag=False)
+		return render(request, 'request_confirm.html', {'ca_requests': ca_requests})
+	# else:
+	#	return redirect('loginweb')
