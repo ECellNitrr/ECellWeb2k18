@@ -590,9 +590,6 @@ def decline_request(request,id):
 		ss = get_object_or_404(CA_Requests, id=id)   
 		ss.status_flag = -1
 		ss.save()
-		return JsonResponse({
-			'success':True,
-			'message':'Request declined'
-	}) 
+		return redirect('confirm_approval')
 	else: 
 		return redirect('loginweb')
