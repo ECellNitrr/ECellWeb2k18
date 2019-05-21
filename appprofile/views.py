@@ -509,59 +509,74 @@ def password(request):
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
 
-# @login_req
 @csrf_exempt
 def request_approval(request):
-	# if request.user.user_type == 'CA':
+	if request.user.profile.user_type == 'CA':
 		if request.method == 'POST':
 			form = RequestApprovalForm(request.POST, request.FILES)
 			if form.is_valid():
-				print("Form valid")
-				form.save()
-		return render(request, 'request_approval.html')
-	# else:
-		#return redirect('loginweb')
+				obj = form.save()
+				obj.user = request.user.profile
+				obj.save()
+		profile = request.user.profile
+		try:
+			total_requests = profile.requests.all().count()
+			accepted_requests = profile.requests.filter(status_flag=1).count()
+			rejected_requests = profile.requests.filter(status_flag=-1).count()
+			pending_requests = profile.requests.filter(status_flag=0).count()
+		except:
+			total_requests = 0
+			accepted_requests = 0
+			rejected_requests = 0
+			pending_requests = 0
 
-#@login_req
+		return render(request, 'base_portal.html',context={
+			't_req':total_requests,
+			'a_req':accepted_requests,
+			'r_req':rejected_requests,
+			'p_req':pending_requests,
+			})
+	else:
+		return redirect('loginweb')
+
 @csrf_exempt
 def confirm_approval(request):
-	# if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
-		ca_requests = CA_Requests.objects.filter(approve_flag=False)
+	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
+		ca_requests = CA_Requests.objects.filter(status_flag=0)
 		return render(request, 'request_confirm.html', {'ca_requests': ca_requests})
-	# else:
-	#	return redirect('loginweb')
+	else:
+		return redirect('loginweb')
 
-#@login_req
 @csrf_exempt
 def approve_request(request,id):
-	#if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
+	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
 		ss = get_object_or_404(CA_Requests, id=id)   
-		ss.approve_flag = True
+		ss.status_flag = 1
 		if ss.social_platform == 'FB':
-			request.user.profile.ca_fb_score +=5
+			ss.user.ca_fb_score +=5
 		elif ss.social_platform == 'LI':
-			request.user.profile.ca_li_score +=5
+			ss.user.ca_li_score +=5
 		elif ss.social_platform == 'TW':
-			request.user.profile.ca_tw_score +=5
+			ss.user.ca_tw_score +=5
 		else:
-			request.user.profile.ca_wp_score +=5
+			ss.user.ca_wp_score +=5
 		ss.save()
 		return JsonResponse({
 			'success':True,
 			'message':'Request approved'
 	}) 
-	#else:
-	#	return redirect('loginweb')
+	else:
+		return redirect('loginweb')
 
-#@login_req
 @csrf_exempt
 def decline_request(request,id):
-	#if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
+	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
 		ss = get_object_or_404(CA_Requests, id=id)   
-		ss.delete()
+		ss.status_flag = -1
+		ss.save()
 		return JsonResponse({
 			'success':True,
 			'message':'Request declined'
 	}) 
-	#else: 
-	#	return redirect('loginweb')
+	else: 
+		return redirect('loginweb')
