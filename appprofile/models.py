@@ -21,6 +21,7 @@ class CA_Requests(models.Model):
         ('FB', 'Facebook'),
         ('TW', 'Twitter'),
         ('LI', 'LinkedIn'),
+        ('WP', 'Whatsapp'),
     )
 
     screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
@@ -61,6 +62,7 @@ class Profile(models.Model):
     ca_fb_score = models.IntegerField(default=0)    #Facebook Score
     ca_tw_score = models.IntegerField(default=0)    #Twitter Score
     ca_li_score = models.IntegerField(default=0)    #LinkedIn Score
+    ca_wp_score = models.IntegerField(default=0)    #Whatsapp Score
 
     cumulative_score = models.IntegerField(default=0)   #To Store Total Score of Bquiz
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
