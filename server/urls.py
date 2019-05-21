@@ -23,6 +23,7 @@ from appprofile import views
 from django.contrib.auth import views as auth_views
 from app import views as app_views
 from events import views as events_views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,6 +49,6 @@ urlpatterns = [
     url(r'^static/(?P<path>.*)$', stat.serve, {'document_root': settings.STATIC_ROOT}),
     path('',include('appprofile.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = settings.SITE_HEADER

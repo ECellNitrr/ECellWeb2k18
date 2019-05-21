@@ -170,6 +170,9 @@ STATICFILES_DIRS = [STATIC_DIR,]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 SITE_HEADER = os.environ.get('SITE_HEADER', 'Entrepreneurship Cell NIT Raipur')
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = config('EMAIL_HOST')

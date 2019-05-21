@@ -23,8 +23,9 @@ class CA_Requests(models.Model):
         ('LI', 'LinkedIn'),
     )
 
-    screenshot = models.ImageField(upload_to='static/uploads/screenshots', null=False, blank=False)
+    screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
     social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
+    approve_flag = models.BooleanField(default = False)
 
 # Profile Model
 class Profile(models.Model):
