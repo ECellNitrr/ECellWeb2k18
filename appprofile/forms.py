@@ -7,6 +7,7 @@ SOCIAL_TYPE = (
         ('FB', 'Facebook'),
         ('TW', 'Twitter'),
         ('LI', 'LinkedIn'),
+		('WP', 'Whatsapp'),
     )
 
 class UserForm(forms.ModelForm):

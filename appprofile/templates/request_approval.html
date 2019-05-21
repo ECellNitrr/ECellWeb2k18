@@ -11,13 +11,12 @@
 <form enctype="multipart/form-data" method="POST">
 			{% csrf_token %}
 			<select name="social_platform">
-				<option value="volvo" name="FB">Facebook</option>
-				<option value="saab" name="LI">Linkedin</option>
-				<option value="fiat" name="TW">Twitter</option>
-				<option value="audi" name="WP">Whatsapp</option>
+				<option value="FB" >Facebook</option>
+				<option value="LI" >Linkedin</option>
+				<option value="TW" >Twitter</option>
+				<option value="WP" >Whatsapp</option>
 			</select>
 			
-            <!--<input type="file"  name="screenshot" placeholder="Password" >-->
             <input type="file" name="screenshot" required id="id_screenshot" />
            
 			<input type="submit" name="" value="Submit Request">

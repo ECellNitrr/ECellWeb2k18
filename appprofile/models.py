@@ -12,21 +12,7 @@ class WebMsg(models.Model):
     msg = models.TextField()
 
     def __str__(self):
-        return self.name
-
-
-class CA_Requests(models.Model):
-
-    SOCIAL_TYPE = (
-        ('FB', 'Facebook'),
-        ('TW', 'Twitter'),
-        ('LI', 'LinkedIn'),
-        ('WP', 'Whatsapp'),
-    )
-
-    screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
-    social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
-    approve_flag = models.BooleanField(default = False)
+        return self.name    
 
 # Profile Model
 class Profile(models.Model):
@@ -56,7 +42,6 @@ class Profile(models.Model):
         default='GST'
     )
     
-    ca_requests = models.ForeignKey(CA_Requests, related_name='user', on_delete=models.CASCADE, null=True, blank=True)
     # Scores for Campus Ambassadors
     ca_score = models.IntegerField(default=0)       #Total Score
     ca_fb_score = models.IntegerField(default=0)    #Facebook Score
@@ -87,3 +72,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+class CA_Requests(models.Model):
+
+    SOCIAL_TYPE = (
+        ('FB', 'Facebook'),
+        ('TW', 'Twitter'),
+        ('LI', 'LinkedIn'),
+        ('WP', 'Whatsapp'),
+    )
+
+    screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
+    social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
+    status_flag = models.IntegerField(default = 0)
+    user = models.ForeignKey(Profile, related_name='requests', on_delete=models.CASCADE, null=True, blank=True)
