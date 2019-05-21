@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Profile,WebMsg
+from .models import Profile,WebMsg,CA_Requests
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'user_type', 'contact_no', 'status')
@@ -11,3 +11,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(WebMsg)
+admin.site.register(CA_Requests)

@@ -14,6 +14,18 @@ class WebMsg(models.Model):
     def __str__(self):
         return self.name
 
+
+class CA_Requests(models.Model):
+
+    SOCIAL_TYPE = (
+        ('FB', 'Facebook'),
+        ('TW', 'Twitter'),
+        ('LI', 'LinkedIn'),
+    )
+
+    screenshot = models.ImageField(upload_to='static/uploads/screenshots', null=False, blank=False)
+    social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
+
 # Profile Model
 class Profile(models.Model):
     class Meta:
@@ -41,11 +53,17 @@ class Profile(models.Model):
         choices=USER_TYPE,
         default='GST'
     )
-    #score = models.IntegerField(default=0)   #To Store Daily Score of Bquiz
+    
+    ca_requests = models.ForeignKey(CA_Requests, related_name='user', on_delete=models.CASCADE, null=True, blank=True)
+    # Scores for Campus Ambassadors
+    ca_score = models.IntegerField(default=0)       #Total Score
+    ca_fb_score = models.IntegerField(default=0)    #Facebook Score
+    ca_tw_score = models.IntegerField(default=0)    #Twitter Score
+    ca_li_score = models.IntegerField(default=0)    #LinkedIn Score
+
     cumulative_score = models.IntegerField(default=0)   #To Store Total Score of Bquiz
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
-    #last_login = models.DateTimeField(auto_now=True, editable=False)
     otp = models.CharField(max_length=4, blank=True, null=True)
 
 

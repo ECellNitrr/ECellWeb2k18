@@ -1,7 +1,13 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, CA_Requests
 from django.http import JsonResponse
+
+SOCIAL_TYPE = (
+        ('FB', 'Facebook'),
+        ('TW', 'Twitter'),
+        ('LI', 'LinkedIn'),
+    )
 
 class UserForm(forms.ModelForm):
 	username = forms.CharField(required=False)
@@ -36,3 +42,10 @@ class ContactForm(forms.ModelForm):
 	class Meta():
 		model = Profile
 		fields = ('contact_no',)
+
+class RequestApprovalForm(forms.ModelForm):
+	screenshot = forms.ImageField(required=True)
+	social_platform = forms.CharField()
+	class Meta():
+		model = CA_Requests
+		fields = ('screenshot','social_platform')

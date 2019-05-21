@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import UserForm, UserProfileInfoForm, ContactForm
+from .forms import UserForm, UserProfileInfoForm, ContactForm, RequestApprovalForm
 from django import forms
 from django.shortcuts import render, redirect
 from django.contrib.sites.shortcuts import get_current_site
@@ -110,11 +110,7 @@ def applogin(request, *args, **kwargs):
 def appregister(request):
 
 	if request.method == "POST":
-		#print(request.body.decode('UTF-8'))
-
 		req_data = request.body.decode('UTF-8')
-		# req_data = req_data.decode('utf-8')
-		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
 		email = req_data['email']
 		password = req_data['password']
@@ -146,53 +142,12 @@ def appregister(request):
 			password=password,
 			is_active=False
 			)
-		#user = user.save(commit=False)
-		# user.username = first+last+conno
-		# user = user.save()
-		# user.set_password(password)
-		# user.is_active=False;
+
 		user.save()
 
-		#User created, Creating a linked Profile of user
-		#user.profile.avatar = req_data['avatar']
 		user.profile.contact_no = req_data['contact_no']
-		#user.profile.facebook = req_data['facebook']
-		#user.profile.linkedin = req_data['linkedin']
 		user.profile.status=0
 	
-		#p = multiprocessing.Process(target=send_mail,args=(email,user,))
-		#p.start()
-		# send_mail(email, user)
-
-		# current_site = get_current_site(request)
-		# mail_subject = "Activate your Ecell account"
-		# message = render_to_string('acc_active_email.html',{
-		# 	'user':user,
-		# 	'domain':current_site.domain,
-		# 	'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-		# 	'token':account_activation_token.make_token(user),
-		# })
-		# to_email = user.email
-		# email = EmailMessage(mail_subject,message,to=[to_email])
-		# email.send()
-
-
-		# import http.client
-
-
-
-		# conn = http.client.HTTPConnection("api.msg91.com")
-
-
-		# stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
-		# stringmsg=stringmsg+conno
-		# stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
-		
-		# msg = "Your otp is: "
-		# msg=msg+otp
-		# msg = str(msg)
-		# print(msg)
-		# stringmsg=stringmsg+ms
 		otp = str(randint(1000,9999))
 		url = "http://www.merasandesh.com/api/sendsms"
 		message = "Your OTP for E-Cell NIT Raipur APP is "+otp+""
@@ -203,15 +158,11 @@ def appregister(request):
 		print(response.text)
 		user.profile.otp = otp
 		user.profile.save()
-		# res = conn.getresponse()
-		# data = res.read()
-		# print(data.decode("utf-8"))
 		print(otp)
 		payload = {
 			'id' : user.id,
 			'email': user.email,
 		}
-
 		jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 		token = jwt_token.decode('utf-8')
 		# print(token)
@@ -286,9 +237,6 @@ def webregister(request):
 		req_data = json.loads(request.body.decode('UTF-8'))
 		email = req_data['email']
 		password = req_data['password']
-		# email = request.POST.get('email')
-		# password = request.POST.get('password')
-		#print(req_data)
 
 		if User.objects.filter(email=email).exists():
 			return JsonResponse({'success':False,'message':'Email already exists'})
@@ -300,8 +248,6 @@ def webregister(request):
 			user.is_active = True
 			user.first_name = req_data['first_name']
 			user.last_name = req_data['last_name']
-			#print(user.first_name)
-			#print(user.last_name)
 			user.save()
 			contact_no = req_data['contact_no']
 			user.profile.contact_no = contact_no
@@ -325,8 +271,6 @@ def webregister(request):
 				'message' : 'registration successfull'
 			})
 	else:
-		#return render(request,'reg.html')
-
 		return JsonResponse({
 		'success' :False,
 		'message' : 'form method error',
@@ -343,8 +287,6 @@ def retry_otp(request):
 	response = {}
 	if request.method == "POST":
 		req_data = request.body.decode('UTF-8')
-		# req_data = req_data.decode('utf-8')
-		# req_data = ast.literal_eval(req_data)
 		req_data = json.loads(req_data)
 		email = req_data['email']
 		contact_no = str(req_data['contact_no'])
@@ -360,9 +302,6 @@ def retry_otp(request):
 			print(response_otp.text)
 			user.profile.otp = otp
 			user.profile.save()
-			# res = conn.getresponse()
-			# data = res.read()
-			# print(data.decode("utf-8"))
 			print(otp)
 			payload = {
 				'id' : user.id,
@@ -371,7 +310,6 @@ def retry_otp(request):
 
 			jwt_token = jwt.encode(payload,conf_settings.SECRET_KEY)
 			token = jwt_token.decode('utf-8')
-			# print(token)
 			response['success'] = True
 			response['message'] = "OTP resent"
 			response['token'] = token
@@ -391,7 +329,6 @@ def web_verify_otp(request):
 		
 		req_data = json.loads(request.body.decode('UTF-8'))
 		otp = req_data['otp']
-		# otp = request.POST.get('otp')
 		current_user = request.user
 		print(current_user)
 		profile = Profile.objects.get(user=current_user)
@@ -414,7 +351,6 @@ def web_verify_otp(request):
 			print("OTP not verified")
 			return JsonResponse({'success':False,'message':'OTP verification failed'})
 	else:
-		# return render(request,'otp.html')
 		return JsonResponse({
 		'success' :False,
 		'message' : 'form method error',
@@ -427,7 +363,6 @@ def new_conno(request):
 	if request.method == 'POST':
 		req_data = json.loads(request.body.decode('UTF-8'))
 		contact_no = req_data['contact_no']
-		# contact_no = request.POST.get('contact_no')
 		current_user = request.user
 		print(current_user)
 		profile = Profile.objects.get(user=current_user)
@@ -451,7 +386,6 @@ def new_conno(request):
 			'message' : 'otp sent successfully'
 		})
 	else:
-		#return render(request,'new_conno.html')
 		return JsonResponse({
 		'success' :False,
 		'message' : 'form method error',
@@ -574,3 +508,16 @@ def password(request):
 	else:
 		form = PasswordForm(request.user)
 	return render(request,'password.html',{'form':form,})
+
+@login_req
+@csrf_exempt
+def request_approval(request):
+	if request.user.user_type == 'CA':
+		if request.method == 'POST':
+			form = RequestApprovalForm(request.POST, request.FILES)
+			if form.is_valid():
+				print("Form valid")
+				form.save()
+		return render(request, 'request_approval.html')
+	else:
+		return redirect('loginweb')
