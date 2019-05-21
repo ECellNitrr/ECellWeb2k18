@@ -2,17 +2,23 @@
 <html>
     <head>
         <title> Confirm requests </title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="/static/assets/css/confirm.css" rel="stylesheet" />
     </head>
     <body>
+    <br>
         {% if ca_requests.count == 0 %}
-            <h1> No more screenshots to check! </h1>
+            <h1 id="alt"> No more screenshots to check! </h1>
         {% else %}
         {% for ca_request in ca_requests %}
-            <img src="{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;">
+            <div class="sswrapper">
+            <img src="{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
             <h3>{{ca_request.social_platform}}</h3>
-            <a href="{% url 'approve_request' ca_request.pk %}" class="btn">Approve</a>
-            <a href="{% url 'decline_request' ca_request.pk %}" class="btn"> Reject</a>
-            <br>
+            <a href="{% url 'approve_request' ca_request.pk %}" class="btn btn-success">Approve</a>
+            <a href="{% url 'decline_request' ca_request.pk %}" class="btn btn-danger"> Reject</a>
+            </div>
+            <br><br>
         {% endfor %}
         {% endif %}
     </body>

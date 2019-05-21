@@ -561,10 +561,7 @@ def approve_request(request,id):
 		else:
 			ss.user.ca_wp_score +=5
 		ss.save()
-		return JsonResponse({
-			'success':True,
-			'message':'Request approved'
-	}) 
+		return redirect('confirm_approval')
 	else:
 		return redirect('loginweb')
 
