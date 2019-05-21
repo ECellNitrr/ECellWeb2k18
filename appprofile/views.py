@@ -540,9 +540,28 @@ def request_approval(request):
 		return redirect('loginweb')
 
 @csrf_exempt
-def confirm_approval(request):
+def user_request_list(request):
 	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
-		ca_requests = CA_Requests.objects.filter(status_flag=0)
+		profiles = Profile.objects.all()
+		user_data = []
+		for profile in profiles:
+			data = {}
+			if profile.requests.count():
+				data['username'] = profile.user.username
+				data['first'] = profile.user.first_name
+				data['last'] = profile.user.last_name
+				data['email'] = profile.user.email
+				data['id'] = profile.id
+				data['pending'] = profile.requests.filter(status_flag=0).count()
+				user_data.append(data)
+		return render(request, 'userlist.html',{'users': user_data})
+	else:
+		return redirect('loginweb')
+
+@csrf_exempt
+def confirm_approval(request, id):
+	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
+		ca_requests = CA_Requests.objects.filter(status_flag=0, user__pk=id)
 		return render(request, 'request_confirm.html', {'ca_requests': ca_requests})
 	else:
 		return redirect('loginweb')

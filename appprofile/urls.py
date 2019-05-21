@@ -29,7 +29,8 @@ urlpatterns = [
     
     #Below Routes are for CA Portal
     path('request_approval/', views.request_approval, name='request_approval'),
-    path('request_confirm/', views.confirm_approval, name='confirm_approval'),
+    path('request_list/', views.user_request_list, name='request_list'),
+    path('request_confirm/<int:id>/', views.confirm_approval, name='confirm_approval'),
     path('approve_request/<int:id>/',views.approve_request, name='approve_request'),
     path('decline_request/<int:id>/',views.decline_request, name='decline_request'),
     
