@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import UserForm, UserProfileInfoForm, ContactForm, RequestApprovalForm
 from django import forms
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -529,4 +529,39 @@ def confirm_approval(request):
 		ca_requests = CA_Requests.objects.filter(approve_flag=False)
 		return render(request, 'request_confirm.html', {'ca_requests': ca_requests})
 	# else:
+	#	return redirect('loginweb')
+
+#@login_req
+@csrf_exempt
+def approve_request(request,id):
+	#if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
+		ss = get_object_or_404(CA_Requests, id=id)   
+		ss.approve_flag = True
+		if ss.social_platform == 'FB':
+			request.user.profile.ca_fb_score +=5
+		elif ss.social_platform == 'LI':
+			request.user.profile.ca_li_score +=5
+		elif ss.social_platform == 'TW':
+			request.user.profile.ca_tw_score +=5
+		else:
+			request.user.profile.ca_wp_score +=5
+		ss.save()
+		return JsonResponse({
+			'success':True,
+			'message':'Request approved'
+	}) 
+	#else:
+	#	return redirect('loginweb')
+
+#@login_req
+@csrf_exempt
+def decline_request(request,id):
+	#if request.user.user_type == 'EXE' or request.user.user_type == 'MNG' or request.user.user_type == 'OC' or request.user.user_type == 'HC':
+		ss = get_object_or_404(CA_Requests, id=id)   
+		ss.delete()
+		return JsonResponse({
+			'success':True,
+			'message':'Request declined'
+	}) 
+	#else: 
 	#	return redirect('loginweb')
