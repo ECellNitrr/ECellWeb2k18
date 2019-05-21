@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+<form enctype="multipart/form-data" method="POST">
+			{% csrf_token %}
+		
+			<input type="text" name="social_platform" placeholder="Social Platform">
+            <!--<input type="file"  name="screenshot" placeholder="Password" >-->
+            <input type="file" name="screenshot" required id="id_screenshot" />
+           
+			<input type="submit" name="" value="Submit Request">
+</form>
+
+</body>
+</html>
