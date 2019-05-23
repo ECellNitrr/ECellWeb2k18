@@ -140,7 +140,7 @@ i {
 
 }
 
-.category a:hover {
+.category_title a:hover {
     font-weight: bold;
     color: black;
 }
