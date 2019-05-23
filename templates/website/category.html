@@ -1,0 +1,54 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery"> {% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Gallery | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+    <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+
+    <link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}"> {% endblock css %}
+<!-- js -->
+{% block js %}
+{% endblock js %}
+<!-- content -->
+{% block content %}
+    <h2 class="text-center font-weight-bold">Gallery</h2>
+    <hr>
+    {% include 'website/spinner.html' %}
+
+    {#    let load the js here #}
+    <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+
+
+    <div id="gallery" class="container">
+        <div id="lightgallery">
+
+        </div>
+    </div>
+
+    <script>
+    const cid = {{ cid }}
+    </script>
+
+
+    <script src="{% static 'website/gallery/category.js' %}"></script>
+
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+
+{% endblock content %}
