@@ -1,7 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b14b15b-4322-48ae-a2e2-8d41170f800b" name="Default Changelist" comment="" />
+    <list default="true" id="9b14b15b-4322-48ae-a2e2-8d41170f800b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/10a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/10ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/11a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/11ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/12a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/12ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/13a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/13ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/14a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/14ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/15a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/15ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/16a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/16ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/17a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/17ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/18a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/18ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/19a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/19ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/1a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/1ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/20a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/20ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/21a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/21ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/22a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/22ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/23a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/23ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/24a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/24ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/25a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/25ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/26a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/26ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/27a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/27ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/28a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/28ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/29a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/29ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/2a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/2ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/30a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/30ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/31a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/31ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/32a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/32ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/33a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/33ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/34a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/34ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/35a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/35ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/36a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/36ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/37a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/37ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/38a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/38ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/39a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/39ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/3a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/3ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/40a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/40ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/41a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/41ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/42a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/42ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/43a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/43ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/44a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/44ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/45a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/45ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/46a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/46ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/47a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/47ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/4a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/4ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/5a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/5ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/6a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/6ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/7a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/7ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/8a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/8ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/9a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/2ES18 Speakers and Sponsors_720/9ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/11a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/11ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/12a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/12ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/13a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/13ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/14a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/14ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/15a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/15ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/16a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/16ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/17a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/17ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/18a.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/3ES18 Highlights_720/18ab.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/10a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/10ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/11a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/11ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/12a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/12ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/13a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/13ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/14a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/14ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/15a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/15ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/16a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/16ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/17a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/17ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/18a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/18ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/19a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/19ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/1a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/1ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/20a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/20ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/21a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/21ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/22a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/22ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/23a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/23ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/24a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/24ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/25a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/25ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/26a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/26ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/27a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/27ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/28a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/28ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/29a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/29ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/2a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/2ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/30a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/30ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/31a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/31ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/32a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/32ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/33a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/33ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/34a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/34ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/35a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/35ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/36a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/36ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/3a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/3ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/4a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/4ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/5a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/5ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/6a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/6ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/7a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/7ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/8a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/8ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/9a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gallery_imgs/4E-Summit17_720/9ab.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/gallery/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gallery/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/gallery/gallery.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gallery/gallery.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/gallery/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gallery/gallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/website/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/website/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/website/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/website/gallery.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +218,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2955">
+            <state relative-caret-position="327">
               <caret line="199" selection-start-line="199" selection-end-line="199" />
             </state>
           </provider>
@@ -39,8 +227,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/gallery/gallery.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state>
+              <caret column="39" selection-start-column="39" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -48,7 +236,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appprofile/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="-15">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -57,11 +245,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appprofile/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="596" column="57" selection-start-line="596" selection-start-column="57" selection-end-line="596" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/gallery/category.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="102">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/website/gallery/gallery.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="126" column="1" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/website/gallery.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/website/category.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -72,6 +299,8 @@
     <findStrings>
       <find>static</find>
       <find>page</find>
+      <find>color</find>
+      <find>galleryy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,12 +314,13 @@
         <option value="$PROJECT_DIR$/static/website/index/about.css" />
         <option value="$PROJECT_DIR$/templates/website/index.html" />
         <option value="$PROJECT_DIR$/server/settings.py" />
-        <option value="$PROJECT_DIR$/templates/website/gallery.html" />
-        <option value="$PROJECT_DIR$/static/website/gallery/gallery.js" />
         <option value="$PROJECT_DIR$/appprofile/urls.py" />
         <option value="$PROJECT_DIR$/appprofile/views.py" />
         <option value="$PROJECT_DIR$/templates/website/category.html" />
         <option value="$PROJECT_DIR$/static/website/gallery/category.js" />
+        <option value="$PROJECT_DIR$/static/website/gallery/gallery.css" />
+        <option value="$PROJECT_DIR$/static/website/gallery/gallery.js" />
+        <option value="$PROJECT_DIR$/templates/website/gallery.html" />
       </list>
     </option>
   </component>
@@ -108,7 +338,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -130,6 +359,12 @@
               <item name="ECellWeb2k18" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/Desktop/ECellWeb2k18" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ECellWeb2k18" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/ECellWeb2k18" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="gallery_imgs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="ECellWeb2k18" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -159,12 +394,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mateverse_1_beta" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -229,16 +465,18 @@
       <workItem from="1558548019636" duration="1150000" />
       <workItem from="1558549425536" duration="14116000" />
       <workItem from="1558590645433" duration="57000" />
+      <workItem from="1558626125734" duration="4836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15323000" />
+    <option name="totallyTimeSpent" value="20159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25778133" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26177174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -252,7 +490,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -312,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/common/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1337">
@@ -372,47 +603,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/website/gallery.html">
+    <entry file="file://$PROJECT_DIR$/static/website/common/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appprofile/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="49" column="60" lean-forward="true" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/website/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="199" selection-start-line="199" selection-end-line="199" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/gallery/gallery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="630">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appprofile/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="-15">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -420,10 +620,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/website/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appprofile/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="596" column="57" selection-start-line="596" selection-start-column="57" selection-end-line="596" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/gallery/category.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="102">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/gallery/gallery.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="126" column="1" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/gallery/gallery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/website/gallery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>

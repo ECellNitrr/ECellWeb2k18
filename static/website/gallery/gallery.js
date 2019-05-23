@@ -1,4 +1,4 @@
-var gallery = document.querySelector('#lightgallery')
+var gallery = document.querySelector('#gallery')
 var spinnner = document.querySelector('#spinner')
 
 fetch('/gallery_api/').then(d => d.json())
@@ -7,9 +7,9 @@ fetch('/gallery_api/').then(d => d.json())
         spinnner.parentNode.removeChild(spinnner)
         d.forEach((ele,i) => {
             gallery.innerHTML += `
-<h4 class="category">
+<h5 class="category_title">
    <a href="/gallery/${i}/">${ele.name}</a>                 
-</h4>
+</h5>
             `
         })
     })
