@@ -86,3 +86,6 @@ class CA_Requests(models.Model):
     social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
     status_flag = models.IntegerField(default = 0)
     user = models.ForeignKey(Profile, related_name='requests', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.user.user.username + "'s ("+ self.social_platform +") Request"

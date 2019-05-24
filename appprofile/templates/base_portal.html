@@ -40,10 +40,24 @@
                         <img src="/static/assets/img/find_user.png" class="img-responsive" />
                     </li>
 
-
+                    {% block sidebar %}
                     <li>
-                        <a href="#"><i class="fa fa-desktop "></i>Dashboard</a>
+                        <a href="{% url 'request_approval' %}"><i class="fa fa-desktop "></i>Dashboard</a>
                     </li>
+                    <li>
+                        <a href="{% url 'approved_requests' %}">Approved Requests</a>
+                    </li>
+                    <li>
+                            <a href="{% url 'rejected_requests' %}">Rejected Requests</a>
+                    </li>
+                    <li>
+                            <a href="{% url 'pending_requests' %}">Pending Requests</a>
+                    </li>
+                    <li>
+                            <a href="{% url 'logout' %}"><i class="fa fa-logout "></i>Logout</a>
+                    </li>
+                        
+                    {% endblock %}
                     <!--
                     <li>
                         <a href="#"><i class="fa fa-edit "></i>UI Elements<span class="fa arrow"></span></a>
@@ -118,73 +132,96 @@
         <div id="page-wrapper" >
             <div id="page-inner">
                 {% block main_content %}
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="panel panel-primary text-center no-boder bg-color-blue">
-                            <div class="panel-body">
-                                <i class="fa fa-bar-chart-o fa-5x"></i>
-                                <h3>{{t_req}}</h3>
+                {% if t_req %}
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3>{{t_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-blue">
+                                    Total Requests
+                                </div>
                             </div>
-                            <div class="panel-footer back-footer-blue">
-                                Total Requests
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-yellow">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3>{{p_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-yellow">
+                                    Pending Requests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-green">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3>{{a_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-green">
+                                    Accepted Requests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-red">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3>{{r_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-red">
+                                    Rejected Requests
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="panel panel-primary text-center no-boder bg-color-yellow">
-                            <div class="panel-body">
-                                <i class="fa fa-bar-chart-o fa-5x"></i>
-                                <h3>{{p_req}}</h3>
-                            </div>
-                            <div class="panel-footer back-footer-yellow">
-                                Pending Requests
-                            </div>
+                    <hr>
+                    <div class="row">    
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <h3 class="text-center">Submit Request</h3>
+                            <hr><br>
+                            <form enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                <select name="social_platform" class="form-control">
+                                    <option value="FB" >Facebook</option>
+                                    <option value="LI" >Linkedin</option>
+                                    <option value="TW" >Twitter</option>
+                                    <option value="WP" >Whatsapp</option>
+                                </select>
+                                <br>
+                                <input type="file" class="form-control" name="screenshot" required id="id_screenshot" />
+                                <br>
+                                <input type="submit" class="form-control btn btn-success" value="Submit Request">
+                            </form>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="panel panel-primary text-center no-boder bg-color-green">
-                            <div class="panel-body">
-                                <i class="fa fa-bar-chart-o fa-5x"></i>
-                                <h3>{{a_req}}</h3>
-                            </div>
-                            <div class="panel-footer back-footer-green">
-                                Accepted Requests
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="panel panel-primary text-center no-boder bg-color-red">
-                            <div class="panel-body">
-                                <i class="fa fa-bar-chart-o fa-5x"></i>
-                                <h3>{{r_req}}</h3>
-                            </div>
-                            <div class="panel-footer back-footer-red">
-                                Rejected Requests
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">    
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <h3 class="text-center">Submit Request</h3>
-                        <hr><br>
-                        <form enctype="multipart/form-data" method="POST">
-                            {% csrf_token %}
-                            <select name="social_platform" class="form-control">
-                                <option value="FB" >Facebook</option>
-                                <option value="LI" >Linkedin</option>
-                                <option value="TW" >Twitter</option>
-                                <option value="WP" >Whatsapp</option>
-                            </select>
-                            <br>
-                            <input type="file" class="form-control" name="screenshot" required id="id_screenshot" />
-                            <br>
-                            <input type="submit" class="form-control btn btn-success" value="Submit Request">
-                        </form>
-                    </div>
-                </div>    
+                    </div>    
+                {% else %}
+                    {% if requests.count == 0 %}
+                        No Request to show
+                    {% else %}
+                        {% for request in requests %}
+                            <h3>
+                                {% if request.social_platform == 'FB' %}
+                                Facebook
+                                {% elif request.social_platform == 'WP' %}
+                                Whatsapp
+                                {% elif request.social_platform == 'TW' %}
+                                    Twitter
+                                {% else %}
+                                    Whatsapp
+                                {% endif %}
+                            </h3>
+                            <img src="{{ request.screenshot.url}}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
+                            
+                            <hr>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
                 {% endblock %}          
                 <!-- /. ROW  -->
                 <hr />

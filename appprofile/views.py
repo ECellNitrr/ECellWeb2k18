@@ -539,35 +539,68 @@ def request_approval(request):
 	else:
 		return redirect('loginweb')
 
+def get_profile_data():
+	profiles = Profile.objects.all()
+	user_data = []
+	for profile in profiles:
+		data = {}
+		if profile.requests.count():
+			data['username'] = profile.user.username
+			data['first'] = profile.user.first_name
+			data['last'] = profile.user.last_name
+			data['email'] = profile.user.email
+			data['id'] = profile.id
+			data['pending'] = profile.requests.filter(status_flag=0).count()
+			if(data['pending']==0):
+				pass
+			else:
+				user_data.append(data)
+	return user_data
+
+def request_status(request, flag):
+	try:
+		profile = request.user.profile
+	except:
+		return redirect('loginweb')
+	data = profile.requests.filter(status_flag=flag)
+	return data
+
+def pending_status(request):
+	data = request_status(request, 0)
+	return render(request, 'base_portal.html', {'requests':data})	
+
+def approved_status(request):
+	data = request_status(request, 1)
+	return render(request, 'base_portal.html', {'requests':data})	
+
+def rejected_status(request):
+	data = request_status(request, -1)
+	return render(request, 'base_portal.html', {'requests':data})	
+
+
 @csrf_exempt
 def user_request_list(request):
 	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
-		profiles = Profile.objects.all()
-		user_data = []
-		for profile in profiles:
-			data = {}
-			if profile.requests.count():
-				data['username'] = profile.user.username
-				data['first'] = profile.user.first_name
-				data['last'] = profile.user.last_name
-				data['email'] = profile.user.email
-				data['id'] = profile.id
-				data['pending'] = profile.requests.filter(status_flag=0).count()
-				user_data.append(data)
-		return render(request, 'userlist.html',{'users': user_data})
+		user_data = get_profile_data()
+		return render(request, 'executive_portal.html',{'users': user_data})
 	else:
 		return redirect('loginweb')
 
 @csrf_exempt
 def confirm_approval(request, id):
 	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
+		user_data = get_profile_data()
 		ca_requests = CA_Requests.objects.filter(status_flag=0, user__pk=id)
-		return render(request, 'request_confirm.html', {'ca_requests': ca_requests})
+		return render(request, 'executive_portal.html', {
+			'ca_requests': ca_requests,
+			'users':user_data,
+			'user_id':id,
+			})
 	else:
 		return redirect('loginweb')
 
 @csrf_exempt
-def approve_request(request,id):
+def approve_request(request, userid, id):
 	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
 		ss = get_object_or_404(CA_Requests, id=id)   
 		ss.status_flag = 1
@@ -580,16 +613,16 @@ def approve_request(request,id):
 		else:
 			ss.user.ca_wp_score +=5
 		ss.save()
-		return redirect('confirm_approval')
+		return redirect('confirm_approval', id=userid)
 	else:
 		return redirect('loginweb')
 
 @csrf_exempt
-def decline_request(request,id):
+def decline_request(request, userid, id):
 	if request.user.profile.user_type in ['EXE','MNG','OC','HC']:
 		ss = get_object_or_404(CA_Requests, id=id)   
 		ss.status_flag = -1
 		ss.save()
-		return redirect('confirm_approval')
+		return redirect('confirm_approval', id=userid)
 	else: 
 		return redirect('loginweb')
