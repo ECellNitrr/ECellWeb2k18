@@ -200,6 +200,6 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,name,email'}
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
-MEDIA_ROOT = 'static/website/img/gallery_imgs'
+# MEDIA_ROOT = 'static/website/img/gallery_imgs'
 
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
