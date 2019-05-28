@@ -531,6 +531,7 @@ def request_approval(request):
 			pending_requests = 0
 
 		return render(request, 'base_portal.html',context={
+			'form':True,
 			't_req':total_requests,
 			'a_req':accepted_requests,
 			'r_req':rejected_requests,
@@ -567,15 +568,15 @@ def request_status(request, flag):
 
 def pending_status(request):
 	data = request_status(request, 0)
-	return render(request, 'base_portal.html', {'requests':data})	
+	return render(request, 'base_portal.html', {'form':False,'requests':data})	
 
 def approved_status(request):
 	data = request_status(request, 1)
-	return render(request, 'base_portal.html', {'requests':data})	
+	return render(request, 'base_portal.html', {'form':False,'requests':data})	
 
 def rejected_status(request):
 	data = request_status(request, -1)
-	return render(request, 'base_portal.html', {'requests':data})	
+	return render(request, 'base_portal.html', {'form':False,'requests':data})	
 
 
 @csrf_exempt
