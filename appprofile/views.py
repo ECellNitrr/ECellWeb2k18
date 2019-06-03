@@ -629,3 +629,10 @@ def decline_request(request, userid, id):
 		return redirect('confirm_approval', id=userid)
 	else: 
 		return redirect('loginweb')
+
+def leaderboard(request):
+	cas = Profile.objects.filter(user_type__iexact='CA').order_by('-ca_score')
+	context = {
+		'cas':cas
+	}
+	return render(request,"leaderboard.html",context)
