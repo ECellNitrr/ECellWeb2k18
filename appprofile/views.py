@@ -31,6 +31,8 @@ import multiprocessing
 from . import send_mail
 from random import randint
 import requests
+from decouple import config
+
 
 def event_detail(request, event_id):
 	if (event_id == 'ignition'):
@@ -606,13 +608,13 @@ def approve_request(request, userid, id):
 		ss = get_object_or_404(CA_Requests, id=id)   
 		ss.status_flag = 1
 		if ss.social_platform == 'FB':
-			ss.user.ca_fb_score +=5
+			ss.user.ca_fb_score += int(config("FB_SCORE"))
 		elif ss.social_platform == 'LI':
-			ss.user.ca_li_score +=5
+			ss.user.ca_li_score += int(config("LI_SCORE"))
 		elif ss.social_platform == 'TW':
-			ss.user.ca_tw_score +=5
+			ss.user.ca_tw_score += int(config("TW_SCORE"))
 		else:
-			ss.user.ca_wp_score +=5
+			ss.user.ca_wp_score += int(config("WP_SCORE"))
 		ss.save()
 		return redirect('confirm_approval', id=userid)
 	else:
