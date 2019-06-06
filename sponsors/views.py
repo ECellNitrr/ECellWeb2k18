@@ -14,22 +14,22 @@ def get_sponsors(request):
 	response = {}
 	sponsors = Sponsor.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	if Sponsor.objects.filter(flag=True).exists():
+	if Sponsor.objects.all().exists():
 		response['success'] = True
-		AS = Sponsor.objects.filter(spons_type='AS', flag=True).values()
+		AS = Sponsor.objects.filter(spons_type='AS').values()
 		for spons in AS:
 			# sponsor['pic'] = scheme+'://'+request.META['HTTP_HOST']+'/'+str(sponsor['pic'])
 			spons['pic'] = config('HOST')+str(spons['pic'])
-		PLTS =Sponsor.objects.filter(spons_type='PLTS', flag=True).values()
+		PLTS =Sponsor.objects.filter(spons_type='PLTS').values()
 		for spons in PLTS:
 			spons['pic'] = config('HOST')+str(spons['pic'])
-		GS = Sponsor.objects.filter(spons_type='GS', flag=True).values()
+		GS = Sponsor.objects.filter(spons_type='GS').values()
 		for spons in GS:
 			spons['pic'] = config('HOST')+str(spons['pic'])
-		TS = Sponsor.objects.filter(spons_type='TS', flag=True).values()
+		TS = Sponsor.objects.filter(spons_type='TS').values()
 		for spons in TS:
 			spons['pic'] = config('HOST')+str(spons['pic'])
-		PRTS = Sponsor.objects.filter(spons_type='PRTS', flag=True).values()
+		PRTS = Sponsor.objects.filter(spons_type='PRTS').values()
 		for spons in PRTS:
 			spons['pic'] = config('HOST')+str(spons['pic'])
 		AS_list = list(AS)
@@ -51,8 +51,12 @@ def get_sponsors(request):
 	return JsonResponse(response)
 
 
-def post_sponsors(request):
-	return render(request,'website/patreons.html')
+def post_sponsors(request,year):
+	return render(request,'website/patreons.html',{'year':year})
+
+def post_sponsors_yearwise_list(request):
+	return render(request,'website/patreons_yearwise_list.html')
+
 
 @csrf_exempt
 def view(request,id):
