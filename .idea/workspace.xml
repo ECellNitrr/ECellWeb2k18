@@ -1,58 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b14b15b-4322-48ae-a2e2-8d41170f800b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/base_portal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/executive_portal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/leaderboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/request_approval.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/request_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appprofile/templates/userlist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/confirm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/font-awesome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/leaderboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/font-awesome/fonts/fontawesome-webfontba72.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/font-awesome/fonts/fontawesome-webfontba72.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/font-awesome/fonts/fontawesome-webfontba72.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/font-awesome/fonts/fontawesome-webfontba72.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/font-awesome/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regulard41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/img/find_user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/jquery-1.10.2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/jquery.metisMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base_executive.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appprofile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/appprofile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bquiz/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/bquiz/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envars.sh" beforeDir="false" afterPath="$PROJECT_DIR$/envars.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mentors/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/mentors/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speakers/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/speakers/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sponsors/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/sponsors/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startups/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/startups/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/common/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/common/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/menubar/menubar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/menubar/menubar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/team/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/website/menubar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/website/menubar.html" afterDir="false" />
-    </list>
+    <list default="true" id="9b14b15b-4322-48ae-a2e2-8d41170f800b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,19 +28,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/website/gallery.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appprofile/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="834" column="45" lean-forward="true" selection-start-line="834" selection-start-column="45" selection-end-line="834" selection-end-column="45" />
+            <state relative-caret-position="3102">
+              <caret line="835" selection-start-line="835" selection-end-line="835" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -109,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/menubar/menubar.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
+            <state>
+              <caret line="171" column="1" selection-start-line="171" selection-start-column="1" selection-end-line="171" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -118,10 +58,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/envars.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/databasebackup21aug.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ecellnginx">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -133,34 +101,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appprofile/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+              <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/website/patreons.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sponsors/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/static/website/index/about.css" />
         <option value="$PROJECT_DIR$/templates/website/index.html" />
         <option value="$PROJECT_DIR$/static/website/gallery/gallery.js" />
@@ -216,6 +162,7 @@
         <option value="$PROJECT_DIR$/static/website/common/common.css" />
         <option value="$PROJECT_DIR$/static/website/menubar/menubar.css" />
         <option value="$PROJECT_DIR$/envars.sh" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -329,13 +276,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39903000" />
+    <option name="totallyTimeSpent" value="40012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2776452" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2776452" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -349,7 +296,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329582" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34726688" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34726688" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -362,26 +309,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appprofile/tokens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="4" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/img/1503490457.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/img/1503490742.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -516,13 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -653,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/appprofile/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="834" column="45" lean-forward="true" selection-start-line="834" selection-start-column="45" selection-end-line="834" selection-end-column="45" />
+        <state relative-caret-position="3102">
+          <caret line="835" selection-start-line="835" selection-end-line="835" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
@@ -668,25 +588,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/menubar/menubar.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/envars.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state>
+          <caret line="171" column="1" selection-start-line="171" selection-start-column="1" selection-end-line="171" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appprofile/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+          <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/databasebackup21aug.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ecellnginx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/envars.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
