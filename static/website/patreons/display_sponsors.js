@@ -1,49 +1,44 @@
 var sponsors_html = document.querySelector('.patreons');
 var this_container = document.querySelector('#this_spons')
-var prev_container = document.querySelector('#prev_spons')
 var this_spons_div = document.querySelector('#this_spons div')
-var prev_spons_div = document.querySelector('#prev_spons div')
 
 var type = {
-    'AS': 'Associate Sponsors',
-    'PLTS': 'Platinum Sponsors',
-    'GS': 'Gold Sponsors',
-    'TS': 'Title Sponsors',
-    'PRTS': 'Partner Sponsors',
+  'AS': 'Associate Sponsors',
+  'PLTS': 'Platinum Sponsors',
+  'GS': 'Gold Sponsors',
+  'TS': 'Title Sponsors',
+  'PRTS': 'Partner Sponsors',
 }
 
-fetch(base_url + '/sponsors/list/')
-    .then(data => data.json())
-    .then(function (data) {
-        if(data.success == true){
-            var sponsors = data.spons;
-            var this_spons = []
-            var prev_spons = []
+fetch('/sponsors/list/')
+  .then(data => data.json())
+  .then(function (data) {
+    console.log(data)
+    this_container.style.display = 'block'
+    document.getElementById('spons_head').innerHTML = `Sponsors of E'Summit ${year}`
 
-            sponsors.forEach(type => {
-                type.sponsors.forEach(function (sponsor) {
-                    if (sponsor.year == 2018) {
-                        this_spons.push(sponsor)
-                        this_container.style.display = 'block'
-                    } else {
-                        prev_spons.push(sponsor)
-                        prev_container.style.display = 'block'
-                    }
-                })
-            })
+    if (data.success == true) {
+      var sponsors = data.spons;
+      var this_spons = []
 
-            insert_sponsors(this_spons,this_spons_div)
-            insert_sponsors(prev_spons,prev_spons_div)
-        }else{
-            this_container.style.display = 'block'
-            this_container.innerHTML += `<center><h3>Coming Soon</h3></center>`
-        }
-        document.querySelector('#spinner').remove();
-    })
+      sponsors.forEach(type => {
+        type.sponsors.forEach(function (sponsor) {
+          if (sponsor.year == year) {
+            this_spons.push(sponsor)
+          }
+        })
+      })
+      insert_sponsors(this_spons, this_spons_div)
+    } else {
+      this_container.style.display = 'block'
+      this_container.innerHTML += `<center><h3>Coming Soon</h3></center>`
+    }
+    document.querySelector('#spinner').remove();
+  })
 
 insert_sponsors = (spons, location) => {
-    spons.forEach(function (sponsor) {
-        location.innerHTML += ` 
+  spons.forEach(function (sponsor) {
+    location.innerHTML += ` 
             <div class='sponsor'>
                 <img src='${sponsor.pic}'>
                 <div class='details'>
@@ -53,5 +48,5 @@ insert_sponsors = (spons, location) => {
                     <p class='website'><a href='${sponsor.website}'>website</a></p>
                 </div>
             </div>`;
-    })
+  })
 }
