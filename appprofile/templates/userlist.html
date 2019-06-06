@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+    <head>
+        <title> Select Users </title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="/static/assets/css/confirm.css" rel="stylesheet" />
+    </head>
+    <body>
+    <br>
+        {% if not users %}
+                No Pending Requests       
+        {% else %}
+            {% for user in users %}
+                <div class="sswrapper">
+                <a href="{% url 'confirm_approval' user.id %}">
+                
+                <h3>{{user.first}} {{ user.last}}</h3>
+                <small><kbd>{{user.email}}</kbd></small>
+                <center>Pending : {{user.pending}}</center>
+                </a>
+                
+                </div>
+                
+                <br><br>
+                <hr>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

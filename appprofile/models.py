@@ -12,7 +12,7 @@ class WebMsg(models.Model):
     msg = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.name    
 
 # Profile Model
 class Profile(models.Model):
@@ -41,16 +41,22 @@ class Profile(models.Model):
         choices=USER_TYPE,
         default='GST'
     )
-    #score = models.IntegerField(default=0)   #To Store Daily Score of Bquiz
+    
+    # Scores for Campus Ambassadors
+    ca_score = models.IntegerField(default=0)       #Total Score
+    ca_fb_score = models.IntegerField(default=0)    #Facebook Score
+    ca_tw_score = models.IntegerField(default=0)    #Twitter Score
+    ca_li_score = models.IntegerField(default=0)    #LinkedIn Score
+    ca_wp_score = models.IntegerField(default=0)    #Whatsapp Score
+
     cumulative_score = models.IntegerField(default=0)   #To Store Total Score of Bquiz
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
-    #last_login = models.DateTimeField(auto_now=True, editable=False)
     otp = models.CharField(max_length=4, blank=True, null=True)
 
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user)+" profile"
 
     def get_time_diff(self):
         if self.modified_at:
@@ -66,3 +72,20 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+class CA_Requests(models.Model):
+
+    SOCIAL_TYPE = (
+        ('FB', 'Facebook'),
+        ('TW', 'Twitter'),
+        ('LI', 'LinkedIn'),
+        ('WP', 'Whatsapp'),
+    )
+
+    screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
+    social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
+    status_flag = models.IntegerField(default = 0)
+    user = models.ForeignKey(Profile, related_name='requests', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.user.user.username + "'s ("+ self.social_platform +") Request"

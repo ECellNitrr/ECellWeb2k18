@@ -156,5 +156,17 @@ footer a {
 }
 
 .menubar a:nth-child(11) {
+    transition-delay: 0.33s;
+}
+.menubar a:nth-child(12) {
+    transition-delay: 0.335s;
+}
+.menubar a:nth-child(13) {
+    transition-delay: 0.34s;
+}
+.menubar a:nth-child(14) {
+    transition-delay: 0.345s;
+}
+.menubar a:nth-child(15) {
     transition-delay: 0.35s;
 }

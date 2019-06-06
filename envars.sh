@@ -9,3 +9,4 @@ HOST='https://ecell.nitrr.ac.in/'
 MSG_USERNAME='E_SUMMIT'
 MSG_PASSWORD='Summit125@'
 ENV='production'
+
