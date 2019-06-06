@@ -52,6 +52,8 @@ def gallerypagecat(request,id):
 def sponsgallerypagecat(request,id):
     return render(request, 'website/sponsgallery.html', {'cid': id})
 
+def spons_hc_view(request):
+    return render(request, 'website/spons_hc.html')
 
 def privacy_policy_page(request):
     return render(request, 'website/privacy_policy.html')

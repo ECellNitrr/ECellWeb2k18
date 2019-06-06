@@ -14,6 +14,7 @@ urlpatterns = [
     path('message/',views.message),
     path('gallery/<int:id>/', views.gallerypagecat),
     path('sponsgallery/<int:id>/', views.sponsgallerypagecat),
+    path('hc_sponsorship/', views.spons_hc_view),
     path('gallery/', views.gallerypage),
     path('startups/', TemplateView.as_view(template_name='website/startups.html')),
     path('terms/', views.terms_page),

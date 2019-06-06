@@ -1,0 +1,107 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery"> {% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Head Co-ordinators Sponsorship | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+    <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+
+    <link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}"> {% endblock css %}
+<!-- js -->
+{% block js %}
+{% endblock js %}
+<!-- content -->
+{% block content %}
+    <style>
+        .hc-sponsorship i {
+            color: #000;
+        }
+        .hc{
+            margin: 10px;
+            text-align: center;
+        }
+        .hc img{
+            width: 300px;
+            height: 300px;
+        }
+        .hc .name{
+            font-weight: bold;
+            font-size: 25px;
+            margin-top: 10px;
+        }
+        .hc .email,
+        .hc .tel
+        {
+            color: grey;
+            font-weight: bold;
+            font-family: Arial;
+        }
+        .social{
+            margin: 15px 25px;
+        }
+        .social i{
+            margin: 10px;
+        }
+    </style>
+
+    <div class="hc-sponsorship container">
+        <h2 class="text-center font-weight-bold">Head Co-ordinators Sponsorship</h2>
+        <div class="d-flex my-5 justify-content-center">
+
+            <div class="hc">
+                <img src="{% static 'hc_spons/rajshree.jpeg' %}" alt="">
+                <div class="name">Rajshree Gavel</div>
+                <div>
+                    <a target="_blank" href="tel:+918889830313" class="tel">+918889830313</a>
+                </div>
+                <div>
+                    <a target="_blank" href="mailto:rajshreegavel111@gmail.com" class="email">mailto:rajshreegavel111@gmail.com</a>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a target="_blank" href="https://www.linkedin.com/in/rajshree-gavel-059973157" class="linkedin"><i
+                            class="fa fa-2x fa-linkedin"></i></a>
+                    <a target="_blank" href="https://m.facebook.com/people/stream/coworkers/1581298025509378/?referrer_id=100007982796447%20INTRO_CARD_WORK&referrer_type=9&ref=content_filter"
+                       class="facebook"><i class="fa fa-2x fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="hc">
+                <img src="{% static 'hc_spons/mohit.jpg' %}" alt="">
+                <div class="name">Mohith Khatri</div>
+                <div>
+                    <a target="_blank" href="tel:+917580800939" class="tel">+91 7580800939</a>
+                </div>
+                <div>
+                    <a target="_blank" href="mailto:mohithkhatri100@gmail.com" class="email">mohithkhatri100@gmail.com </a>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a target="_blank" href="https://www.linkedin.com/in/mohith-khatri-36403b129" class="linkedin"><i
+                            class="fa fa-2x fa-linkedin"></i></a>
+                    <a target="_blank" href="https://m.facebook.com/profile.php?id=100001201593080&ref=content_filter" class="facebook"><i
+                            class="fa fa-2x fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="hc">
+                <img src="{% static 'hc_spons/yashwi.jpeg' %}" alt="">
+                <div class="name">Yashwi Shah</div>
+                <div>
+                    <a target="_blank" href="tel:+917898556656" class="tel">+917898556656</a>
+                </div>
+                <div>
+                    <a target="_blank" href="mailto:iamyashwi@gmail.com" class="email">iamyashwi@gmail.com</a>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a target="_blank" href="https://www.linkedin.com/in/yashwi-shah-04a042129" class="linkedin"><i
+                            class="fa fa-2x fa-linkedin"></i></a>
+                    <a target="_blank" href="https://m.facebook.com/profile.php?id=100004699122432&ref=content_filter" class="facebook"><i
+                            class="fa fa-2x fa-facebook"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
