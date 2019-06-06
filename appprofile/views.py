@@ -49,6 +49,9 @@ def gallerypage(request):
 def gallerypagecat(request,id):
     return render(request, 'website/category.html', {'cid': id})
 
+def sponsgallerypagecat(request,id):
+    return render(request, 'website/sponsgallery.html', {'cid': id})
+
 
 def privacy_policy_page(request):
     return render(request, 'website/privacy_policy.html')
@@ -589,6 +592,20 @@ import os
 def gallery_view(req):
     res = []
     base_path = 'static/gallery_imgs/'
+
+
+    for cat in os.listdir(base_path):
+        temp = {}
+        temp['name'] = cat[1:-4]
+        temp['count'] = len(os.listdir(base_path+cat))//2
+        temp['url'] = base_path + cat + '/'
+        res.append(temp)
+
+    return JsonResponse(res,safe=False)
+
+def spons_gallery_view(req):
+    res = []
+    base_path = 'static/sponsgallery_imgs/'
 
 
     for cat in os.listdir(base_path):

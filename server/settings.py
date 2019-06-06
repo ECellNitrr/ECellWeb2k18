@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'events',
     'bquiz',
-    'contactus',
+    # 'contactus',
     # 'taskmanager.apps.TaskmanagerConfig',
     'appprofile.apps.AppprofileConfig',
     'app',

@@ -26,10 +26,10 @@
             overflow-x: hidden
         }
 
-        i{
+        i {
             color: #000;
         }
-        
+
         h1 {
             font-weight: 700;
             font-family: Open Sans;
@@ -46,7 +46,22 @@
             background: #000
         }
 
-        .year_list{
+        .category_title {
+            padding: 20px;
+            width: 300px;
+            border-radius: 3px;
+            box-shadow: 5px 5px 15px -5px black;
+            margin: 10px;
+            margin-top: 15px !important;
+
+        }
+
+        .category_title a:hover {
+            font-weight: bold;
+            color: black;
+        }
+
+        .year_list {
             margin-bottom: 15vh;
         }
     </style>
@@ -55,6 +70,12 @@
         <h1>Our sponsors</h1>
         <hr>
         <div class="year_list"></div>
+    </div>
+
+    <div class="d-none" id="list_spons_gallery">
+        <h1>Sponsors Gallery</h1>
+        <hr>
+        <div id='spons_gallery_list_root'></div>
     </div>
 
     <script>
@@ -79,13 +100,31 @@
           console.log(avail_years)
           // put the year list
 
-          avail_years.forEach((year,i) => {
+          avail_years.forEach((year, i) => {
             year_list.innerHTML += `
-            <div class='sponsor_year'>
-              <a href='/sponsors/${year}/'><i class='fas fa-circle'></i>${i+1}) Sponsors of E'Summit ${year}</a>
+            <div class='category_title m-auto '>
+              <a href='/sponsors/${year}/' ><i class='fas fa-circle'></i>Sponsors of E'Summit ${year}</a>
             </div>
             `
           })
         })
+
+      var spons_gallery_list_root = document.getElementById('spons_gallery_list_root')
+      var list_spons_gallery = document.getElementById('list_spons_gallery')
+      fetch('/sponsgallery_api/')
+        .then(data => data.json())
+        .then(data => {
+          list_spons_gallery.classList.remove('d-none')
+          console.log(data);
+
+          data.forEach((ele,i) => {
+            spons_gallery_list_root.innerHTML += `
+            <div class='category_title m-auto text-center'>
+              <a href='/sponsgallery/${i}/' >${ele.name}</a>
+            </div>
+            `
+          })
+        })
+
     </script>
 {% endblock content %}
