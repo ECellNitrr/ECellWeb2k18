@@ -609,12 +609,17 @@ def approve_request(request, userid, id):
 		ss.status_flag = 1
 		if ss.social_platform == 'FB':
 			ss.user.ca_fb_score += int(config("FB_SCORE"))
+			ss.user.ca_score += int(config("FB_SCORE"))
 		elif ss.social_platform == 'LI':
 			ss.user.ca_li_score += int(config("LI_SCORE"))
+			ss.user.ca_score += int(config("LI_SCORE"))
 		elif ss.social_platform == 'TW':
 			ss.user.ca_tw_score += int(config("TW_SCORE"))
+			ss.user.ca_score += int(config("TW_SCORE"))
 		else:
 			ss.user.ca_wp_score += int(config("WP_SCORE"))
+			ss.user.ca_score += int(config("WP_SCORE"))
+		ss.user.save()
 		ss.save()
 		return redirect('confirm_approval', id=userid)
 	else:
