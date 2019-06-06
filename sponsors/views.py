@@ -14,7 +14,7 @@ def get_sponsors(request):
 	response = {}
 	sponsors = Sponsor.objects.all().values()
 	scheme = urlsplit(request.build_absolute_uri(None)).scheme
-	if Sponsor.objects.all(flag=True).exists():
+	if Sponsor.objects.filter(flag=True).exists():
 		response['success'] = True
 		AS = Sponsor.objects.filter(spons_type='AS',flag=True).values()
 		for spons in AS:
