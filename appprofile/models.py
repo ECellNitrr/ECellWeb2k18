@@ -56,7 +56,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user)+" profile"
 
     def get_time_diff(self):
         if self.modified_at:
