@@ -1,0 +1,91 @@
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr,sponsors"> {% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Sponsors | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+    <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+
+{% endblock css %}
+<!-- js -->
+{% block js %}
+{% endblock js %}
+<!-- content -->
+{% block content %} {% include 'website/spinner.html' %}
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+        body,
+        html {
+            width: 100%;
+            overflow-x: hidden
+        }
+
+        i{
+            color: #000;
+        }
+        
+        h1 {
+            font-weight: 700;
+            font-family: Open Sans;
+            letter-spacing: 2px;
+            text-align: center;
+            font-size: 20px;
+            text-transform: uppercase
+        }
+
+        hr {
+            width: 100px;
+            border: 2px solid #000;
+            margin: 8px auto 40px;
+            background: #000
+        }
+
+        .year_list{
+            margin-bottom: 15vh;
+        }
+    </style>
+
+    <div class="hide_until_req text-center" id="this_spons">
+        <h1>Our sponsors</h1>
+        <hr>
+        <div class="year_list"></div>
+    </div>
+
+    <script>
+      var year_list = document.querySelector('.year_list')
+
+      fetch('/sponsors/list/')
+        .then(data => data.json())
+        .then(data => {
+          document.querySelector('#spinner').remove();
+          console.log(data)
+
+          var avail_years = []
+          data.spons.forEach(cat => {
+            cat.sponsors.forEach((sponsor => {
+              if (avail_years.indexOf(sponsor.year) == -1) {
+                avail_years.push(sponsor.year)
+              }
+            }))
+          })
+
+          avail_years = avail_years.sort((a, b) => b - a)
+          console.log(avail_years)
+          // put the year list
+
+          avail_years.forEach((year,i) => {
+            year_list.innerHTML += `
+            <div class='sponsor_year'>
+              <a href='/sponsors/${year}/'><i class='fas fa-circle'></i>${i+1}) Sponsors of E'Summit ${year}</a>
+            </div>
+            `
+          })
+        })
+    </script>
+{% endblock content %}
