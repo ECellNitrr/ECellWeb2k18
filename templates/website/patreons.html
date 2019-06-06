@@ -1,31 +1,54 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr,sponsors"> {% endblock keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr,sponsors"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-<title>Sponsors | E-Cell NIT Raipur</title>
+    <title>Sponsors | E-Cell NIT Raipur</title>
 {% endblock title %}
 <!-- css -->
 {% block css %}
-<link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+    <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
 
-<link rel="stylesheet" href="{% static 'website/patreons/patreons.css' %}"> {% endblock css %}
+    <link rel="stylesheet" href="{% static 'website/patreons/patreons.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
-<script src="{% static 'website/patreons/display_sponsors.js' %}"></script>
 {% endblock js %}
 <!-- content -->
 {% block content %} {% include 'website/spinner.html' %}
-<div class="hide_until_req" id="this_spons">
-    <h1>Our sponsors</h1>
-    <hr>
-    <div class="patreons container"> </div>
-</div>
-<div class="hide_until_req" id="prev_spons">
-    <h1>Previous sponsors</h1>
-    <hr>
-    <div class="patreons container"> </div>
-</div>
+    <div class="hide_until_req" id="this_spons">
+        <h1 id="spons_head">Our sponsors</h1>
+        <hr>
 
+        <section class="container my-4">
+            <section class="slinks d-flex justify-content-center flex-wrap font-weight-bold">
+                <a class="mx-3" href="/sponsors/yearwise/">Checkout year wise Sponsors</a>
+                <a class="mx-3" href="/sponsors/yearwise/">Sponsorship gallery</a>
+                <a class="mx-3" href="/hc_sponsorship/">Head Co-ordinators of Sponsorship</a>
+            </section>
+        </section>
+
+        <div class="patreons container"></div>
+
+        <section class="container my-4">
+            <section class="slinks d-flex justify-content-center flex-wrap font-weight-bold">
+                <a class="mx-3" href="/sponsors/yearwise/">Checkout year wise Sponsors</a>
+                <a class="mx-3" href="/sponsors/yearwise/">Sponsorship gallery</a>
+                <a class="mx-3" href="/hc_sponsorship/">Head Co-ordinators of Sponsorship</a>
+            </section>
+        </section>
+    </div>
+    <script>
+      var year = {{ year }}
+        console.log(year)
+    </script>
+    <script src="{% static 'website/patreons/display_sponsors.js' %}"></script>
 {% endblock content %}
+
+{% block hc_ad %}
+    <div class="mt-3 d-flex">
+        <a href="/sponsors/yearwise/">Checkout year wise Sponsors</a>
+        <a href="/sponsors/sponshc/">Head Co-ordinators of Sponsorship</a>
+    </div>
+{% endblock hc_ad %}

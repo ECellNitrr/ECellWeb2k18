@@ -13,7 +13,6 @@ mydatabase
 *.py[cod]
 
 # migrations/
-media/
 .Python
 env/
 build/
@@ -62,3 +61,4 @@ docs/_build/
 
 # PyBuilder
 target/
+.idea/

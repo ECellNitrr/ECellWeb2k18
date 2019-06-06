@@ -34,13 +34,18 @@ hr {
 
 .patreons {
     flex-wrap: wrap;
-    margin-bottom: 100px
+    /*margin-bottom: 100px*/
 }
 
 .patreons,
 .patreons>div {
     display: flex;
     justify-content: center
+}
+
+.slinks a{
+    font-weight: bold;
+
 }
 
 .patreons>div {
