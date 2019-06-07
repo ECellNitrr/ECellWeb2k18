@@ -696,34 +696,37 @@ def spons_gallery_view(req):
 
 @csrf_exempt
 def request_approval(request):
-    if request.user.profile.user_type == 'CA':
-        if request.method == 'POST':
-            form = RequestApprovalForm(request.POST, request.FILES)
-            if form.is_valid():
-                obj = form.save()
-                obj.user = request.user.profile
-                obj.save()
-        profile = request.user.profile
-        try:
-            total_requests = profile.requests.all().count()
-            accepted_requests = profile.requests.filter(status_flag=1).count()
-            rejected_requests = profile.requests.filter(status_flag=-1).count()
-            pending_requests = profile.requests.filter(status_flag=0).count()
-        except:
-            total_requests = 0
-            accepted_requests = 0
-            rejected_requests = 0
-            pending_requests = 0
+    try:
+        if request.user.profile.user_type == 'CA':
+            if request.method == 'POST':
+                form = RequestApprovalForm(request.POST, request.FILES)
+                if form.is_valid():
+                    obj = form.save()
+                    obj.user = request.user.profile
+                    obj.save()
+            profile = request.user.profile
+            try:
+                total_requests = profile.requests.all().count()
+                accepted_requests = profile.requests.filter(status_flag=1).count()
+                rejected_requests = profile.requests.filter(status_flag=-1).count()
+                pending_requests = profile.requests.filter(status_flag=0).count()
+            except:
+                total_requests = 0
+                accepted_requests = 0
+                rejected_requests = 0
+                pending_requests = 0
 
-        return render(request, 'base_portal.html', context={
-            'form': True,
-            't_req': total_requests,
-            'a_req': accepted_requests,
-            'r_req': rejected_requests,
-            'p_req': pending_requests,
-        })
-    else:
-        return redirect('loginweb')
+            return render(request, 'base_portal.html', context={
+                'form': True,
+                't_req': total_requests,
+                'a_req': accepted_requests,
+                'r_req': rejected_requests,
+                'p_req': pending_requests,
+            })
+        else:
+            return render(request, 'website/notcayet.html')
+    except:
+        return  render(request, 'website/notloggedinerr.html')
 
 
 def get_profile_data():

@@ -170,8 +170,8 @@ STATICFILES_DIRS = [STATIC_DIR,]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 SITE_HEADER = os.environ.get('SITE_HEADER', 'Entrepreneurship Cell NIT Raipur')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
@@ -202,7 +202,3 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,name,email'}
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
-
-# MEDIA_ROOT = 'static/website/img/gallery_imgs'
-
-# MEDIA_URL = '/media/'
