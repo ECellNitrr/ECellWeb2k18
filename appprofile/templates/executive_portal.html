@@ -77,7 +77,7 @@
                             {% if ca_requests.count != 0 %}
                                 {% for ca_request in ca_requests %}
                                     <div class="sswrapper">
-                                    <img src="{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
+                                    <img src="/{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
                                     <h3>
                                         {% if ca_request.social_platform == 'FB' %}
                                             Facebook

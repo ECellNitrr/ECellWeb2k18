@@ -82,7 +82,7 @@ class CA_Requests(models.Model):
         ('WP', 'Whatsapp'),
     )
 
-    screenshot = models.ImageField(upload_to='screenshots/', null=False, blank=False)
+    screenshot = models.ImageField(upload_to='static/screenshots/', null=False, blank=False)
     social_platform = models.CharField(max_length=2, choices=SOCIAL_TYPE)
     status_flag = models.IntegerField(default = 0)
     user = models.ForeignKey(Profile, related_name='requests', on_delete=models.CASCADE, null=True, blank=True)
