@@ -17489,6 +17489,110 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 877	2019-05-25 11:14:37.428756+00	2	Anup Kalbalia	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
 878	2019-05-25 18:02:51.789517+00	2	36 Inc	2	[{"changed": {"fields": ["pic"]}}]	15	1113
 879	2019-05-25 18:33:41.391513+00	2	36 Inc	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+880	2019-05-25 18:51:00.265227+00	2	36 Inc	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+881	2019-05-25 18:57:37.094192+00	2	36 Inc	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+882	2019-05-25 19:03:54.375306+00	2	36 Inc	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+883	2019-05-25 19:18:40.546717+00	1	Aditi Chourasia	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+884	2019-05-25 19:34:20.247011+00	1	Think Raipur	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+885	2019-05-25 19:35:18.400155+00	3	Happily Unmarried	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+886	2019-05-25 19:36:41.352032+00	4	Benchmark Group	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+887	2019-05-25 19:40:50.073465+00	44	Department of Women & Child Development	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+888	2019-05-25 19:41:01.497932+00	38	Chhattisgarh Tourism	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+889	2019-05-25 19:42:09.436057+00	12	Daniel Ramamoorthy	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+890	2019-05-25 20:07:06.060882+00	1	Tushar Vadera	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+891	2019-05-25 20:09:02.225051+00	2	Vineet Budki	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+892	2019-05-25 20:09:31.590113+00	3	Dr. Shameem S	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+893	2019-05-25 20:10:09.670416+00	4	Ankit Tibrewal	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+894	2019-05-25 20:10:44.865267+00	5	SHRAVAN PUNNA	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+895	2019-05-25 20:11:10.519966+00	6	VAIBHAV SURYA	2	[{"changed": {"fields": ["profile_pic"]}}]	13	1113
+896	2019-05-25 20:18:39.450666+00	1	Aditi Chourasia	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+897	2019-05-25 20:19:17.537796+00	2	Anup Kalbalia	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+898	2019-05-25 20:20:54.300168+00	3	Ravi Ranjan	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+899	2019-05-25 20:21:10.848509+00	4	Anil Joshi	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+900	2019-05-25 20:22:02.409454+00	5	Harjeet Khanduja	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+901	2019-05-25 20:22:47.120692+00	6	Abi Aryan	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+902	2019-05-25 20:23:33.218931+00	7	Rishabh Dev	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+903	2019-05-25 20:23:53.076975+00	8	Rahul Tyagi	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+904	2019-05-25 20:24:07.88486+00	9	Kumaran Brothers	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+905	2019-05-25 20:24:22.174404+00	10	Prateek Sethi	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+906	2019-05-25 20:24:40.846936+00	11	Mr. Saransh Roy	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+907	2019-05-25 20:24:56.040795+00	12	Daniel Ramamoorthy	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+908	2019-05-25 20:25:13.055805+00	13	Kumar Gaurav	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+909	2019-05-25 20:25:32.189131+00	14	Nandini Vaidyanathan	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+910	2019-05-25 20:25:45.894016+00	15	Dr Gopichand Katragadda	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+911	2019-05-25 20:33:35.93908+00	51	Venture Catalysts	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+912	2019-05-25 20:33:55.56639+00	50	Zoodify	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+913	2019-05-25 20:34:13.170267+00	49	MOBILE10x	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+914	2019-05-25 20:34:36.939023+00	48	HEADSTART	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+915	2019-05-25 20:35:27.805013+00	35	YourStory	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+916	2019-05-25 20:35:54.399757+00	52	Dev Creator's of Memories	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+917	2019-05-25 20:36:44.995074+00	46	Hotel Babylon International	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+918	2019-05-25 20:37:16.005376+00	37	Bisleri Fonzo	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+919	2019-05-25 20:37:55.689708+00	32	ATKT.IN	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+920	2019-05-25 20:38:59.17332+00	39	Vedam Spa & Salon	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+921	2019-05-25 20:39:17.084784+00	38	Chhattisgarh Tourism	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+922	2019-05-25 20:40:43.509542+00	47	TheHitavada	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+923	2019-05-25 20:42:32.769138+00	36	Konsole Group	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+924	2019-05-25 20:42:48.214248+00	34	WILLMAN	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+925	2019-05-25 20:43:04.489923+00	33	The Trophy House	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+926	2019-05-25 20:43:24.194204+00	31	INH News	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+927	2019-05-25 20:44:15.998568+00	40	Orange Le Spirit Cafe	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+928	2019-05-25 20:48:54.439299+00	52	Dev Creator's of Memories	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+929	2019-05-25 20:49:41.63875+00	41	TRIPPY	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+930	2019-05-25 20:50:16.103248+00	45	Department of Women & Child Development	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+931	2019-05-25 20:53:55.881247+00	44	Department of Women & Child Development	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+932	2019-05-25 20:54:13.379815+00	43	Department of Women & Child Development	2	[{"changed": {"fields": ["pic"]}}]	15	1113
+933	2019-05-26 02:56:17.905319+00	1	Polllzy	2	[{"changed": {"fields": ["pic"]}}]	16	1113
+934	2019-05-26 02:57:01.193686+00	2	Innolat Technologies pvt. Ltd.	2	[{"changed": {"fields": ["pic"]}}]	16	1113
+935	2019-05-26 02:57:12.514435+00	3	eBeta	2	[{"changed": {"fields": ["pic"]}}]	16	1113
+936	2019-05-26 02:57:39.895714+00	4	Lokus News	2	[{"changed": {"fields": ["pic"]}}]	16	1113
+937	2019-05-26 02:57:46.066851+00	5	SmileBots	2	[{"changed": {"fields": ["pic"]}}]	16	1113
+938	2019-05-26 05:27:10.933822+00	97	Member object (97)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+939	2019-05-26 05:29:00.599672+00	101	Member object (101)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+940	2019-05-26 05:34:14.779762+00	90	Member object (90)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+941	2019-05-26 05:34:55.451421+00	98	Member object (98)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+942	2019-05-26 05:35:10.63623+00	99	Member object (99)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+943	2019-05-26 05:35:53.823096+00	96	Member object (96)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+944	2019-05-26 05:39:42.401904+00	91	Member object (91)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+945	2019-05-26 05:50:14.17834+00	89	Member object (89)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+946	2019-05-26 05:51:14.058687+00	88	Member object (88)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+947	2019-05-26 05:51:49.47641+00	95	Member object (95)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+948	2019-05-26 05:52:18.127228+00	94	Member object (94)	2	[{"changed": {"fields": ["image"]}}]	17	1113
+949	2019-05-26 06:14:39.673191+00	13	Kumar Gaurav	2	[{"changed": {"fields": ["profile_pic"]}}]	14	1113
+950	2019-05-26 06:20:55.456461+00	13	Kumar Gaurav	2	[{"changed": {"fields": ["social_media"]}}]	14	1113
+951	2019-05-26 06:21:24.555821+00	13	Kumar Gaurav	2	[{"changed": {"fields": ["social_media"]}}]	14	1113
+952	2019-05-26 08:14:19.933236+00	9	E-Gathering	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+953	2019-05-26 08:15:27.172532+00	8	B-Case Study	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+954	2019-05-26 08:16:08.244819+00	7	IGNITION	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+955	2019-05-26 08:16:19.919717+00	6	CRICNOMETRICA	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+956	2019-05-26 08:16:31.973453+00	5	B-QUIZ	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+957	2019-05-26 08:16:45.91057+00	4	WALLSTREET	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+958	2019-05-26 08:16:59.260076+00	3	UTKRISHTH	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+959	2019-05-26 08:17:15.570755+00	2	START-UP CAMP	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+960	2019-05-26 08:17:31.099985+00	1	ENTROPY	2	[{"changed": {"fields": ["icon"]}}]	2	1113
+961	2019-05-26 08:18:18.367714+00	1	ENTROPY	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+962	2019-05-26 08:19:58.443212+00	3	UTKRISHTH	2	[]	2	1113
+963	2019-05-26 08:32:14.195304+00	1	ENTROPY	2	[{"changed": {"fields": ["cover_pic"]}}]	2	1113
+964	2019-05-26 08:32:55.506273+00	1	ENTROPY	2	[{"changed": {"fields": ["icon"]}}]	2	1113
+965	2019-05-26 08:33:09.806013+00	9	E-Gathering	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+966	2019-05-26 08:33:24.405862+00	8	B-Case Study	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+967	2019-05-26 08:33:43.856724+00	7	IGNITION	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+968	2019-05-26 08:33:56.639045+00	6	CRICNOMETRICA	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+969	2019-05-26 08:33:59.609351+00	6	CRICNOMETRICA	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+970	2019-05-26 08:34:21.444921+00	5	B-QUIZ	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+971	2019-05-26 08:34:36.596959+00	4	WALLSTREET	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+972	2019-05-26 08:34:50.004417+00	3	UTKRISHTH	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+973	2019-05-26 08:35:07.220461+00	2	START-UP CAMP	2	[{"changed": {"fields": ["cover_pic", "icon"]}}]	2	1113
+974	2019-05-26 19:49:37.4414+00	3	Ravi Ranjan	2	[{"changed": {"fields": ["email"]}}]	14	1113
+975	2019-05-26 19:49:44.046801+00	4	Anil Joshi	2	[{"changed": {"fields": ["email"]}}]	14	1113
+976	2019-05-26 19:49:50.437762+00	5	Harjeet Khanduja	2	[{"changed": {"fields": ["email"]}}]	14	1113
+977	2019-05-26 19:50:02.980832+00	6	Abi Aryan	2	[{"changed": {"fields": ["email"]}}]	14	1113
+978	2019-05-26 19:50:09.042825+00	7	Rishabh Dev	2	[{"changed": {"fields": ["email"]}}]	14	1113
+979	2019-05-26 19:50:14.322061+00	8	Rahul Tyagi	2	[{"changed": {"fields": ["email"]}}]	14	1113
+980	2019-05-26 19:50:26.006672+00	12	Daniel Ramamoorthy	2	[{"changed": {"fields": ["email"]}}]	14	1113
+981	2019-05-26 19:50:31.798564+00	13	Kumar Gaurav	2	[{"changed": {"fields": ["email"]}}]	14	1113
+982	2019-05-26 19:50:40.012549+00	14	Nandini Vaidyanathan	2	[{"changed": {"fields": ["email"]}}]	14	1113
+983	2019-05-26 19:50:48.37993+00	15	Dr Gopichand Katragadda	2	[{"changed": {"fields": ["email"]}}]	14	1113
 \.
 
 
@@ -17496,7 +17600,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 879, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 983, true);
 
 
 --
@@ -17697,7 +17801,6 @@ xtfeyqvq8cj8ynqzyihx1as1cp7phpay	NTI0NmIxZmUzYzljNWZhMTlmNGI0YWIwNDQyZDk4MzE4YjQ
 vzfhrecnq8unum5kfnqjm7pvk3f8ml8m	YWUxYWIwYzNhYzVlYmE1Zjg2MzIxNzM4N2ZkN2IzMjEwOTZiODIxMjp7Il9hdXRoX3VzZXJfaGFzaCI6IjliOTUzZmI4OTBkYjNlMzYzNjI4MTNlN2Y0ZTE3ZDA2ZTc4ZDAzNjUiLCJ1c2VybmFtZSI6Imxva2VuZHJhaXphcmRhckBnbWFpbC5jb20iLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxMDM0In0=	2018-09-22 04:20:45.56883+00
 7lgr1x3ixuphbn2skafiul1cj0phiufg	YjIwMmM1MzE0MTZjYmY3YjZiYjRkNDIyZDE0YjZlNzgyYmE3ODY1ODp7Il9hdXRoX3VzZXJfaWQiOiIzMjEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6Ijc4OGRlZTBkMjRjMjRlZWU5MGQzMTczZTc5YmE5MGNmMzhkMTIwMzQifQ==	2018-09-19 15:58:16.163719+00
 i0vcgzfk2pjznfmtsgzxyw6551mhv7rb	NTM2MWI4ZmQ4ZGE2ZDljMGMzNTM3NTU4YTg3ZGQ1ZTI2YmZmYjIwMjp7fQ==	2018-10-07 12:49:12.466417+00
-afoy35s57fscsg8v683vymhlqjxpel7b	NmY5YmUxYjdhNjY1ZGJjMmRkZjM1MDY2M2E4NzliMGJmMTFhOTQ0MDp7Il9hdXRoX3VzZXJfaGFzaCI6IjRhOGFhOWZmMjI2NWZhYTBkMDNmZDgxNmJhYmNjYzAzYmU5NWUzMWEiLCJfYXV0aF91c2VyX2lkIjoiMTExMyIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2019-06-08 07:30:36.018221+00
 eh9dj7iatkybko51k1e3ws8mclej88rp	NGEzYmYxYTUwZmM4YjZjMDQzOTkyOTU4YzIyN2IxMDdkNTJkNTVmZjp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfaGFzaCI6IjI5ZDljNDc2MTgxNzNjNDEwM2IwODhlMzc2MDA2NWYyYmNhOWRhYmUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCJ9	2018-09-06 11:45:39.764452+00
 okqxr0tv1racktsf5zdikpyte4jrhfxo	MmM1ZThjN2QzZjBiMTRmYzcwNmU4OTI3ZWFmNWY5NjI0Y2MxNjg5ODp7Il9hdXRoX3VzZXJfaWQiOiIxOTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImRmMzI5YzYxYThlMTNhNDEwOGNlYTk5MzM2MWY0NGFjYzM4NDA5NGMifQ==	2018-09-12 17:05:40.489451+00
 40retve759qi6t0qika5md0abt51elw1	N2Q1NTMwZDQ1OTJjMWVhNDZkZGQ5MzQxYWEyNTU4MzRmNzE2YjdhYjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjIzOSIsIl9hdXRoX3VzZXJfaGFzaCI6IjFhYmI0ODUxYjZmNDdlYjM5MzQ1ZmJhYTY2MzQyNDdkMzg0NjNkY2YifQ==	2018-09-15 14:31:54.613958+00
@@ -17759,6 +17862,7 @@ oqrij1csbm7k9xjn4pfb768649pt29p8	MGEzZmRlNjkyNzFjNmRiN2U0OGEyMzcxZjJlNmQ3NWVlYjc
 y1g5obdthdppva8e7lcmahbbm628oz82	NzhkMjExMzRkNjhhNDEyMjgwMDVkN2Q0NjE1MjMzMTRjOGQxNWUxNzp7Il9hdXRoX3VzZXJfaGFzaCI6Ijk4NDBkMzJmNDcwYWMwYmRmODQ5MjVkYzM3YWFhYjZlNjcwNDlmZWIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI4ODEifQ==	2018-09-19 16:21:08.202392+00
 m4ldlcw2ugtekf9bvd7vzvpl2f27l3vd	OWFmNjQ5ODkyZjUwNDBlNWMzOTUwZDIxNGYyZGMwMjJjNTcxYTljNDp7Il9hdXRoX3VzZXJfaGFzaCI6IjdjMTU3ZjBkNWUyOWY2NGJhNzA5YTY5Y2FmMjYxZTY1NWU4OWU5NGMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxMDY5In0=	2018-10-09 08:12:24.217944+00
 k6npnk0ul445i3jdm1obuhov69qkfx29	NWFmYzgyYTY1YjA0MWY0MTQ4YjYyZDVlZWVlNjEzMjdmNDljOTBhYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjMzIiwiX2F1dGhfdXNlcl9oYXNoIjoiMzM1NjVhMmIzOGIxMTM0NGVhNGM2YzgzMTQzOWIwNzY1MGFmNmRlZSJ9	2019-04-10 10:44:36.447569+00
+fojf0mkdg9dbvw0s1w9h3b6l0i01zv5t	MjE1MjczNjEwYWViMGU1MDNjMDJjOTNiMTI1NjA2YjM4NmFhNTYwNjp7ImZhY2Vib29rX3N0YXRlIjoicTV3amVuSWNLQmZCYnhWd1d0OGFEVHF1UEJ2bzh5NmEifQ==	2019-06-09 18:09:52.143094+00
 5fofgu1400d18pwg20r4ucg0keqye8pb	YWEwMDUzZGNkNGMxYzRkZjFmNjg0NjQ5ZTkwNWU5MGJhZmFjNjE3MDp7Il9hdXRoX3VzZXJfaWQiOiIzMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMmJjM2ExZTgxY2ViNDYwYjQwZWE2MThlMTRiYTA5Njc3NWI3OTVkYyJ9	2018-09-06 15:09:07.327616+00
 qvs669y0lipd5b34j663ltqggvtypcoc	MmM1ZThjN2QzZjBiMTRmYzcwNmU4OTI3ZWFmNWY5NjI0Y2MxNjg5ODp7Il9hdXRoX3VzZXJfaWQiOiIxOTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImRmMzI5YzYxYThlMTNhNDEwOGNlYTk5MzM2MWY0NGFjYzM4NDA5NGMifQ==	2018-09-13 09:58:41.558943+00
 39j3gwcb1vvpl7wk5cjcrbahl3ia0p2g	Y2NjYjJmM2RjZGYzOTc2OWI4ZjAyYWEwMTc2ZTkyYWVhNmI5NjI0OTp7Il9hdXRoX3VzZXJfaWQiOiIyMyIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiOTdhN2ViNjA1MGY5YWUzNmVmZjRlYmU1NmUwYTFkMmFmMzkyZTkwZSJ9	2018-09-15 15:27:10.815131+00
@@ -17997,15 +18101,15 @@ b5zabydgcqzpzfoeujoi34ict6dkvubd	ZTU4YzNhMmNmMjM1MjlmZTRmYTVkNDFmY2JhNWJkMzIyOWY
 --
 
 COPY public.events_event (id, name, venue, date, "time", details, cover_pic, icon, email, flag) FROM stdin;
-2	START-UP CAMP	To be decided...	2018-09-09	TBD	In a startup nothing happens unless you make it happen. Startup camp promotes entrepreneurship among students and also provides a start-up initiative activity amongst the growing startups in and around Chhattisgarh. Several high scale and low scale startups in and around Chhattisgarh are invited and provided with an opportunity to publicize their products/services and grab some interns for their companies. The investors attend the pitches of the startups and on recognizing a potential startup, provide seed funding to those startups.	static/uploads/events/cover/StartupCamp_Dark_Ao27f2T.jpg	static/uploads/events/icon/StartupCamp_Dark_ad65Zju.jpg	ecell@nitrr.ac.in	f
-4	WALLSTREET	To be decided...	2018-09-08	TBD	A virtual share market contest for the brokers out there. Invest money and take home big. The winner keeps it all. Challenge your mind’s trafficking power and run away with the best bet in this virtual stock broking exchange.	static/uploads/events/cover/WallStreet_Dark.jpg	static/uploads/events/icon/WallStreet_Dark.jpg	ecell@nitrr.ac.in	f
-1	ENTROPY	To be decided...	2018-09-08	TBD	Giving wings to ideas and ground to the unknown, this session is to guide, inspire and bring out the best from the budding comrades. Words, if they hit the adrenaline rush can make you do wonders. This speaker session can make you look beyond the ordinary in order to be above the ordinary.	static/uploads/events/cover/Entropy_Dark.jpg	static/uploads/events/icon/Entropy_Dark.jpg	ecell@nitrr.ac.in	f
-7	IGNITION	E-hall	2018-08-01	10:00 am	"Ignition" is a business model competition that will connect ideas of entrepreneurs with investors. This will help the startups to gain traction and also provide an opportunity to be funded by some of the top investors in india. A business model competition aims to connect the new start-ups with investors by creating a direct channel between them.	static/uploads/events/cover/Ignition_Dark.jpg	static/uploads/events/icon/Ignition_Dark.jpg	ecell@nitrr.ac.in	f
-8	B-Case Study	To be decided...	2018-09-08	TBD	B-Case Study (Business Case Study ) is an event designed to act as a solution provider for the erupting real life scenarios in the business domain. A team event comprising of three rounds with range from pen paper to a final report submission. The reports being presented before the judges and the team with maximum awarded points is declared as the winner.	static/uploads/events/cover/Business_Case_Study_Dark_3mVEveD.jpg	static/uploads/events/icon/Business_Case_Study_Dark_IkwYo3s.jpg	ecell@nitrr.ac.in	f
-9	E-Gathering	To be decided...	2018-09-08	TBD	Like to end the E summit 18 on a high, the closing ceremony called the E-Gathering will feature a musical performance and a stand-up performance which will be revealed soon.	static/uploads/events/cover/EGathering_Dark_gO6o6Xn.jpg	static/uploads/events/icon/EGathering_Dark_7uFl1Pc.jpg	ecell@nitrr.ac.in	f
-6	CRICNOMETRICA	To be decided...	2018-09-08	TBD	Cricnometrica is an event designed to provide a stage for entertainment as well as a platform to showcase the individuals or teams knowledge of the game of cricket. A team game comprising of three rounds which range from pen paper to slide-shows and leads finally to virtual bidding to create a team of their own. The team with the maximum points at the end of the third round is declared as the winner.	static/uploads/events/cover/Cricnometrica_Dark.jpg	static/uploads/events/icon/Cricnometrica_Dark.jpg	ecell@nitrr.ac.in	f
-5	B-QUIZ	To be decided...	2018-09-08	TBD	Get your cortex fixed cause this quiz spins your head around. Let's explore some of the de facto of business quizzing. Guide your cerebrum's way to this b-quiz that will catapult you into the world of business facts and figures.	static/uploads/events/cover/BQuiz_Dark.jpg	static/uploads/events/icon/BQuiz_Dark.jpg	ecell@nitrr.ac.in	f
-3	UTKRISHTH	To be decided...	2018-09-08	TBD	This event acknowledges the grass root works and aims at promoting low scale entrepreneurs from villages for the progress of nation. The event aims at felicitating the potential rural startup ideas to promote the entrepreneurial spirit at the grass root levels.	static/uploads/events/cover/Utkrishth_Dark_1JkcfLO.jpg	static/uploads/events/icon/Utkrishth_Dark_dv5qrtr.jpg	ecell@nitrr.ac.in	f
+7	IGNITION	E-hall	2018-08-01	10:00 am	"Ignition" is a business model competition that will connect ideas of entrepreneurs with investors. This will help the startups to gain traction and also provide an opportunity to be funded by some of the top investors in india. A business model competition aims to connect the new start-ups with investors by creating a direct channel between them.	static/uploads/events/cover/ig111.png	static/uploads/events/icon/ig111.png	ecell@nitrr.ac.in	f
+2	START-UP CAMP	To be decided...	2018-09-09	TBD	In a startup nothing happens unless you make it happen. Startup camp promotes entrepreneurship among students and also provides a start-up initiative activity amongst the growing startups in and around Chhattisgarh. Several high scale and low scale startups in and around Chhattisgarh are invited and provided with an opportunity to publicize their products/services and grab some interns for their companies. The investors attend the pitches of the startups and on recognizing a potential startup, provide seed funding to those startups.	static/uploads/events/cover/sc111.png	static/uploads/events/icon/sc111.png	ecell@nitrr.ac.in	f
+6	CRICNOMETRICA	To be decided...	2018-09-08	TBD	Cricnometrica is an event designed to provide a stage for entertainment as well as a platform to showcase the individuals or teams knowledge of the game of cricket. A team game comprising of three rounds which range from pen paper to slide-shows and leads finally to virtual bidding to create a team of their own. The team with the maximum points at the end of the third round is declared as the winner.	static/uploads/events/cover/cr111_LMmMc9z.png	static/uploads/events/icon/cr111_wKu2qYt.png	ecell@nitrr.ac.in	f
+5	B-QUIZ	To be decided...	2018-09-08	TBD	Get your cortex fixed cause this quiz spins your head around. Let's explore some of the de facto of business quizzing. Guide your cerebrum's way to this b-quiz that will catapult you into the world of business facts and figures.	static/uploads/events/cover/bq111.png	static/uploads/events/icon/bq111.png	ecell@nitrr.ac.in	f
+4	WALLSTREET	To be decided...	2018-09-08	TBD	A virtual share market contest for the brokers out there. Invest money and take home big. The winner keeps it all. Challenge your mind’s trafficking power and run away with the best bet in this virtual stock broking exchange.	static/uploads/events/cover/wallstreet_FwBl6yR111.png	static/uploads/events/icon/wallstreet_FwBl6yR111.png	ecell@nitrr.ac.in	f
+3	UTKRISHTH	To be decided...	2018-09-08	TBD	This event acknowledges the grass root works and aims at promoting low scale entrepreneurs from villages for the progress of nation. The event aims at felicitating the potential rural startup ideas to promote the entrepreneurial spirit at the grass root levels.	static/uploads/events/cover/uk111.png	static/uploads/events/icon/uk111.png	ecell@nitrr.ac.in	f
+1	ENTROPY	To be decided...	2018-09-08	TBD	Giving wings to ideas and ground to the unknown, this session is to guide, inspire and bring out the best from the budding comrades. Words, if they hit the adrenaline rush can make you do wonders. This speaker session can make you look beyond the ordinary in order to be above the ordinary.	static/uploads/events/cover/en111.png	static/uploads/events/icon/en111.png	ecell@nitrr.ac.in	f
+9	E-Gathering	To be decided...	2018-09-08	TBD	Like to end the E summit 18 on a high, the closing ceremony called the E-Gathering will feature a musical performance and a stand-up performance which will be revealed soon.	static/uploads/events/cover/eg111.png	static/uploads/events/icon/eg111.png	ecell@nitrr.ac.in	f
+8	B-Case Study	To be decided...	2018-09-08	TBD	B-Case Study (Business Case Study ) is an event designed to act as a solution provider for the erupting real life scenarios in the business domain. A team event comprising of three rounds with range from pen paper to a final report submission. The reports being presented before the judges and the team with maximum awarded points is declared as the winner.	static/uploads/events/cover/bc111.png	static/uploads/events/icon/bc111.png	ecell@nitrr.ac.in	f
 \.
 
 
@@ -18021,12 +18125,12 @@ SELECT pg_catalog.setval('public.events_event_id_seq', 9, true);
 --
 
 COPY public.mentors_mentor (id, name, contact, email, detail, description, profile_pic, flag, year) FROM stdin;
-3	Dr. Shameem S	9876543210	hello@ecell.nitrr.ac.in	Technical University of Munich (Germany)	Great Lakes Institute of Management	static/uploads/mentors/shameem.jpeg	t	2017
-2	Vineet Budki	0	ineet.budki@guiddoo.com	Founder & CEO - Guiddoo World	Founder & CEO - Guiddoo World	static/uploads/mentors/Vineet_554izwX.jpg	t	2017
-1	Tushar Vadera	0	tushar@innolat.com	CEO - Innolat	CEO - Innolat	static/uploads/mentors/tushar.jpeg	t	2017
-5	SHRAVAN PUNNA		placeholder@gmail.com	Consultant at Deloitte	Competent Communicator for displaying excellence in public speaking and a competent leader	static/uploads/mentors/IMG_20180801_142153.jpg	f	2018
-6	VAIBHAV SURYA		placeholder@gmail.com	Digital Marketing Manager at Oppo	Digital sumo is a leading digital marketing agency in MP & CG .They are advance digital advertising company which provides digital & social media marketing training and services to their clients so they will perform extraordinary in their business. They are innovative digital marketing service provider mainly focus on small –medium business enterprises ,marketing professionals & marketing students.\r\nThey are top 3 SEO,SEM & PPC advertsing agency in indore mainly works with various startups in  Healthcare ,Education,E-commerce ,Fashion & many more.	static/uploads/mentors/IMG_7090.jpg	f	2018
-4	Ankit Tibrewal		placeholder@gmail.com	Bharti Airtel Ltd	Financial exec with broad experience in all aspects of accounting, auditing and financial management. Rich experience with real estate, financial consulting. Interested in early-stage startups as well as companies\r\n\r\nSpecialties: Finance & Accounting, Purchasing, Investment, Government Liasion.	static/uploads/mentors/IMG_20190525_134021.jpg	f	2018
+5	SHRAVAN PUNNA		placeholder@gmail.com	Consultant at Deloitte	Competent Communicator for displaying excellence in public speaking and a competent leader	static/uploads/mentors/IMG_20190525_162104.jpg	f	2018
+6	VAIBHAV SURYA		placeholder@gmail.com	Digital Marketing Manager at Oppo	Digital sumo is a leading digital marketing agency in MP & CG .They are advance digital advertising company which provides digital & social media marketing training and services to their clients so they will perform extraordinary in their business. They are innovative digital marketing service provider mainly focus on small –medium business enterprises ,marketing professionals & marketing students.\r\nThey are top 3 SEO,SEM & PPC advertsing agency in indore mainly works with various startups in  Healthcare ,Education,E-commerce ,Fashion & many more.	static/uploads/mentors/IMG_20190525_162119.jpg	f	2018
+1	Tushar Vadera	0	tushar@innolat.com	CEO - Innolat	CEO - Innolat	static/uploads/mentors/IMG_20190525_161131.jpg	t	2017
+2	Vineet Budki	0	ineet.budki@guiddoo.com	Founder & CEO - Guiddoo World	Founder & CEO - Guiddoo World	static/uploads/mentors/IMG_20190525_161951.jpg	t	2017
+3	Dr. Shameem S	9876543210	hello@ecell.nitrr.ac.in	Technical University of Munich (Germany)	Great Lakes Institute of Management	static/uploads/mentors/IMG_20190525_162044.jpg	t	2017
+4	Ankit Tibrewal		placeholder@gmail.com	Bharti Airtel Ltd	Financial exec with broad experience in all aspects of accounting, auditing and financial management. Rich experience with real estate, financial consulting. Interested in early-stage startups as well as companies\r\n\r\nSpecialties: Finance & Accounting, Purchasing, Investment, Government Liasion.	static/uploads/mentors/IMG_20190525_134021_1558814989205.jpg	f	2018
 \.
 
 
@@ -18117,21 +18221,21 @@ SELECT pg_catalog.setval('public.social_auth_usersocialauth_id_seq', 1, false);
 --
 
 COPY public.speakers_speaker (id, name, company, profile_pic, email, contact, description, year, social_media, flag) FROM stdin;
-8	Rahul Tyagi	Vice President - Training at Lucideus	static/uploads/speakers/rahul.jpg	ecell@nitrr.ac.in		Rahul being a perfect combination of intelligence and dedication, at present is the co- founder of Lucideus. Handling the toughest of the cyberspace issues with a magical ease is what makes Rahul stand out from the rest and also he speaks regularly at prestigious platforms like Exhibition India group, IPPAI, DCD convergence, Security Watch India, Micro Finance in Asia.  Recently, he has been honored with Fortune India's 40 under40 2018.	2017	https://www.linkedin.com/in/iamrahultyagi/	t
-11	Mr. Saransh Roy	Associate at Invest India	static/uploads/speakers/0.jpeg	saranshroy@gmail.com		Mr. Roy is an associate at Invest India, Startup India Hub. Saransh being a versatile individual, addresses people on the need to empower the country’s economy by creating jobs rather than seeking one and the governmental policies guarding startup related agendas.  Apart from this, he has an expertise in dealing with Intellectual Property Rights, including issues like credit guarantee, tax exemption laws and others.	2017	https://www.linkedin.com/in/saransh-roy-01b966a2/	f
-5	Harjeet Khanduja	Vice President Human Resource at Reliance JIO Infocomm	static/uploads/speakers/Harjeet_Khanduja.jpeg	ecell@nitrr.ac.in		Currently, Mr. Harjeet is the Vice President Human Resources at Reliance Jio. He has smartly led various HR projects in India, Canada as well as U.S.A. for various market giants like Reliance, Tata, Piramal, just to name a few. With a vivacious personality, Harjeet has not only led HR, but also been a blogger, poet and an international speaker, addressing people on the practicalities of dealing with the pre and post startup essentials.  We at E-Summit 2017 witnessed this great, humorous and intellectual person.	2017	https://www.linkedin.com/in/harjeetkhanduja/	t
-4	Anil Joshi	Managing Partner, Unicorn India Ventures	static/uploads/speakers/anil.jpg	hello@ecell.nitrr.ac.in		Anil Joshi is the Managing Partner at Unicorn India Ventures, a SEBI approved venture fund under AIF-I Category. The man with his vision has helped in closing approximately 60 start-up deals with over INR 100 crs investments and has served on the Board of five companies and is involved with various incubation centers as a mentor in India and outside India.	2016	https://www.linkedin.com/in/aniljoshi74/	t
-7	Rishabh Dev	Managing Director at Mapplinks and Mapplinks Academy	static/uploads/speakers/Rishabh_Dev.jpg	ecell@nitrr.ac.in		ES17 had Mr. Rishabh Dev – The Growth Hacking Bogeyman, a serial entrepreneur, presently the director of Mapplinks, India, who regularly enlightens enthusiasts with growth hacking and digital marketing. Not only growth hacking, but also many diverse fields intrigued him. His approach towards finding the optimal solutions for his clients is commendable.	2017	https://www.linkedin.com/in/rishabhdev/	t
-6	Abi Aryan	The London School of Economics and Political Science (LSE)	static/uploads/speakers/Abi_Aryan.jpeg	ecell@nitrr.ac.in		Ms. Abi, a perfect instance of beauty with brains, graduated from London School of Economics and Political Science and has a deep interest in AI and Blockchain. She has worked as a strategist with AI companies globally and is the founder of Delegano and Director at Women Who Code, Delhi. Having a great experience as TED speaker, Abi also worked on Augmented Reality and Bit coin / Block chain companies in U.K.	2017	https://www.linkedin.com/in/abi-aryan-168131112/	t
-9	Kumaran Brothers	AppGodimensions	static/uploads/speakers/images.jpeg	apps.godimensions@gmail.com		Hailing from Chennai, two brothers Shravan Kumaran(12) and Sanjay Kumaran(10) went onto become the youngest Indian entrepreneurs as well as CEO of GoDimensions in 2012.\r\nBrothers have developed a number of mobile applications for android as well as iOS and aim that within a few years about 50% of the apps in the market should be owned by them. They also created VR based headsets called GoVR. The brothers were a part of E- Summit 2015 and since then, they are unstoppable.	2015	https://twitter.com/AppGodimensions	f
-12	Daniel Ramamoorthy	Startup Coach	static/uploads/speakers/daniel_ramamoorthy.jpeg	ecell@nitrr.ac.in		An eclectic person who is a box of wonder, excelling the entrepreneurial domain: from being an entrepreneur and a motivational speaker, coaching others to being a world famous host and speaker!	2018	https://www.linkedin.com/in/iamdanram/	f
-10	Prateek Sethi	Communication Designer and Creative Director at Trip Creative Services	static/uploads/speakers/Screenshot_from_2018-08-22_19-00-14.png	prateek@wearetrip.in		Prateek has been the Communication Designer and Creative Director at Trip Creative Services, since 2009. Graduated from National Institute of Design, Ahmedabad, he has worked on animation and effects for various leading television channels and shows. He is a very creative person with an imaginative approach towards his projects and also is a talented speaker.	2015	https://www.facebook.com/prateeksethi	f
-13	Kumar Gaurav	Founder Cashaa	static/uploads/speakers/kumar_gaurav.jpeg	ecell@nitrr.ac.in		Honored with an extraordinary status by the US government, holding a place in 100 influential people in the world of blockchain, Mr Kumar Gaurav, Founder of Cashaa has set the bar high and stood out of the crowd.	2018	blank	f
-3	Ravi Ranjan	NASSCOM 10000 Startups	static/uploads/speakers/ravi.jpeg	hello@hello.com		Ravi Ranjan is the head of Nasscom, 10000 startups, Kolkata. He is one of those Indians who has played an influential role in giving the ground to many startups. It is aimed at incubating, funding and supporting 10,000 technology start-ups in India over the next ten years. The person with an inventive bend for entrepreneurship is the person who has taken to himself to bring the best startups in Indian market.	2016	https://www.linkedin.com/in/raviranjan2/	t
-1	Aditi Chourasia	Co-Founder and CEO EngineerBabu	static/uploads/speakers/aditi_71CXaZY.jpeg	hello@ebabu.com		The lady with the spirit of a real entrepreneur has always aimed to scale new heights. The co-founder of Engineer Babu, she has always preached that startup doesn’t mean money and there should be a good idea and passion to accomplish your task. She is a true inspiration and a symbol of women empowerment.	2016	https://www.linkedin.com/in/aditichaurasia/	t
-14	Nandini Vaidyanathan	CARMa CONNECT	static/uploads/speakers/nandhini.jpg	ecell@nitrr.ac.in		An academician turned entrepreneurial mentor, founder of CARMa CONNECT, this visionary lady has created an eco-system to nourish the spirit of entrepreneurship.	2018	https://www.linkedin.com/in/nandinivaidyanathan	f
-15	Dr Gopichand Katragadda	Chief Technology Officer at Tata Sons	static/uploads/speakers/gopichand.jpeg	ecell@nitrr.ac.in		Dr Gopichand Katragadda is the group chief technology officer at Tata Sons. In this role, Dr Katragadda drives technology and innovation for the Tata group leveraging cross-company synergies. He also serves as a director on the boards of select Tata companies.	2018	https://in.linkedin.com/in/gopichand-katragadda-2b1a0b7	t
-2	Anup Kalbalia	Tech Lead at Directi	static/uploads/speakers/anup.png	anup.kalbalia@gmail.com		The tech geek with an experience of working in various programming languages like Delphi, C and Java, has built enterprise applications using different technologies like TCP sockets, HTTP, Restful Web Services etc. Being the Tech Lead at Directi, he has always visioned to create a pool of budding entrepreneurs who can make a difference to society.	2016	https://www.linkedin.com/in/anupkalbalia/	t
+9	Kumaran Brothers	AppGodimensions	static/uploads/speakers/Kumaran_Brothers.gif	apps.godimensions@gmail.com		Hailing from Chennai, two brothers Shravan Kumaran(12) and Sanjay Kumaran(10) went onto become the youngest Indian entrepreneurs as well as CEO of GoDimensions in 2012.\r\nBrothers have developed a number of mobile applications for android as well as iOS and aim that within a few years about 50% of the apps in the market should be owned by them. They also created VR based headsets called GoVR. The brothers were a part of E- Summit 2015 and since then, they are unstoppable.	2015	https://twitter.com/AppGodimensions	f
+7	Rishabh Dev	Managing Director at Mapplinks and Mapplinks Academy	static/uploads/speakers/IMG_20190526_015319.jpg	four@nitrr.ac.in		ES17 had Mr. Rishabh Dev – The Growth Hacking Bogeyman, a serial entrepreneur, presently the director of Mapplinks, India, who regularly enlightens enthusiasts with growth hacking and digital marketing. Not only growth hacking, but also many diverse fields intrigued him. His approach towards finding the optimal solutions for his clients is commendable.	2017	https://www.linkedin.com/in/rishabhdev/	t
+6	Abi Aryan	The London School of Economics and Political Science (LSE)	static/uploads/speakers/IMG_20190526_015236.jpg	three@nitrr.ac.in		Ms. Abi, a perfect instance of beauty with brains, graduated from London School of Economics and Political Science and has a deep interest in AI and Blockchain. She has worked as a strategist with AI companies globally and is the founder of Delegano and Director at Women Who Code, Delhi. Having a great experience as TED speaker, Abi also worked on Augmented Reality and Bit coin / Block chain companies in U.K.	2017	https://www.linkedin.com/in/abi-aryan-168131112/	t
+12	Daniel Ramamoorthy	Startup Coach	static/uploads/speakers/daniel_ramamoorthy_FQLF3P8.jpg	eight@nitrr.ac.in		An eclectic person who is a box of wonder, excelling the entrepreneurial domain: from being an entrepreneur and a motivational speaker, coaching others to being a world famous host and speaker!	2018	https://www.linkedin.com/in/iamdanram/	f
+8	Rahul Tyagi	Vice President - Training at Lucideus	static/uploads/speakers/Rahul_Tyagi.jpg	five@nitrr.ac.in		Rahul being a perfect combination of intelligence and dedication, at present is the co- founder of Lucideus. Handling the toughest of the cyberspace issues with a magical ease is what makes Rahul stand out from the rest and also he speaks regularly at prestigious platforms like Exhibition India group, IPPAI, DCD convergence, Security Watch India, Micro Finance in Asia.  Recently, he has been honored with Fortune India's 40 under40 2018.	2017	https://www.linkedin.com/in/iamrahultyagi/	t
+4	Anil Joshi	Managing Partner, Unicorn India Ventures	static/uploads/speakers/Anil_Joshi-1.jpg	two@ecell.nitrr.ac.in		Anil Joshi is the Managing Partner at Unicorn India Ventures, a SEBI approved venture fund under AIF-I Category. The man with his vision has helped in closing approximately 60 start-up deals with over INR 100 crs investments and has served on the Board of five companies and is involved with various incubation centers as a mentor in India and outside India.	2016	https://www.linkedin.com/in/aniljoshi74/	t
+11	Mr. Saransh Roy	Associate at Invest India	static/uploads/speakers/Mr._Saransh_Roy.webp	saranshroy@gmail.com		Mr. Roy is an associate at Invest India, Startup India Hub. Saransh being a versatile individual, addresses people on the need to empower the country’s economy by creating jobs rather than seeking one and the governmental policies guarding startup related agendas.  Apart from this, he has an expertise in dealing with Intellectual Property Rights, including issues like credit guarantee, tax exemption laws and others.	2017	https://www.linkedin.com/in/saransh-roy-01b966a2/	f
+5	Harjeet Khanduja	Vice President Human Resource at Reliance JIO Infocomm	static/uploads/speakers/IMG_20190526_015149.jpg	three@nitrr.ac.in		Currently, Mr. Harjeet is the Vice President Human Resources at Reliance Jio. He has smartly led various HR projects in India, Canada as well as U.S.A. for various market giants like Reliance, Tata, Piramal, just to name a few. With a vivacious personality, Harjeet has not only led HR, but also been a blogger, poet and an international speaker, addressing people on the practicalities of dealing with the pre and post startup essentials.  We at E-Summit 2017 witnessed this great, humorous and intellectual person.	2017	https://www.linkedin.com/in/harjeetkhanduja/	t
+3	Ravi Ranjan	NASSCOM 10000 Startups	static/uploads/speakers/IMG_20190526_015042.jpg	one@hello.com		Ravi Ranjan is the head of Nasscom, 10000 startups, Kolkata. He is one of those Indians who has played an influential role in giving the ground to many startups. It is aimed at incubating, funding and supporting 10,000 technology start-ups in India over the next ten years. The person with an inventive bend for entrepreneurship is the person who has taken to himself to bring the best startups in Indian market.	2016	https://www.linkedin.com/in/raviranjan2/	t
+1	Aditi Chourasia	Co-Founder and CEO EngineerBabu	static/uploads/speakers/Aditi_Chourasia.jpg	hello@ebabu.com		The lady with the spirit of a real entrepreneur has always aimed to scale new heights. The co-founder of Engineer Babu, she has always preached that startup doesn’t mean money and there should be a good idea and passion to accomplish your task. She is a true inspiration and a symbol of women empowerment.	2016	https://www.linkedin.com/in/aditichaurasia/	t
+10	Prateek Sethi	Communication Designer and Creative Director at Trip Creative Services	static/uploads/speakers/Prateek_Sethi.jpg	prateek@wearetrip.in		Prateek has been the Communication Designer and Creative Director at Trip Creative Services, since 2009. Graduated from National Institute of Design, Ahmedabad, he has worked on animation and effects for various leading television channels and shows. He is a very creative person with an imaginative approach towards his projects and also is a talented speaker.	2015	https://www.facebook.com/prateeksethi	f
+13	Kumar Gaurav	Founder Cashaa	static/uploads/speakers/SAVE_20190526_114248.jpg	nine@nitrr.ac.in		Honored with an extraordinary status by the US government, holding a place in 100 influential people in the world of blockchain, Mr Kumar Gaurav, Founder of Cashaa has set the bar high and stood out of the crowd.	2018	https://www.linkedin.com/in/kgauravitc	f
+14	Nandini Vaidyanathan	CARMa CONNECT	static/uploads/speakers/Nandini_Vaidyanathan.jpg	ten@nitrr.ac.in		An academician turned entrepreneurial mentor, founder of CARMa CONNECT, this visionary lady has created an eco-system to nourish the spirit of entrepreneurship.	2018	https://www.linkedin.com/in/nandinivaidyanathan	f
+2	Anup Kalbalia	Tech Lead at Directi	static/uploads/speakers/Anup_Kalbalia.jpg	anup.kalbalia@gmail.com		The tech geek with an experience of working in various programming languages like Delphi, C and Java, has built enterprise applications using different technologies like TCP sockets, HTTP, Restful Web Services etc. Being the Tech Lead at Directi, he has always visioned to create a pool of budding entrepreneurs who can make a difference to society.	2016	https://www.linkedin.com/in/anupkalbalia/	t
+15	Dr Gopichand Katragadda	Chief Technology Officer at Tata Sons	static/uploads/speakers/Dr_Gopichand_Katragadda.jpg	eleven@nitrr.ac.in		Dr Gopichand Katragadda is the group chief technology officer at Tata Sons. In this role, Dr Katragadda drives technology and innovation for the Tata group leveraging cross-company synergies. He also serves as a director on the boards of select Tata companies.	2018	https://in.linkedin.com/in/gopichand-katragadda-2b1a0b7	t
 \.
 
 
@@ -18150,9 +18254,9 @@ COPY public.sponsors_sponsor (id, name, details, pic, contact, website, spons_ty
 15	Bank Of Maharashtra	Bank Of Maharashtra is our Banking Partner	static/uploads/sponsors/bom.jpeg	8827544244	https://ecell.nitrr.ac.in	AS	f	2017
 14	CHIPS Chhattisgarh	CHIPS Chhattisgarh is our Gold Sponsor	static/uploads/sponsors/Chips-Logo11-300x189.jpg	(771) 4066205	http://www.chips.gov.in	GS	f	2017
 13	qM Print	qM Print is our Printing Partner	static/uploads/sponsors/qmprint.jpg	077140 99444	http://www.qmprint.com/	PRTS	f	2017
-34	WILLMAN	Stationary Partner	static/uploads/sponsors/willman.png		https://willman-paper-mart.business.site/	GS	t	2018
-40	Orange Le Spirit Cafe	Food Partner	static/uploads/sponsors/orange.png		https://www.facebook.com/orangelespirit/	GS	t	2018
-39	Vedam Spa & Salon	Spa & Salon Partner	static/uploads/sponsors/vedam.png		https://www.justdial.com/Raipur-Chhattisgarh/Vedam-Spa-Unisex-Salon-Beside-Jai-Jawan-Petrol-Pump-Raipur-HO/9999PX771-X771-180516161332-E3Y7_BZDET	TS	t	2018
+33	The Trophy House	Memento Partner	static/uploads/sponsors/trophy_house_WQ49Erc.jpg		http://www.thetrophyhouse.in/	GS	t	2018
+41	TRIPPY	Travel Partner	static/uploads/sponsors/IMG_20190526_021644.jpg		http://www.trippycar.com/	PLTS	t	2018
+36	Konsole Group	Digital Outreach Partner	static/uploads/sponsors/konsole_group.png		http://www.konsolegroup.com/	PLTS	t	2018
 29	ATKT.IN	ATKT.IN is our online media partner	static/uploads/sponsors/atkt.jpg	081091 22345	http://atkt.in/	PRTS	f	2017
 28	Souled Store	Souled Store is our Gift Partner	static/uploads/sponsors/soled_store.png	022 3965 3110	https://www.thesouledstore.com/	PRTS	f	2017
 27	RiON	RiON is our Recreation Partner	static/uploads/sponsors/21317579_1533946006664531_2132293697478173818_n.jpg	081091 22345	https://ecell.nitrr.ac.in	PRTS	f	2017
@@ -18173,32 +18277,32 @@ COPY public.sponsors_sponsor (id, name, details, pic, contact, website, spons_ty
 7	Nai Dunia	Print Media Partner	static/uploads/sponsors/naidunia.jpg	7314711000	http://naidunia.jagran.com	TS	f	2017
 6	AB Classes	Event Partner	static/uploads/sponsors/AB-Class.jpg	098317 40080	http://www.abclasses.co.in	PRTS	f	2017
 5	Sam's Creations	Salon Partner	static/uploads/sponsors/20953607_1520169718042160_5080427996286266580_n.jpg	097642 11228	https://ecell.nitrr.ac.in	PRTS	f	2017
-4	Benchmark Group	Benchmark Group is our digital outreach partner.	static/uploads/sponsors/download.jpg	081031 30039	https://ecell.nitrr.ac.in	PRTS	f	2017
-3	Happily Unmarried	Happily Unmaried is our Merchandise Partner	static/uploads/sponsors/happily_umarried_logo_india.png	1800 3000 588	https://www.happilyunmarried.com	PRTS	f	2017
-30	36Inc	Incubation partner	static/uploads/sponsors/inc.jpg		https://www.facebook.com/36inc/	AS	t	2018
-41	TRIPPY	Travel Partner	static/uploads/sponsors/trippy.jpg		http://www.trippycar.com/	PLTS	t	2018
+43	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/IMG_20190526_022315.jpg		http://www.wcd.nic.in/	AS	t	2018
+4	Benchmark Group	Benchmark Group is our digital outreach partner.	static/uploads/sponsors/download_1.png	081031 30039	https://ecell.nitrr.ac.in	PRTS	f	2017
 1	Think Raipur	In association with Think Raipur	static/uploads/sponsors/raipur1-300x200.jpg	8827544244	http://www.thinkraipur.in/	AS	f	2017
+30	36Inc	Incubation partner	static/uploads/sponsors/inc.jpg		https://www.facebook.com/36inc/	AS	t	2018
+45	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/department_of_women_and_child_development_ZhOVA2e.png		http://www.wcd.nic.in/	AS	t	2018
+3	Happily Unmarried	Happily Unmaried is our Merchandise Partner	static/uploads/sponsors/download_3JuPElR.png	1800 3000 588	https://www.happilyunmarried.com	PRTS	f	2017
 23	Colors Mall	Colors Mall is our Gold Sponsor	static/uploads/sponsors/colors_mall.png	077140 69999	http://www.colorsmall.com	GS	f	2017
 9	ZONE	ZONE by the PARK hotels is out Platinum Sponsor	static/uploads/sponsors/zone.png	077143 20000	http://www.zonebythepark.com	PLTS	f	2017
-36	Konsole Group	Digital Outreach Partner	static/uploads/sponsors/konsole.jpeg		http://www.konsolegroup.com/	PLTS	t	2018
-31	INH News	Electronic Media Partner	static/uploads/sponsors/inh.jpg		https://www.facebook.com/inhnewsindia/	PLTS	t	2018
-37	Bisleri Fonzo	Beverage Partner	static/uploads/sponsors/bisleri_fonzo.png		https://www.bisleri.com/product/fonzo	PLTS	t	2018
-33	The Trophy House	Memento Partner	static/uploads/sponsors/trophyhouse.png		http://www.thetrophyhouse.in/	GS	t	2018
+34	WILLMAN	Stationary Partner	static/uploads/sponsors/willman.jpg		https://willman-paper-mart.business.site/	GS	t	2018
+40	Orange Le Spirit Cafe	Food Partner	static/uploads/sponsors/le_spirit.jpg		https://www.facebook.com/orangelespirit/	GS	t	2018
+32	ATKT.IN	Event Publicity Partner	static/uploads/sponsors/atkt.in.png		https://www.facebook.com/ATKT.in/	TS	t	2018
+31	INH News	Electronic Media Partner	static/uploads/sponsors/inh_news.png		https://www.facebook.com/inhnewsindia/	PLTS	t	2018
 42	RAAG MUSIC ACADEMY	Music Partner	static/uploads/sponsors/raaga.png		http://raagmusicacademy.com/home.php	GS	f	2018
-32	ATKT.IN	Event Publicity Partner	static/uploads/sponsors/atkt_wYiXSRp.jpg		https://www.facebook.com/ATKT.in/	TS	t	2018
-35	YourStory	Campus Publicity Partner	static/uploads/sponsors/yourstory.jpeg		http://yourstory.com	TS	t	2018
-38	Chhattisgarh Tourism	Tourism Partner	static/uploads/sponsors/Tourism.png		https://twitter.com/GoChhattisgarh?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor	AS	t	2018
-46	Hotel Babylon International	Hospitality Partner	static/uploads/sponsors/Babylon.png		http://hotelbabylon.in/	PLTS	t	2018
-45	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/Poshan.png		http://www.wcd.nic.in/	AS	t	2018
-44	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/Women__Child_Welfare.png		http://www.wcd.nic.in/	AS	t	2018
-43	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/Beti_Bachao.png		http://www.wcd.nic.in/	AS	t	2018
-47	TheHitavada	Print Media Partner	static/uploads/sponsors/Hitvada-02.png		http://www.ehitavada.com/	GS	t	2018
-48	HEADSTART	Ecosystem Partner	static/uploads/sponsors/Headstart.png		http://www.headstart.in/	PRTS	t	2018
-49	MOBILE10x	Technical Incubation Partner	static/uploads/sponsors/Mobile10x.png		https://www.mobile10x.in/hub/mobile10x-raipur-hub	PRTS	t	2018
-50	Zoodify	Communication Partner	static/uploads/sponsors/Zoodify.png		https://ecell.nitrr.ac.in/	PRTS	t	2018
-51	Venture Catalysts	Investment Partner	static/uploads/sponsors/Venture.png		http://venturecatalysts.in/raipur/	PRTS	t	2018
-52	Dev Creator's of Memories	Photography Partner	static/uploads/sponsors/Standees-03.png		https://ecell.nitrr.ac.in/	TS	t	2018
-2	36 Inc	36 Inc is our Incubation Partner	static/uploads/sponsors/36inc.png	9981133990	http://36inc.cgstate.gov.in	PRTS	f	2017
+39	Vedam Spa & Salon	Spa & Salon Partner	static/uploads/sponsors/vedam_spa.jpg		https://www.justdial.com/Raipur-Chhattisgarh/Vedam-Spa-Unisex-Salon-Beside-Jai-Jawan-Petrol-Pump-Raipur-HO/9999PX771-X771-180516161332-E3Y7_BZDET	TS	t	2018
+46	Hotel Babylon International	Hospitality Partner	static/uploads/sponsors/hotel_babylon_int.jpg		http://hotelbabylon.in/	PLTS	t	2018
+35	YourStory	Campus Publicity Partner	static/uploads/sponsors/your_story.png		http://yourstory.com	TS	t	2018
+44	Department of Women & Child Development	Gov Partner	static/uploads/sponsors/IMG_20190526_022339.jpg		http://www.wcd.nic.in/	AS	t	2018
+37	Bisleri Fonzo	Beverage Partner	static/uploads/sponsors/bisleri_fonzo.jpg		https://www.bisleri.com/product/fonzo	PLTS	t	2018
+2	36 Inc	36 Inc is our Incubation Partner	static/uploads/sponsors/inc.jpg	9981133990	http://36inc.cgstate.gov.in	PRTS	f	2017
+51	Venture Catalysts	Investment Partner	static/uploads/sponsors/VENTURE_catalysts.png		http://venturecatalysts.in/raipur/	PRTS	t	2018
+50	Zoodify	Communication Partner	static/uploads/sponsors/ZOODIFY.jpg		https://ecell.nitrr.ac.in/	PRTS	t	2018
+49	MOBILE10x	Technical Incubation Partner	static/uploads/sponsors/mobile10X.jpg		https://www.mobile10x.in/hub/mobile10x-raipur-hub	PRTS	t	2018
+48	HEADSTART	Ecosystem Partner	static/uploads/sponsors/headstart.png		http://www.headstart.in/	PRTS	t	2018
+38	Chhattisgarh Tourism	Tourism Partner	static/uploads/sponsors/chhattisgarh_tourism_HxrvutV.jpg		https://twitter.com/GoChhattisgarh?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor	AS	t	2018
+47	TheHitavada	Print Media Partner	static/uploads/sponsors/IMG_20190526_021029.jpg		http://www.ehitavada.com/	GS	t	2018
+52	Dev Creator's of Memories	Photography Partner	static/uploads/sponsors/IMG_20190526_021830.jpg		https://ecell.nitrr.ac.in/	TS	t	2018
 \.
 
 
@@ -18214,11 +18318,11 @@ SELECT pg_catalog.setval('public.sponsors_sponsor_id_seq', 52, true);
 --
 
 COPY public.startups_startup (id, name, email, pic, contact, founder, address, flag, created_at, modified_at, details, url) FROM stdin;
-1	Polllzy	ecell@nitrr.ac.in	static/uploads/startups/polllzy_logo_XvE75TS.png		Polllzy	Raipur	t	2018-11-02 17:33:46.759295+00	2018-11-11 06:28:37.8261+00	<div id="output" class="content markdown-body"><p><strong>About Polllzy:</strong>\r\nWe are social media startup. </p>\r\n\r\n<p><strong>About Internship:</strong>\r\n3rd and 4th year students can apply.</p>\r\n\r\n<p><strong>Skills Required:</strong>\r\nWe are looking for coders who are good in javascript and python.</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nNo stipend will provided.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nDecember</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\n2 months (can be extended)</p>\r\n\r\n<p><strong>Email:</strong>\r\npolllzy.team@gmail.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9035028077</p></div>	https://www.polllzy.com/
-5	SmileBots	achal@smilebots.com	static/uploads/startups/smilebots.png		Smilebots	National Corporate Park, 210B, Great Eastern Rd, Raipur, Chhattisgarh 492001	t	2018-11-11 05:41:29.830208+00	2018-11-11 06:08:49.925624+00	<div id="output" class="content markdown-body"><p><strong>About Smilebots</strong>: We help Companies and Startups solve real problems using cutting-edge Technology.</p>\r\n\r\n<p><strong>Internships are available for the following domains:</strong></p>\r\n\r\n<ol><li>Data Science</li><li>Machine Learning</li><li>Artificial Intelligence</li><li>Blockchain</li></ol>\r\n\r\n<p><strong>Skills Required:</strong> Fluency in any coding language for above mentioned domains which may incluce python, ruby, solidity,javascript, Hadoop etc. Past experience and projects will play a crucial role.</p>\r\n\r\n<p><strong>Minimum Stipend:</strong> Performance based, upto max 10k/month</p>\r\n\r\n<p><strong>Starting Month:</strong> Immediately</p>\r\n\r\n<p><strong>Email:</strong> achal@smilebots.com</p>\r\n\r\n<p><strong>Mobile No:</strong> +91 93005 08989</p>\r\n\r\n<p><strong>Address:</strong> National Corporate Park, 210B, Great Eastern Rd, Raipur, Chhattisgarh 492001</p></div>	https://smilebots.com/
-2	Innolat Technologies pvt. Ltd.	ecell@nitrr.ac.in	static/uploads/startups/innolat.png		Innolat Technologies pvt. Ltd.	412, Golden Trade Centre, New Rajendra Nagar, Raipur	t	2018-11-02 17:53:06.525683+00	2018-11-11 06:22:48.034687+00	<div id="output" class="content markdown-body"><p><strong>About Innolat:</strong></p>\r\n\r\n<p>Innolat is one of the fastest growing EduTech Startups incubated by 36Inc, Govt. of Chhattisgarh.</p>\r\n\r\n<p>Our\r\ntechnology product iLrnn (pronounced as iLearn) is India’s first personalized learning platform to connect\r\nengineering students directly with industry experts and corporate trainer LIVE.</p>\r\n\r\n<p><strong>About Internship:</strong>\r\nInternships are available for both Technical and Non-Technical.</p>\r\n\r\n<p><strong>Skills Required:</strong>\r\nPursuing Engineering / Fresher</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nPerformance based.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nAnytime</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\nVariable</p>\r\n\r\n<p><strong>Email:</strong>\r\nisha@innolat.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n+91-8861516611</p>\r\n\r\n<p><strong>Address:</strong>\r\n412, Golden Trade Centre, New Rajendra Nagar, Raipur</p></div>	http://www.innolat.com/#/home
-4	Lokus News	ecell@nitrr.ac.in	static/uploads/startups/lokus_LlpJryR.png		Lokus News	Interns need to do a training for 10 days at our office at Station Road, Raipur\r\nLater they can work from home	t	2018-11-02 18:03:20.638007+00	2018-11-11 06:16:37.015833+00	<div id="output" class="content markdown-body"><p><strong>Co Founder:</strong> \r\nPrakhar Lunawat</p>\r\n\r\n<p><strong>About Lokus News:</strong>\r\nWe are a news aggregation platform, focusing on regional news.</p>\r\n\r\n<p><strong>About Internship:</strong></p>\r\n\r\n<ol><li>Operations internship</li><li>Interns need to do a training for 10 days at our office at Station Road, Raipur</li><li>Later they can work from home</li></ol>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nRs. 5000/month</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\nIntenships are available for a duration of 3 months.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nNovember</p>\r\n\r\n<p><strong>Email:</strong>\r\nPrakhar@lokusnews.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9826123498</p></div>	http://lokusnews.com/
-3	eBeta	ecell@nitrr.ac.in	static/uploads/startups/asdf.png		eBeta	eBeta House, B28, Amrapali Society, behind Colors Mall, Pachpedinaka, Raipur.	t	2018-11-02 17:59:15.633294+00	2018-11-11 06:23:25.186004+00	<div id="output" class="content markdown-body"><p><strong>About eBeta:</strong>\r\nIts about leisure and health services to senior \r\ncitizens.</p>\r\n\r\n<p><strong>About Internship:</strong></p>\r\n\r\n<ol><li>Sense of Responsibility</li><li>Smart Communication Skills and Presentable. (Both Male &amp; Female)</li></ol>\r\n\r\n<p><strong>Skills Required:</strong>\r\nPatience in handling old age people</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nRs. 2000/month</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nNovember</p>\r\n\r\n<p><strong>Email:</strong>\r\nPrakhar@lokusnews.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9522292122</p>\r\n\r\n<p><strong>Address:</strong>\r\neBeta House, B28, Amrapali Society, behind Colors Mall, Pachpedinaka, Raipur.</p></div>	http://ebeta.in/
+5	SmileBots	achal@smilebots.com	static/uploads/startups/sime.png		Smilebots	National Corporate Park, 210B, Great Eastern Rd, Raipur, Chhattisgarh 492001	t	2018-11-11 05:41:29.830208+00	2019-05-26 02:57:46.065772+00	<div id="output" class="content markdown-body"><p><strong>About Smilebots</strong>: We help Companies and Startups solve real problems using cutting-edge Technology.</p>\r\n\r\n<p><strong>Internships are available for the following domains:</strong></p>\r\n\r\n<ol><li>Data Science</li><li>Machine Learning</li><li>Artificial Intelligence</li><li>Blockchain</li></ol>\r\n\r\n<p><strong>Skills Required:</strong> Fluency in any coding language for above mentioned domains which may incluce python, ruby, solidity,javascript, Hadoop etc. Past experience and projects will play a crucial role.</p>\r\n\r\n<p><strong>Minimum Stipend:</strong> Performance based, upto max 10k/month</p>\r\n\r\n<p><strong>Starting Month:</strong> Immediately</p>\r\n\r\n<p><strong>Email:</strong> achal@smilebots.com</p>\r\n\r\n<p><strong>Mobile No:</strong> +91 93005 08989</p>\r\n\r\n<p><strong>Address:</strong> National Corporate Park, 210B, Great Eastern Rd, Raipur, Chhattisgarh 492001</p></div>	https://smilebots.com/
+1	Polllzy	ecell@nitrr.ac.in	static/uploads/startups/pollzy.jpeg		Polllzy	Raipur	t	2018-11-02 17:33:46.759295+00	2019-05-26 02:56:17.903426+00	<div id="output" class="content markdown-body"><p><strong>About Polllzy:</strong>\r\nWe are social media startup. </p>\r\n\r\n<p><strong>About Internship:</strong>\r\n3rd and 4th year students can apply.</p>\r\n\r\n<p><strong>Skills Required:</strong>\r\nWe are looking for coders who are good in javascript and python.</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nNo stipend will provided.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nDecember</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\n2 months (can be extended)</p>\r\n\r\n<p><strong>Email:</strong>\r\npolllzy.team@gmail.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9035028077</p></div>	https://www.polllzy.com/
+2	Innolat Technologies pvt. Ltd.	ecell@nitrr.ac.in	static/uploads/startups/download_vNtmU9e.jpeg		Innolat Technologies pvt. Ltd.	412, Golden Trade Centre, New Rajendra Nagar, Raipur	t	2018-11-02 17:53:06.525683+00	2019-05-26 02:57:01.19214+00	<div id="output" class="content markdown-body"><p><strong>About Innolat:</strong></p>\r\n\r\n<p>Innolat is one of the fastest growing EduTech Startups incubated by 36Inc, Govt. of Chhattisgarh.</p>\r\n\r\n<p>Our\r\ntechnology product iLrnn (pronounced as iLearn) is India’s first personalized learning platform to connect\r\nengineering students directly with industry experts and corporate trainer LIVE.</p>\r\n\r\n<p><strong>About Internship:</strong>\r\nInternships are available for both Technical and Non-Technical.</p>\r\n\r\n<p><strong>Skills Required:</strong>\r\nPursuing Engineering / Fresher</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nPerformance based.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nAnytime</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\nVariable</p>\r\n\r\n<p><strong>Email:</strong>\r\nisha@innolat.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n+91-8861516611</p>\r\n\r\n<p><strong>Address:</strong>\r\n412, Golden Trade Centre, New Rajendra Nagar, Raipur</p></div>	http://www.innolat.com/#/home
+4	Lokus News	ecell@nitrr.ac.in	static/uploads/startups/lokus-2.png		Lokus News	Interns need to do a training for 10 days at our office at Station Road, Raipur\r\nLater they can work from home	t	2018-11-02 18:03:20.638007+00	2019-05-26 02:57:39.894583+00	<div id="output" class="content markdown-body"><p><strong>Co Founder:</strong> \r\nPrakhar Lunawat</p>\r\n\r\n<p><strong>About Lokus News:</strong>\r\nWe are a news aggregation platform, focusing on regional news.</p>\r\n\r\n<p><strong>About Internship:</strong></p>\r\n\r\n<ol><li>Operations internship</li><li>Interns need to do a training for 10 days at our office at Station Road, Raipur</li><li>Later they can work from home</li></ol>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nRs. 5000/month</p>\r\n\r\n<p><strong>Duration of internship:</strong>\r\nIntenships are available for a duration of 3 months.</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nNovember</p>\r\n\r\n<p><strong>Email:</strong>\r\nPrakhar@lokusnews.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9826123498</p></div>	http://lokusnews.com/
+3	eBeta	ecell@nitrr.ac.in	static/uploads/startups/Screenshot_from_2019-05-26_08-25-39.png		eBeta	eBeta House, B28, Amrapali Society, behind Colors Mall, Pachpedinaka, Raipur.	t	2018-11-02 17:59:15.633294+00	2019-05-26 02:57:12.512746+00	<div id="output" class="content markdown-body"><p><strong>About eBeta:</strong>\r\nIts about leisure and health services to senior \r\ncitizens.</p>\r\n\r\n<p><strong>About Internship:</strong></p>\r\n\r\n<ol><li>Sense of Responsibility</li><li>Smart Communication Skills and Presentable. (Both Male &amp; Female)</li></ol>\r\n\r\n<p><strong>Skills Required:</strong>\r\nPatience in handling old age people</p>\r\n\r\n<p><strong>Minimum Stipend:</strong>\r\nRs. 2000/month</p>\r\n\r\n<p><strong>Starting Month:</strong>\r\nNovember</p>\r\n\r\n<p><strong>Email:</strong>\r\nPrakhar@lokusnews.com</p>\r\n\r\n<p><strong>Mobile:</strong>\r\n9522292122</p>\r\n\r\n<p><strong>Address:</strong>\r\neBeta House, B28, Amrapali Society, behind Colors Mall, Pachpedinaka, Raipur.</p></div>	http://ebeta.in/
 \.
 
 
@@ -18335,18 +18439,18 @@ COPY public.team_member (id, name, profile_url, image, member_type) FROM stdin;
 93	Anoop Tiwari	\N	static/uploads/team/IMG_1227_-_ANOOP_TIWARI.jpg	HC
 100	Shivangi Tiwari	\N	static/uploads/team/20171120202821_IMG_7741_1_20180603013333314_-_Shivangi_Tiwari.jpg	HC
 97	Yash Bonde	\N	static/uploads/team/yash_bonde.jpg	HC
-101	Suyash Gupta	\N	static/uploads/team/suyah_gupta_right_one.jpg	HC
-98	D Rupesh Kumar	\N	static/uploads/team/rupesh_kumar.jpg	HC
-99	Prem Singh Shekhawat	\N	static/uploads/team/prem_singh.jpg	HC
-90	Iket Agrawal	\N	static/uploads/team/iket_agarawal.jpg	HC
-94	Himanshu Bunkar	\N	static/uploads/team/himanshu_bunkar.jpg	HC
-91	Kavya Sharma	\N	static/uploads/team/2F6CCA8A-B839-43A6-B990-34BE8650CE49_-_kavya_sharma_YlgcbOt.jpg	HC
-95	Ankush Agrawal	\N	static/uploads/team/ankush_sir.jpg	HC
-88	Aditya Agrawal	\N	static/uploads/team/aditya.jpg	HC
-89	Dimple Sharma	\N	static/uploads/team/dimple_.jpg	HC
-96	Saransh Mehta	\N	static/uploads/team/saransh.jpg	HC
+101	Suyash Gupta	\N	static/uploads/team/suyash_gupta.jpg	HC
+90	Iket Agrawal	\N	static/uploads/team/Iket_Agrawal.jpg	HC
+98	D Rupesh Kumar	\N	static/uploads/team/D_Rupesh_kumar.jpg	HC
+99	Prem Singh Shekhawat	\N	static/uploads/team/prem_singh_shekawat.jpg	HC
+96	Saransh Mehta	\N	static/uploads/team/saransh_mehta.jpg	HC
 34	Dr. Samir Bajpai	\N	static/uploads/team/Samir_Vajpayee_uMs2Lbb.JPG	HCD
 32	Dr. A M Rawani	\N	static/uploads/team/Dr_A_M_Rawani_0B2ZpDZ.jpg	Dir
+91	Kavya Sharma	\N	static/uploads/team/kavyasharma.jpg	HC
+89	Dimple Sharma	\N	static/uploads/team/dimplesharma.jpg	HC
+88	Aditya Agrawal	\N	static/uploads/team/adityaagrawal.jpg	HC
+95	Ankush Agrawal	\N	static/uploads/team/ankush_agrawal.jpg	HC
+94	Himanshu Bunkar	\N	static/uploads/team/Himanshu_bunkar.jpg	HC
 \.
 
 
