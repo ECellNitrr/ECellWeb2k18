@@ -1,69 +1,179 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events"> {% endblock keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events"> {% endblock keywords %}
 <!-- title -->
 {% block title %}
-<title>Events | E-Cell NIT Raipur</title>
+    <title>Events | E-Cell NIT Raipur</title>
 {% endblock title %}
 
 <!-- css -->
 {% block css %}
-<link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
-<link rel="stylesheet" href="{% static 'website/common/header.css' %}">
-
-<link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> {% endblock css %}
+    <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'website/common/header.css' %}">
+    <link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
-<!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
-<script src="{% static 'website/event_detail/event_detail.js' %}"></script>
+    <!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
+    <script src="{% static 'website/event_detail/event_detail.js' %}"></script>
 {% endblock js %}
 <!-- main content -->
 {% block content %}
-<!-- spinner -->
-{% include 'website/spinner.html' %}
-<section id=event_detail></section>
-<div id="mentors_details">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 com-sm-12">
-                <p class="text-justify">
-                    Ignition is the business model competition designed to emulate the process of the growth of an idea towards a full-fledged
-                    startup. The basic motive of this B-model is to connect the budding entrepreneurs with investors giving
-                    start-ups a leap. Right from acknowledging that your idea has potential, to drafting a B-Model, and pitching
-                    in front of an esteemed panel of investor- this platform has it all. The stages of the B-model competition
-                    include-
-                </p>
-                <div class="row justify-content-center text-center">
-                    <div class="card">
-                        <ul class="list-group">
-                            <li class="list-group-item">Workshop – 1 st September</li>
-                            <li class="list-group-item">Submission of model</li>
-                            <li class="list-group-item">Questionnaire</li>
-                            <li class="list-group-item">Mentorship</li>
-                            <li class="list-group-item">Final round</li>
-                        </ul>
+    <!-- spinner -->
+    {% include 'website/spinner.html' %}
+    <section id=event_detail></section>
+    <div class="event_special_detail container START-UPCAMP">
+        <h3 class="text-center mt-5">
+            Startup camp 2018
+        </h3>
+        <div class="text-justify">
+            <p class="font-weight-bold text-center mt-4">
+                2 startups( Govatsa and exosolar) were selected for investment under a nonclosure deal.
+            </p>
+            <p>
+                Exosolar Pvt Ltd is the only India based company that develops unique styled robots to clean solar
+                panels
+                quickly and with greater efficiency. Exosolar has developed dual natured robot that can give wet as well
+                as
+                dry
+                cleaning thus reducing the consumption of water and boosting up generation of electricity.
+            </p>
+
+            <p>
+                GoVatsa makes Bioproducts for agricultural work ,Unique organic plant extract that induce the plant to
+                self-produce higher levels of natural occurring hormones, which improves plant health, vigour and end
+                yields.
+            </p>
+        </div>
+
+        <h3 class="text-center mt-5">Startup camp 2017</h3>
+        <div class="text-justify">
+            <p class="font-weight-bold mt-4 text-center">
+                3 startups (bbags, gimbooks, techB) were selected for a total tentative investment of 1.2cr.
+            </p>
+            <p>
+                TECHB is a 3D Printer and Electronics manufacturing company headquartered in Bhilai, Chhattisgarh (C.G.)
+                that
+                currently focuses on producing 3D Printers and TeachPAD (Exclusively by TECHB) in India.
+            </p>
+            <p>
+                Bbags which makes multi-functional backpacks,meeting requirements of a fast-paced life.
+            </p>
+            <p>
+                GimBooks Create professional and elegant looking invoices and manage day to day book-keeping in seconds
+                and
+                easily deliver them to the clients whenever needed.
+            </p>
+        </div>
+
+        <div id="gallery"></div>
+        <script>
+
+        </script>
+    </div>
+
+    <div id="mentors_details" class="IGNITION event_special_detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 com-sm-12">
+                    <p class="text-justify">
+                        Ignition is the business model competition designed to emulate the process of the growth of an
+                        idea towards a full-fledged
+                        startup. The basic motive of this B-model is to connect the budding entrepreneurs with investors
+                        giving
+                        start-ups a leap. Right from acknowledging that your idea has potential, to drafting a B-Model,
+                        and pitching
+                        in front of an esteemed panel of investor- this platform has it all. The stages of the B-model
+                        competition
+                        include-
+                    </p>
+                    <div class="row justify-content-center text-center">
+                        <div class="card">
+                            <ul class="list-group">
+                                <li class="list-group-item">Workshop – 1 st September</li>
+                                <li class="list-group-item">Submission of model</li>
+                                <li class="list-group-item">Questionnaire</li>
+                                <li class="list-group-item">Mentorship</li>
+                                <li class="list-group-item">Final round</li>
+                            </ul>
+                        </div>
                     </div>
+                    <br/>
+                    <p class="text-justify">
+                        B-model is indeed of great importance because along with giving clarity for business, it
+                        provides the budding entrepreneurs
+                        the required details about a business including the target audience, competitors and scope in
+                        the future.
+                        Also the B-model contains the relevant information that is required by the investor. The primary
+                        motive
+                        for implementing this competition in our college is solely intended to set alight the
+                        entrepreneurial
+                        spirits among the students so as to educate and inspire smarter entrepreneurs who want to launch
+                        ventures
+                        that are more successful.
+                    </p>
+                    <p class="font-weight-bold text-center">
+                        Download or View the Rules, Format of Abstract and other details
+                    </p>
+                    <center>
+                        <form action="https://ecell.nitrr.ac.in/static/ignition-rules.pdf">
+                            <button type="submit" class="register_btn">View Guidelines</button>
+                        </form>
+                    </center>
                 </div>
-                <br />
-                <p class="text-justify">
-                    B-model is indeed of great importance because along with giving clarity for business, it provides the budding entrepreneurs
-                    the required details about a business including the target audience, competitors and scope in the future.
-                    Also the B-model contains the relevant information that is required by the investor. The primary motive
-                    for implementing this competition in our college is solely intended to set alight the entrepreneurial
-                    spirits among the students so as to educate and inspire smarter entrepreneurs who want to launch ventures
-                    that are more successful.
-                </p>
-                <p class="font-weight-bold text-center">
-                    Download or View the Rules, Format of Abstract and other details
-                </p>
-                <center>
-                    <form action="https://ecell.nitrr.ac.in/static/ignition-rules.pdf">
-                        <button type="submit" class="register_btn">View Guidelines</button>
-                    </form>
-                </center>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="INNOVATIONEXPO event_special_detail container text-center">
+        <h3 class="mt-5">
+            <h3 class="mt-5 font-weight-bold">
+                INNOVATION EXPO 2019
+            </h3>
+
+            <h4 class="mt-5">Seed grant INR 25000 each</h4>
+            <div class="row text-center mt-4">
+                <div class="teams col-md-4">
+                    <div class="font-weight-bold">1 st prize- team Vision</div>
+                    <div class="mt-2">Team members- Shruti Pandey, Nitisha Singh, Siddhartha shrivastav, Vinay khobragade,
+                        Upasanamishra
+                    </div>
+                    <div>College - NIT Raipur</div>
+                </div>
+                <div class="teams col-md-4">
+                    <div class="font-weight-bold">2nd prize- team Neutripod</div>
+                    <div class="mt-2">Team members - vedant singh baghel , shrey agrawal , ritesh diwakar</div>
+                    <div>College - NIT Raipur</div>
+                </div>
+                <div class="teams col-md-4">
+                    <div class="font-weight-bold">3rd prize- team Tap2safety</div>
+                    <div class="mt-2">Team members - D rupesh kumar , shwetima sakshi , harsh bajpai</div>
+                    <div>College - NIT Raipur</div>
+                </div>
+            </div>
+            <h4 class="mt-5">Consolation prize INR 2500 each</h4>
+            <div class="row text-center mt-4 justify-content-center">
+                <div class="teams col-md-4">
+                    <div class="font-weight-bold ">4th prize- team Dynamic</div>
+                    <div class="mt-2">Team members- shubham gupta ,Sagarika iyyer</div>
+                    <div>College - NIT Raipur</div>
+                </div>
+                <div class="teams col-md-4">
+                    <div class="font-weight-bold">5th prize- team Biomedical India</div>
+                    <div class="mt-2">Team members- Ashish sharma , avanish kumar</div>
+                    <div>College - NIT Raipur</div>
+                </div>
+            </div>
+
+
+        </h3>
+
+    </div>
+
+    <script>
+        var special_details = document.querySelectorAll('.event_special_detail')
+        special_details.forEach(event => event.style.display = 'none')
+    </script>
 {% endblock content %}

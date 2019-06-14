@@ -26,18 +26,20 @@ put_event_in_place = (event) => {
 fetch('/events/list')
     .then(data => data.json())
     .then((data) => {
+        console.log(data)
         // close the spinner
         document.querySelector('#spinner').remove()
+
         // put the data into place
         var page_eid = window.location.href.split('/').pop()
-        if(page_eid == 'ignition') {
-            page_eid = 7
-        }
-        
         var event = data.events.filter((event) => event.id == page_eid)[0]
-        if(event.id == 7) {
-            document.getElementById('mentors_details').style.display = 'block'
-        }
+        special_details.forEach(se => {
+            if (se.classList.contains(event.name.replace(' ',''))) {
+                se.style.display = 'block'
+            } else {
+                se.remove()
+            }
+        })
         put_event_in_place(event)
 
     })
