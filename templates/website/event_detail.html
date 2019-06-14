@@ -1,179 +1,421 @@
 {% extends 'website/layout.html' %} {% load static %}
 <!-- keywords -->
 {% block keywords %}
-    <meta name="keywords"
-          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events"> {% endblock keywords %}
+<meta name="keywords" content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, events">
+{% endblock keywords %}
 <!-- title -->
 {% block title %}
-    <title>Events | E-Cell NIT Raipur</title>
+<title>Events | E-Cell NIT Raipur</title>
 {% endblock title %}
 
 <!-- css -->
 {% block css %}
-    <link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'website/common/header.css' %}">
-    <link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}">
-    <link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> {% endblock css %}
+<link rel="stylesheet" href="{% static 'website/common/animate.css' %}">
+<link rel="stylesheet" href="{% static 'website/common/header.css' %}">
+<link rel="stylesheet" href="{% static 'website/gallery/gallery.css' %}">
+<link rel="stylesheet" href="{% static 'website/event_detail/event_detail.css' %}"> {% endblock css %}
 <!-- js -->
 {% block js %}
-    <!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
-    <script src="{% static 'website/event_detail/event_detail.js' %}"></script>
+<!-- <script src="{% static 'website/events/event_detail_register_event.js' %}"></script> -->
+<script src="{% static 'website/event_detail/event_detail.js' %}"></script>
 {% endblock js %}
 <!-- main content -->
 {% block content %}
-    <!-- spinner -->
-    {% include 'website/spinner.html' %}
-    <section id=event_detail></section>
-    <div class="event_special_detail container START-UPCAMP">
-        <h3 class="text-center mt-5">
-            Startup camp 2018
-        </h3>
-        <div class="text-justify">
-            <p class="font-weight-bold text-center mt-4">
-                2 startups( Govatsa and exosolar) were selected for investment under a nonclosure deal.
-            </p>
-            <p>
-                Exosolar Pvt Ltd is the only India based company that develops unique styled robots to clean solar
-                panels
-                quickly and with greater efficiency. Exosolar has developed dual natured robot that can give wet as well
-                as
-                dry
-                cleaning thus reducing the consumption of water and boosting up generation of electricity.
-            </p>
+<!-- spinner -->
+{% include 'website/spinner.html' %}
 
-            <p>
-                GoVatsa makes Bioproducts for agricultural work ,Unique organic plant extract that induce the plant to
-                self-produce higher levels of natural occurring hormones, which improves plant health, vigour and end
-                yields.
-            </p>
-        </div>
+<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+<style>
+    .demo-gallery>ul {
+        margin-bottom: 0;
+        display: flex;
+        justify-content: center;
+    }
 
-        <h3 class="text-center mt-5">Startup camp 2017</h3>
-        <div class="text-justify">
-            <p class="font-weight-bold mt-4 text-center">
-                3 startups (bbags, gimbooks, techB) were selected for a total tentative investment of 1.2cr.
-            </p>
-            <p>
-                TECHB is a 3D Printer and Electronics manufacturing company headquartered in Bhilai, Chhattisgarh (C.G.)
-                that
-                currently focuses on producing 3D Printers and TeachPAD (Exclusively by TECHB) in India.
-            </p>
-            <p>
-                Bbags which makes multi-functional backpacks,meeting requirements of a fast-paced life.
-            </p>
-            <p>
-                GimBooks Create professional and elegant looking invoices and manage day to day book-keeping in seconds
-                and
-                easily deliver them to the clients whenever needed.
-            </p>
-        </div>
+    .demo-gallery>ul>li {
+        text-align: center;
+        width: 200px;
 
-        <div id="gallery"></div>
-        <script>
+    }
 
-        </script>
+    .demo-gallery>ul>li a {
+        border: 3px solid #FFF;
+        border-radius: 3px;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        float: left;
+    }
+
+    .demo-gallery>ul>li a>img {
+        -webkit-transition: -webkit-transform 0.15s ease 0s;
+        -moz-transition: -moz-transform 0.15s ease 0s;
+        -o-transition: -o-transform 0.15s ease 0s;
+        transition: transform 0.15s ease 0s;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        height: 100%;
+        width: 100%;
+    }
+
+    .demo-gallery>ul>li a:hover>img {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    .demo-gallery>ul>li a:hover .demo-gallery-poster>img {
+        opacity: 1;
+    }
+
+    .demo-gallery>ul>li a .demo-gallery-poster {
+        background-color: rgba(0, 0, 0, 0.1);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transition: background-color 0.15s ease 0s;
+        -o-transition: background-color 0.15s ease 0s;
+        transition: background-color 0.15s ease 0s;
+    }
+
+    .demo-gallery>ul>li a .demo-gallery-poster>img {
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transition: opacity 0.3s ease 0s;
+        -o-transition: opacity 0.3s ease 0s;
+        transition: opacity 0.3s ease 0s;
+    }
+
+    .demo-gallery>ul>li a:hover .demo-gallery-poster {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .demo-gallery .justified-gallery>a>img {
+        -webkit-transition: -webkit-transform 0.15s ease 0s;
+        -moz-transition: -moz-transform 0.15s ease 0s;
+        -o-transition: -o-transform 0.15s ease 0s;
+        transition: transform 0.15s ease 0s;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        height: 100%;
+        width: 100%;
+    }
+
+    .demo-gallery .justified-gallery>a:hover>img {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    .demo-gallery .justified-gallery>a:hover .demo-gallery-poster>img {
+        opacity: 1;
+    }
+
+    .demo-gallery .justified-gallery>a .demo-gallery-poster {
+        background-color: rgba(0, 0, 0, 0.1);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transition: background-color 0.15s ease 0s;
+        -o-transition: background-color 0.15s ease 0s;
+        transition: background-color 0.15s ease 0s;
+    }
+
+    .demo-gallery .justified-gallery>a .demo-gallery-poster>img {
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transition: opacity 0.3s ease 0s;
+        -o-transition: opacity 0.3s ease 0s;
+        transition: opacity 0.3s ease 0s;
+    }
+
+    .demo-gallery .justified-gallery>a:hover .demo-gallery-poster {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .demo-gallery .video .demo-gallery-poster img {
+        height: 48px;
+        margin-left: -24px;
+        margin-top: -24px;
+        opacity: 0.8;
+        width: 48px;
+    }
+
+    .demo-gallery.dark>ul>li a {
+        border: 3px solid #04070a;
+    }
+
+    .home .demo-gallery {
+        padding-bottom: 80px;
+    }
+</style>
+
+
+<section id=event_detail></section>
+<div class="event_special_detail container START-UPCAMP">
+    <h3 class="text-center mt-5">
+        Startup camp 2018
+    </h3>
+    <div class="text-justify">
+        <p class="font-weight-bold text-center mt-4">
+            2 startups( Govatsa and exosolar) were selected for investment under a nonclosure deal.
+        </p>
+        <p>
+            Exosolar Pvt Ltd is the only India based company that develops unique styled robots to clean solar
+            panels
+            quickly and with greater efficiency. Exosolar has developed dual natured robot that can give wet as well
+            as
+            dry
+            cleaning thus reducing the consumption of water and boosting up generation of electricity.
+        </p>
+
+        <p>
+            GoVatsa makes Bioproducts for agricultural work ,Unique organic plant extract that induce the plant to
+            self-produce higher levels of natural occurring hormones, which improves plant health, vigour and end
+            yields.
+        </p>
     </div>
 
-    <div id="mentors_details" class="IGNITION event_special_detail">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 com-sm-12">
-                    <p class="text-justify">
-                        Ignition is the business model competition designed to emulate the process of the growth of an
-                        idea towards a full-fledged
-                        startup. The basic motive of this B-model is to connect the budding entrepreneurs with investors
-                        giving
-                        start-ups a leap. Right from acknowledging that your idea has potential, to drafting a B-Model,
-                        and pitching
-                        in front of an esteemed panel of investor- this platform has it all. The stages of the B-model
-                        competition
-                        include-
-                    </p>
-                    <div class="row justify-content-center text-center">
-                        <div class="card">
-                            <ul class="list-group">
-                                <li class="list-group-item">Workshop – 1 st September</li>
-                                <li class="list-group-item">Submission of model</li>
-                                <li class="list-group-item">Questionnaire</li>
-                                <li class="list-group-item">Mentorship</li>
-                                <li class="list-group-item">Final round</li>
-                            </ul>
-                        </div>
+    <h3 class="text-center mt-5">Startup camp 2017</h3>
+    <div class="text-justify">
+        <p class="font-weight-bold mt-4 text-center">
+            3 startups (bbags, gimbooks, techB) were selected for a total tentative investment of 1.2cr.
+        </p>
+        <p>
+            TECHB is a 3D Printer and Electronics manufacturing company headquartered in Bhilai, Chhattisgarh (C.G.)
+            that
+            currently focuses on producing 3D Printers and TeachPAD (Exclusively by TECHB) in India.
+        </p>
+        <p>
+            Bbags which makes multi-functional backpacks,meeting requirements of a fast-paced life.
+        </p>
+        <p>
+            GimBooks Create professional and elegant looking invoices and manage day to day book-keeping in seconds
+            and
+            easily deliver them to the clients whenever needed.
+        </p>
+    </div>
+
+    <div class="container my-5">
+        <div class="demo-gallery">
+            <ul id="lightgallery" class="list-unstyled row">
+                    <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image1.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image1.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image2.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image2.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image3.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image3.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image4.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image4.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image5.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image5.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image6.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image6.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+                <li class="col-xs-6 col-sm-4 col-md-3" data-src="{% static 'event_pics/startup_camp/image7.jpg' %}"
+                    data-sub-html="<h4>Startup Camp</h4>" data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{% static 'event_pics/startup_camp/image7.jpg' %}"
+                            alt="Thumb-1">
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="mentors_details" class="IGNITION event_special_detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 com-sm-12">
+                <p class="text-justify">
+                    Ignition is the business model competition designed to emulate the process of the growth of an
+                    idea towards a full-fledged
+                    startup. The basic motive of this B-model is to connect the budding entrepreneurs with investors
+                    giving
+                    start-ups a leap. Right from acknowledging that your idea has potential, to drafting a B-Model,
+                    and pitching
+                    in front of an esteemed panel of investor- this platform has it all. The stages of the B-model
+                    competition
+                    include-
+                </p>
+                <div class="row justify-content-center text-center">
+                    <div class="card">
+                        <ul class="list-group">
+                            <li class="list-group-item">Workshop – 1 st September</li>
+                            <li class="list-group-item">Submission of model</li>
+                            <li class="list-group-item">Questionnaire</li>
+                            <li class="list-group-item">Mentorship</li>
+                            <li class="list-group-item">Final round</li>
+                        </ul>
                     </div>
-                    <br/>
-                    <p class="text-justify">
-                        B-model is indeed of great importance because along with giving clarity for business, it
-                        provides the budding entrepreneurs
-                        the required details about a business including the target audience, competitors and scope in
-                        the future.
-                        Also the B-model contains the relevant information that is required by the investor. The primary
-                        motive
-                        for implementing this competition in our college is solely intended to set alight the
-                        entrepreneurial
-                        spirits among the students so as to educate and inspire smarter entrepreneurs who want to launch
-                        ventures
-                        that are more successful.
-                    </p>
-                    <p class="font-weight-bold text-center">
-                        Download or View the Rules, Format of Abstract and other details
-                    </p>
-                    <center>
-                        <form action="https://ecell.nitrr.ac.in/static/ignition-rules.pdf">
-                            <button type="submit" class="register_btn">View Guidelines</button>
-                        </form>
-                    </center>
                 </div>
+                <br />
+                <p class="text-justify">
+                    B-model is indeed of great importance because along with giving clarity for business, it
+                    provides the budding entrepreneurs
+                    the required details about a business including the target audience, competitors and scope in
+                    the future.
+                    Also the B-model contains the relevant information that is required by the investor. The primary
+                    motive
+                    for implementing this competition in our college is solely intended to set alight the
+                    entrepreneurial
+                    spirits among the students so as to educate and inspire smarter entrepreneurs who want to launch
+                    ventures
+                    that are more successful.
+                </p>
+                <p class="font-weight-bold text-center">
+                    Download or View the Rules, Format of Abstract and other details
+                </p>
+                <center>
+                    <form action="https://ecell.nitrr.ac.in/static/ignition-rules.pdf">
+                        <button type="submit" class="register_btn">View Guidelines</button>
+                    </form>
+                </center>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="INNOVATIONEXPO event_special_detail container text-center">
-        <h3 class="mt-5">
-            <h3 class="mt-5 font-weight-bold">
-                INNOVATION EXPO 2019
-            </h3>
+<div class="INNOVATIONEXPO event_special_detail container text-center">
+    <h3 class="mt-5 font-weight-bold">
+        WINNERS 2019
+    </h3>
 
-            <h4 class="mt-5">Seed grant INR 25000 each</h4>
-            <div class="row text-center mt-4">
-                <div class="teams col-md-4">
-                    <div class="font-weight-bold">1 st prize- team Vision</div>
-                    <div class="mt-2">Team members- Shruti Pandey, Nitisha Singh, Siddhartha shrivastav, Vinay khobragade,
-                        Upasanamishra
-                    </div>
-                    <div>College - NIT Raipur</div>
-                </div>
-                <div class="teams col-md-4">
-                    <div class="font-weight-bold">2nd prize- team Neutripod</div>
-                    <div class="mt-2">Team members - vedant singh baghel , shrey agrawal , ritesh diwakar</div>
-                    <div>College - NIT Raipur</div>
-                </div>
-                <div class="teams col-md-4">
-                    <div class="font-weight-bold">3rd prize- team Tap2safety</div>
-                    <div class="mt-2">Team members - D rupesh kumar , shwetima sakshi , harsh bajpai</div>
-                    <div>College - NIT Raipur</div>
-                </div>
+    <h4 class="mt-5 text-black-50">Seed grant INR 25000 each</h4>
+    <div class="row text-center mt-4">
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">1 st prize- team Vision</h4>
+            <div class="mt-2"> Shruti Pandey, Nitisha Singh, Siddhartha shrivastav, Vinay khobragade,
+                Upasanamishra
             </div>
-            <h4 class="mt-5">Consolation prize INR 2500 each</h4>
-            <div class="row text-center mt-4 justify-content-center">
-                <div class="teams col-md-4">
-                    <div class="font-weight-bold ">4th prize- team Dynamic</div>
-                    <div class="mt-2">Team members- shubham gupta ,Sagarika iyyer</div>
-                    <div>College - NIT Raipur</div>
-                </div>
-                <div class="teams col-md-4">
-                    <div class="font-weight-bold">5th prize- team Biomedical India</div>
-                    <div class="mt-2">Team members- Ashish sharma , avanish kumar</div>
-                    <div>College - NIT Raipur</div>
-                </div>
-            </div>
+            <div>College - NIT Raipur</div>
+        </div>
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">2nd prize- team Neutripod</h4>
+            <div class="mt-2"> Vedant Singh baghel , Shrey Agrawal , Ritesh Diwakar</div>
+            <div>College - NIT Raipur</div>
+        </div>
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">3rd prize- team Tap2safety</h4>
+            <div class="mt-2"> D Rupesh Kumar , Shwetima Sakshi , Harsh Bajpai</div>
+            <div>College - NIT Raipur</div>
+        </div>
+    </div>
+    <h4 class="mt-5 text-black-50">Consolation prize INR 2500 each</h4>
+    <div class="row text-center mt-4 justify-content-center">
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold ">4th prize- team Dynamic</h4>
+            <div class="mt-2"> Shubham Gupta ,Sagarika Iyyer</div>
+            <div>College - NIT Raipur</div>
+        </div>
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">5th prize- team Biomedical India</h4>
+            <div class="mt-2"> Ashish Sharma , Avanish Kumar</div>
+            <div>College - NIT Raipur</div>
+        </div>
+    </div>
+</div>
 
-
-        </h3>
-
+<div class="BModel event_special_detail container text-center">
+    <h3 class="mt-5 font-weight-bold">2018 winners</h3>
+    <div class="row text-center justify-content-center mt-5">
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">Winner - Perception AI</h4>
+            <h5 class="mt-1 font-weight-bold text-black-50">Prize money 18,000/-</h5>
+            <div class="mt-2">Mohit Sarin ,Shreya Chandrakar ,Dheeraj Varma </div>
+            <div>College - NIT Raipur</div>
+        </div>
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">Runner - EventsOnRolls</h4>
+            <h5 class="mt-1 font-weight-bold text-black-50">Prize money 12,000/-</h5>
+            <div class="mt-2">Rahul Hirondi ,Saransh Shirke ,Harpreet Kaur</div>
+            <div>College - CSIT durg</div>
+        </div>
     </div>
 
-    <script>
-        var special_details = document.querySelectorAll('.event_special_detail')
-        special_details.forEach(event => event.style.display = 'none')
-    </script>
+    <h3 class="mt-5 font-weight-bold">2017 winners</h3>
+    <div class="row text-center justify-content-center mt-5">
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">Winner - Welt Weschler</h4>
+            <h5 class="mt-1 font-weight-bold text-black-50">Prize money 18,000/-</h5>
+            <div class="mt-2">Bhavasagar Payyavula</div>
+            <div>College - NIT Raipur</div>
+        </div>
+        <div class="teams col-md-4">
+            <h4 class="font-weight-bold">Runner - Watch your waste</h4>
+            <h5 class="mt-1 font-weight-bold text-black-50">Prize money 12,000/-</h5>
+            <div class="mt-2">Rohit Agarwal, Shivangi Tiwari,Sakshi Singh, Akella Sundar Kumar</div>
+            <div>College - NIT Raipur</div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+<script>
+    var special_details = document.querySelectorAll('.event_special_detail')
+    special_details.forEach(event => event.style.display = 'none')
+    lightGallery(document.getElementById('lightgallery'));
+</script>
 {% endblock content %}

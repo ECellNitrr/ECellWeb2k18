@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b14b15b-4322-48ae-a2e2-8d41170f800b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/event_detail/event_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/event_detail/event_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/website/event_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/website/event_detail.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/website/event_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="164" column="37" selection-start-line="164" selection-start-column="37" selection-end-line="164" selection-end-column="37" />
+            <state relative-caret-position="304">
+              <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
             </state>
           </provider>
         </entry>
@@ -262,12 +260,12 @@
       <workItem from="1560405638844" duration="1223000" />
       <workItem from="1560448566076" duration="1852000" />
       <workItem from="1560451035501" duration="3672000" />
-      <workItem from="1560483047347" duration="2175000" />
+      <workItem from="1560483047347" duration="3225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54613000" />
+    <option name="totallyTimeSpent" value="55663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -580,8 +578,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/website/event_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="164" column="37" selection-start-line="164" selection-start-column="37" selection-end-line="164" selection-end-column="37" />
+        <state relative-caret-position="304">
+          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
         </state>
       </provider>
     </entry>
