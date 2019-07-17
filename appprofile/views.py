@@ -67,6 +67,19 @@ def privacy_policy_page(request):
 def terms_page(request):
     return render(request, 'website/terms.html')
 
+def send_otp(contact, **kwargs):
+    otp = str(randint(1000, 9999))
+    if 'otp' in kwargs:
+        otp = kwargs['otp']
+    message = f"Your OTP for E-Cell NIT Raipur portal is {otp}."
+    conn = http.client.HTTPSConnection("api.msg91.com")
+    contact = str(contact)
+    authkey = config('authkey')
+    url = f"https://api.msg91.com/api/sendhttp.php?mobiles={contact}&authkey={authkey}&route=4&sender=SUMMIT&message={message}&country=91"
+    conn.request("GET",url)
+    res = conn.getresponse()
+    data = res.read()
+    return otp
 
 @csrf_exempt
 def message(request):
@@ -166,63 +179,24 @@ def appregister(request):
             password=password,
             is_active=False
         )
-        # user = user.save(commit=False)
-        # user.username = first+last+conno
-        # user = user.save()
-        # user.set_password(password)
-        # user.is_active=False;
         user.save()
-
-        # User created, Creating a linked Profile of user
-        # user.profile.avatar = req_data['avatar']
         user.profile.contact_no = req_data['contact_no']
-        # user.profile.facebook = req_data['facebook']
-        # user.profile.linkedin = req_data['linkedin']
         user.profile.status = 0
 
-        # p = multiprocessing.Process(target=send_mail,args=(email,user,))
-        # p.start()
-        # send_mail(email, user)
+        #code for mera sandesh otp commented
+        # url = "http://www.merasandesh.com/api/sendsms"
+        # message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
+        # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+        #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-        # current_site = get_current_site(request)
-        # mail_subject = "Activate your Ecell account"
-        # message = render_to_string('acc_active_email.html',{
-        # 	'user':user,
-        # 	'domain':current_site.domain,
-        # 	'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-        # 	'token':account_activation_token.make_token(user),
-        # })
-        # to_email = user.email
-        # email = EmailMessage(mail_subject,message,to=[to_email])
-        # email.send()
+        # response = requests.request("GET", url, params=querystring)
 
-        # import http.client
+        # print(response.text)
 
-        # conn = http.client.HTTPConnection("api.msg91.com")
-
-        # stringmsg = "http://api.msg91.com/api/sendhttp.php?sender=ECellR&route=4&mobiles=91"
-        # stringmsg=stringmsg+conno
-        # stringmsg=stringmsg+"&authkey=152650AGXn8tEe5b6d6a39&country=91&message="
-
-        # msg = "Your otp is: "
-        # msg=msg+otp
-        # msg = str(msg)
-        # print(msg)
-        # stringmsg=stringmsg+ms
-        otp = str(randint(1000, 9999))
-        url = "http://www.merasandesh.com/api/sendsms"
-        message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
-        querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                       "message": message, "numbers": contact_no, "unicode": "0"}
-
-        response = requests.request("GET", url, params=querystring)
-
-        print(response.text)
+        otp = send_otp(contact_no)
+        
         user.profile.otp = otp
         user.profile.save()
-        # res = conn.getresponse()
-        # data = res.read()
-        # print(data.decode("utf-8"))
         print(otp)
         payload = {
             'id': user.id,
@@ -242,76 +216,6 @@ def appregister(request):
             'success': False,
             'message': 'form method error',
         })
-
-    if request.method == "POST":
-        req_data = request.body.decode('UTF-8')
-        req_data = json.loads(req_data)
-        email = req_data['email']
-        password = req_data['password']
-        contact_no = str(req_data['contact_no'])
-        # Checking Duplicate records of Email or contact no
-        conno = req_data['contact_no']
-        if (Profile.objects.filter(contact_no=conno).exists()):
-            return JsonResponse({
-                'success': False,
-                'message': 'Contact No. must be unique',
-            })
-        print('First check')
-        checkemail = req_data['email']
-        if (User.objects.filter(email=checkemail).exists()):
-            return JsonResponse({
-                'success': False,
-                'message': 'email must be unique',
-            })
-
-        print('Second check')
-        # Saving Data in Variables
-        first = req_data['first_name']
-        last = req_data['last_name']
-        user = User.objects.create_user(
-            username=first + last + 'xx' + conno,
-            first_name=first,
-            last_name=last,
-            email=email,
-            password=password,
-            is_active=False
-        )
-
-        user.save()
-
-        user.profile.contact_no = req_data['contact_no']
-        user.profile.status = 0
-
-        otp = str(randint(1000, 9999))
-        url = "http://www.merasandesh.com/api/sendsms"
-        message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
-        querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                       "message": message, "numbers": contact_no, "unicode": "0"}
-
-        response = requests.request("GET", url, params=querystring)
-
-        print(response.text)
-        user.profile.otp = otp
-        user.profile.save()
-        print(otp)
-        payload = {
-            'id': user.id,
-            'email': user.email,
-        }
-        jwt_token = jwt.encode(payload, conf_settings.SECRET_KEY)
-        token = jwt_token.decode('utf-8')
-        # print(token)
-        return JsonResponse({
-            'success': True,
-            'message': 'Registration successfull',
-            'token': token
-        })
-    else:
-        return JsonResponse({
-            'success': False,
-            'message': 'form method error',
-        })
-
 
 @csrf_exempt
 def activate(request, uidb64, token):
@@ -386,15 +290,16 @@ def webregister(request):
             user.save()
             contact_no = req_data['contact_no']
             user.profile.contact_no = contact_no
-            otp = str(randint(1000, 9999))
-            url = "http://www.merasandesh.com/api/sendsms"
-            message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
-            querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                           "message": message, "numbers": contact_no, "unicode": "0"}
+            # otp = str(randint(1000, 9999))
+            # url = "http://www.merasandesh.com/api/sendsms"
+            # message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
+            # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+            #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-            response = requests.request("GET", url, params=querystring)
+            # response = requests.request("GET", url, params=querystring)
+            otp = send_otp(contact_no)
             print(otp)
-            print(response.text)
+            # print(response.text)
             user.profile.otp = otp
             user.profile.status = False
             user.profile.save()
@@ -426,15 +331,16 @@ def retry_otp(request):
         contact_no = str(req_data['contact_no'])
         if User.objects.filter(email=email).exists():
             user = User.objects.get(email=email)
-            otp = str(randint(1000, 9999))
-            url = "http://www.merasandesh.com/api/sendsms"
-            message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
-            querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                           "message": message, "numbers": contact_no, "unicode": "0"}
+            # otp = str(randint(1000, 9999))
+            # url = "http://www.merasandesh.com/api/sendsms"
+            # message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
+            # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+            #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-            response_otp = requests.request("GET", url, params=querystring)
+            # response_otp = requests.request("GET", url, params=querystring)
 
-            print(response_otp.text)
+            # print(response_otp.text)
+            otp = send_otp(contact_no)
             user.profile.otp = otp
             user.profile.save()
             print(otp)
@@ -503,15 +409,16 @@ def new_conno(request):
         print(current_user)
         profile = Profile.objects.get(user=current_user)
 
-        otp = str(randint(1000, 9999))
-        url = "http://www.merasandesh.com/api/sendsms"
-        message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
-        querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                       "message": message, "numbers": contact_no, "unicode": "0"}
+        # otp = str(randint(1000, 9999))
+        # url = "http://www.merasandesh.com/api/sendsms"
+        # message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
+        # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+        #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-        response = requests.request("GET", url, params=querystring)
+        # response = requests.request("GET", url, params=querystring)
+        otp = send_otp(contact_no)
         print(otp)
-        print(response.text)
+        # print(response.text)
         profile.contact_no = contact_no
         profile.otp = otp
         profile.status = False
@@ -538,26 +445,29 @@ def resend_otp(request):
     contact_no = profile.contact_no
     if time <= 150:
         otp = profile.otp
-        url = "http://www.merasandesh.com/api/sendsms"
-        message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
-        querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                       "message": message, "numbers": contact_no, "unicode": "0"}
+        # url = "http://www.merasandesh.com/api/sendsms"
+        # message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
+        # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+        #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-        response = requests.request("GET", url, params=querystring)
+        # response = requests.request("GET", url, params=querystring)
+        otp = send_otp(contact_no, otp=otp)
         profile.save()
         print(otp)
         print(response.text)
     else:
-        otp = str(randint(1000, 9999))
-        url = "http://www.merasandesh.com/api/sendsms"
-        message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
-        querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
-                       "message": message, "numbers": contact_no, "unicode": "0"}
+        # otp = str(randint(1000, 9999))
+        # url = "http://www.merasandesh.com/api/sendsms"
+        # message = "Your OTP for E-Cell NIT Raipur Website registeration is " + otp + ""
+        # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+        #                "message": message, "numbers": contact_no, "unicode": "0"}
 
-        response = requests.request("GET", url, params=querystring)
+        # response = requests.request("GET", url, params=querystring)
+        otp = send_otp(contact_no)
+        profile.otp = otp
         profile.save()
         print(otp)
-        print(response.text)
+        # print(response.text)
 
     return JsonResponse({
         'success': True,
