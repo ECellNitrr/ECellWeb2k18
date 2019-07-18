@@ -454,7 +454,7 @@ def resend_otp(request):
         otp = send_otp(contact_no, otp=otp)
         profile.save()
         print(otp)
-        print(response.text)
+        # print(response.text)
     else:
         # otp = str(randint(1000, 9999))
         # url = "http://www.merasandesh.com/api/sendsms"
