@@ -31,6 +31,9 @@ urlpatterns = [
     url(r'^logout/', views.logout_view, name='logout'),
     path('resend_otp/', views.resend_otp, name='resend_otp'),
 
+    path('forget_password_send_otp/', views.forget_password_send_otp),
+    path('forget_password_verify_otp/', views.forget_password_verify_otp),
+
     path('gallery_api/', views.gallery_view, name='gallery_api'),
     path('sponsgallery_api/', views.spons_gallery_view, name='sponsgallery_api'),
     

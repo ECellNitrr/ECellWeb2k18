@@ -1,3 +1,4 @@
+import os
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 from .models import Profile, CA_Requests
@@ -67,19 +68,78 @@ def privacy_policy_page(request):
 def terms_page(request):
     return render(request, 'website/terms.html')
 
+
 def send_otp(contact, **kwargs):
     otp = str(randint(1000, 9999))
     if 'otp' in kwargs:
         otp = kwargs['otp']
-    message = f"Your OTP for E-Cell NIT Raipur portal is {otp}."
+    message = "Your OTP for E-Cell NIT Raipur portal is {}.".format(otp)
     conn = http.client.HTTPSConnection("api.msg91.com")
     contact = str(contact)
     authkey = config('authkey')
-    url = f"https://api.msg91.com/api/sendhttp.php?mobiles={contact}&authkey={authkey}&route=4&sender=SUMMIT&message={message}&country=91"
-    conn.request("GET",url)
+    url = "https://api.msg91.com/api/sendhttp.php?mobiles={}&authkey={}&route=4&sender=SUMMIT&message={}&country=91".format(
+        contact, authkey, message)
+    conn.request("GET", url)
     res = conn.getresponse()
     data = res.read()
     return otp
+
+
+@csrf_exempt
+def forget_password_send_otp(request):
+    data = json.loads(request.body.decode('UTF-8'))
+    try:
+        profile = User.objects.get(email=data['email']).profile
+    except:
+        return JsonResponse({
+            'msg': 'user {} doesnot exist'.format(data['email']),
+            'error': True
+        })
+
+    otp = str(randint(1000, 9999))
+    print(otp)
+    send_otp(profile.contact_no, otp=otp)
+
+    profile.otp = otp
+    profile.save()
+
+    return JsonResponse({
+        'msg': 'otp successfully sent to {}'.format(profile.contact_no),
+        'error': False
+    })
+
+
+@csrf_exempt
+def forget_password_verify_otp(request):
+    data = json.loads(request.body.decode('UTF-8'))
+    try:
+        profile = User.objects.get(email=data['email']).profile
+    except:
+        return JsonResponse({
+            'msg': 'user {} doesnot exist'.format(data['email']),
+            'error': True
+        })
+
+    
+    if profile.otp == data['otp']:
+        if len(data['password']) >= 8:
+            profile.user.set_password(data['password'])
+        else:
+            return JsonResponse({
+                'msg': "password should be minimum 8 characters".format(data['email']),
+                'error': True
+            })
+    else:
+        return JsonResponse({
+            'msg': "the otp enterd didn't match",
+            'error': True
+        })
+    
+    return JsonResponse({
+        'msg': 'password changed successfully',
+        'error': False
+    })
+
 
 @csrf_exempt
 def message(request):
@@ -183,7 +243,7 @@ def appregister(request):
         user.profile.contact_no = req_data['contact_no']
         user.profile.status = 0
 
-        #code for mera sandesh otp commented
+        # code for mera sandesh otp commented
         # url = "http://www.merasandesh.com/api/sendsms"
         # message = "Your OTP for E-Cell NIT Raipur APP is " + otp + ""
         # querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
@@ -194,7 +254,7 @@ def appregister(request):
         # print(response.text)
 
         otp = send_otp(contact_no)
-        
+
         user.profile.otp = otp
         user.profile.save()
         print(otp)
@@ -216,6 +276,7 @@ def appregister(request):
             'success': False,
             'message': 'form method error',
         })
+
 
 @csrf_exempt
 def activate(request, uidb64, token):
@@ -545,7 +606,8 @@ def password(request):
         form = PasswordForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, 'Your password was succesfully updated!')
+            update_session_auth_hash(
+                request, 'Your password was succesfully updated!')
             return redirect('password')
 
         else:
@@ -553,9 +615,6 @@ def password(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'password.html', {'form': form, })
-
-
-import os
 
 
 def gallery_view(req):
@@ -594,7 +653,8 @@ def spons_gallery_view(req):
         form = PasswordForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, 'Your password was succesfully updated!')
+            update_session_auth_hash(
+                request, 'Your password was succesfully updated!')
             return redirect('password')
 
         else:
@@ -617,9 +677,12 @@ def request_approval(request):
             profile = request.user.profile
             try:
                 total_requests = profile.requests.all().count()
-                accepted_requests = profile.requests.filter(status_flag=1).count()
-                rejected_requests = profile.requests.filter(status_flag=-1).count()
-                pending_requests = profile.requests.filter(status_flag=0).count()
+                accepted_requests = profile.requests.filter(
+                    status_flag=1).count()
+                rejected_requests = profile.requests.filter(
+                    status_flag=-1).count()
+                pending_requests = profile.requests.filter(
+                    status_flag=0).count()
             except:
                 total_requests = 0
                 accepted_requests = 0
@@ -636,7 +699,7 @@ def request_approval(request):
         else:
             return render(request, 'website/notcayet.html')
     except:
-        return  render(request, 'website/notloggedinerr.html')
+        return render(request, 'website/notloggedinerr.html')
 
 
 def get_profile_data():

@@ -9,6 +9,7 @@ var l_cont = document.querySelector('#l_cont')
 var s_cont = document.querySelector('#s_cont')
 var x_cont = document.querySelector('#x_cont')
 var o_cont = document.querySelector('#o_cont')
+var forgot_pas_cont =  document.querySelector('#forgot_pas_cont')
 
 // extras
 var covers = document.querySelectorAll('.cover')
@@ -17,6 +18,7 @@ var close_btns = document.querySelectorAll('.close_btn')
 // alts
 var to_signup = document.querySelector('#to_signup')
 var to_login = document.querySelector('#to_login')
+var to_forgot_pas = document.querySelector('#to_forget_password')
 
 // close all modals 
 close_modals = () => {
@@ -69,4 +71,9 @@ to_login.addEventListener('click', (e) => {
     e.preventDefault()
     close_modals()
     l_cont.classList.add('show')
+})
+to_forgot_pas.addEventListener('click', (e) => {
+    e.preventDefault()
+    close_modals()
+    forgot_pas_cont.classList.add('show')
 })
